@@ -8,10 +8,10 @@
 </head>
 <body>
   <div class="h-screen flex flex-wrap justify-center content-center" style="background-color: rgb(173, 217, 138)">
-    <div class="rounded-3xl grid grid-cols-3 " style="background-color: white; box-shadow: rgba(14, 30, 37, 0.12) 0px 0px 0px 0px, rgba(14, 30, 37, 0.32) 0px 0px 20px 0px;">
+    <div class="rounded-3xl grid md:grid-cols-3 grid-cols-2" style="background-color: white; box-shadow: rgba(14, 30, 37, 0.12) 0px 0px 0px 0px, rgba(14, 30, 37, 0.32) 0px 0px 20px 0px;">
       
-      <div class="p-10 col-span-2 flex flex-col gap-4">
-        <div class="flex flex-row text-3xl font-black" style="font-family: Inter">
+      <div class="md:p-10 p-10 pt-0 col-span-2 flex flex-col gap-4 order-2 md:order-1">
+        <div class="flex flex-row text-3xl font-black justify-center md:justify-start" style="font-family: Inter">
           <p style="color: rgb(65, 184, 90)">
             SI
           </p>
@@ -36,9 +36,9 @@
         </div>
       </div>
 
-      <div class="flex flex-col justify-center" style="background-color: rgb(173, 217, 138); border-radius: 100% 42px 42px 100%">
+      <div class="flex-col md:justify-center flex order-1 col-span-2 md:order-2 md:rounded-login md:col-span-1 md:bg-primary-login flex-wrap content-center">
         <div>
-          <img src="{{ asset('img/logo-lang2.png') }}" alt="lang-lang" class="scale-50">
+          <img src="{{ asset('img/logo-lang2.png') }}" alt="lang-lang" class="scale-75 md:scale-50">
         </div>
       </div>
 

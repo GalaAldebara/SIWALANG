@@ -7,7 +7,12 @@ export default {
   ],
   theme: {
     extend: {
-      boxShadow: {}
+      borderRadius: {
+        'login': '100% 42px 42px 100%',
+      },
+      backgroundColor: {
+        'primary-login' : '#add98a',
+      },
     },
   },
   plugins: [],
