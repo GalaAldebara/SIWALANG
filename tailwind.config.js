@@ -6,7 +6,14 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      borderRadius: {
+        'login': '100% 42px 42px 100%',
+      },
+      backgroundColor: {
+        'primary-login' : '#add98a',
+      },
+    },
   },
   plugins: [],
 }
