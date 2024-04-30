@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%; /* Lebarkan body sesuai lebar layar */
+    background: white;
+    background-size: cover;
+    background-position: center;
+    margin: 0; /* Hilangkan margin yang mungkin ada */
+    padding-bottom: 100px;
+    position:relative; /* Tinggi footer */
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    padding: 20px 100px;
+    background-image: url("/img/desaLangLang.png");
+    background-size: cover; /* Agar gambar latar belakang menutupi seluruh area header */
+    background-position: center;
+    display: flex;
+}
+
+.footer {
+    width: 100%;
+    height: 100px; /* Sesuaikan tinggi sesuai kebutuhan */
+    background-color: #2A6C12;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.kotak {
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    border: 2px solid #333;
+    padding: 20px;
+    margin: 100px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    color: #2A6C12; /* Mengubah warna logo */
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: auto;
+    margin-left: 50px;
+}
+
+.menu-container a {
+    font-size: 18px;
+    color: #2A6C12;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px; /* Menambah jarak antara setiap menu */
+    position: relative;
+}
+
+.menu-container a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2A6C12;
+    transition: .3s;
+}
+
+.menu-container a:hover::before {
+    width: 100%;
+}
+
+.menu-container a:last-child {
+    margin-right: 80px; /* Menghapus margin kanan dari menu terakhir */
+}
+
+.container{
+    /* width: 100%;
+    height:100vh; */
+    /* min-height: 120vh; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* .form-container {
+    margin-top: 100px;
+    margin-bottom: 0;
+}
+
+.card {
+    width: 400px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+} */
+
