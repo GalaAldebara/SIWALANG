@@ -13,3 +13,11 @@ Route::get('/pengaduan/form', function () {
 Route::get('/pengaduan/index', function () {
     return view('warga.pengaduan.index');
 });
+
+Route::get('/landing', function () {
+    return view('warga.Landing.landing');
+});
+
+Route::get('/pelaporan', function () {
+    return view('warga.Pelaporan.PelaporanTamu');
+});
