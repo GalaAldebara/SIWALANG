@@ -1,0 +1,79 @@
+.form-container {
+    width: 800px;
+    margin: 400px auto 0;
+    display: grid; /* Mengubah form-container menjadi grid container */
+    grid-template-columns: 1fr 1fr; /* Membuat dua kolom dengan lebar yang sama */
+    grid-column-gap: 20px; /* Mengatur form ke tengah halaman dan menambahkan margin atas */
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f0f0f0;
+    padding: 10px 300px;
+    border-bottom: 1px solid #ccc;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.card-body {
+    padding: 20px;
+    display: grid; /* Mengubah card-body menjadi grid container */
+    grid-template-columns: 1fr 1fr; /* Membuat dua kolom dengan lebar yang sama */
+    grid-column-gap: 20px;
+    /* margin-bottom: 10px; */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+textarea.form-control {
+    height: 150px;
+    resize: vertical;
+}
+
+.btn-primary {
+    background-color: #2A6C12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 50%;
+}
+
+.btn-primary:hover {
+    background-color: #1F4A05;
+}
+
+.card-footer {
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
