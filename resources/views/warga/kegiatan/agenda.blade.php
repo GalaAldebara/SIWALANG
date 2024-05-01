@@ -10,7 +10,6 @@
   </head>
   <body>
     <div class="bg-[#FFFFFF] flex flex-col items-center w-[1300px] box-sizing-border">
-      {{-- <div class="bg-[rgba(241,242,243,0.09)] flex flex-col w-[fit-content] box-sizing-border"> --}}
         
         {{-- header --}}
         <div class="bg-[url('../img/DesaLangLang.png')] bg-[50%_50%] bg-cover relative p-[260px_110px_84px_110px] w-full h-427 box-sizing-border">
