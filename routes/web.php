@@ -13,3 +13,7 @@ Route::get('/pengaduan/form', function () {
 Route::get('/pengaduan/index', function () {
     return view('warga.pengaduan.index');
 });
+
+Route::get('/kegiatan/agenda', function () {
+    return view('warga.kegiatan.agenda');
+});
