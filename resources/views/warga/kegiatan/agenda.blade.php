@@ -62,6 +62,7 @@
               </div>
           </div>
         </div>
+
         {{-- main --}}
         <div class="bg-[#FFFFFF] m-[0_0.1px_0_0.1px] flex flex-col p-[50px_128.9px_50px_91px] w-[fit-content] box-sizing-border">
           <div class="border-b-[1px_solid_rgba(0,0,0,0.06)] m-[0_0_40px_0] flex flex-col w-[1080px] box-sizing-border">
@@ -73,15 +74,7 @@
                 <span class="self-start break-words font-Asap font-normal text-[16px] leading-[1.5] text-[#82858F]">
                 Jangan lewatkan kegiatan mendatang
                 </span>
-              </div>
-              <div class="m-[34.1px_0_12.8px_0] flex flex-row box-sizing-border">
-                <div class="m-[5.7px_8px_8.3px_0] inline-block break-words font-Asap font-bold text-[14px] leading-[1] uppercase text-[#232428]">
-                Selengkapnya
-                </div>
-                <a href="tujuan_link" class="rounded-[4px] bg-[#2A6C12] flex p-[9.9px_11.2px_9.9px_11.9px] w-[32px] h-[28px] box-sizing-border">
-                  <img class="w-[8.8px] h-[8.3px]" src="../icon/doublerightsign.svg" />
-              </a>              
-              </div>
+              </div>            
             </div>
             <div class="bg-[#2A6C12] self-start w-[40px] h-[3px]">
             </div>
@@ -101,9 +94,9 @@
                 </div>
               </div>
               <div class="m-[0_0_20.4px_0] flex self-start box-sizing-border">
-                <span class="break-words font-['Poppins'] font-bold text-[17px] leading-[1.3] text-[#232428]">
+                <a href="kegiatan.show.blade.php" class="break-words font-['Poppins'] font-bold text-[17px] leading-[1.3] text-[#232428]">
                 Kerja Bakti Bersama 
-                </span>
+                </a>
               </div>
               <div class="flex flex-row w-[fit-content] box-sizing-border">
                 <div class="m-[0.4px_12px_0_0] inline-block break-words font-Asap font-normal text-[15px] leading-[1] text-[#82858F]">
@@ -252,7 +245,6 @@
       </div>
   </div>
 </div>
-
 
   </body>
 </html>

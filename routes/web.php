@@ -17,3 +17,7 @@ Route::get('/pengaduan/index', function () {
 Route::get('/kegiatan/agenda', function () {
     return view('warga.kegiatan.agenda');
 });
+
+Route::get('/kegiatan/rincian', function () {
+    return view('warga.kegiatan.show');
+});
