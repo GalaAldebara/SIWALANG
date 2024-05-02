@@ -109,6 +109,84 @@
             </div>
         </div>
 
+        <div class="w-full flex justify-center">
+            <div class="w-4/6 p-5 flex flex-row">
+                <div>
+                    <h6 class="text-primary italic font-bold" style="font-family: Asap">Sejarah singkat</h6>
+                    <h1 class="text-3xl font-bold underline underline-offset-[14px] decoration-[#2a6c12]    ">Tentang Desa Lang-Lang</h1>
+                    <p class="mt-5 text-gray-400" style="font-family: Asap">Berasal dari kata 'Alang-Alang' atau 'Ilalang', nama desa ini terbentuk. Berawal dari hamparan tanah yang memiliki banyak rumput liar, ilalang dan alang-alang inilah, terbentuk salah satu dari 17 Desa yang berada di Kecamatan Singosari Kabupaten Malang. Desa Langlang terbagi menjadi 4 pedusunan dan 4 RW dan 48 RT. Desa Langlang terletak di 112,4 BT dan 7,52 LU dan berada pada ketinggian 466 mdpl. Luas wilayah Desa Langlang ± 498.398 ha.</p>
+                </div>
+                <div>
+                    <img src="{{ asset('img/logo-lang2.png') }}" alt="lang-lang" class="max-h-96 max-w-96 pr-3 py-2">
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full flex justify-center py-3">
+            <div class="w-5/6 grid grid-cols-4 bg-primary text-center text-white rounded-xl">
+                <div class="my-6 px-6 border-r-[1px]">
+                    <h1 class="text-2xl font-black tracking-wide">999</h1>
+                    <p class="text-gray-300 text-sm" style="font-family: Asap">Penduduk</p>
+                </div>
+                <div class="my-6 px-6 border-r-[1px]">
+                    <h1 class="text-2xl font-black tracking-wide">999</h1>
+                    <p class="text-gray-300 text-sm" style="font-family: Asap">Penduduk</p>
+                </div>
+                <div class="my-6 px-6 border-r-[1px]">
+                    <h1 class="text-2xl font-black tracking-wide">999</h1>
+                    <p class="text-gray-300 text-sm" style="font-family: Asap">Penduduk</p>
+                </div>
+                <div class="my-6 px-6 border-r-[1px]">
+                    <h1 class="text-2xl font-black tracking-wide">999</h1>
+                    <p class="text-gray-300 text-sm" style="font-family: Asap">Penduduk</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full mt-3 flex flex-col justify-center items-center pb-14" style="background-color:#f5f5f5">
+            <h6 class="text-center pt-8 text-primary font-bold text-lg">Pemimpin</h6>
+            <h1 class="text-center font-bold text-3xl">Struktur Kepemimpinan RW 01 beserta RT</h1>
+
+            <div class="grid grid-cols-[200px_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_200px] grid-rows-[minmax(0,1fr)_400px] justify-center gap-5 w-full pt-3">
+                <div class="col-span-4 flex flex-row bg-yellow-500 justify-end">
+                    <p class="uppercase font-bold mr-3" style="font-family: Asap">Selengkapnya</p>
+                    <button class="rounded-sm size-6 bg-primary px-3">0</button>
+                </div>
+                <div class="bg-purple-500 col-start-1">a</div>
+                <div class="bg-people bg-center">
+                    <img src="{{ asset('img/people.png') }}" alt="" class="object-fill h-full">
+                </div>
+                <div class="bg-people bg-center">a</div>
+                <div class="bg-people bg-center">a</div>
+                <div class="bg-purple-500">a</div>
+            </div>
+
+            {{-- <div class="w-full flex flex-col items-center bg-black">
+                <div class="flex justify-end w-4/6">
+                    <p class="uppercase font-bold mr-3" style="font-family: Asap">Selengkapnya</p>
+                    <button class="rounded-sm size-6 bg-primary px-3">0</button>
+                </div>
+                <div class="flex flex-row w-full items-center justify-center">
+                    <div>wdwa</div>
+                    <div class="grid grid-cols-3 mt-8 gap-7 w-4/6">
+                        <div class="bg-people bg-center">
+                            <div class="pt-64 min-w-80">Kepala Desa</div>
+                            <div>Yulianto</div>
+                        </div>
+                        <div class="bg-people bg-center">
+                            <div class="pt-64">Kepala Desa</div>
+                            <div>Yulianto</div>
+                        </div>
+                        <div class="bg-people bg-center">
+                            <div class="pt-64">Kepala Desa</div>
+                            <div>Yulianto</div>
+                        </div>
+                    </div>
+                    <div>ewqeqw</div>
+                </div>
+            </div> --}}
+        </div>
+
         {{-- <main class="flex flex-col items-center py-10 min-w-fit">
             <div class="w-4/6 bg-primary p-3 text-white rounded-t-xl border-2 font-bold flex flex-row min-w-[490px]">
                 <button class="bg-white rounded-full size-7 flex justify-center items-center">

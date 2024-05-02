@@ -19,6 +19,7 @@ export default {
       },
       backgroundImage: {
         'desa-langlang': "url('/public/img/DesaLangLang.png')",
+        'people': "url('/public/img/people.png')",
       },
       colors: {
         'si' :'#41b85a',
