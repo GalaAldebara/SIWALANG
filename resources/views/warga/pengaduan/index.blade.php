@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap">
 </head>
 <body>
-    <div class="h-full">
+    <div class="h-screen">
         <div class="flex flex-row justify-center bg-cover bg-center h-64 bg-desa-langlang bg-black/50 bg-blend-multiply">
             <div class="absolute w-5/6">
                 <div class="flex flex-row justify-end text-white text-sm py-2 mt-1 font-thin" style="font-family: Asap">
                     </p>Kec.Singosari, Kab.Malang, Jawa Timur<p>
                 </div>
-                <nav class="bg-white w-full rounded-lg flex felx-row justify-between">
+                <nav class="bg-white w-full rounded-lg flex felx-row justify-between min-w-max">
                     <div class="flex flex-row items-center pl-8">
                         <img src="{{ asset('img/logo-lang2.png') }}" alt="lang-lang" class="max-h-20 pr-3 py-2">
                         <h1 class="text-si text-3xl font-black" style="font-family: Inter">SI</h1>
@@ -32,8 +32,8 @@
             </div>
         </div>
 
-        <main class="flex flex-col items-center py-10">
-            <div class="w-4/6 bg-primary p-3 text-white rounded-t-xl border-2 font-bold flex flex-row">
+        <main class="flex flex-col items-center py-10 min-w-fit">
+            <div class="w-4/6 bg-primary p-3 text-white rounded-t-xl border-2 font-bold flex flex-row min-w-[490px]">
                 <button class="bg-white rounded-full size-7 flex justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black" class="w-5 h-5">
                         <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
@@ -41,7 +41,7 @@
                 </button>
                 <p style="font-family: Inter" class="px-4">Riwayat pengaduan</p>
             </div>              
-            <div class="w-4/6 flex flex-col items-center rounded-b-xl border-2">
+            <div class="w-4/6 flex flex-col items-center rounded-b-xl border-2 min-w-[490px]">
                 <div class="pb-6 mx-6">
                     <div class="w-full flex flex-row justify-between py-3">
                         <div class="relative">
@@ -52,7 +52,7 @@
                             </span>
                             <input class="rounded-3xl pl-10 pr-14 py-2 w-full border border-gray-300" placeholder="Search">
                         </div>
-                        <button class="bg-button text-white rounded-md px-2 py-1 my-1">+ Buat Laporan</button>
+                        <button class="bg-button text-white rounded-md px-2 py-1 my-1">+ Buat Pengaduan</button>
                     </div>
                     <table class="table-auto border-separate border border-gray-300">
                         <thead class="bg-primary-form">

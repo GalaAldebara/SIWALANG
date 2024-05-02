@@ -21,3 +21,7 @@ Route::get('/landing', function () {
 Route::get('/pelaporan', function () {
     return view('warga.Pelaporan.PelaporanTamu');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});

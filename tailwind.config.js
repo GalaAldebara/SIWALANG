@@ -23,6 +23,7 @@ export default {
       colors: {
         'si' :'#41b85a',
         'walang': '#00562f',
+        'primary' : '#2a6c12',
       },
     },
   },
