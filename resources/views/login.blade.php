@@ -24,7 +24,7 @@
                     <div>
                         <label for="nik" class="block text-sm font-bold leading-none text-gray-600">NIK</label>
                         <div class="mt-2">
-                            <input id="nik" name="nik" type="text" placeholder="Masukkan NIK anda" autocomplete="username" required class="w-full rounded-md border-0 py-1 px-4 focus:ring-2 focus:ring-lime-400 focus:outline-none text-gray-900 bg-gray-300">
+                            <input id="nik" name="nik" type="text" placeholder="Masukkan NIK anda" autocomplete="off" required class="w-full rounded-md border-0 py-1 px-4 focus:ring-2 focus:ring-lime-400 focus:outline-none text-gray-900 bg-gray-300">
                         </div>
                     </div>
                     <div>

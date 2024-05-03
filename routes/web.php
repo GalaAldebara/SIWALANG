@@ -13,7 +13,13 @@ use App\Http\Controllers\WargaController;
 // });
 
 Route::get('/pengaduan/form', function () {
-    return view('warga.Pengaduan.PengaduanForm');
+    return view('warga.pengaduan.form');
+});
+Route::get('/pengaduan/form2', function () {
+    return view('warga.pengaduan.pengaduanform2');
+});
+Route::get('/pengaduan/index', function () {
+    return view('warga.Pengaduan.index');
 });
 
 Route::get('/', [AuthController::class, 'index'])->name('login');

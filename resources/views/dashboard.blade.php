@@ -22,7 +22,7 @@
                     <div class="flex flex-row items-center pr-8">
                         <a class="font-bold px-7 text-primary" href="" style="font-family: Asap">BERANDA</a>
                         <a class="font-bold px-7" href="" style="font-family: Asap">MENU</a>
-                        <a class="font-bold px-7" href="" style="font-family: Asap">LOGOUT</a>
+                        <a class="font-bold px-7" href="{{ url('logout') }}" style="font-family: Asap">LOGOUT</a>
                     </div>
                 </nav>
                 <header class="text-white/80 flex flex-col items-center mt-7 text-center">
@@ -51,7 +51,7 @@
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold">Pengajuan Surat</p>
+                            <p class="font-bold">Pengajuan Bansos</p>
                             <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p> 
                         </div>
                     </button>
@@ -61,7 +61,27 @@
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold">Pengajuan Surat</p>
+                            <p class="font-bold">Pelaporan Tamu</p>
+                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
+                        </div>
+                    </button>
+                    <a class="rounded-md" style="background-color:#f5f5f5" href="{{ url('pengaduan/index') }}">
+                        <div class="p-5 flex flex-col items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
+                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                            </svg>
+                            <p class="font-bold">Pengaduan</p>
+                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
+                        </div>
+                    </a>
+                    <button class="rounded-md" style="background-color:#f5f5f5">
+                        <div class="p-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
+                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                            </svg>
+                            <p class="font-bold">Jadwal Kegiatan</p>
                             <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
                         </div>
                     </button>
@@ -71,7 +91,7 @@
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold">Pengajuan Surat</p>
+                            <p class="font-bold">Arsip Kegiatan</p>
                             <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
                         </div>
                     </button>
@@ -81,27 +101,7 @@
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold">Pengajuan Surat</p>
-                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
-                        </div>
-                    </button>
-                    <button class="rounded-md" style="background-color:#f5f5f5">
-                        <div class="p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
-                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                            </svg>
-                            <p class="font-bold">Pengajuan Surat</p>
-                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
-                        </div>
-                    </button>
-                    <button class="rounded-md" style="background-color:#f5f5f5">
-                        <div class="p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
-                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                            </svg>
-                            <p class="font-bold">Pengajuan Surat</p>
+                            <p class="font-bold">Data diri</p>
                             <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
                         </div>
                     </button>
@@ -147,18 +147,54 @@
             <h6 class="text-center pt-8 text-primary font-bold text-lg">Pemimpin</h6>
             <h1 class="text-center font-bold text-3xl">Struktur Kepemimpinan RW 01 beserta RT</h1>
 
-            <div class="grid grid-cols-[200px_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_200px] grid-rows-[minmax(0,1fr)_400px] justify-center gap-5 w-full pt-3">
-                <div class="col-span-4 flex flex-row bg-yellow-500 justify-end">
+            <div class="grid grid-cols-[200px_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_200px] grid-rows-[minmax(0,1fr)_400px] justify-center gap-5 w-full pt-3">
+                <div class="col-span-5 flex flex-row justify-end">
                     <p class="uppercase font-bold mr-3" style="font-family: Asap">Selengkapnya</p>
-                    <button class="rounded-sm size-6 bg-primary px-3">0</button>
+                    <button class="rounded-md h-6 w-8 bg-primary flex justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M13.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+                          </svg>                          
+                    </button>
                 </div>
-                <div class="bg-purple-500 col-start-1">a</div>
-                <div class="bg-people bg-center">
-                    <img src="{{ asset('img/people.png') }}" alt="" class="object-fill h-full">
+                <div class="col-start-1 flex justify-end items-center">
+                    <button class="size-14 bg-primary rounded-full flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6 mr-1">
+                            <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+                          </svg>                          
+                    </button>
                 </div>
-                <div class="bg-people bg-center">a</div>
-                <div class="bg-people bg-center">a</div>
-                <div class="bg-purple-500">a</div>
+                <div class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
+                    <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
+                        <h1>Kepala Desa</h1>
+                        <p class="text-xl font-bold">Yulianto</p>
+                    </div>
+                </div>
+                <div class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
+                    <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
+                        <h1>Kepala Desa</h1>
+                        <p class="text-xl font-bold">Yulianto</p>
+                    </div>
+                </div>
+                <div class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
+                    <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
+                        <h1>Kepala Desa</h1>
+                        <p class="text-xl font-bold">Yulianto</p>
+                    </div>
+                </div>
+                <div class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
+                    <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
+                        <h1>Kepala Desa</h1>
+                        <p class="text-xl font-bold">Yulianto</p>
+                    </div>
+                </div>
+                <div class="flex justify-start items-center">
+                    <button class="size-14 bg-primary rounded-full flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6 ml-1">
+                            <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+                          </svg>                          
+                    </button>
+                </div>
             </div>
 
             {{-- <div class="w-full flex flex-col items-center bg-black">
@@ -229,7 +265,7 @@
             </div>
         </main> --}}
 
-        {{-- <footer>
+        <footer>
             <div class="bg-secondary w-full flex flex-col items-center">
                 <div class="w-4/6 text-white my-8">
                     <p class="underline underline-offset-[13px] decoration-[#2a6c12] font-bold">Tentang</p>
@@ -242,7 +278,7 @@
                     <p class="text-white/60 text-xs cursor-pointer">Kembali ke atas</p>
                 </div>
             </div>
-        </footer> --}}
+        </footer>
 
     </div>
 </body>
