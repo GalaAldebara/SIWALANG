@@ -6,6 +6,7 @@ use App\Http\Controllers\RWController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\WargaController;
 
 // Route::get('/', function () {
@@ -18,9 +19,12 @@ Route::get('/pengaduan/form', function () {
 Route::get('/pengaduan/form2', function () {
     return view('warga.pengaduan.pengaduanform2');
 });
-Route::get('/pengaduan/index', function () {
-    return view('warga.Pengaduan.index');
-});
+
+// Route::get('/pengaduan/index', function () {
+//     return view('warga.Pengaduan.index');
+// });
+
+Route::get('/pengaduan/index', [PengaduanController::class, 'index'])->name('pengaduan');
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::get('login', [AuthController::class, 'index'])->name('login');

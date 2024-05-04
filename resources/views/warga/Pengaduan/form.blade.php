@@ -41,8 +41,8 @@
                 </a>
                 <p style="font-family: Inter" class="px-4">Form Pengaduan</p>
             </div>            
-            <div class="w-4/6 flex flex-col items-start border-r border-l min-w-[490px] px-6">
-                <form action="../submit_pengaduan" method="POST" class="w-full my-4" style="font-family: Asap">
+            <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl"  action="../submit_pengaduan" method="POST">
+                <div class="w-full my-4 px-6" style="font-family: Asap">
                     <div class="mb-3">
                         <label for="nama">Nama <span class="text-red-500 text-lg">*</span></label>
                         <div class="mt-2 w-full">
@@ -52,7 +52,7 @@
                     <div class="mb-3">
                         <label for="tanggal">Tanggal</label>
                         <div class="mt-2 w-full">
-                            <input id="tanggal" name="tanggal" type="date" onchange="updateDateNow()" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                            <input id="tanggal" name="tanggal" type="date" onchange="updateDateNow()" disabled class="w-full rounded-md border py-1 px-4 text-gray-900">
                         </div>
                     </div>
                     <div class="mb-3">
@@ -75,12 +75,12 @@
                             </label>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="flex flex-row justify-center border rounded-b-xl w-4/6" style="font-family: Asap">
-                <button class="border rounded-lg w-full m-3 py-3">Batal</button>
-                <button type="submit" class="border rounded-lg w-full m-3 py-3 bg-primary text-white">Kirim</button>
-            </div>
+                </div>
+                <div class="flex flex-row justify-center border-t w-full" style="font-family: Asap">
+                    <button class="border rounded-lg w-full m-3 py-3">Batal</button>
+                    <button type="submit" class="border rounded-lg w-full m-3 py-3 bg-primary text-white">Kirim</button>
+                </div>
+            </form>
         </main>
 
         <footer>
