@@ -9,23 +9,14 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\WargaController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/pengaduan/form', function () {
-    return view('warga.pengaduan.form');
-});
-Route::get('/pengaduan/form2', function () {
-    return view('warga.pengaduan.pengaduanform2');
+// Pengaduan
+Route::group(['prefix' => 'pengaduan'], function () {
+    Route::get('/', [PengaduanController::class, 'riwayat']);
+    Route::get('form', [PengaduanController::class, 'form']);
+    Route::post('/', [PengaduanController::class, 'store']);
 });
 
-// Route::get('/pengaduan/index', function () {
-//     return view('warga.Pengaduan.index');
-// });
-
-Route::get('/pengaduan/index', [PengaduanController::class, 'index'])->name('pengaduan');
-
+// Login
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');

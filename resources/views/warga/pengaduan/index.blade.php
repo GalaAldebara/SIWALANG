@@ -68,13 +68,11 @@
                                 </tr>
                             </thead>
                             <tbody class="text-center">
-                                <tr>
-                                    @foreach ($users as $user)
-                                        <td class="p-3 border border-gray-100">{{ $user->tanggal_pengaduan }}</td>
+                                <tr>                                    
+                                    @foreach ($users as $user)                                      
+                                        {{-- <td class="p-3 border border-gray-100">{{ $user->tanggal_pengaduan }}</td>
                                         <td class="p-3 border border-gray-100">{{ $user->keterangan }}</td>
-                                        {{-- <td class="p-3 border border-gray-100">12/08/2024</td>
-                                        <td class="p-3 border border-gray-100">Sudah hampir satu minggu sampah belum diambil oleh petugas wwdawdawdawdwadwadawd awdwadwadwa</td> --}}
-                                        <td class="p-3 border border-gray-100 underline underline-offset-3 cursor-pointer">bukti</td>
+                                        <td class="p-3 border border-gray-100 underline underline-offset-3 cursor-pointer"></td> --}}
                                     @endforeach
                                 </tr>
                             </tbody>

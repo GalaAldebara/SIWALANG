@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PengaduanModel;
 use Illuminate\Http\Request;
 
 class WargaController extends Controller
