@@ -167,24 +167,24 @@
                 </div> 
             </div>
           </div>
-          <div class="bg-[#FFFFFF] flex flex-row gap-[0_10px] p-[20px_0_0_0] w-[1278px] box-sizing-border">
+          <div class="bg-[#FFFFFF] flex justify-center gap-[0_10px] p-[20px_0_0_0] w-[1278px] box-sizing-border">
             <div class="rounded-[4px] bg-[#2A6C12] relative flex p-[10px_16px_10px_16px] box-sizing-border">
-              <span class="break-words font-Asap font-semibold text-[15px] leading-[1] text-[#FFFFFF]">
-                1
-              </span>
+                <span class="break-words font-Asap font-semibold text-[15px] leading-[1] text-[#FFFFFF]">
+                    1
+                </span>
             </div>
             <div class="rounded-[4px] bg-[#AFAFAF] relative flex p-[10px_16px_10px_16px] box-sizing-border">
-              <span class="break-words font-Asap font-normal text-[15px] leading-[1] text-[#0B0B0B]">
-                2
-              </span>
+                <span class="break-words font-Asap font-normal text-[15px] leading-[1] text-[#0B0B0B]">
+                    2
+                </span>
             </div>
             <div class="rounded-[4px] bg-[#AFAFAF] flex p-[10px_6.2px_10px_5.5px] box-sizing-border">
-              <span class="break-words font-Asap font-normal text-[15px] leading-[1] text-[#0B0B0B]">
-                Berikutnya &gt;
-              </span>
+                <span class="break-words font-Asap font-normal text-[15px] leading-[1] text-[#0B0B0B]">
+                    Berikutnya &gt;
+                </span>
             </div>
-          </div>
         </div>
+        </div>        
         <div class="bg-[#2A6C12] flex flex-col items-center p-[0_0_17.4px_0] w-[1300px] box-sizing-border">
           <div class="bg-[rgba(0,0,0,0.65)] relative m-[0_0_17px_0] w-[1300px] h-[223.6px]">
             <div class="absolute left-[155px] top-[60px] flex flex-col box-sizing-border">

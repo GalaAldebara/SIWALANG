@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,4 +13,8 @@ Route::get('/struktur', function () {
 
 Route::get('/detailstruktur', function () {
     return view('warga.strukturKepemimpinan.detailStruktur');
+});
+
+Route::get('/arsipkegiatan', function () {
+    return view('warga.arsip kegiatan.arsipKegiatan');
 });
