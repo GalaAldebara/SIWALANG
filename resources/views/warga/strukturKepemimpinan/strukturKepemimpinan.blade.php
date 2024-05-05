@@ -30,7 +30,7 @@
                 </div>
                 <div class="relative m-[12px_0_25px_0] flex p-[13px_0_0_0] w-[413.9px] h-[fit-content] box-sizing-border">
                   <div class="relative flex flex-row justify-between w-[413.9px] h-[fit-content] box-sizing-border">
-                    <span class="m-[0_10px_0_0] w-[113px] break-words font-['Asap'] font-bold text-[15px] leading-[1.333] uppercase text-[#232428]">
+                    <span class="m-[0_10px_0_0] w-[113px] break-words font-Asap font-bold text-[15px] leading-[1.333] uppercase text-[#232428]">
                       Beranda
                     </span>
                     <span class="break-words font-Asap font-bold text-[15px] leading-[1.333] uppercase text-[#2A6C12]">

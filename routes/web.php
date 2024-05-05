@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/struktur', function () {
     return view('warga.strukturKepemimpinan.strukturKepemimpinan');
 });
+
+Route::get('/detailstruktur', function () {
+    return view('warga.strukturKepemimpinan.detailStruktur');
+});
