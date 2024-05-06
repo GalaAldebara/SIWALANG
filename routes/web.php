@@ -23,9 +23,9 @@ Route::get('formpelaporan', function () {
     return view('warga.pelaporan tamu.formPelaporanTamu');
 });
 
-// Route::get('riwayatpelaporan', function () {
-//     return view('warga.pelaporan tamu.riwayatPelaporanTamu');
-// });
+Route::get('riwayatpelaporan', function () {
+    return view('warga.pelaporan tamu.riwayatPelaporanTamu');
+});
 
 // Route::get('rincianriwayat', function () {
 //     return view('warga.pelaporan tamu.rincianRiwayatPelaporanTamu');
