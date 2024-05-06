@@ -6,6 +6,7 @@ use App\Models\PengaduanModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\DataTables;
 
 class PengaduanController extends Controller
 {
@@ -14,6 +15,14 @@ class PengaduanController extends Controller
         $users = UserModel::all();
 
         return view('warga.pengaduan.index', ['users' => $users]);
+    }
+
+    public function list(Request $request)
+    {
+        if ($request->ajax()) {
+            $pengaduans = PengaduanModel::select('tanggal_pengaduan', 'keluhan', 'bukti')->get();
+            return DataTables::of($pengaduans)->make(true);
+        }
     }
 
     public function form()

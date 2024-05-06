@@ -12,6 +12,7 @@ use App\Http\Controllers\WargaController;
 // Pengaduan
 Route::group(['prefix' => 'pengaduan'], function () {
     Route::get('/', [PengaduanController::class, 'riwayat']);
+    Route::post('/list', [PengaduanController::class, 'list'])->name('pengaduan.list');
     Route::get('form', [PengaduanController::class, 'form']);
     Route::post('/', [PengaduanController::class, 'store']);
 });

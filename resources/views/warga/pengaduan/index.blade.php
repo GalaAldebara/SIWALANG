@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+    </script>
 </head>
 <body>
     <div class="h-screen flex flex-col justify-between">
@@ -59,7 +65,7 @@
                                   Buat Pengaduan
                             </a>
                         </div>
-                        <table class="table-auto border-separate border border-gray-300 w-full">
+                        <table class="table-auto border-separate border border-gray-300 w-full" id="table_pengaduan">
                             <thead class="bg-primary-form">
                                 <tr class="tracking-wide">
                                     <th class="p-3 border border-gray-300" style="font-family: Asap">TANGGAL PENGADUAN</th>
@@ -67,16 +73,57 @@
                                     <th class="p-3 border border-gray-300" style="font-family: Asap">BUKTI</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-center">
-                                <tr>                                    
-                                    @foreach ($users as $user)                                      
-                                        {{-- <td class="p-3 border border-gray-100">{{ $user->tanggal_pengaduan }}</td>
-                                        <td class="p-3 border border-gray-100">{{ $user->keterangan }}</td>
-                                        <td class="p-3 border border-gray-100 underline underline-offset-3 cursor-pointer"></td> --}}
-                                    @endforeach
-                                </tr>
-                            </tbody>
                         </table>
+                        <script>
+                            $(document).ready(function() {
+                                var dataPengaduan = $('#table_pengaduan').DataTable({
+                                    "lengthMenu": [[10], [10]],
+                                    "searching": false,
+                                    "processing": true,
+                                    "serverSide": true,
+                                    "info" : false,
+                                    "paging": false,
+                                    "lengthChange": false,
+                                    ajax: {
+                                        url: "{{ route('pengaduan.list') }}",
+                                        dataType: 'json',
+                                        type: 'POST',
+                                    },
+                                    columns: [
+                                        { data: 'tanggal_pengaduan', orderable: true, searchable: true, className: "text-center" },
+                                        { data: 'keluhan', orderable: false, searchable: false, className: "text-center" },
+                                        {
+                                            data: 'bukti', // nama kolom dalam response JSON dari server
+                                            orderable: false,
+                                            searchable: false,
+                                            className: "text-center",
+                                            render: function(data, type, row) {
+                                                if (data) {
+                                                    return '<a href="#" onclick="showImage(\'' + data + '\')" class="underline underline-offset-2">Bukti</a>';
+                                                } else {
+                                                    return '';
+                                                }
+                                            }
+                                        }
+                                    ]
+                                });
+                            });
+
+                            function showImage(imageUrl) {
+                                var modalHtml = `
+                                    <div class="modal fixed left-0 top-0 w-full h-screen bg-black/80 flex items-center justify-center" onclick="closeModal()">
+                                        <div class="m-auto">
+                                            <img src="{{ asset('img/bukti-pengaduan/') }}/${imageUrl}" class="modal-image max-h-screen" />
+                                        </div>
+                                    </div>
+                                `;
+                                $('body').append(modalHtml);      
+                            }
+
+                            function closeModal() {
+                                $('.modal').remove();
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
@@ -96,7 +143,7 @@
                 </div>
             </div>
         </footer>
-
     </div>
 </body>
+
 </html>
