@@ -27,6 +27,6 @@ Route::get('riwayatpelaporan', function () {
     return view('warga.pelaporan tamu.riwayatPelaporanTamu');
 });
 
-// Route::get('rincianriwayat', function () {
-//     return view('warga.pelaporan tamu.rincianRiwayatPelaporanTamu');
-// });
+Route::get('rincianriwayat', function () {
+    return view('warga.pelaporan tamu.rincianRiwayatPelaporanTamu');
+});
