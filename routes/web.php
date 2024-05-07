@@ -19,14 +19,30 @@ Route::get('/arsipkegiatan', function () {
     return view('warga.arsip kegiatan.arsipKegiatan');
 });
 
-Route::get('formpelaporan', function () {
+Route::get('/formpelaporan', function () {
     return view('warga.pelaporan tamu.formPelaporanTamu');
 });
 
-Route::get('riwayatpelaporan', function () {
+Route::get('/riwayatpelaporan', function () {
     return view('warga.pelaporan tamu.riwayatPelaporanTamu');
 });
 
-Route::get('rincianriwayat', function () {
+Route::get('/rincianriwayat', function () {
     return view('warga.pelaporan tamu.rincianRiwayatPelaporanTamu');
+});
+
+Route::get('/formpengajuan', function () {
+    return view('warga.pengajuan surat pengantar.formPengajuan');
+});
+
+Route::get('/riwayatpengajuansetuju', function () {
+    return view('warga.pengajuan surat pengantar.riwayatPengajuanSetuju');
+});
+
+Route::get('/riwayatpengajuanwaiting', function () {
+    return view('warga.pengajuan surat pengantar.riwayatPengajuanWaiting');
+});
+
+Route::get('/rinciansurat', function () {
+    return view('warga.pengajuan surat pengantar.rincianSurat');
 });
