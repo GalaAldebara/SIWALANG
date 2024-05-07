@@ -2,25 +2,51 @@
 
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RTController;
+use App\Http\Controllers\RWController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\WargaController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/pengaduan/form', function () {
-    return view('warga.pengaduan.PengaduanForm');
+    return view('warga.pengaduan.form');
+});
+Route::get('/pengaduan/form2', function () {
+    return view('warga.pengaduan.pengaduanform2');
 });
 
-Route::get('/pengaduan/index', function () {
-    return view('warga.pengaduan.index');
-});
+// Route::get('/pengaduan/index', function () {
+//     return view('warga.Pengaduan.index');
+// });
 
-Route::get('/landing', function () {
-    return view('warga.Landing.landing');
-});
+Route::get('/pengaduan/index', [PengaduanController::class, 'index'])->name('pengaduan');
 
-Route::get('/pelaporan', function () {
-    return view('warga.Pelaporan.PelaporanTamu');
+Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('proses_register', [AuthController::class, 'proses_register'])->name('proses_register');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['cek_login:1']], function () {
+        Route::resource('admin', AdminController::class);
+    });
+    Route::group(['middleware' => ['cek_login:2']], function () {
+        Route::resource('RW', RTController::class);
+    });
+    Route::group(['middleware' => ['cek_login:3']], function () {
+        Route::resource('RT', RWController::class);
+    });
+    Route::group(['middleware' => ['cek_login:4']], function () {
+        Route::resource('warga', WargaController::class);
+    });
 });
 
 Route::get('/struktur', function () {
