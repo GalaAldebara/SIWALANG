@@ -89,3 +89,15 @@ Route::get('/rinciansurat', function () {
     return view('warga.pengajuan surat pengantar.rincianSurat');
 });
 
+
+Route::get('/formbansos', function () {
+    return view('warga.pengajuan bansos.formPengajuanBansos');
+});
+
+Route::get('/formlanjutan', function () {
+    return view('warga.pengajuan bansos.form2PengajuanBansos');
+});
+
+Route::get('/daftarbansos', function () {
+    return view('warga.pengajuan bansos.daftarDataBansos');
+});
