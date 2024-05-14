@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
@@ -38,4 +39,57 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:4']], function () {
         Route::resource('warga', WargaController::class);
     });
+});
+
+Route::get('/struktur', function () {
+    return view('warga.strukturKepemimpinan.strukturKepemimpinan');
+});
+
+Route::get('/detailstruktur', function () {
+    return view('warga.strukturKepemimpinan.detailStruktur');
+});
+
+Route::get('/arsipkegiatan', function () {
+    return view('warga.arsip kegiatan.arsipKegiatan');
+});
+
+Route::get('/formpelaporan', function () {
+    return view('warga.pelaporan tamu.formPelaporanTamu');
+});
+
+Route::get('/riwayatpelaporan', function () {
+    return view('warga.pelaporan tamu.riwayatPelaporanTamu');
+});
+
+Route::get('/rincianriwayat', function () {
+    return view('warga.pelaporan tamu.rincianRiwayatPelaporanTamu');
+});
+
+Route::get('/formpengajuan', function () {
+    return view('warga.pengajuan surat pengantar.formPengajuan');
+});
+
+Route::get('/riwayatpengajuansetuju', function () {
+    return view('warga.pengajuan surat pengantar.riwayatPengajuanSetuju');
+});
+
+Route::get('/riwayatpengajuanwaiting', function () {
+    return view('warga.pengajuan surat pengantar.riwayatPengajuanWaiting');
+});
+
+Route::get('/rinciansurat', function () {
+    return view('warga.pengajuan surat pengantar.rincianSurat');
+});
+
+
+Route::get('/formbansos', function () {
+    return view('warga.pengajuan bansos.formPengajuanBansos');
+});
+
+Route::get('/formlanjutan', function () {
+    return view('warga.pengajuan bansos.form2PengajuanBansos');
+});
+
+Route::get('/daftarbansos', function () {
+    return view('warga.pengajuan bansos.daftarDataBansos');
 });
