@@ -12,9 +12,14 @@ class PengaduanController extends Controller
 {
     public function riwayat()
     {
+        $header = (object) [
+            'title' => 'Pengaduan',
+            'list' => ['Beranda', 'Pengaduan']
+        ];
+
         $users = UserModel::all();
 
-        return view('warga.pengaduan.index', ['users' => $users]);
+        return view('warga.pengaduan.index', ['users' => $users, 'header' => $header]);
     }
 
     public function list(Request $request)
@@ -27,9 +32,14 @@ class PengaduanController extends Controller
 
     public function form()
     {
+        $header = (object) [
+            'title' => 'Pengaduan',
+            'list' => ['Beranda', 'Pengaduan', 'Formulir Pengaduan']
+        ];
+
         $users = UserModel::all();
 
-        return view('warga.pengaduan.form', ['users' => $users]);
+        return view('warga.pengaduan.form', ['users' => $users, 'header' => $header]);
     }
 
     public function store(Request $request)
@@ -40,12 +50,11 @@ class PengaduanController extends Controller
             'nama' => 'required|string',
             'tanggal_pengaduan' => 'required|date',
             'keluhan' => 'required|string|max:225',
-            'bukti' => 'required|max:2048',
+            'bukti' => 'required|image|max:2048',
         ], [
-            // 'bukti.required' => 'File bukti harus diunggah.',
-            // 'bukti.image' => 'File bukti harus berupa gambar.',
-            // 'bukti.mimes' => 'File bukti harus dalam format JPEG, PNG, JPG, GIF, atau SVG.',
-            // 'bukti.max' => 'Ukuran file bukti tidak boleh lebih dari 2 MB.',
+            'bukti.required' => 'File bukti harus diunggah.',
+            'bukti.image' => 'File bukti harus berupa gambar.',
+            'bukti.max' => 'Ukuran file bukti tidak boleh lebih dari 2 MB.',
         ]);
 
         $nama_file = $request->file('bukti')->getClientOriginalName();
