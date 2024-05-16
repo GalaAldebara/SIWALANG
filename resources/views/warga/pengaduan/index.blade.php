@@ -211,7 +211,7 @@
                 "paging": false,
                 "lengthChange": false,
                 ajax: {
-                    url: "{{ route('pengaduan.list') }}",
+                    url: "{{ route('pengaduan_list') }}",
                     dataType: 'json',
                     type: 'POST',
                 },

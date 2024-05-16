@@ -15,19 +15,12 @@ use App\Http\Controllers\PelaporanTamuController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-Route::get('/pengaduan/form', function () {
-    return view('warga.pengaduan.form');
+Route::group(['prefix' => 'pengaduan'], function () {
+    Route::get('/', [PengaduanController::class, 'riwayat']);
+    Route::post('/list', [PengaduanController::class, 'list'])->name('pengaduan_list');
+    Route::get('/form', [PengaduanController::class, 'form']);
+    Route::post('/', [PengaduanController::class, 'store']);
 });
-Route::get('/pengaduan/form2', function () {
-    return view('warga.pengaduan.pengaduanform2');
-});
-
-// Route::get('/pengaduan/index', function () {
-//     return view('warga.Pengaduan.index');
-// });
-
-Route::get('/pengaduan/index', [PengaduanController::class, 'index'])->name('pengaduan');
 
 // Login
 Route::get('/', [AuthController::class, 'index'])->name('login');
