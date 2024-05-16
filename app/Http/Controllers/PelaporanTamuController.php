@@ -2,21 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PelaporanTamuModel;
 use Illuminate\Http\Request;
-use App\Models\PelaporanTamu;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\DataTables;
 
 class PelaporanTamuController extends Controller
 {
-    public function index()
+    public function riwayat()
     {
-        $pelaporanTamu = PelaporanTamu::all();
-        return view('warga.PelaporanTamu.viewPelaporanTamu', compact('pelaporanTamu'));
+        $header = (object) [
+            'title' => 'Pelaporan Tamu',
+            'list' => ['Beranda', 'Pelaporan Tamu']
+        ];
+
+        return view('warga.PelaporanTamu.index', ['header' => $header]);
     }
 
-    public function create()
+    public function list(Request $request)
     {
-        return view('warga.PelaporanTamu.formPelaporanTamu');
+        if ($request->ajax()) {
+            $pelaporan = PelaporanTamuModel::select('noTamu', 'tanggal_bertamu', 'nama_tamu')->get();
+            return DataTables::of($pelaporan)->make(true);
+        }
+    }
+
+    public function form()
+    {
+        $header = (object) [
+            'title' => 'Pelaporan Tamu',
+            'list' => ['Beranda', 'Pelaporan Tamu', 'Formulir Pelaporan Tamu']
+        ];
+
+        return view('warga.pelaporanTamu.form', ['header' => $header]);
     }
 
     public function store(Request $request)
@@ -32,22 +50,29 @@ class PelaporanTamuController extends Controller
         ]);
 
         $data = $request->all();
-        $data['nik'] = Auth::user()->nik; // Mengisi nik dengan nik user yang sedang login
+        $data['nik'] = Auth::user()->nik;
 
-        PelaporanTamu::create($data);
+        PelaporanTamuModel::create($data);
 
-        return redirect()->route('daftar_pelaporan_tamu')
+        return redirect()->route('riwayat')
             ->with('success', 'Pelaporan tamu berhasil disimpan.');
     }
 
-    public function showForm()
+    public function show(string $id)
     {
-        return view('warga.PelaporanTamu.formPelaporanTamu');
+        $pelaporan = PelaporanTamuModel::find($id);
+
+        $header = (object) [
+            'title' => 'Pelaporan Tamu',
+            'list' => ['Beranda', 'Pelaporan Tamu', 'Rincian Tamu']
+        ];
+
+        return view('warga.PelaporanTamu.show', ['header' => $header, 'pelaporan' => $pelaporan]);
     }
 
     public function daftarPelaporanTamu()
     {
-        $pelaporanTamu = PelaporanTamu::all();
+        $pelaporanTamu = PelaporanTamuModel::all();
         return view('warga.PelaporanTamu.pelaporanTamu', compact('pelaporanTamu'));
     }
 }

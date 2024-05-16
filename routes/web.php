@@ -24,6 +24,16 @@ Route::group(['prefix' => 'pengaduan'], function () {
     Route::post('/', [PengaduanController::class, 'store']);
 });
 
+// Pelaporan Tamu
+Route::group(['prefix' => 'pelaporan-tamu'], function () {
+    Route::get('/', [PelaporanTamuController::class, 'riwayat'])->name('riwayat');
+    Route::post('/list', [PelaporanTamuController::class, 'list'])->name('pelaporan_list');
+    Route::get('/form', [PelaporanTamuController::class, 'form']);
+    Route::post('/', [PelaporanTamuController::class, 'store']);
+    Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
+    // Route::get('/show', [PelaporanTamuController::class, 'lihat']);
+});
+
 // Data Diri
 // Route::group(['prefix' => 'data-diri'], function () {
 Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
@@ -31,12 +41,6 @@ Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('sto
 Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
 // });
 
-// Pelaporan Tamu
-Route::group(['prefix' => 'pelaporan'], function () {
-    Route::get('/form_pelaporan_tamu', [PelaporanTamuController::class, 'showForm'])->name('formPelaporanTamu');
-    Route::post('/store_pelaporan_tamu', [PelaporanTamuController::class, 'store'])->name('store_pelaporan_tamu');
-    Route::get('/daftar_pelaporan_tamu', [PelaporanTamuController::class, 'daftarPelaporanTamu'])->name('daftar_pelaporan_tamu');
-});
 
 // Login
 Route::get('/', [AuthController::class, 'index'])->name('login');

@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PelaporanTamu extends Model
+class PelaporanTamuModel extends Model
 {
     use HasFactory;
 
     protected $table = 'pelaporan_tamu';
+
+    protected $primaryKey = 'noTamu';
 
     protected $fillable = [
         'nama_tuan_rumah',
