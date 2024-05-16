@@ -57,32 +57,34 @@ class AuthController extends Controller
             ->withErrors(['login_gagal' => 'Pastikan kembali NIK dan password yang dimasukkan sudah benar']);
     }
 
-    public function register()
-    {
-        return view('register');
-    }
+    // public function register()
+    // {
+    //     return view('register');
+    // }
 
-    public function proses_register(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required',
-            'username' => 'required|unique:m_user',
-            'password' => 'required'
-        ]);
+    // public function proses_register(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'nama' => 'required',
+    //         'username' => 'required|unique:m_user',
+    //         'password' => 'required'
+    //     ]);
 
-        if ($validator->fails()) {
-            return redirect('/register')
-                ->withErrors($validator)
-                ->withInput();
-        }
+    //     if ($validator->fails()) {
+    //         return redirect('/register')
+    //             ->withErrors($validator)
+    //             ->withInput();
+    //     }
 
-        $request['level_id'] = '2';
-        $request['password'] = Hash::make($request->password);
+    //     $request['level_id'] = '2';
+    //     $request['password'] = Hash::make($request->password);
 
-        UserModel::create($request->all());
+    //     UserModel::create($request->all());
 
-        return redirect()->route('login');
-    }
+    //     return redirect()->route('login');
+    // }
+
+
 
     public function logout(Request $request)
     {

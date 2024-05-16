@@ -27,8 +27,9 @@ Route::get('/pengaduan/form2', function () {
 //     return view('warga.Pengaduan.index');
 // });
 
-Route::get('/pengaduan/index', [PengaduanController::class, 'index'])->name('pengaduan.index');
+Route::get('/pengaduan/index', [PengaduanController::class, 'index'])->name('pengaduan');
 
+// Login
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
@@ -100,3 +101,15 @@ Route::get('/daftar_pelaporan_tamu', [PelaporanTamuController::class, 'daftarPel
 Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
 Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
 Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
+
+Route::get('/formbansos', function () {
+    return view('warga.pengajuan bansos.formPengajuanBansos');
+});
+
+Route::get('/formlanjutan', function () {
+    return view('warga.pengajuan bansos.form2PengajuanBansos');
+});
+
+Route::get('/daftarbansos', function () {
+    return view('warga.pengajuan bansos.daftarDataBansos');
+});
