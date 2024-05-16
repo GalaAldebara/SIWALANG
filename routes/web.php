@@ -1,14 +1,16 @@
 <?php
 
-use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
+use Illuminate\Routing\RouteRegistrar;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\WargaController;
+use App\Http\Controllers\DataDiriController;
+use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\PelaporanTamuController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -25,7 +27,7 @@ Route::get('/pengaduan/form2', function () {
 //     return view('warga.Pengaduan.index');
 // });
 
-Route::get('/pengaduan/index', [PengaduanController::class, 'index'])->name('pengaduan');
+Route::get('/pengaduan/index', [PengaduanController::class, 'index'])->name('pengaduan.index');
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::get('login', [AuthController::class, 'index'])->name('login');
@@ -61,9 +63,9 @@ Route::get('/arsipkegiatan', function () {
     return view('warga.arsip kegiatan.arsipKegiatan');
 });
 
-Route::get('/formpelaporan', function () {
-    return view('warga.pelaporan tamu.formPelaporanTamu');
-});
+// Route::get('/formpelaporan', function () {
+//     return view('warga.pelaporan tamu.formPelaporanTamu');
+// });
 
 Route::get('/riwayatpelaporan', function () {
     return view('warga.pelaporan tamu.riwayatPelaporanTamu');
@@ -89,3 +91,12 @@ Route::get('/rinciansurat', function () {
     return view('warga.pengajuan surat pengantar.rincianSurat');
 });
 
+// Pelaporan Tamu
+Route::get('/form_pelaporan_tamu', [PelaporanTamuController::class, 'showForm'])->name('formPelaporanTamu');
+Route::post('/store_pelaporan_tamu', [PelaporanTamuController::class, 'store'])->name('store_pelaporan_tamu');
+Route::get('/daftar_pelaporan_tamu', [PelaporanTamuController::class, 'daftarPelaporanTamu'])->name('daftar_pelaporan_tamu');
+
+// Data Diri
+Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
+Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
+Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
