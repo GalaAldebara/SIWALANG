@@ -13,9 +13,21 @@
                 <h1 class="text-walang text-3xl font-black" style="font-family: Inter">WALANG</h1>
             </div>
             <div class="flex flex-row items-center pr-8">
-                <a class="font-bold px-7 text-walang" href="" style="font-family: Asap">BERANDA</a>
-                <a class="font-bold px-7" href="" style="font-family: Asap">MENU</a>
-                <a class="font-bold px-7" href="{{ url('logout') }}" style="font-family: Asap">LOGOUT</a>
+                <a class="group font-bold px-7 text-walang transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
+                    <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
+                        BERANDA
+                    </span>   
+                </a>
+                <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
+                    <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
+                        NOTIFIKASI
+                    </span>   
+                </a>
+                <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('logout') }}" >
+                    <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
+                        LOGOUT
+                    </span>   
+                </a>
             </div>
         </nav>
         <header class="text-white/80">

@@ -11,6 +11,9 @@
         <div class="flex flex-row justify-center bg-cover bg-center bg-desa-langlang bg-black/50 bg-blend-multiply" style="height: 26rem">
             <div class="absolute w-5/6">
                 <div class="flex flex-row justify-end text-white text-sm py-2 mt-1 font-thin" style="font-family: Asap">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-4 mr-1">
+                        <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
+                    </svg>
                     </p>Kec.Singosari, Kab.Malang, Jawa Timur<p>
                 </div>
                 <nav class="bg-white w-full rounded-lg flex felx-row justify-between min-w-max">
@@ -20,9 +23,21 @@
                         <h1 class="text-walang text-3xl font-black" style="font-family: Inter">WALANG</h1>
                     </div>
                     <div class="flex flex-row items-center pr-8">
-                        <a class="font-bold px-7 text-primary" href="" style="font-family: Asap">BERANDA</a>
-                        <a class="font-bold px-7" href="" style="font-family: Asap">MENU</a>
-                        <a class="font-bold px-7" href="{{ url('logout') }}" style="font-family: Asap">LOGOUT</a>
+                        <a class="group font-bold px-7 text-walang transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
+                            <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
+                                BERANDA
+                            </span>   
+                        </a>
+                        <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
+                            <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
+                                NOTIFIKASI
+                            </span>   
+                        </a>
+                        <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('logout') }}" >
+                            <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
+                                LOGOUT
+                            </span>   
+                        </a>
                     </div>
                 </nav>
                 <header class="text-white/80 flex flex-col items-center mt-7 text-center">
@@ -34,77 +49,77 @@
 
         <div class="relative -top-14 w-full">
             <div class="flex justify-center">
-                <nav class="flex flex-row flex-wrap gap-5 justify-center items-center w-5/6">
-                    <button class="rounded-md max-w-60" style="background-color:#f5f5f5">
-                        <div class="p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
-                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                            </svg>
-                            <p class="font-bold">Pengajuan Surat</p>
-                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
-                        </div>
-                    </button>
-                    <button class="rounded-md max-w-60" style="background-color:#f5f5f5">
-                        <div class="p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
-                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                            </svg>
-                            <p class="font-bold">Pengajuan Bansos</p>
-                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p> 
-                        </div>
-                    </button>
-                    <button class="rounded-md max-w-60" style="background-color:#f5f5f5">
-                        <div class="p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
-                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                            </svg>
-                            <p class="font-bold">Pelaporan Tamu</p>
-                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
-                        </div>
-                    </button>
-                    <a class="rounded-md max-w-60" style="background-color:#f5f5f5" href="{{ url('pengaduan') }}">
+                <nav class="flex flex-row flex-wrap gap-9 justify-center items-center w-5/6 text-xl">
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('') }}">
                         <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold">Pengaduan</p>
-                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
+                            <p class="font-bold mb-2">Pengajuan Surat</p>
+                            <p class="text-xs text-gray-500">Pengajuan surat pengantar</p>
                         </div>
                     </a>
-                    <button class="rounded-md max-w-60" style="background-color:#f5f5f5">
-                        <div class="p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('') }}">
+                        <div class="p-5 flex flex-col items-center text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold">Jadwal Kegiatan</p>
-                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
+                            <p class="font-bold mb-2">Pengajuan Bansos</p>
+                            <p class="text-xs text-gray-500">Pengajuan penerima bantuan sosial</p> 
                         </div>
-                    </button>
-                    <button class="rounded-md max-w-60" style="background-color:#f5f5f5">
-                        <div class="p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
+                    </a>
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('pelaporan-tamu') }}">
+                        <div class="p-5 flex flex-col items-center text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold">Arsip Kegiatan</p>
-                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
+                            <p class="font-bold mb-2">Pelaporan Tamu</p>
+                            <p class="text-xs text-gray-500">Pelaporan adanya tamu dari luar desa yang menginap</p>
                         </div>
-                    </button>
-                    <button class="rounded-md max-w-60" style="background-color:#f5f5f5">
-                        <div class="p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-9 mb-2">
+                    </a>
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('pengaduan') }}">
+                        <div class="p-5 flex flex-col items-center text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold">Data diri</p>
-                            <p class="text-xs text-gray-500">Surat pengantar dan surat keterangan lainnya</p>
+                            <p class="font-bold mb-2">Pengaduan</p>
+                            <p class="text-xs text-gray-500">Pengaduan permasalahan yang terjadi di lingkungan warga</p>
                         </div>
-                    </button>
+                    </a>
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('') }}">
+                        <div class="p-5 flex flex-col items-center text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
+                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                            </svg>
+                            <p class="font-bold mb-2">Jadwal Kegiatan</p>
+                            <p class="text-xs text-gray-500">Agenda / Jadwal kegiatan warga mendatang</p>
+                        </div>
+                    </a>
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('') }}">
+                        <div class="p-5 flex flex-col items-center text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
+                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                            </svg>
+                            <p class="font-bold mb-2">Arsip Kegiatan</p>
+                            <p class="text-xs text-gray-500">Arsip dokumentasi kegiatan warga bersama</p>
+                        </div>
+                    </a>
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('') }}">
+                        <div class="p-5 flex flex-col items-center text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
+                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                            </svg>
+                            <p class="font-bold mb-2">Data diri</p>
+                            <p class="text-xs text-gray-500">Informasi personal data kependudukan</p>
+                        </div>
+                    </a>
                 </nav>
             </div>
         </div>
@@ -126,15 +141,15 @@
             <div class="w-5/6 grid grid-cols-4 bg-primary text-center text-white rounded-xl">
                 <div class="my-6 px-6 border-r-[1px]">
                     <h1 class="text-2xl font-black tracking-wide">999</h1>
-                    <p class="text-gray-300 text-sm" style="font-family: Asap">Penduduk</p>
+                    <p class="text-gray-300 text-sm" style="font-family: Asap">Laki-laki</p>
                 </div>
                 <div class="my-6 px-6 border-r-[1px]">
                     <h1 class="text-2xl font-black tracking-wide">999</h1>
-                    <p class="text-gray-300 text-sm" style="font-family: Asap">Penduduk</p>
+                    <p class="text-gray-300 text-sm" style="font-family: Asap">Perempuan</p>
                 </div>
                 <div class="my-6 px-6 border-r-[1px]">
                     <h1 class="text-2xl font-black tracking-wide">999</h1>
-                    <p class="text-gray-300 text-sm" style="font-family: Asap">Penduduk</p>
+                    <p class="text-gray-300 text-sm" style="font-family: Asap">keluarga</p>
                 </div>
                 <div class="my-6 px-6 border-r-[1px]">
                     <h1 class="text-2xl font-black tracking-wide">999</h1>
