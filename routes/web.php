@@ -12,14 +12,30 @@ use App\Http\Controllers\DataDiriController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PelaporanTamuController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/gg', function () {
+    return view('warga.PelaporanTamu.index2');
+});
+
+// pengaduan
 Route::group(['prefix' => 'pengaduan'], function () {
     Route::get('/', [PengaduanController::class, 'riwayat']);
     Route::post('/list', [PengaduanController::class, 'list'])->name('pengaduan_list');
     Route::get('/form', [PengaduanController::class, 'form']);
     Route::post('/', [PengaduanController::class, 'store']);
+});
+
+// Data Diri
+// Route::group(['prefix' => 'data-diri'], function () {
+Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
+Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
+Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
+// });
+
+// Pelaporan Tamu
+Route::group(['prefix' => 'pelaporan'], function () {
+    Route::get('/form_pelaporan_tamu', [PelaporanTamuController::class, 'showForm'])->name('formPelaporanTamu');
+    Route::post('/store_pelaporan_tamu', [PelaporanTamuController::class, 'store'])->name('store_pelaporan_tamu');
+    Route::get('/daftar_pelaporan_tamu', [PelaporanTamuController::class, 'daftarPelaporanTamu'])->name('daftar_pelaporan_tamu');
 });
 
 // Login
@@ -85,15 +101,7 @@ Route::get('/rinciansurat', function () {
     return view('warga.pengajuan surat pengantar.rincianSurat');
 });
 
-// Pelaporan Tamu
-Route::get('/form_pelaporan_tamu', [PelaporanTamuController::class, 'showForm'])->name('formPelaporanTamu');
-Route::post('/store_pelaporan_tamu', [PelaporanTamuController::class, 'store'])->name('store_pelaporan_tamu');
-Route::get('/daftar_pelaporan_tamu', [PelaporanTamuController::class, 'daftarPelaporanTamu'])->name('daftar_pelaporan_tamu');
 
-// Data Diri
-Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
-Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
-Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
 
 Route::get('/formbansos', function () {
     return view('warga.pengajuan bansos.formPengajuanBansos');
