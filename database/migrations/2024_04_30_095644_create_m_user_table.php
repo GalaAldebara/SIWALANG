@@ -16,9 +16,7 @@ return new class extends Migration
             $table->string('nik', 50)->unique();
             $table->string('username', 100);
             $table->string('nama', 100);
-            $table->string('alamat', 50);
             $table->unsignedBigInteger('level_id')->index;
-            $table->string('no_telp', 15);
             $table->string('password', 100);
             $table->timestamps();
         });

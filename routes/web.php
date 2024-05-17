@@ -1,32 +1,48 @@
 <?php
 
-use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
+use Illuminate\Routing\RouteRegistrar;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\WargaController;
+use App\Http\Controllers\DataDiriController;
+use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\PelaporanTamuController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/pengaduan/form', function () {
-    return view('warga.pengaduan.form');
-});
-Route::get('/pengaduan/form2', function () {
-    return view('warga.pengaduan.pengaduanform2');
+Route::get('/gg', function () {
+    return view('warga.PelaporanTamu.index2');
 });
 
-// Route::get('/pengaduan/index', function () {
-//     return view('warga.Pengaduan.index');
+// pengaduan
+Route::group(['prefix' => 'pengaduan'], function () {
+    Route::get('/', [PengaduanController::class, 'riwayat']);
+    Route::post('/list', [PengaduanController::class, 'list'])->name('pengaduan_list');
+    Route::get('/form', [PengaduanController::class, 'form']);
+    Route::post('/', [PengaduanController::class, 'store']);
+});
+
+// Pelaporan Tamu
+Route::group(['prefix' => 'pelaporan-tamu'], function () {
+    Route::get('/', [PelaporanTamuController::class, 'riwayat'])->name('riwayat');
+    Route::post('/list', [PelaporanTamuController::class, 'list'])->name('pelaporan_list');
+    Route::get('/form', [PelaporanTamuController::class, 'form']);
+    Route::post('/', [PelaporanTamuController::class, 'store']);
+    Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
+    // Route::get('/show', [PelaporanTamuController::class, 'lihat']);
+});
+
+// Data Diri
+// Route::group(['prefix' => 'data-diri'], function () {
+Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
+Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
+Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
 // });
 
-Route::get('/pengaduan/index', [PengaduanController::class, 'index'])->name('pengaduan');
 
+// Login
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
@@ -61,9 +77,9 @@ Route::get('/arsipkegiatan', function () {
     return view('warga.arsip kegiatan.arsipKegiatan');
 });
 
-Route::get('/formpelaporan', function () {
-    return view('warga.pelaporan tamu.formPelaporanTamu');
-});
+// Route::get('/formpelaporan', function () {
+//     return view('warga.pelaporan tamu.formPelaporanTamu');
+// });
 
 Route::get('/riwayatpelaporan', function () {
     return view('warga.pelaporan tamu.riwayatPelaporanTamu');
@@ -88,6 +104,7 @@ Route::get('/riwayatpengajuanwaiting', function () {
 Route::get('/rinciansurat', function () {
     return view('warga.pengajuan surat pengantar.rincianSurat');
 });
+
 
 
 Route::get('/formbansos', function () {
