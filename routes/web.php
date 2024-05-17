@@ -101,3 +101,19 @@ Route::get('/formlanjutan', function () {
 Route::get('/daftarbansos', function () {
     return view('warga.pengajuan bansos.daftarDataBansos');
 });
+
+Route::get('/formlengkapi', function () {
+    return view('warga.data diri.formLengkapi');
+});
+
+Route::get('/uploadberkas', function () {
+    return view('warga.data diri.formUploadBerkas');
+});
+
+Route::get('/rinciandatadiri', function () {
+    return view('warga.data diri.rincianDataDiri');
+});
+
+Route::get('/formgantipassword', function () {
+    return view('warga.data diri.formGantiPassword');
+});
