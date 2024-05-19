@@ -13,7 +13,7 @@ use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PelaporanTamuController;
 
 Route::get('/gg', function () {
-    return view('warga.PelaporanTamu.index2');
+    return view('warga.data diri.rincianDataDiri');
 });
 
 // pengaduan
@@ -35,11 +35,11 @@ Route::group(['prefix' => 'pelaporan-tamu'], function () {
 });
 
 // Data Diri
-// Route::group(['prefix' => 'data-diri'], function () {
-Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
-Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
-Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
-// });
+Route::group(['prefix' => 'data_diri'], function () {
+    Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
+    Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
+    Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
+});
 
 
 // Login

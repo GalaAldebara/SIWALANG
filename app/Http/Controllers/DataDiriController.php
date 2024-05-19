@@ -10,6 +10,7 @@ class DataDiriController extends Controller
 {
     public function index()
     {
+
         $dataDiri = DataDiri::all();
         return view('warga.DataDiri.viewDataDiri', compact('dataDiri'));
     }
