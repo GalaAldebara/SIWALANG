@@ -36,9 +36,9 @@ Route::group(['prefix' => 'pelaporan-tamu'], function () {
 
 // Data Diri
 Route::group(['prefix' => 'data-diri'], function () {
-    Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
-    Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
-    Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
+    // Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
+    // Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
+    // Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
     Route::get('/', [DataDiriController::class, 'index']);
     Route::get('/form_satu', [DataDiriController::class, 'form']);
     Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');

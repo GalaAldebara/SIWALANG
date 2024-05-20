@@ -21,8 +21,8 @@ class DataDiriController extends Controller
 
         $dataDiri = DataDiri::all();
         return view('warga.DataDiri.index', ['header' => $header]);
-        $dataDiri = DataDiri::all();
-        return view('warga.DataDiri.viewDataDiri', compact('dataDiri'));
+        // $dataDiri = DataDiri::all();
+        // return view('warga.DataDiri.viewDataDiri', compact('dataDiri'));
     }
 
     public function form()
@@ -41,6 +41,8 @@ class DataDiriController extends Controller
             'title' => 'Data Diri',
             'list' => ['Beranda', 'Data Diri', 'Form Lengkapi Berkas Data Diri']
         ];
+
+        return view('warga.DataDiri.formDua', ['header' => $header]);
     }
 
     public function formPassword()
