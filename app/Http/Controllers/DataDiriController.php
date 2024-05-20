@@ -10,14 +10,43 @@ class DataDiriController extends Controller
 {
     public function index()
     {
+        $header = (object) [
+            'title' => 'Data Diri',
+            'list' => ['Beranda', 'Data Diri']
+        ];
 
         $dataDiri = DataDiri::all();
-        return view('warga.DataDiri.viewDataDiri', compact('dataDiri'));
+        return view('warga.DataDiri.index', ['header' => $header]);
     }
 
-    public function createForm()
+    public function form()
     {
-        return view('warga.DataDiri.formDataDiri');
+        $header = (object) [
+            'title' => 'Data Diri',
+            'list' => ['Beranda', 'Data Diri', 'Form Lengkapi Data Diri']
+        ];
+
+        return view('warga.DataDiri.formSatu', ['header' => $header]);
+    }
+
+    public function formUpload()
+    {
+        $header = (object) [
+            'title' => 'Data Diri',
+            'list' => ['Beranda', 'Data Diri', 'Form Lengkapi Berkas Data Diri']
+        ];
+
+        return view('warga.DataDiri.formDua', ['header' => $header]);
+    }
+
+    public function formPassword()
+    {
+        $header = (object) [
+            'title' => 'Data Diri',
+            'list' => ['Beranda', 'Data Diri', 'Form Lengkapi Berkas Data Diri']
+        ];
+
+        return view('warga.DataDiri.formPassword', ['header' => $header]);
     }
 
     public function store(Request $request)

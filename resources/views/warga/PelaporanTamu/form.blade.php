@@ -8,7 +8,7 @@
                     <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
                 </svg>                                       
             </a>
-            <p style="font-family: Inter" class="px-4">Form Pengaduan </p>
+            <p style="font-family: Inter" class="px-4">Form pelaporan tamu </p>
         </div>            
         <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl"  action="{{ url('pelaporan-tamu') }}" method="POST" enctype="multipart/form-data">
             @csrf
