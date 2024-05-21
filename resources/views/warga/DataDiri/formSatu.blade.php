@@ -7,10 +7,10 @@
           <a class="bg-white rounded-full size-7 flex justify-center items-center" href="{{ url('data_diri') }}">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black" class="w-5 h-5">
                   <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
-                </svg>                                       
+                </svg>
           </a>
           <p style="font-family: Inter" class="px-4">Form Data Diri</p>
-      </div>              
+      </div>
       <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl"  action="{{ url('data_diri/form_dua') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="w-full my-4 px-6" style="font-family: Asap">
@@ -63,9 +63,9 @@
                 </div>
             </div>
             <div class="mb-3">
-              <label for="status-perkawinan">Status Perkawinan <span class="text-red-500 text-lg">*</span></label>
+              <label for="status_perkawinan">Status Perkawinan <span class="text-red-500 text-lg">*</span></label>
               <div class="mt-2 w-full">
-                  <select name="status-perkawinan" id="status-perkawinan" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                  <select name="status_perkawinan" id="status_perkawinan" class="w-full rounded-md border py-1 px-4 text-gray-900">
                       <option value="" disabled selected>Pilih status perkawinan</option>
                       <option value="Laki-laki">Belum nikah</option>
                       <option value="Perempuan">Sudah nikah</option>
@@ -73,27 +73,27 @@
               </div>
             </div>
             <div class="mb-3">
-                <label for="no-telp">No. Telp <span class="text-red-500 text-lg">*</span></label>
+                <label for="no_telp">No. Telp <span class="text-red-500 text-lg">*</span></label>
                 <div class="mt-2 w-full">
-                    <input id="no-telp" name="no-telp" type="text" placeholder="Masukkan no-telp" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('no-telp')
+                    <input id="no_telp" name="no_telp" type="text" placeholder="Masukkan No-Telp" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('no_telp')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
             <div class="mb-3">
-                <label for="no-kk">No. KK <span class="text-red-500 text-lg">*</span></label>
+                <label for="no_kk">No. KK <span class="text-red-500 text-lg">*</span></label>
                 <div class="mt-2 w-full">
-                    <input id="no-kk" name="no-kk" type="text" placeholder="Masukkan no-kk" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('no-kk')
+                    <input id="no_kk" name="no_kk" type="text" placeholder="Masukkan no_kk" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('no_kk')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
             <div class="mb-3">
-              <label for="hubungan-kk">Hubungan KK <span class="text-red-500 text-lg">*</span></label>
+              <label for="hubungan_kk">Hubungan KK <span class="text-red-500 text-lg">*</span></label>
               <div class="mt-2 w-full">
-                  <select name="hubungan-kk" id="hubungan-kk" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                  <select name="hubungan_kk" id="hubungan_kk" class="w-full rounded-md border py-1 px-4 text-gray-900">
                       <option value="" disabled selected>Pilih hubungan KK</option>
                       <option value="kepala-keluarga">kepala-keluarga</option>
                       <option value="isteri">isteri</option>
@@ -103,9 +103,9 @@
               </div>
             </div>
             <div class="mb-3">
-              <label for="status-kependudukan">Status Kependudukan <span class="text-red-500 text-lg">*</span></label>
+              <label for="status_kependudukan">Status Kependudukan <span class="text-red-500 text-lg">*</span></label>
               <div class="mt-2 w-full">
-                  <select name="status-kependudukan" id="status-kependudukan" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                  <select name="status_kependudukan" id="status_kependudukan" class="w-full rounded-md border py-1 px-4 text-gray-900">
                       <option value="" disabled selected>Pilih status kependudukan</option>
                       <option value="Laki-laki">Warga lokal</option>
                       <option value="Perempuan">warga bukan lokal</option>
@@ -124,7 +124,7 @@
             <div class="mb-3">
                 <label for="pekerjaan">Pekerjaan <span class="text-red-500 text-lg">*</span></label>
                 <div class="mt-2 w-full">
-                  <select name="status-kependudukan" id="status-kependudukan" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                  <select name="pekerjaan" id="pekerjaan" class="w-full rounded-md border py-1 px-4 text-gray-900">
                     <option value="" disabled selected>Pilih Pekerjaan</option>
                     <option value="swasta">Swasta</option>
                     <option value="wiraswasta">wiraswasta</option>
@@ -132,6 +132,7 @@
                     <option value="buruh">buruh</option>
                     <option value="tidak-bekerja">tidak bekerja</option>
                     <option value="pelajar">pelajar</option>
+                    <option value="pelajar">Lainnya</option>
                 </select>
                 </div>
             </div>
@@ -139,38 +140,38 @@
                 <label for="alamat-ktp">Alamat KTP <span class="text-red-500 text-lg">*</span></label>
                 <section class="grid grid-cols-6 gap-y-2 gap-x-3">
                   <div class="col-span-4">
-                    <input id="alamat-ktp" name="alamat-ktp" type="text" placeholder="alamat" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('alamat-ktp')
+                    <input id="alamat_ktp" name="alamat_ktp" type="text" placeholder="alamat" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('alamat_ktp')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="">
-                    <input id="alamat-ktp-rt" name="alamat-ktp-rt" type="text" placeholder="RT" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('alamat-ktp-rt')
+                    <input id="RT" name="RT" type="text" placeholder="RT" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('RT')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="">
-                    <input id="alamat-ktp-rw" name="alamat-ktp-rw" type="text" placeholder="RW" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('alamat-ktp-rw')
+                    <input id="RW" name="RW" type="text" placeholder="RW" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('RW')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="col-span-2">
-                    <input id="alamat-ktp-kelurahan" name="alamat-ktp-kelurahan" type="text" placeholder="Kelurahan/Desa" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('alamat-ktp-kelurahan')
+                    <input id="kelurahan" name="kelurahan" type="text" placeholder="Kelurahan/Desa" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('kelurahan')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="col-span-2">
-                    <input id="alamat-ktp-kecamatan" name="alamat-ktp-kecamatan" type="text" placeholder="Kecamatan" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('alamat-ktp-kecamatan')
+                    <input id="kecamatan" name="kecamatan" type="text" placeholder="Kecamatan" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('kecamatan')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="col-span-2">
-                    <input id="alamat-ktp-kabupaten" name="alamat-ktp-kabupaten" type="text" placeholder="Kabupaten/Kota" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('alamat-ktp-kabupaten')
+                    <input id="kota" name="kota" type="text" placeholder="Kabupaten/Kota" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('kota')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
@@ -181,16 +182,16 @@
               <label for="hide-alamat">Alamat saya saat ini sama dengan alamat KTP</label>
             </div>
             <div class="mb-3" id="alamat-tinggal-section">
-                <label for="alamat-tinggal">Alamat Tinggal <span class="text-red-500 text-lg">*</span></label>
+                <label for="alamat_tinggal">Alamat Tinggal <span class="text-red-500 text-lg">*</span></label>
                 <section class="grid grid-cols-6 gap-y-2 gap-x-3">
                   <div class="col-span-4">
-                    <input id="alamat-tinggal" name="alamat-tinggal" type="text" placeholder="alamat" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('alamat-tinggal')
+                    <input id="alamat_tinggal" name="alamat_tinggal" type="text" placeholder="alamat" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('alamat_tinggal')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="">
-                    <select name="alamat-tinggal_rt" id="alamat-tinggal-rt" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    <select name="rt_tinggal" id="rt_tinggal" class="w-full rounded-md border py-1 px-4 text-gray-900">
                       <option value="" disabled selected>RT</option>
                       <option value="001">001</option>
                       <option value="002">002</option>
@@ -199,7 +200,7 @@
                     </select>
                   </div>
                   <div class="">
-                    <select name="alamat-tinggal_rw" id="alamat-tinggal-rw" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    <select name="rw_tinggal" id="rw_tinggal" class="w-full rounded-md border py-1 px-4 text-gray-900">
                       <option value="" disabled selected>RW</option>
                       <option value="001">001</option>
                       <option value="002">002</option>
@@ -208,20 +209,20 @@
                     </select>
                   </div>
                   <div class="col-span-2">
-                    <input id="alamat-tinggal-kelurahan" name="alamat-tinggal-kelurahan" type="text" placeholder="Kelurahan/Desa" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
-                    @error('alamat_tinggal_kelurahan')
+                    <input id="kelurahan_tinggal" name="kelurahan_tinggal" type="text" placeholder="Kelurahan/Desa" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
+                    @error('kelurahan_tinggal')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="col-span-2">
-                    <input id="alamat-tinggal-kecamatan" name="alamat-tinggal-kecamatan" type="text" placeholder="Kecamatan" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
-                    @error('alamat_tinggal_kecamatan')
+                    <input id="kecamatan_tinggal" name="kecamatan_tinggal" type="text" placeholder="Kecamatan" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
+                    @error('kecamatan_tinggal')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="col-span-2">
-                    <input id="alamat-tinggal-kabupaten" name="alamat-tinggal-kabupaten" type="text" placeholder="Kabupaten/Kota" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
-                    @error('alamat_tinggal_kabupaten')
+                    <input id="kota_tinggal" name="kota_tinggal" type="text" placeholder="Kabupaten/Kota" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
+                    @error('kota_tinggal')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
@@ -239,14 +240,14 @@
 
 @push('css')
 <style>
-  #alamat-tinggal-section {
+  #alamat_tinggal-section {
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
     max-height: 1000px; /* Angka besar untuk memastikan cukup tinggi */
     opacity: 1;
     overflow: hidden;
   }
-  
-  #alamat-tinggal-section.hide {
+
+  #alamat_tinggal-section.hide {
     max-height: 0;
     opacity: 0;
   }
@@ -256,7 +257,7 @@
 @push('js')
 <script>
   document.getElementById('hide-alamat').addEventListener('change', function() {
-    var alamatTinggalSection = document.getElementById('alamat-tinggal-section');
+    var alamatTinggalSection = document.getElementById('alamat_tinggal-section');
     if (this.checked) {
       alamatTinggalSection.classList.add('hide');
     } else {

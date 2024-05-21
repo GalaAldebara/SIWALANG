@@ -25,12 +25,21 @@ return new class extends Migration
             $table->enum('status_kependudukan', ['Warga Asli', 'Kontrak', 'Kost', 'Pindahan']);
             $table->string('alamat_ktp', 50);
             $table->string('alamat_tinggal', 50);
-            $table->unsignedBigInteger('kota_id');
+            $table->string('kewarganegaraan', 50);
+            $table->string('kota', 50);
+            $table->string('kecamatan', 50);
+            $table->string('kelurahan', 50);
+            $table->integer('RT')->length(10);
+            $table->integer('RW')->length(10);
+            $table->integer('rt_tinggal');
+            $table->integer('rw_tinggal');
+            $table->string('kelurahan_tinggal', 50);
+            $table->string('kecamatan_tinggal', 50);
+            $table->string('kota_tinggal', 50);
             $table->timestamps();
 
             // Add foreign key constraint
             $table->foreign('nik')->references('nik')->on('m_user')->onDelete('cascade');
-            $table->foreign('kota_id')->references('id')->on('kota')->onDelete('cascade');
         });
     }
 

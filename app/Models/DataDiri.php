@@ -25,29 +25,28 @@ class DataDiri extends Model
         'status_kependudukan',
         'alamat_ktp',
         'alamat_tinggal',
-        'kota_id',
         'kecamatan_id',
-        'kelurahan_id'
+        'kelurahan_id',
+        'kewarganegaraan',
+        'kota',
+        'kecamatan',
+        'kelurahan',
+        'RT',
+        'RW',
+        'rt_tinggal',
+        'rw_tinggal',
+        'kelurahan_tinggal',
+        'kecamatan_tinggal',
+        'kota_tinggal',
+        'foto_ktp',
+        'foto_kk',
+        'surat_nikah',
+        'foto_profil',
     ];
 
     // Relationship with User model
     public function user()
     {
         return $this->belongsTo(User::class, 'nik', 'nik');
-    }
-
-    public function kota()
-    {
-        return $this->belongsTo(Kota::class);
-    }
-
-    public function kecamatan()
-    {
-        return $this->belongsTo(Kecamatan::class);
-    }
-
-    public function kelurahan()
-    {
-        return $this->belongsTo(Kelurahan::class);
     }
 }

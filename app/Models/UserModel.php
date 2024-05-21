@@ -12,6 +12,7 @@ class UserModel extends Authenticatable
     protected $table = 'm_user';
     protected $primaryKey = 'user_id';
     protected $fillable = ['level_id', 'username', 'nama', 'password'];
+    protected $hidden = ['password'];
 
     public function user(): HasMany
     {
