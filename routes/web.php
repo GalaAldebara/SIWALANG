@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\DataDiriController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PelaporanTamuController;
 
@@ -32,6 +33,14 @@ Route::group(['prefix' => 'pelaporan-tamu'], function () {
     Route::post('/', [PelaporanTamuController::class, 'store']);
     Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
     // Route::get('/show', [PelaporanTamuController::class, 'lihat']);
+});
+
+//kegiatan
+Route::group(['prefix' => 'kegiatan'], function () {
+    Route::get('/agenda', [KegiatanController::class, 'agenda']);
+    Route::post('/agenda/list', [KegiatanController::class, 'list']);
+    Route::get('/agenda/rincian', [KegiatanController::class, 'rincian']);
+    Route::get('/arsip', [KegiatanController::class, 'arsip']);
 });
 
 // Data Diri

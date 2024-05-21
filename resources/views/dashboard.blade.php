@@ -90,7 +90,7 @@
                             <p class="text-xs text-gray-500">Pengaduan permasalahan yang terjadi di lingkungan warga</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('') }}">
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('kegiatan/agenda') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
@@ -100,7 +100,7 @@
                             <p class="text-xs text-gray-500">Agenda / Jadwal kegiatan warga mendatang</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('') }}">
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('kegiatan/arsip') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
