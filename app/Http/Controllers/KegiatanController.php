@@ -15,4 +15,24 @@ class KegiatanController extends Controller
 
         return view('warga.AgendaKegiatan.index', ['header' => $header]);
     }
+
+    public function rincian()
+    {
+        $header = (object) [
+            'title' => 'Agenda Kegiatan',
+            'list' => ['Beranda', 'Agenda Kegiatan', 'Rincian Agenda Kegiatan']
+        ];
+
+        return view('warga.AgendaKegiatan.rincian', ['header' => $header]);
+    }
+
+    public function arsip()
+    {
+        $header = (object) [
+            'title' => 'Agenda Kegiatan',
+            'list' => ['Beranda', 'Arsip Kegiatan']
+        ];
+
+        return view('warga.ArsipKegiatan.index', ['header' => $header]);
+    }
 }
