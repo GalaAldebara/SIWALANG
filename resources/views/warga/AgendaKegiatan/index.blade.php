@@ -8,7 +8,7 @@
     </div>
 
     <div class="grid grid-cols-3 grid-rows-3 w-5/6 gap-y-4 gap-x-10 my-6">
-      <section class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3">
+      <a class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3" href="{{ url('kegiatan/agenda/rincian') }}">
         <div class="flex flex-row text-white font-light" style="font-family: Asap">
           <p class="bg-black px-3 rounded-l-md">10</p>
           <p class="bg-primary px-3 rounded-r-md">Maret 2024</p>
@@ -21,7 +21,7 @@
           </svg>          
           <p>Jalan raya poros Lang-Lang</p>
         </div>
-      </section>
+      </a>
       <section class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3">
         <div class="flex flex-row text-white font-light" style="font-family: Asap">
           <p class="bg-black px-3 rounded-l-md">10</p>
