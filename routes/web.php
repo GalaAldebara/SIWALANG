@@ -13,8 +13,8 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PelaporanTamuController;
 
-Route::get('/gg', function () {
-    return view('warga.data diri.rincianDataDiri');
+Route::get('/coba', function () {
+    return view('rt.DataWarga.index');
 });
 
 // pengaduan

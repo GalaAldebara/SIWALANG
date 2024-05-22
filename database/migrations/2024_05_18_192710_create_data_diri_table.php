@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('tempat_lahir', 50);
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
-            $table->enum('jenis_kelamin', ['Nikah', 'Belum Nikah']);
+            $table->enum('status_perkawinan', ['Nikah', 'Belum Nikah']);
             $table->string('no_telp', 20);
             $table->string('no_kk', 20);
             $table->string('hubungan_kk', 20);
@@ -48,6 +48,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('data_diri', function (Blueprint $table) {
+            $table->dropForeign(['nik']); // Hapus constraint kunci asing
+        });
+
         Schema::dropIfExists('data_diri');
     }
 };

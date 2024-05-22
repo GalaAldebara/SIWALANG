@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('kecamatan', function (Blueprint $table) {
             $table->id('kecamatan_id');
-            $table->string('nama_kota', 50);
+            $table->string('nama_kecamatan', 50);
             $table->unsignedBigInteger('level_id')->index;
             $table->timestamps();
         });
