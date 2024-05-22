@@ -9,7 +9,7 @@
                     <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
                   </svg>                                       
             </a>
-            <p style="font-family: Inter" class="px-4">Riwayat pelaporan tamu</p>
+            <p style="font-family: Inter" class="px-4">Data Warga</p>
         </div>              
         <div class="w-4/6 flex flex-col items-center rounded-b-xl border-2 min-w-[490px] px-6">
             <div class="pb-6 mx-6 w-full">
@@ -32,9 +32,14 @@
                 <table class="table-auto border-separate border border-gray-300 w-full" id="table_pelaporan">
                     <thead class="bg-primary-form">
                         <tr class="tracking-wide">
-                            <th class="p-3 border border-gray-300" style="font-family: Asap">TANGGAL MELAPOR</th>
-                            <th class="p-3 border border-gray-300" style="font-family: Asap">NAMA TAMU</th>
-                            <th class="p-3 border border-gray-300" style="font-family: Asap">KETERANGAN</th>
+                            <th class="p-3 border border-gray-300" style="font-family: Asap">ID</th>
+                            <th class="p-3 border border-gray-300" style="font-family: Asap">NIK</th>
+                            <th class="p-3 border border-gray-300" style="font-family: Asap">NAMA</th>
+                            <th class="p-3 border border-gray-300" style="font-family: Asap">NO. KK</th>
+                            <th class="p-3 border border-gray-300" style="font-family: Asap">JENIS KELAMIN</th>
+                            <th class="p-3 border border-gray-300" style="font-family: Asap">NO. TELP</th>
+                            <th class="p-3 border border-gray-300" style="font-family: Asap">STATUS</th>
+                            <th class="p-3 border border-gray-300" style="font-family: Asap">AKSI</th>
                         </tr>
                     </thead>
                 </table>

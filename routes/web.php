@@ -12,6 +12,7 @@ use App\Http\Controllers\DataDiriController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PelaporanTamuController;
+use App\Http\Controllers\UserController;
 
 Route::get('/coba', function () {
     return view('rt.DataWarga.index');
@@ -56,6 +57,14 @@ Route::group(['prefix' => 'data_diri'], function () {
     Route::post('/store_form_dua', [DataDiriController::class, 'storeFormDua'])->name('store_form_dua');
     Route::get('/form_password', [AuthController::class, 'ubah_password'])->name('ubah_password');
     Route::post('/form_password', [AuthController::class, 'prosesChangePassword']);
+});
+
+// Data diri / akun Warga
+Route::group(['prefix' => 'data_warga'], function () {
+    Route::get('/', [UserController::class, 'indexRT']);
+    Route::post('/agenda/list', [KegiatanController::class, 'list']);
+    Route::get('/agenda/rincian', [KegiatanController::class, 'rincian']);
+    Route::get('/arsip', [KegiatanController::class, 'arsip']);
 });
 
 // Login
