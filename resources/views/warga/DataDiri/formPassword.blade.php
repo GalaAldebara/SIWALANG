@@ -1,4 +1,4 @@
-{{-- @extends('layouts.template')
+@extends('layouts.template')
 
 @section('content')
 <main class="w-full h-full">
@@ -81,9 +81,9 @@
         }
     });
   </script>
-@endpush --}}
+@endpush
 
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -125,4 +125,4 @@
     <!-- Tambahkan JS Bootstrap atau JS lainnya di sini -->
 </body>
 </html>
-
+ --}}
