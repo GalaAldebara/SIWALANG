@@ -63,7 +63,7 @@ Route::group(['prefix' => 'data_warga'], function () {
     Route::get('/tambah', [UserController::class, 'add']);
     Route::post('/', [UserController::class, 'store']);
     Route::get('/{id}', [UserController::class, 'show'])->name('rincian.warga');
-    Route::get('/{id}', [UserController::class, 'showAkun'])->name('rincian.warga');
+    Route::get('/akun/{id}', [UserController::class, 'showAkun'])->name('rincian.akun');
     Route::get('/edit/{id}', [UserController::class, 'edit']);
     Route::post('/{id}', [UserController::class, 'update']);
     Route::post('/edit_status/{id}', [UserController::class, 'editStatus'])->name('edit_status');

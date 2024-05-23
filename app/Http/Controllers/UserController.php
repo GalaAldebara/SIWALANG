@@ -45,7 +45,7 @@ class UserController extends Controller
                     if ($user->status === 'Menunggu Perlengkapan') {
                         $aksi .= '<form method="POST" action="' . url('/data_warga/' . $user->user_id) . '">' . csrf_field() . method_field('DELETE') . '<button type="submit" class="text-white py-2 px-3 rounded-xl" style="background: #f04438;" onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
                     } elseif ($user->status === 'Menunggu Verifikasi') {
-                        $aksi .= '<a href="' . url('/data_warga/' . $user->user_id) . '" class="text-white py-2 px-3 rounded-xl" style="background: #478ecc;">Detail</a> ';
+                        $aksi .= '<a href="' . url('/data_warga/akun/' . $user->user_id) . '" class="text-white py-2 px-3 rounded-xl" style="background: #478ecc;">Detail</a> ';
                     }
                     return $aksi;
                 })
