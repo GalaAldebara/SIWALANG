@@ -11,22 +11,32 @@
           </a>
           <p style="font-family: Inter" class="px-4">Data Diri</p>
       </div>
-      <div class="w-4/6 flex flex-col items-center rounded-b-xl border-2 border-t-0 px-6">
-          <div class="w-full flex flex-row justify-center gap-10 mt-4">
-            <img src="../images/fotoProfil.jpeg" alt="" class="object-cover size-60">
+      <div class="w-4/6 flex flex-col items-center rounded-b-xl border-2 border-t-0">
+          <div class="w-full flex flex-row justify-center items-center gap-10 my-6 px-6">
+            <img src="../images/fotoProfil.jpeg" alt="" class="object-cover size-64">
             <div class="grid grid-cols-[130px_30px_1fr] divide-y-2">
-              <span class="py-1">Nama</span><div class="py-1 border-t-transparent">:</div><span class="py-1 border-t-transparent">Sudiono</span>
-              <span class="py-1">NIK</span><div class="py-1">:</div><span class="py-1">696969696969</span>
-              <span class="py-1">Status Perkawinan</span><div class="py-1">:</div><span class="py-1">Belum Menikah</span>
-              <span class="py-1">No. telp</span><div class="py-1">:</div><span class="py-1">085345827321</span>
-              <span class="py-1">Status Kependudukan</span><div class="py-1">:</div><span class="py-1">Warga Asli Setempat</span>
-              <span class="py-1">Alamat KTP</span><div class="py-1">:</div><span class="py-1">Lang-Lang 1 No.1, RT 04, RW 01, Lang-Lang, Singosari, Malang</span>
-              <span class="py-1">Alamat Tinggal</span><div class="py-1">:</div><span class="py-1">Lang-Lang 1 No.1, RT 04, RW 01, Lang-Lang, Singosari, Malang</span>
+              <span class="py-1">Nama</span><div class="py-1 border-t-transparent">:</div><span class="py-1 border-t-transparent">{{ $user->nama }}</span>
+              <span class="py-1">NIK</span><div class="py-1">:</div><span class="py-1">{{ $user->nik }}</span>
+              @if ($dataDiri)
+                <span class="py-1">Jenis Kelamin</span><div class="py-1">:</div><span class="py-1">{{ $dataDiri->jenis_kelamin }}</span>
+                <span class="py-1">Status Perkawinan</span><div class="py-1">:</div><span class="py-1">{{ $dataDiri->status_perkawinan }}</span>
+                <span class="py-1">No. telp</span><div class="py-1">:</div><span class="py-1">{{ $dataDiri->no_telp }}</span>
+                <span class="py-1">Status Kependudukan</span><div class="py-1">:</div><span class="py-1">{{ $dataDiri->status_kependudukan }}</span>
+                <span class="py-1">Alamat Tinggal</span><div class="py-1">:</div><span class="py-1">{{ $dataDiri->alamat_tinggal }} RT.0{{ $dataDiri->rt }} RW.0{{ $dataDiri->rw }} {{ $dataDiri->kelurahan }} {{ $dataDiri->kecamatan }} {{ $dataDiri->kota }}</span>
+                <span class="py-1">Alamat KTP</span><div class="py-1">:</div><span class="py-1">{{ $dataDiri->alamat_ktp }}</span>
+              @else
+                <span class="py-1">Jenis Kelamin</span><div class="py-1">:</div><span class="py-1"></span>
+                <span class="py-1">Status Perkawinan</span><div class="py-1">:</div><span class="py-1"></span>
+                <span class="py-1">No. telp</span><div class="py-1">:</div><span class="py-1"></span>
+                <span class="py-1">Status Kependudukan</span><div class="py-1">:</div><span class="py-1"></span>
+                <span class="py-1">Alamat Tinggal</span><div class="py-1">:</div><span class="py-1"></span>
+                <span class="py-1">Alamat KTP</span><div class="py-1">:</div><span class="py-1"></span>
+              @endif
             </div>
           </div>
-          <div class="w-full flex flex-row justify-end items-center gap-3 text-white py-6">
-            <a class="bg-primary p-3 rounded-lg" href="{{ url('data_diri/form_satu') }}">Ubah Data Diri</a>
-            <a class="bg-primary p-3 rounded-lg" href="{{ url('data_diri/form_password') }}">Ubah Password Akun</a>
+          <div class="w-full flex flex-row justify-end items-center gap-3 text-white py-3 border-t-2">
+            <a class="bg-primary p-3 rounded-lg" href="{{ url('data_diri/form_satu') }}">Lengkapi Data Diri</a>
+            <a class="bg-primary p-3 rounded-lg mr-6" href="{{ url('data_diri/form_password') }}">Ubah Password / Username</a>
           </div>
       </div>
   </div>

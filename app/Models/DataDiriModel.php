@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
-class DataDiri extends Model
+class DataDiriModel extends Model
 {
     use HasFactory;
+    use Notifiable;
 
     protected $table = 'data_diri';
     protected $primaryKey = 'id';

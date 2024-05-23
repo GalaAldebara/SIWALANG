@@ -11,25 +11,19 @@
           </a>
           <p style="font-family: Inter" class="px-4">Form Data Diri</p>
       </div>
-      <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl"  action="{{ url('data_diri/form_dua') }}" method="POST" enctype="multipart/form-data">
+      <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl"  action="{{ route('store.form-satu') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="w-full my-4 px-6" style="font-family: Asap">
             <div class="mb-3">
-                <label for="NIK">NIK <span class="text-red-500 text-lg">*</span></label>
+                <label for="nik">NIK</label>
                 <div class="mt-2 w-full">
-                    <input id="NIK" name="NIK" type="text" placeholder="34234252342" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
-                    @error('NIK')
-                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
-                    @enderror
+                    <input id="nik" name="nik" type="text" placeholder="{{ $user->nik }}" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
                 </div>
             </div>
             <div class="mb-3">
-                <label for="nama">Nama <span class="text-red-500 text-lg">*</span></label>
+                <label for="nama">Nama</label>
                 <div class="mt-2 w-full">
-                    <input id="nama" name="nama" type="text" placeholder="Sudiono" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
-                    @error('nama')
-                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
-                    @enderror
+                    <input id="nama" name="nama" type="text" placeholder="{{ $user->nama }}" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
                 </div>
             </div>
             <section class="flex flex-row justify-center gap-4">
@@ -67,8 +61,8 @@
               <div class="mt-2 w-full">
                   <select name="status_perkawinan" id="status_perkawinan" class="w-full rounded-md border py-1 px-4 text-gray-900">
                       <option value="" disabled selected>Pilih status perkawinan</option>
-                      <option value="Laki-laki">Belum nikah</option>
-                      <option value="Perempuan">Sudah nikah</option>
+                      <option value="Belum Nikah">Belum nikah</option>
+                      <option value="Nikah">Sudah nikah</option>
                   </select>
               </div>
             </div>
@@ -95,10 +89,9 @@
               <div class="mt-2 w-full">
                   <select name="hubungan_kk" id="hubungan_kk" class="w-full rounded-md border py-1 px-4 text-gray-900">
                       <option value="" disabled selected>Pilih hubungan KK</option>
-                      <option value="kepala-keluarga">kepala-keluarga</option>
+                      <option value="kepala keluarga">kepala keluarga</option>
                       <option value="isteri">isteri</option>
                       <option value="anak">anak</option>
-                      <option value="orang tua">orang tua</option>
                   </select>
               </div>
             </div>
@@ -107,8 +100,10 @@
               <div class="mt-2 w-full">
                   <select name="status_kependudukan" id="status_kependudukan" class="w-full rounded-md border py-1 px-4 text-gray-900">
                       <option value="" disabled selected>Pilih status kependudukan</option>
-                      <option value="Laki-laki">Warga lokal</option>
-                      <option value="Perempuan">warga bukan lokal</option>
+                      <option value="Warga Asli">Warga Asli</option>
+                      <option value="Kontrak">Kontrak</option>
+                      <option value="Kost">Kost</option>
+                      <option value="Pindahan">Pindah</option>
                   </select>
               </div>
             </div>
@@ -137,51 +132,6 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="alamat-ktp">Alamat KTP <span class="text-red-500 text-lg">*</span></label>
-                <section class="grid grid-cols-6 gap-y-2 gap-x-3">
-                  <div class="col-span-4">
-                    <input id="alamat_ktp" name="alamat_ktp" type="text" placeholder="alamat" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('alamat_ktp')
-                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
-                    @enderror
-                  </div>
-                  <div class="">
-                    <input id="RT" name="RT" type="text" placeholder="RT" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('RT')
-                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
-                    @enderror
-                  </div>
-                  <div class="">
-                    <input id="RW" name="RW" type="text" placeholder="RW" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('RW')
-                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
-                    @enderror
-                  </div>
-                  <div class="col-span-2">
-                    <input id="kelurahan" name="kelurahan" type="text" placeholder="Kelurahan/Desa" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('kelurahan')
-                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
-                    @enderror
-                  </div>
-                  <div class="col-span-2">
-                    <input id="kecamatan" name="kecamatan" type="text" placeholder="Kecamatan" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('kecamatan')
-                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
-                    @enderror
-                  </div>
-                  <div class="col-span-2">
-                    <input id="kota" name="kota" type="text" placeholder="Kabupaten/Kota" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                    @error('kota')
-                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
-                    @enderror
-                  </div>
-                </section>
-            </div>
-            <div class="mb-3 mt-5">
-              <input type="checkbox" id="hide-alamat" class="mr-2">
-              <label for="hide-alamat">Alamat saya saat ini sama dengan alamat KTP</label>
-            </div>
-            <div class="mb-3" id="alamat-tinggal-section">
                 <label for="alamat_tinggal">Alamat Tinggal <span class="text-red-500 text-lg">*</span></label>
                 <section class="grid grid-cols-6 gap-y-2 gap-x-3">
                   <div class="col-span-4">
@@ -191,38 +141,83 @@
                     @enderror
                   </div>
                   <div class="">
-                    <select name="rt_tinggal" id="rt_tinggal" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    <select name="rt" id="rt" class="w-full rounded-md border py-1 px-4 text-gray-900">
                       <option value="" disabled selected>RT</option>
-                      <option value="001">001</option>
-                      <option value="002">002</option>
-                      <option value="003">003</option>
-                      <option value="004">004</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
                     </select>
                   </div>
                   <div class="">
-                    <select name="rw_tinggal" id="rw_tinggal" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    <select name="rw" id="rw" class="w-full rounded-md border py-1 px-4 text-gray-900">
                       <option value="" disabled selected>RW</option>
-                      <option value="001">001</option>
-                      <option value="002">002</option>
-                      <option value="003">003</option>
-                      <option value="004">004</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
                     </select>
                   </div>
                   <div class="col-span-2">
-                    <input id="kelurahan_tinggal" name="kelurahan_tinggal" type="text" placeholder="Kelurahan/Desa" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
-                    @error('kelurahan_tinggal')
+                    <input id="kelurahan" name="kelurahan" type="text" value="Lang-Lang" readonly class="w-full rounded-md border py-1 px-4 bg-gray-200" style="color: #9ca3af">
+                    @error('kelurahan')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="col-span-2">
-                    <input id="kecamatan_tinggal" name="kecamatan_tinggal" type="text" placeholder="Kecamatan" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
-                    @error('kecamatan_tinggal')
+                    <input id="kecamatan" name="kecamatan" type="text" value="Singosari" readonly class="w-full rounded-md border py-1 px-4 bg-gray-200" style="color: #9ca3af">
+                    @error('kecamatan')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="col-span-2">
-                    <input id="kota_tinggal" name="kota_tinggal" type="text" placeholder="Kabupaten/Kota" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
-                    @error('kota_tinggal')
+                    <input id="kota" name="kota" type="text" value="Malang" readonly class="w-full rounded-md border py-1 px-4 bg-gray-200" style="color: #9ca3af">
+                    @error('kota')
+                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                    @enderror
+                  </div>
+                </section>
+            </div>
+            <div class="mb-3 mt-5">
+              <input type="checkbox" id="hide-alamat" class="mr-2">
+              <label for="hide-alamat">Alamat KTP saya sama dengan alamat saat ini </label>
+            </div>
+            <div class="mb-3" id="alamat-tinggal-section">
+                <label for="alamat_ktp">Alamat KTP <span class="text-red-500 text-lg">*</span></label>
+                <section class="grid grid-cols-6 gap-y-2 gap-x-3">
+                  <div class="col-span-4">
+                    <input id="alamat_ktp" name="alamat_ktp" type="text" placeholder="alamat" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('alamat_ktp')
+                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                    @enderror
+                  </div>
+                  <div class="">
+                    <input id="rt_ktp" name="rt_ktp" type="text" placeholder="RT" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('rt_ktp')
+                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                    @enderror
+                  </div>
+                  <div class="">
+                    <input id="rw_ktp" name="rw_ktp" type="text" placeholder="RW" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('rw_ktp')
+                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                    @enderror
+                  </div>
+                  <div class="col-span-2">
+                    <input id="kelurahan_ktp" name="kelurahan_ktp" type="text" placeholder="Kelurahan/Desa"  class="w-full rounded-md border py-1 px-4">
+                    @error('kelurahan_ktp')
+                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                    @enderror
+                  </div>
+                  <div class="col-span-2">
+                    <input id="kecamatan_ktp" name="kecamatan_ktp" type="text" placeholder="Kecamatan"  class="w-full rounded-md border py-1 px-4">
+                    @error('kecamatan_ktp')
+                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                    @enderror
+                  </div>
+                  <div class="col-span-2">
+                    <input id="kota_ktp" name="kota_ktp" type="text" placeholder="Kabupaten/Kota"  class="w-full rounded-md border py-1 px-4">
+                    @error('kota_ktp')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                   </div>
@@ -240,29 +235,65 @@
 
 @push('css')
 <style>
-  #alamat_tinggal-section {
-    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
-    max-height: 1000px; /* Angka besar untuk memastikan cukup tinggi */
-    opacity: 1;
-    overflow: hidden;
-  }
-
-  #alamat_tinggal-section.hide {
-    max-height: 0;
-    opacity: 0;
+  /* Tambahkan transisi CSS */
+  #alamat-tinggal-section {
+      max-height: 200px; /* Set maksimum tinggi untuk animasi */
+      overflow: hidden; /* Sembunyikan konten yang melebihi maksimum tinggi */
+      transition: max-height 0.4s ease-out; /* Terapkan transisi untuk animasi */
   }
 </style>
 @endpush
 
 @push('js')
 <script>
-  document.getElementById('hide-alamat').addEventListener('change', function() {
-    var alamatTinggalSection = document.getElementById('alamat_tinggal-section');
-    if (this.checked) {
-      alamatTinggalSection.classList.add('hide');
-    } else {
-      alamatTinggalSection.classList.remove('hide');
-    }
+  // Ambil elemen checkbox dan elemen yang ingin disembunyikan
+  const checkbox = document.getElementById('hide-alamat');
+  const alamatTinggalSection = document.getElementById('alamat-tinggal-section');
+
+  // Tambahkan event listener untuk checkbox
+  checkbox.addEventListener('change', function() {
+      // Jika checkbox dicentang, sembunyikan elemen input
+      if (this.checked) {
+          alamatTinggalSection.style.maxHeight = '0';
+      } else {
+          // Jika checkbox tidak dicentang, tampilkan kembali elemen input
+          alamatTinggalSection.style.maxHeight = '200px'; /* Sesuaikan dengan maksimum tinggi */
+      }
+  });
+
+  const alamat = document.getElementById('alamat_tinggal');
+  const rt = document.getElementById('rt');
+  const rw = document.getElementById('rw');
+  const kelurahan = document.getElementById('kelurahan');
+  const kecamatan = document.getElementById('kecamatan');
+  const kota = document.getElementById('kota');
+
+  const alamatKtp = document.getElementById('alamat_ktp');
+  const rtKtp = document.getElementById('rt_ktp');
+  const rwKtp = document.getElementById('rw_ktp');
+  const kelurahanKtp = document.getElementById('kelurahan_ktp');
+  const kecamatanKtp = document.getElementById('kecamatan_ktp');
+  const kotaKtp = document.getElementById('kota_ktp');
+
+  checkbox.addEventListener('change', function() {
+      // Jika checkbox dicentang
+      if (this.checked) {
+        const alamatValue = [alamat.value," RT.",rt.value," RW.",rw.value," ",kelurahan.value," ",kecamatan.value," ",kota.value].filter(Boolean).join('');
+          alamatKtp.value = alamatValue;
+          rtKtp.disabled = true;
+          rwKtp.disabled = true;
+          kelurahanKtp.disabled = true;
+          kecamatanKtp.disabled = true;
+          kotaKtp.disabled = true;
+          console.log(alamatValue);
+      } else { // Jika checkbox tidak dicentang
+          alamatKtp.value = "";
+          rtKtp.disabled = false;
+          rwKtp.disabled = false;
+          kelurahanKtp.disabled = false;
+          kecamatanKtp.disabled = false;
+          kotaKtp.disabled = false;
+      }
   });
 </script>
 @endpush

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DataDiri;
+use App\Models\DataDiriModel;
 use App\Models\Kota;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
@@ -21,28 +22,123 @@ class DataDiriController extends Controller
             'list' => ['Beranda', 'Data Diri']
         ];
 
-        $dataDiri = DataDiri::all();
-        return view('warga.DataDiri.index', ['header' => $header, 'dataDiri' => $dataDiri]);
+        $user = Auth::user();
+        $dataDiri = $user->dataDiri;
+
+        return view('warga.DataDiri.index', compact('header', 'user', 'dataDiri'));
     }
 
-    public function form()
+    public function formSatu()
     {
         $header = (object) [
             'title' => 'Data Diri',
             'list' => ['Beranda', 'Data Diri', 'Form Lengkapi Data Diri']
         ];
 
-        return view('warga.DataDiri.formSatu', ['header' => $header]);
+        $user = Auth::user();
+
+        return view('warga.DataDiri.formSatu', ['header' => $header, 'user' => $user]);
     }
 
-    public function formUpload()
+    public function storeSatu(Request $request)
+    {
+        $validatedData = $request->validate([
+            'tanggal_lahir' => 'required|date',
+            'tempat_lahir' => 'required|string',
+            'jenis_kelamin' => 'required',
+            'status_perkawinan' => 'required',
+            'no_telp' => 'required|integer',
+            'no_kk' => 'required|integer',
+            'hubungan_kk' => 'required',
+            'status_kependudukan' => 'required',
+            'kewarganegaraan' => 'required|string',
+            'pekerjaan' => 'required',
+            'alamat_tinggal' => 'required|string',
+            'rt' => 'required',
+            'rw' => 'required',
+            'kelurahan' => 'required|string',
+            'kecamatan' => 'required|string',
+            'kota' => 'required|string',
+            'alamat_ktp' => 'required|string',
+        ]);
+
+        session()->put('warga.DataDiri.formSatu', $validatedData);
+
+        return redirect()->route('form.dua');
+    }
+
+    public function formDua()
     {
         $header = (object) [
             'title' => 'Data Diri',
             'list' => ['Beranda', 'Data Diri', 'Form Lengkapi Berkas Data Diri']
         ];
 
+        if (!session()->has('warga.DataDiri.formSatu')) {
+            return redirect()->route('form.satu');
+        }
+
         return view('warga.DataDiri.formDua', ['header' => $header]);
+    }
+
+    public function storeDua(Request $request)
+    {
+        $validatedData = $request->validate([
+            'foto_ktp' => 'required|image|max:2048',
+            'foto_kk' => 'required|image|max:2048',
+            'foto_surat_nikah' => 'required|image|max:2048',
+            'foto_profil' => 'required|image|max:2048',
+
+        ]);
+
+        $data = array_merge(session('warga.DataDiri.formSatu'), $validatedData);
+
+        $nama_file = $request->file('foto_ktp')->getClientOriginalName();
+        $request->file('foto_ktp')->move(public_path('img/ktp'), $nama_file);
+
+        $nama_file = $request->file('foto_kk')->getClientOriginalName();
+        $request->file('foto_kk')->move(public_path('img/kk'), $nama_file);
+
+        $nama_file = $request->file('foto_surat_nikah')->getClientOriginalName();
+        $request->file('foto_surat_nikah')->move(public_path('img/surat-nikah'), $nama_file);
+
+        $nama_file = $request->file('foto_profil')->getClientOriginalName();
+        $request->file('foto_profil')->move(public_path('img/profil'), $nama_file);
+
+        $user = Auth::user();
+
+        $dataDiri = new DataDiriModel();
+        $dataDiri->nik = $user->nik;
+        $user->status = 'Menunggu verifikasi';
+        $dataDiri->tanggal_lahir = $data['tanggal_lahir'];
+        $dataDiri->tempat_lahir = $data['tempat_lahir'];
+        $dataDiri->jenis_kelamin = $data['jenis_kelamin'];
+        $dataDiri->status_perkawinan = $data['status_perkawinan'];
+        $dataDiri->no_telp = $data['no_telp'];
+        $dataDiri->no_kk = $data['no_kk'];
+        $dataDiri->hubungan_kk = $data['hubungan_kk'];
+        $dataDiri->status_kependudukan = $data['status_kependudukan'];
+        $dataDiri->kewarganegaraan = $data['kewarganegaraan'];
+        $dataDiri->pekerjaan = $data['pekerjaan'];
+        $dataDiri->alamat_tinggal = $data['alamat_tinggal'];
+        $dataDiri->rt = $data['rt'];
+        $dataDiri->rw = $data['rw'];
+        $dataDiri->kelurahan = $data['kelurahan'];
+        $dataDiri->kecamatan = $data['kecamatan'];
+        $dataDiri->kota = $data['kota'];
+        $dataDiri->alamat_ktp = $data['alamat_ktp'];
+        $dataDiri->foto_ktp = $data['foto_ktp'];
+        $dataDiri->foto_kk = $data['foto_kk'];
+        $dataDiri->foto_surat_nikah = $data['foto_surat_nikah'];
+        $dataDiri->foto_profil = $data['foto_profil'];
+
+
+        $dataDiri->save();
+        $user->save();
+
+        session()->forget('warga.DataDiri.formSatu');
+
+        return redirect('/data_diri')->with('success', 'Formulir berhasil disimpan.');
     }
 
     public function formPassword()
@@ -55,111 +151,29 @@ class DataDiriController extends Controller
         return view('warga.DataDiri.formPassword', ['header' => $header]);
     }
 
-    // public function showForm2()
-    // {
-    //     $header = (object) [
-    //         'title' => 'Data Diri',
-    //         'list' => ['Beranda', 'Data Diri', 'Form Lengkapi Berkas Data Diri']
-    //     ];
-    //     return view('warga.DataDiri.formPassword', ['header' => $header]);
-    // }
-
-    // public function ubahPassword(Request $request)
-    // {
-    //     $request->validate([
-    //         'password_lama' => 'required',
-    //         'password_baru' => 'required|string|min:8|confirmed',
-    //     ]);
-
-    //     $user = Auth::user();
-
-    //     if (!Hash::check($request->password_lama, $user->password)) {
-    //         return redirect()->back()->withErrors(['password_lama' => 'Password lama tidak cocok.']);
-    //     }
-
-    //     // Perbarui password langsung di dalam database
-    //     DB::table('m_user')
-    //         ->where('user_id', $user->user_id)
-    //         ->update(['password' => Hash::make($request->password_baru)]);
-
-    //     return redirect()->back()->with('success', 'Password berhasil diubah.');
-    // }
-
-    public function createForm()
+    public function update(Request $request)
     {
-        $header = (object) [
-            'title' => 'Data Diri',
-            'list' => ['Beranda', 'Data Diri', 'Form Data Diri']
-        ];
-
-        return view('warga.DataDiri.formDataDiri', ['header' => $header]);
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'tempat_lahir' => 'required|string|max:50',
-            'tanggal_lahir' => 'required|date',
-            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
-            'status_perkawinan' => 'required|in:Nikah,Belum Nikah',
-            'no_telp' => 'required|string|max:20',
-            'no_kk' => 'required|string|max:20',
-            'hubungan_kk' => 'required|string|max:20',
-            'status_kependudukan' => 'required|in:Warga Asli,Pindah,Kontrak,Kost',
-            'alamat_ktp' => 'required|string|max:50',
-            'alamat_tinggal' => 'required|string|max:50',
-            'kewarganegaraan' => 'required|string|max:50',
-            'kota' => 'required|string|max:50',
-            'kecamatan' => 'required|string|max:50',
-            'kelurahan' => 'required|string|max:50',
-            'RT' => 'required|integer',
-            'RW' => 'required|integer'
-        ]);
-
         $user = Auth::user();
 
-        $data = $request->all();
-        $data['nik'] = $user->nik;
-        $data['nama'] = $user->nama;
+        if ($request->filled('new_username')) {
+            $request->validate([
+                'new_username' => 'required',
+            ]);
 
-        if ($request->hasFile('foto_ktp')) {
-            $data['foto_ktp'] = $request->file('foto_ktp')->store('foto_ktp', 'public');
-        }
-        if ($request->hasFile('foto_kk')) {
-            $data['foto_kk'] = $request->file('foto_kk')->store('foto_kk', 'public');
-        }
-        if ($request->hasFile('surat_nikah')) {
-            $data['surat_nikah'] = $request->file('surat_nikah')->store('surat_nikah', 'public');
-        }
-        if ($request->hasFile('foto_profil')) {
-            $data['foto_profil'] = $request->file('foto_profil')->store('foto_profil', 'public');
+            $user->username = $request->new_username;
         }
 
-        // $user = DataDiri::create($data);
-        // dd($data);
+        if ($request->filled('password')) {
+            $request->validate([
+                'password' => 'required|min:8|confirmed',
+                'password_confirmation' => 'required'
+            ]);
 
-        try {
-            DataDiri::create($data);
-            return redirect()->route('data_diri.index')->with('success', 'Data diri berhasil disimpan.');
-        } catch (\Exception $e) {
-            Log::error($e);
-            return back()->withInput()->with('error', 'Terjadi kesalahan saat menyimpan data.');
+            $user->password = bcrypt($request->password);
         }
-    }
 
-    public function showForm()
-    {
-        $header = (object) [
-            'title' => 'Data Diri',
-            'list' => ['Beranda', 'Data Diri', 'Form Data Diri']
-        ];
+        $user->save();
 
-        return view('warga.DataDiri.formDataDiri', ['header' => $header]);
-    }
-
-    public function daftarDataDiri()
-    {
-        $dataDiri = DataDiri::all();
-        return view('warga.DataDiri.viewDataDiri', compact('dataDiri'));
+        return redirect('/data_diri')->with('success', 'Username dan/atau password berhasil diperbarui.');
     }
 }

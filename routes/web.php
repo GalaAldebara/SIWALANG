@@ -46,17 +46,13 @@ Route::group(['prefix' => 'kegiatan'], function () {
 
 // Data Diri
 Route::group(['prefix' => 'data_diri'], function () {
-    Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
-    Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
-    Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
     Route::get('/', [DataDiriController::class, 'index']);
-    Route::get('/form_satu', [DataDiriController::class, 'form']);
-    Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
-    Route::get('/form_dua', [DataDiriController::class, 'formUpload']);
-    // Route::get('/form_password', [DataDiriController::class, 'formPassword']);
-    Route::post('/store_form_dua', [DataDiriController::class, 'storeFormDua'])->name('store_form_dua');
-    Route::get('/form_password', [AuthController::class, 'ubah_password'])->name('ubah_password');
-    Route::post('/form_password', [AuthController::class, 'prosesChangePassword']);
+    Route::get('/form_satu', [DataDiriController::class, 'formSatu'])->name('form.satu');
+    Route::post('/form_satu', [DataDiriController::class, 'storeSatu'])->name('store.form-satu');
+    Route::get('/form_dua', [DataDiriController::class, 'formDua'])->name('form.dua');
+    Route::post('/form_dua', [DataDiriController::class, 'storeDua'])->name('store.form-dua');
+    Route::get('/form_password', [DataDiriController::class, 'formPassword']);
+    Route::post('/', [DataDiriController::class, 'update'])->name('update.username.password');
 });
 
 // Data diri / akun Warga

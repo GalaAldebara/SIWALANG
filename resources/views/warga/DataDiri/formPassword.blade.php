@@ -11,47 +11,56 @@
           </a>
           <p style="font-family: Inter" class="px-4">Form Ubah Password Akun</p>
       </div>
-      <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl"  action="{{ url('pelaporan-tamu') }}" method="POST" enctype="multipart/form-data">
+      <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl"  action="{{ route('update.username.password') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="w-full my-4 px-6" style="font-family: Asap">
             <div class="mb-3">
-                <label for="NIK">NIK <span class="text-red-500 text-lg">*</span></label>
+                <label for="NIK">NIK</label>
                 <div class="mt-2 w-full">
-                    <input id="NIK" name="NIK" type="text" placeholder="{{ Auth::user()->nik }}" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
+                    <input id="NIK" name="NIK" type="text" placeholder="{{ Auth::user()->nik }}" readonly class="w-full rounded-md border py-1 px-4 bg-gray-200">
                     @error('NIK')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
             <div class="mb-3">
-                <label for="oldPassword">Password Lama <span class="text-red-500 text-lg">*</span></label>
+                <label for="username_lama">Username Lama</label>
                 <div class="mt-2 w-full">
-                    <input id="oldPassword" name="old_password" type="password" placeholder="Masukkan password baru" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    <input id="username_lama" name="username_lama" type="text" placeholder="{{ Auth::user()->username }}" readonly class="w-full rounded-md border py-1 px-4 bg-gray-200">
                     @error('oldPassword')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
             <div class="mb-3">
-                <label for="newPassword">Password baru <span class="text-red-500 text-lg">*</span></label>
+                <label for="new_username">Username Baru</label>
                 <div class="mt-2 w-full">
-                    <input id="newPassword" name="new_password" type="password" placeholder="Masukkan password baru" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    <input id="new_username" name="new_username" type="text" placeholder="Masukkan Username Baru" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    @error('new_username')
+                    <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                    @enderror
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="newPassword">Password baru</label>
+                <div class="mt-2 w-full">
+                    <input id="newPassword" name="password" type="password" placeholder="Masukkan password baru" class="w-full rounded-md border py-1 px-4 text-gray-900">
                     @error('newPassword')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
             <div class="mb-3">
-                <label for="repeatPassword">Verifikasi Password baru <span class="text-red-500 text-lg">*</span></label>
+                <label for="repeatPassword">Verifikasi Password baru</label>
                 <div class="mt-2 w-full">
-                    <input id="repeatPassword" name="repeat_password" type="password" placeholder="Masukkan password baru" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                    <input id="repeatPassword" name="password_confirmation" type="password" placeholder="Masukkan password baru" class="w-full rounded-md border py-1 px-4 text-gray-900">
                     @error('repeatPassword')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
             <div class="mb-3">
-                <input type="checkbox" id="show-password" class="mr-2">
+                <input type="checkbox" id="show-password" class="mr-2" onchange="togglePasswordVisibility()">
                 <label for="show-password">Tampilkan Password</label>
             </div>
           </div>
@@ -68,61 +77,19 @@
 @endpush
 
 @push('js')
-  <script>
-    document.getElementById('show-password').addEventListener('change', function() {
-        var passwordField = document.getElementById('password');
-        var verifPasswordField = document.getElementById('verif-password');
-        if (this.checked) {
-            passwordField.type = 'text';
-            verifPasswordField.type = 'text';
-        } else {
-            passwordField.type = 'password';
-            verifPasswordField.type = 'password';
-        }
-    });
+<script>
+    function togglePasswordVisibility() {
+      var password1 = document.getElementById("newPassword");
+      var password2 = document.getElementById("repeatPassword");
+      var checkbox = document.getElementById("show-password");
+  
+      if (checkbox.checked) {
+        password1.type = "text";
+        password2.type = "text";
+      } else {
+        password1.type = "password";
+        password2.type = "password";
+      }
+    }
   </script>
 @endpush
-
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ubah Password</title>
-    <!-- Tambahkan CSS Bootstrap atau CSS lainnya di sini -->
-</head>
-<body>
-    <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">Ubah Password</div>
-                    <div class="card-body">
-                        @if(session('success'))
-                            <div class="alert alert-success">{{ session('success') }}</div>
-                        @endif
-                        <form method="POST" action="{{ route('ubah_password') }}">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="oldPassword" class="form-label">Password Lama</label>
-                                <input type="password" class="form-control" id="oldPassword" name="old_password">
-                            </div>
-                            <div class="mb-3">
-                                <label for="newPassword" class="form-label">Password Baru</label>
-                                <input type="password" class="form-control" id="newPassword" name="new_password">
-                            </div>
-                            <div class="mb-3">
-                                <label for="repeatPassword" class="form-label">Konfirmasi Password Baru</label>
-                                <input type="password" class="form-control" id="repeatPassword" name="repeat_password">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Ubah Password</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Tambahkan JS Bootstrap atau JS lainnya di sini -->
-</body>
-</html>
- --}}
