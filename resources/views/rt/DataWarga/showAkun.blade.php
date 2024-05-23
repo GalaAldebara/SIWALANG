@@ -40,9 +40,13 @@
               @endif
             </div>
           </div>
-          <div class="w-full flex flex-row justify-end items-center gap-3 text-white py-3 border-t-2">
-            <a class="bg-primary p-3 rounded-lg mr-6" href="{{ url('/data_warga/edit/' . $user->user_id) }}">Ubah Status Hidup</a>
-          </div>
+          <form class="w-full flex flex-row justify-end items-center text-white py-3 border-t-2" action="{{ route('edit_status', $user->user_id) }}" method="post">
+            @csrf
+            <div class="flex flex-row gap-3">
+              <button type="submit" name="konfirmasi" class="p-3 rounded-lg" style="background: green;">Konfirmasi</button>
+              <button type="submit" name="tolak" class="p-3 rounded-lg mr-6" style="background: red;">Tolak</button>
+            </div>
+          </form>
       </div>
   </div>
 </main>

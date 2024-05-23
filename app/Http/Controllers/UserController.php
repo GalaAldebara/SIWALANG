@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataDiri;
+use App\Models\DataDiriModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -18,11 +20,12 @@ class UserController extends Controller
         return view('rt.DataWarga.index', ['header' => $header]);
     }
 
-    public function list(Request $request)
+    public function listAkun(Request $request)
     {
         if ($request->ajax()) {
-            $user = UserModel::select('nik', 'nama', 'status')
+            $user = UserModel::select('nik', 'nama', 'status', 'user_id')
                 ->where('level_id', 4)
+                ->where('status', '!=', 'Selesai')
                 ->get();
 
             return DataTables::of($user)->addIndexColumn()
@@ -40,14 +43,43 @@ class UserController extends Controller
                 ->addColumn('aksi', function ($user) {
                     $aksi = '';
                     if ($user->status === 'Menunggu Perlengkapan') {
-                        $aksi .= '<form method="POST" action="' . url('/user/' . $user->user_id) . '">' . csrf_field() . method_field('DELETE') . '<button type="submit" class="text-white py-2 px-3 rounded-xl" style="background: #f04438;" onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
+                        $aksi .= '<form method="POST" action="' . url('/data_warga/' . $user->user_id) . '">' . csrf_field() . method_field('DELETE') . '<button type="submit" class="text-white py-2 px-3 rounded-xl" style="background: #f04438;" onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
                     } elseif ($user->status === 'Menunggu Verifikasi') {
-                        $aksi .= '<a href="' . url('/user/' . $user->user_id) . '" class="text-white py-2 px-3 rounded-xl" style="background: #478ecc;">Detail</a> ';
+                        $aksi .= '<a href="' . url('/data_warga/' . $user->user_id) . '" class="text-white py-2 px-3 rounded-xl" style="background: #478ecc;">Detail</a> ';
                     }
                     return $aksi;
                 })
                 ->rawColumns(['label', 'aksi'])
                 ->make(true);
+        }
+    }
+
+    public function listWarga(Request $request)
+    {
+        if ($request->ajax()) {
+            $dataDiri = DataDiriModel::join('m_user', 'data_diri.nik', '=', 'm_user.nik')
+                ->select('data_diri.nik', 'data_diri.no_kk', 'data_diri.jenis_kelamin', 'data_diri.no_telp', 'data_diri.status_kependudukan', 'm_user.nama', 'data_diri.id')
+                ->where('m_user.status', 'Selesai')
+                ->get();
+
+            $formattedData = [];
+            $index = 1;
+            foreach ($dataDiri as $item) {
+                $formattedData[] = [
+                    'DT_RowIndex' => $index,
+                    'nik' => $item->nik,
+                    'nama' => $item->nama,
+                    'no_kk' => $item->no_kk,
+                    'jenis_kelamin' => $item->jenis_kelamin,
+                    'no_telp' => $item->no_telp,
+                    'status_kependudukan' => $item->status_kependudukan,
+                    'aksi' => '<a href="' . url('/data_warga/' . $item->id) . '" class="text-white p-3 rounded-xl" style="background: #17a2b8;">Rincian</a>',
+                ];
+                $index++;
+            }
+
+            return response()->json(['data' => $formattedData]);
+            return DataTables::of($dataDiri)->make(true);
         }
     }
 
@@ -65,7 +97,7 @@ class UserController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:100',
-            'nik' => 'required|integer|max:9999999999999999',
+            'nik' => 'required|string|max:50',
         ]);
 
         UserModel::create([
@@ -77,5 +109,76 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('data-warga')->with('success', 'Data user berhasil disimpan');
+    }
+
+    public function show(string $id)
+    {
+        $dataDiri = DataDiriModel::find($id);
+        $user = UserModel::where('nik', $dataDiri->nik)->first();
+
+        $header = (object) [
+            'title' => 'Rincian Data Warga',
+            'list' => ['Beranda', 'Data Warga', 'Rincian Data Warga']
+        ];
+
+        return view('rt.DataWarga.show', ['header' => $header, 'dataDiri' => $dataDiri, 'user' => $user]);
+    }
+
+    public function showAkun(string $id)
+    {
+        $user = UserModel::find($id);
+        $dataDiri = DataDiriModel::where('nik', $user->nik)->first();
+
+        $header = (object) [
+            'title' => 'Rincian Data Warga',
+            'list' => ['Beranda', 'Data Warga', 'Rincian Data Warga']
+        ];
+
+        return view('rt.DataWarga.showAkun', ['header' => $header, 'dataDiri' => $dataDiri, 'user' => $user]);
+    }
+
+    public function edit(string $id)
+    {
+        $user = UserModel::find($id);
+        $dataDiri = DataDiriModel::where('nik', $user->nik)->first();
+
+        $header = (object) [
+            'title' => 'Data Warga',
+            'list' => ['Beranda', 'Data Warga', 'Rincian Data Warga']
+        ];
+
+        return view('rt.DataWarga.edit', ['header' => $header, 'user' => $user, 'dataDiri' => $dataDiri]);
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $dataDiri = DataDiriModel::find($id);
+        $user = UserModel::where('nik', $dataDiri->nik)->first();
+
+        $request->validate([
+            'status_hidup' => 'required|string'
+        ]);
+
+        $user->status_hidup = $request->status_hidup;
+
+        $user->save();
+
+        return redirect('/data_warga/' . $dataDiri->id)->with('success', 'Data user berhasil diubah');
+    }
+
+    public function editStatus(Request $request, $id)
+    {
+        $user = UserModel::find($id);
+        $dataDiri = DataDiriModel::where('nik', $user->nik)->first();
+
+        // Periksa apakah tombol yang sesuai ditekan dan sesuaikan status berdasarkan itu
+        if ($request->has('konfirmasi')) {
+            $user->update(['status' => 'Selesai']);
+        } elseif ($request->has('tolak')) {
+            $user->update(['status' => 'Ditolak']);
+        }
+
+        // Redirect kembali ke halaman rincian data warga setelah pembaruan
+        return redirect('/data_warga/')->with('success', 'Status berhasil diperbarui');
     }
 }

@@ -6,7 +6,7 @@
     <button id="showTable2" class="bg-gray-400 text-white rounded-md px-4 py-2 my-2">Data Akun</button>
 </div>
 
-<main class="w-full h-full">
+<main class="w-full h-full mb-3">
     <div class="flex flex-col items-center py-3 min-w-fit">
         <div class="w-5/6 bg-primary p-3 text-white rounded-t-xl border-2 font-bold flex flex-row min-w-[490px]">
             <a class="bg-white rounded-full size-7 flex justify-center items-center" href="{{ url('warga') }}">
@@ -90,6 +90,44 @@ document.addEventListener("DOMContentLoaded", function() {
         showTable1.classList.remove("bg-gray-400");
         showTable1.classList.add("bg-button");
         showTable2.classList.add("bg-gray-400");
+
+        if (!$.fn.DataTable.isDataTable('#table_lengkap')) {
+            dataPengaduan = $('#table_lengkap').DataTable({
+                "lengthMenu": [[10], [10]],
+                "searching": false,
+                "processing": true,
+                "serverSide": true,
+                "info": false,
+                "paging": false,
+                "lengthChange": false,
+                "autoWidth": true,
+                "language": {
+                    "emptyTable": "",
+                    "zeroRecords": ""
+                },
+                ajax: {
+                    url: "{{ route('warga_list') }}",
+                    dataType: 'json',
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}"
+                    },
+                },
+                columns: [
+                    { data: 'DT_RowIndex', orderable: true, searchable: true, className: "text-center py-3 asap border-t-2" },
+                    { data: 'nik', orderable: true, searchable: true, className: "text-center py-3 asap border-t-2" },
+                    { data: 'nama', orderable: false, searchable: false, className: "text-center asap border-t-2" },
+                    { data: 'no_kk', orderable: false, searchable: false, className: "text-center py-3 asap border-t-2" },
+                    { data: 'jenis_kelamin', orderable: true, searchable: true, className: "text-center asap border-t-2" },
+                    { data: 'no_telp', orderable: false, searchable: false, className: "text-center asap border-t-2" },
+                    { data: 'status_kependudukan', orderable: false, searchable: false, className: "text-center asap border-t-2" },
+                    { data: 'aksi', orderable: false, searchable: false, className: "text-center asap border-t-2" },
+                ],
+                "initComplete": function(settings, json) {
+                    $('#table_lengkap').removeClass('hidden');
+                }
+            });
+        }
     });
 
     showTable2.addEventListener("click", function() {
@@ -120,12 +158,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     url: "{{ route('akun_list') }}",
                     dataType: 'json',
                     type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}"
+                    },
                 },
                 columns: [
-                    { data: 'nik', orderable: true, searchable: true, className: "text-center py-3 asap" },
-                    { data: 'nama', orderable: false, searchable: false, className: "text-center py-3 asap" },
-                    { data: 'label', orderable: true, searchable: true, className: "text-center asap" },
-                    { data: 'aksi', orderable: false, searchable: false, className: "text-center asap" }
+                    { data: 'nik', orderable: true, searchable: true, className: "text-center py-3 asap border-t-2 " },
+                    { data: 'nama', orderable: false, searchable: false, className: "text-center py-3 asap border-t-2 " },
+                    { data: 'label', orderable: true, searchable: true, className: "text-center asap border-t-2 " },
+                    { data: 'aksi', orderable: false, searchable: false, className: "text-center asap border-t-2 " }
                 ],
                 "initComplete": function(settings, json) {
                     $('#table_akun').removeClass('hidden');
@@ -133,6 +174,11 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     });
+    function pressButton1() {
+        showTable1.click();
+    }
+    
+    pressButton1();
 });
 
 </script>

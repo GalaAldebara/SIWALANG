@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
                 'username' => 'Admin',
                 'nama' => 'Admin',
                 'status' => 'Selesai',
+                'status_hidup' => 'Hidup',
                 'password' => Hash::make('12345')
             ],
             [
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
                 'username' => 'RW',
                 'nama' => 'Sudiono',
                 'status' => 'Selesai',
+                'status_hidup' => 'Hidup',
                 'password' => Hash::make('12345')
             ],
             [
@@ -40,6 +42,7 @@ class UserSeeder extends Seeder
                 'username' => 'RT',
                 'nama' => 'Wahyu',
                 'status' => 'Selesai',
+                'status_hidup' => 'Hidup',
                 'password' => Hash::make('12345')
             ],
             [
@@ -49,6 +52,7 @@ class UserSeeder extends Seeder
                 'username' => 'Warga',
                 'nama' => 'Silfi Nazarina',
                 'status' => 'Menunggu Perlengkapan',
+                'status_hidup' => 'Hidup',
                 'password' => Hash::make('12345')
             ],
             [
@@ -56,8 +60,9 @@ class UserSeeder extends Seeder
                 'level_id' => 4,
                 'nik' => '357305005',
                 'username' => 'Warga',
-                'nama' => 'Makmur',
+                'nama' => 'Yatno',
                 'status' => 'Ditolak',
+                'status_hidup' => 'Hidup',
                 'password' => Hash::make('12345')
             ],
             [
@@ -66,9 +71,20 @@ class UserSeeder extends Seeder
                 'nik' => '357305006',
                 'username' => 'Warga',
                 'nama' => 'Yoan',
-                'status' => 'Menunggu Verifikasi',
+                'status' => 'Selesai',
+                'status_hidup' => 'Hidup',
                 'password' => Hash::make('12345')
-            ]
+            ],
+            [
+                'user_id' => 7,
+                'level_id' => 4,
+                'nik' => '357305007',
+                'username' => 'Warga',
+                'nama' => 'Makmur',
+                'status' => 'Menunggu Verifikasi',
+                'status_hidup' => 'Hidup',
+                'password' => Hash::make('12345')
+            ],
 
         ];
         DB::table('m_user')->insert($data);

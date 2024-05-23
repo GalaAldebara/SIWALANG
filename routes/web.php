@@ -44,7 +44,7 @@ Route::group(['prefix' => 'kegiatan'], function () {
     Route::get('/arsip', [KegiatanController::class, 'arsip']);
 });
 
-// Data Diri
+// profil Warga (data diri)
 Route::group(['prefix' => 'data_diri'], function () {
     Route::get('/', [DataDiriController::class, 'index']);
     Route::get('/form_satu', [DataDiriController::class, 'formSatu'])->name('form.satu');
@@ -55,12 +55,18 @@ Route::group(['prefix' => 'data_diri'], function () {
     Route::post('/', [DataDiriController::class, 'update'])->name('update.username.password');
 });
 
-// Data diri / akun Warga
+// Data Warga (RT)
 Route::group(['prefix' => 'data_warga'], function () {
     Route::get('/', [UserController::class, 'index'])->name('data-warga');
-    Route::post('/list', [UserController::class, 'list'])->name('akun_list');
+    Route::post('/list-akun', [UserController::class, 'listAkun'])->name('akun_list');
+    Route::post('/list-warga', [UserController::class, 'listWarga'])->name('warga_list');
     Route::get('/tambah', [UserController::class, 'add']);
     Route::post('/', [UserController::class, 'store']);
+    Route::get('/{id}', [UserController::class, 'show'])->name('rincian.warga');
+    Route::get('/{id}', [UserController::class, 'showAkun'])->name('rincian.warga');
+    Route::get('/edit/{id}', [UserController::class, 'edit']);
+    Route::post('/{id}', [UserController::class, 'update']);
+    Route::post('/edit_status/{id}', [UserController::class, 'editStatus'])->name('edit_status');
 });
 
 // Login

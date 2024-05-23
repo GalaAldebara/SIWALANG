@@ -8,6 +8,7 @@ use App\Models\DataDiriModel;
 use App\Models\Kota;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
+use App\Models\UserModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -93,17 +94,17 @@ class DataDiriController extends Controller
 
         $data = array_merge(session('warga.DataDiri.formSatu'), $validatedData);
 
-        $nama_file = $request->file('foto_ktp')->getClientOriginalName();
-        $request->file('foto_ktp')->move(public_path('img/ktp'), $nama_file);
+        $file_ktp = $request->file('foto_ktp')->getClientOriginalName();
+        $request->file('foto_ktp')->move(public_path('img/ktp'), $file_ktp);
 
-        $nama_file = $request->file('foto_kk')->getClientOriginalName();
-        $request->file('foto_kk')->move(public_path('img/kk'), $nama_file);
+        $file_kk = $request->file('foto_kk')->getClientOriginalName();
+        $request->file('foto_kk')->move(public_path('img/kk'), $file_kk);
 
-        $nama_file = $request->file('foto_surat_nikah')->getClientOriginalName();
-        $request->file('foto_surat_nikah')->move(public_path('img/surat-nikah'), $nama_file);
+        $file_nikah = $request->file('foto_surat_nikah')->getClientOriginalName();
+        $request->file('foto_surat_nikah')->move(public_path('img/surat-nikah'), $file_nikah);
 
-        $nama_file = $request->file('foto_profil')->getClientOriginalName();
-        $request->file('foto_profil')->move(public_path('img/profil'), $nama_file);
+        $file_profil = $request->file('foto_profil')->getClientOriginalName();
+        $request->file('foto_profil')->move(public_path('img/profil'), $file_profil);
 
         $user = Auth::user();
 
@@ -127,10 +128,10 @@ class DataDiriController extends Controller
         $dataDiri->kecamatan = $data['kecamatan'];
         $dataDiri->kota = $data['kota'];
         $dataDiri->alamat_ktp = $data['alamat_ktp'];
-        $dataDiri->foto_ktp = $data['foto_ktp'];
-        $dataDiri->foto_kk = $data['foto_kk'];
-        $dataDiri->foto_surat_nikah = $data['foto_surat_nikah'];
-        $dataDiri->foto_profil = $data['foto_profil'];
+        $dataDiri->foto_ktp = $file_ktp;
+        $dataDiri->foto_kk = $file_kk;
+        $dataDiri->foto_surat_nikah = $file_nikah;
+        $dataDiri->foto_profil = $file_profil;
 
 
         $dataDiri->save();
