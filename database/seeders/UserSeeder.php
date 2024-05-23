@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
                 'nik' => '357305001',
                 'username' => 'Admin',
                 'nama' => 'Admin',
+                'status' => 'Selesai',
                 'password' => Hash::make('12345')
             ],
             [
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
                 'nik' => '357305002',
                 'username' => 'RW',
                 'nama' => 'Sudiono',
+                'status' => 'Selesai',
                 'password' => Hash::make('12345')
             ],
             [
@@ -37,6 +39,7 @@ class UserSeeder extends Seeder
                 'nik' => '357305003',
                 'username' => 'RT',
                 'nama' => 'Wahyu',
+                'status' => 'Selesai',
                 'password' => Hash::make('12345')
             ],
             [
@@ -45,6 +48,7 @@ class UserSeeder extends Seeder
                 'nik' => '357305004',
                 'username' => 'Warga',
                 'nama' => 'Silfi Nazarina',
+                'status' => 'Menunggu Perlengkapan',
                 'password' => Hash::make('12345')
             ],
             [
@@ -53,6 +57,16 @@ class UserSeeder extends Seeder
                 'nik' => '357305005',
                 'username' => 'Warga',
                 'nama' => 'Makmur',
+                'status' => 'Ditolak',
+                'password' => Hash::make('12345')
+            ],
+            [
+                'user_id' => 6,
+                'level_id' => 4,
+                'nik' => '357305006',
+                'username' => 'Warga',
+                'nama' => 'Yoan',
+                'status' => 'Menunggu Verifikasi',
                 'password' => Hash::make('12345')
             ]
 

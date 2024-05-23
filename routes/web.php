@@ -61,10 +61,10 @@ Route::group(['prefix' => 'data_diri'], function () {
 
 // Data diri / akun Warga
 Route::group(['prefix' => 'data_warga'], function () {
-    Route::get('/', [UserController::class, 'indexRT']);
-    Route::post('/agenda/list', [KegiatanController::class, 'list']);
-    Route::get('/agenda/rincian', [KegiatanController::class, 'rincian']);
-    Route::get('/arsip', [KegiatanController::class, 'arsip']);
+    Route::get('/', [UserController::class, 'index'])->name('data-warga');
+    Route::post('/list', [UserController::class, 'list'])->name('akun_list');
+    Route::get('/tambah', [UserController::class, 'add']);
+    Route::post('/', [UserController::class, 'store']);
 });
 
 // Login
