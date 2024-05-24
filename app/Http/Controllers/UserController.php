@@ -181,4 +181,20 @@ class UserController extends Controller
         // Redirect kembali ke halaman rincian data warga setelah pembaruan
         return redirect('/data_warga/')->with('success', 'Status berhasil diperbarui');
     }
+
+    public function destroy(string $id)
+    {
+        $check = UserModel::find($id);
+        if (!$check) {
+            return redirect('/data_warga')->with('error', 'Data warga berhasil dihapus');
+        }
+
+        try {
+            UserModel::destroy($id);
+
+            return redirect('/data_warga')->with('success', 'Data warga berhasil dihapus');
+        } catch (\illuminate\Database\QueryException $e) {
+            return redirect('/data_warga')->with('error', 'Data warga gagal dihapus karena masih terdapat tabel yang terkait dengan data ini');
+        }
+    }
 }

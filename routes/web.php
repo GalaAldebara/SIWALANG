@@ -67,6 +67,7 @@ Route::group(['prefix' => 'data_warga'], function () {
     Route::get('/edit/{id}', [UserController::class, 'edit']);
     Route::post('/{id}', [UserController::class, 'update']);
     Route::post('/edit_status/{id}', [UserController::class, 'editStatus'])->name('edit_status');
+    Route::delete('/{id}', [UserController::class, 'destroy']);
 });
 
 // Login
