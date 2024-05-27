@@ -247,53 +247,64 @@
 @push('js')
 <script>
   // Ambil elemen checkbox dan elemen yang ingin disembunyikan
-  const checkbox = document.getElementById('hide-alamat');
-  const alamatTinggalSection = document.getElementById('alamat-tinggal-section');
+const checkbox = document.getElementById('hide-alamat');
+const alamatTinggalSection = document.getElementById('alamat-tinggal-section');
 
-  // Tambahkan event listener untuk checkbox
-  checkbox.addEventListener('change', function() {
-      // Jika checkbox dicentang, sembunyikan elemen input
-      if (this.checked) {
-          alamatTinggalSection.style.maxHeight = '0';
-      } else {
-          // Jika checkbox tidak dicentang, tampilkan kembali elemen input
-          alamatTinggalSection.style.maxHeight = '200px'; /* Sesuaikan dengan maksimum tinggi */
-      }
-  });
+const alamat = document.getElementById('alamat_tinggal');
+const rt = document.getElementById('rt');
+const rw = document.getElementById('rw');
+const kelurahan = document.getElementById('kelurahan');
+const kecamatan = document.getElementById('kecamatan');
+const kota = document.getElementById('kota');
 
-  const alamat = document.getElementById('alamat_tinggal');
-  const rt = document.getElementById('rt');
-  const rw = document.getElementById('rw');
-  const kelurahan = document.getElementById('kelurahan');
-  const kecamatan = document.getElementById('kecamatan');
-  const kota = document.getElementById('kota');
+const alamatKtp = document.getElementById('alamat_ktp');
+const rtKtp = document.getElementById('rt_ktp');
+const rwKtp = document.getElementById('rw_ktp');
+const kelurahanKtp = document.getElementById('kelurahan_ktp');
+const kecamatanKtp = document.getElementById('kecamatan_ktp');
+const kotaKtp = document.getElementById('kota_ktp');
 
-  const alamatKtp = document.getElementById('alamat_ktp');
-  const rtKtp = document.getElementById('rt_ktp');
-  const rwKtp = document.getElementById('rw_ktp');
-  const kelurahanKtp = document.getElementById('kelurahan_ktp');
-  const kecamatanKtp = document.getElementById('kecamatan_ktp');
-  const kotaKtp = document.getElementById('kota_ktp');
+// Tambahkan event listener untuk checkbox
+checkbox.addEventListener('change', function() {
+    // Jika checkbox dicentang, sembunyikan elemen input
+    if (this.checked) {
+        alamatTinggalSection.style.maxHeight = '0';
 
-  checkbox.addEventListener('change', function() {
-      // Jika checkbox dicentang
-      if (this.checked) {
-        const alamatValue = [alamat.value," RT.",rt.value," RW.",rw.value," ",kelurahan.value," ",kecamatan.value," ",kota.value].filter(Boolean).join('');
-          alamatKtp.value = alamatValue;
-          rtKtp.disabled = true;
-          rwKtp.disabled = true;
-          kelurahanKtp.disabled = true;
-          kecamatanKtp.disabled = true;
-          kotaKtp.disabled = true;
-          console.log(alamatValue);
-      } else { // Jika checkbox tidak dicentang
-          alamatKtp.value = "";
-          rtKtp.disabled = false;
-          rwKtp.disabled = false;
-          kelurahanKtp.disabled = false;
-          kecamatanKtp.disabled = false;
-          kotaKtp.disabled = false;
-      }
-  });
+        const alamatValue = [alamat.value, " RT.", rt.value, " RW.", rw.value, " ", kelurahan.value, " ", kecamatan.value, " ", kota.value].filter(Boolean).join('');
+        alamatKtp.value = alamatValue;
+        rtKtp.disabled = true;
+        rwKtp.disabled = true;
+        kelurahanKtp.disabled = true;
+        kecamatanKtp.disabled = true;
+        kotaKtp.disabled = true;
+    } else {
+        // Jika checkbox tidak dicentang, tampilkan kembali elemen input
+        alamatTinggalSection.style.maxHeight = '200px';
+        alamatKtp.value = "";
+        rtKtp.disabled = false;
+        rwKtp.disabled = false;
+        kelurahanKtp.disabled = false;
+        kecamatanKtp.disabled = false;
+        kotaKtp.disabled = false;
+    }
+});
+
+// Fungsi untuk mengupdate alamat KTP jika checkbox dicentang
+function updateAlamatKtp() {
+    if (checkbox.checked) {
+        const alamatValue = [alamat.value, " RT.", rt.value, " RW.", rw.value, " ", kelurahan.value, " ", kecamatan.value, " ", kota.value].filter(Boolean).join('');
+        alamatKtp.value = alamatValue;
+        console.log(alamatValue);
+    }
+}
+
+// Tambahkan event listener untuk perubahan pada input alamat tinggal
+alamat.addEventListener('input', updateAlamatKtp);
+rt.addEventListener('change', updateAlamatKtp);
+rw.addEventListener('change', updateAlamatKtp);
+kelurahan.addEventListener('change', updateAlamatKtp);
+kecamatan.addEventListener('change', updateAlamatKtp);
+kota.addEventListener('change', updateAlamatKtp);
+
 </script>
 @endpush
