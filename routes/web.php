@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\DataDiriController;
+use App\Http\Controllers\DataTamuController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PelaporanTamuController;
@@ -26,14 +27,13 @@ Route::group(['prefix' => 'pengaduan'], function () {
     Route::post('/', [PengaduanController::class, 'store']);
 });
 
-// Pelaporan Tamu
+// Pelaporan Tamu (Warga)
 Route::group(['prefix' => 'pelaporan-tamu'], function () {
     Route::get('/', [PelaporanTamuController::class, 'riwayat'])->name('riwayat');
     Route::post('/list', [PelaporanTamuController::class, 'list'])->name('pelaporan_list');
     Route::get('/form', [PelaporanTamuController::class, 'form']);
     Route::post('/', [PelaporanTamuController::class, 'store']);
     Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
-    // Route::get('/show', [PelaporanTamuController::class, 'lihat']);
 });
 
 //kegiatan
@@ -68,6 +68,15 @@ Route::group(['prefix' => 'data_warga'], function () {
     Route::post('/{id}', [UserController::class, 'update']);
     Route::post('/edit_status/{id}', [UserController::class, 'editStatus'])->name('edit_status');
     Route::delete('/{id}', [UserController::class, 'destroy']);
+});
+
+// Data Tamu (RT)
+Route::group(['prefix' => 'data_tamu'], function () {
+    Route::get('/', [DataTamuController::class, 'index']);
+    Route::post('/list', [DataTamuController::class, 'list'])->name('tamu_list');
+    // Route::get('/form', [DataTamuController::class, 'form']);
+    // Route::post('/', [DataTamuController::class, 'store']);
+    Route::get('/{id}', [DataTamuController::class, 'show'])->name('rincian.data-tamu');
 });
 
 // Login
