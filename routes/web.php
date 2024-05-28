@@ -10,6 +10,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\DataDiriController;
+use App\Http\Controllers\DataPengaduanController;
+use App\Http\Controllers\DataTamuController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\DataWargaController;
@@ -34,14 +36,13 @@ Route::group(['prefix' => 'pengaduan'], function () {
     Route::post('/', [PengaduanController::class, 'store']);
 });
 
-// Pelaporan Tamu
+// Pelaporan Tamu (Warga)
 Route::group(['prefix' => 'pelaporan-tamu'], function () {
     Route::get('/', [PelaporanTamuController::class, 'riwayat'])->name('riwayat');
     Route::post('/list', [PelaporanTamuController::class, 'list'])->name('pelaporan_list');
     Route::get('/form', [PelaporanTamuController::class, 'form']);
     Route::post('/', [PelaporanTamuController::class, 'store']);
     Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
-    // Route::get('/show', [PelaporanTamuController::class, 'lihat']);
 });
 
 //kegiatan
@@ -61,6 +62,22 @@ Route::group(['prefix' => 'data_diri'], function () {
     Route::post('/form_dua', [DataDiriController::class, 'storeDua'])->name('store.form-dua');
     Route::get('/form_password', [DataDiriController::class, 'formPassword']);
     Route::post('/form_password', [AuthController::class, 'prosesChangePassword'])->name('update.username.password');
+});
+
+// Data Tamu (RT)
+Route::group(['prefix' => 'data_tamu'], function () {
+    Route::get('/', [DataTamuController::class, 'index']);
+    Route::post('/list', [DataTamuController::class, 'list'])->name('tamu_list');
+    // Route::get('/form', [DataTamuController::class, 'form']);
+    // Route::post('/', [DataTamuController::class, 'store']);
+    Route::get('/{id}', [DataTamuController::class, 'show'])->name('rincian.data-tamu');
+});
+
+// Data pengaduan
+Route::group(['prefix' => 'data_pengaduan'], function () {
+    Route::get('/', [DataPengaduanController::class, 'index']);
+    Route::post('/', [DataPengaduanController::class, 'list'])->name('data.pengaduan_list');
+    Route::get('/{id}', [DataPengaduanController::class, 'show'])->name('rincian.data-pengaduan');
 });
 
 // Login

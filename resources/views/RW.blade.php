@@ -23,7 +23,7 @@
                         <h1 class="text-walang text-3xl font-black" style="font-family: Inter">WALANG</h1>
                     </div>
                     <div class="flex flex-row items-center pr-8">
-                        <a class="group font-bold px-7 text-walang transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
+                        <a class="group font-bold px-7 text-walang transition-all duration-300 ease-in-out" href="{{ url('RT') }}" >
                             <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                                 BERANDA
                             </span>
@@ -59,7 +59,18 @@
                             <p class="text-xs text-gray-500 pt-4">Pengelola data warga</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('pelaporan-tamu') }}">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_tamu') }}">
+                        <div class="p-5 flex flex-col items-center text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mt-1">
+                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                            </svg>
+                            <p class="font-bold pt-3">Data Tamu</p>
+                            <p class="text-xs text-gray-500 pt-4">History tamu dari luar desa</p> 
+                        </div>
+                    </a>
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('penerima_bansos') }}">
+
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="45" height="53" fill="#2a6c12" class="bi bi-person-vcard" viewBox="0 0 16 12">
                                 <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"/>
@@ -78,7 +89,11 @@
                             <p class="text-xs text-gray-500 pt-2">Pengelola data warga yang berhak menerima bansos</p>
                         </div>
                     </a>
+<<<<<<< HEAD
                     <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('kegiatan/agenda') }}">
+=======
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('') }}">
+>>>>>>> data-tamu
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="53" fill="#2a6c12" class="bi bi-calendar3" viewBox="0 0 16 12">
                                 <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
@@ -88,7 +103,7 @@
                             <p class="text-xs text-gray-500 pt-2">Daftar riwayat kegiatan lingkungan warga</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('kegiatan/agenda') }}">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_pengaduan') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="53" fill="#2a6c12" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z"/>
