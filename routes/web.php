@@ -134,3 +134,19 @@ Route::get('/rinciandatadiri', function () {
 Route::get('/formgantipassword', function () {
     return view('warga.data diri.formGantiPassword');
 });
+
+Route::get('/daftarkegiatan', function () {
+    return view('rw.arsip kegiatan - rw.tabelKegiatan');
+});
+
+Route::get('/rinciankegiatan', function () {
+    return view('rw.arsip kegiatan - rw.rincianKegiatan');
+});
+
+Route::get('/formtambahkegiatan', function () {
+    return view('rw.arsip kegiatan - rw.formTambahKegiatan');
+});
+
+Route::get('/formuploadkegiatan', function () {
+    return view('rw.arsip kegiatan - rw.formUploadKegiatan');
+});
