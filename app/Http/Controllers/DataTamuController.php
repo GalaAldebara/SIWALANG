@@ -3,12 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-
-class DataTamuController extends Controller
-{
-    //
-=======
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PelaporanTamuModel;
@@ -51,5 +45,4 @@ class DataTamuController extends Controller
 
         return view('rt.DataTamu.show', ['header' => $header, 'pelaporan' => $pelaporan]);
     }
->>>>>>> data-tamu
 }
