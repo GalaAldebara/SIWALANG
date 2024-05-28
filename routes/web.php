@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\DataDiriController;
+use App\Http\Controllers\DataPengaduanController;
 use App\Http\Controllers\DataTamuController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PengaduanController;
@@ -77,6 +78,13 @@ Route::group(['prefix' => 'data_tamu'], function () {
     // Route::get('/form', [DataTamuController::class, 'form']);
     // Route::post('/', [DataTamuController::class, 'store']);
     Route::get('/{id}', [DataTamuController::class, 'show'])->name('rincian.data-tamu');
+});
+
+// Data pengaduan
+Route::group(['prefix' => 'data_pengaduan'], function () {
+    Route::get('/', [DataPengaduanController::class, 'index']);
+    Route::post('/', [DataPengaduanController::class, 'list'])->name('data.pengaduan_list');
+    Route::get('/{id}', [DataPengaduanController::class, 'show'])->name('rincian.data-pengaduan');
 });
 
 // Login
