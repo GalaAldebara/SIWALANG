@@ -89,11 +89,7 @@
                             <p class="text-xs text-gray-500 pt-2">Pengelola data warga yang berhak menerima bansos</p>
                         </div>
                     </a>
-<<<<<<< HEAD
-                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('kegiatan/agenda') }}">
-=======
-                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('') }}">
->>>>>>> data-tamu
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_tamu') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="53" fill="#2a6c12" class="bi bi-calendar3" viewBox="0 0 16 12">
                                 <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
