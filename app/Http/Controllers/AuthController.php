@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -57,34 +59,40 @@ class AuthController extends Controller
             ->withErrors(['login_gagal' => 'Pastikan kembali NIK dan password yang dimasukkan sudah benar']);
     }
 
-    // public function register()
-    // {
-    //     return view('register');
-    // }
+    public function ubah_password()
+    {
+        return view('warga.DataDiri.formPassword');
+    }
 
-    // public function proses_register(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'nama' => 'required',
-    //         'username' => 'required|unique:m_user',
-    //         'password' => 'required'
-    //     ]);
+    public function prosesChangePassword(Request $request)
+    {
+        $header = (object) [
+            'title' => 'Data Diri',
+            'list' => ['Beranda', 'Data Diri', 'Form Data Diri']
+        ];
 
-    //     if ($validator->fails()) {
-    //         return redirect('/register')
-    //             ->withErrors($validator)
-    //             ->withInput();
-    //     }
+        $request->validate([
+            'oldPassword' => 'required',
+            'newPassword' => 'required|string|min:8|confirmed',
+        ]);
 
-    //     $request['level_id'] = '2';
-    //     $request['password'] = Hash::make($request->password);
+        $user = Auth::user();
 
-    //     UserModel::create($request->all());
+        if (!Hash::check($request->oldPassword, $user->password)) {
+            return redirect()->back()->withErrors(['oldPassword' => 'Password lama tidak cocok.']);
+        }
 
-    //     return redirect()->route('login');
-    // }
+        UserModel::where('user_id', $user->user_id)->update([
+            'password' => Hash::make($request->newPassword)
+        ]);
 
+        // Perbarui password langsung di dalam database
+        // DB::table('m_user')
+        //     ->where('user_id', $user->user_id)
+        //     ->update(['password' => Hash::make($request->newPassword)]);
 
+        return view('warga.DataDiri.formDataDiri', ['header' => $header]);
+    }
 
     public function logout(Request $request)
     {

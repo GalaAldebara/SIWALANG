@@ -5,15 +5,27 @@ use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
 use Illuminate\Routing\RouteRegistrar;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\DataDiriController;
+use App\Http\Controllers\DataPengaduanController;
+use App\Http\Controllers\DataTamuController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\DataWargaController;
 use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\RWDataTamuController;
+use App\Http\Controllers\RW_DataTamuController;
 use App\Http\Controllers\PelaporanTamuController;
 
-Route::get('/gg', function () {
-    return view('warga.PelaporanTamu.index2');
+Route::get('/coba', function () {
+    return view('rt.DataWarga.index');
+});
+
+Route::get('/DataWarga', function () {
+    return view('RW.DataWarga.index');
 });
 
 // pengaduan
@@ -24,23 +36,49 @@ Route::group(['prefix' => 'pengaduan'], function () {
     Route::post('/', [PengaduanController::class, 'store']);
 });
 
-// Pelaporan Tamu
+// Pelaporan Tamu (Warga)
 Route::group(['prefix' => 'pelaporan-tamu'], function () {
     Route::get('/', [PelaporanTamuController::class, 'riwayat'])->name('riwayat');
     Route::post('/list', [PelaporanTamuController::class, 'list'])->name('pelaporan_list');
     Route::get('/form', [PelaporanTamuController::class, 'form']);
     Route::post('/', [PelaporanTamuController::class, 'store']);
     Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
-    // Route::get('/show', [PelaporanTamuController::class, 'lihat']);
 });
 
-// Data Diri
-// Route::group(['prefix' => 'data-diri'], function () {
-Route::get('/form_data_diri', [DataDiriController::class, 'createForm'])->name('form_data_diri');
-Route::post('/store_data_diri', [DataDiriController::class, 'store'])->name('store_data_diri');
-Route::get('/data_diri', [DataDiriController::class, 'index'])->name('data_diri.index');
-// });
+//kegiatan
+Route::group(['prefix' => 'kegiatan'], function () {
+    Route::get('/agenda', [KegiatanController::class, 'agenda']);
+    Route::post('/agenda/list', [KegiatanController::class, 'list']);
+    Route::get('/agenda/rincian', [KegiatanController::class, 'rincian']);
+    Route::get('/arsip', [KegiatanController::class, 'arsip']);
+});
 
+// profil Warga (data diri)
+Route::group(['prefix' => 'data_diri'], function () {
+    Route::get('/', [DataDiriController::class, 'index']);
+    Route::get('/form_satu', [DataDiriController::class, 'formSatu'])->name('form.satu');
+    Route::post('/form_satu', [DataDiriController::class, 'storeSatu'])->name('store.form-satu');
+    Route::get('/form_dua', [DataDiriController::class, 'formDua'])->name('form.dua');
+    Route::post('/form_dua', [DataDiriController::class, 'storeDua'])->name('store.form-dua');
+    Route::get('/form_password', [DataDiriController::class, 'formPassword']);
+    Route::post('/form_password', [AuthController::class, 'prosesChangePassword'])->name('update.username.password');
+});
+
+// Data Tamu (RT)
+Route::group(['prefix' => 'data_tamu'], function () {
+    Route::get('/', [DataTamuController::class, 'index']);
+    Route::post('/list', [DataTamuController::class, 'list'])->name('tamu_list');
+    // Route::get('/form', [DataTamuController::class, 'form']);
+    // Route::post('/', [DataTamuController::class, 'store']);
+    Route::get('/{id}', [DataTamuController::class, 'show'])->name('rincian.data-tamu');
+});
+
+// Data pengaduan
+Route::group(['prefix' => 'data_pengaduan'], function () {
+    Route::get('/', [DataPengaduanController::class, 'index']);
+    Route::post('/', [DataPengaduanController::class, 'list'])->name('data.pengaduan_list');
+    Route::get('/{id}', [DataPengaduanController::class, 'show'])->name('rincian.data-pengaduan');
+});
 
 // Login
 Route::get('/', [AuthController::class, 'index'])->name('login');
@@ -55,15 +93,55 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('admin', AdminController::class);
     });
     Route::group(['middleware' => ['cek_login:2']], function () {
-        Route::resource('RW', RTController::class);
+        Route::resource('RW', RWController::class);
     });
     Route::group(['middleware' => ['cek_login:3']], function () {
-        Route::resource('RT', RWController::class);
+        Route::resource('RT', RTController::class);
     });
     Route::group(['middleware' => ['cek_login:4']], function () {
         Route::resource('warga', WargaController::class);
     });
 });
+
+// Route::group(['prefix' => 'pelaporan-tamu'], function () {
+//     Route::get('/', [PelaporanTamuController::class, 'riwayat'])->name('riwayat');
+//     Route::post('/list', [PelaporanTamuController::class, 'list'])->name('pelaporan_list');
+//     Route::get('/form', [PelaporanTamuController::class, 'form']);
+//     Route::post('/', [PelaporanTamuController::class, 'store']);
+//     Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
+//     // Route::get('/show', [PelaporanTamuController::class, 'lihat']);
+// });
+
+// Route::group(['prefix' => 'pengaduan'], function () {
+//     Route::get('/', [PengaduanController::class, 'riwayat']);
+//     Route::post('/list', [PengaduanController::class, 'list'])->name('pengaduan_list');
+//     Route::get('/form', [PengaduanController::class, 'form']);
+//     Route::post('/', [PengaduanController::class, 'store']);
+// });
+
+// RW - Data Tamu Warga
+Route::group(['prefix' => 'RW-DataTamu'], function () {
+    Route::get('/', [RWDataTamuController::class, 'index']);
+    Route::post('/tambah', [RWDataTamuController::class, 'list'])->name('keuangan_list');
+    Route::get('/rincian', [RWDataTamuController::class, 'form']);
+    Route::post('/', [RWDataTamuController::class, 'store']);
+});
+
+// RW - Keuangan
+Route::group(['prefix' => 'RW-Keuangan'], function () {
+    Route::get('/', [KeuanganController::class, 'index']);
+    Route::post('/list', [KeuanganController::class, 'keuangan_list'])->name('keuangan_list');
+    Route::get('/form', [KeuanganController::class, 'form']);
+    Route::post('/', [KeuanganController::class, 'store']);
+    Route::get('/{keuangan_id}/edit', [KeuanganController::class, 'edit']);
+});
+
+// RW - Data Warga
+Route::group(['prefix' => 'RW-DataWarga'], function () {
+    Route::get('/index', [DataWargaController::class, 'index'])->name('RW.DataWarga.index');
+    Route::get('/data_warga', [DataWargaController::class, 'index'])->name('data_warga_list');
+});
+
 
 Route::get('/struktur', function () {
     return view('warga.strukturKepemimpinan.strukturKepemimpinan');
@@ -104,8 +182,6 @@ Route::get('/riwayatpengajuanwaiting', function () {
 Route::get('/rinciansurat', function () {
     return view('warga.pengajuan surat pengantar.rincianSurat');
 });
-
-
 
 Route::get('/formbansos', function () {
     return view('warga.pengajuan bansos.formPengajuanBansos');
@@ -150,3 +226,4 @@ Route::get('/formtambahkegiatan', function () {
 Route::get('/formuploadkegiatan', function () {
     return view('rw.arsip kegiatan - rw.formUploadKegiatan');
 });
+

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('keluhan', 225);
             $table->string('bukti', 225);
             $table->timestamps();
-            $table->foreign('nik')->references('nik')->on('m_user');
+            $table->foreign('nik')->references('nik')->on('m_user')->onDelete('cascade');
         });
     }
 
