@@ -30,6 +30,7 @@ class DataDiriModel extends Model
         'kecamatan_id',
         'kelurahan_id',
         'kewarganegaraan',
+        'pekerjaan',
         'kota',
         'kecamatan',
         'kelurahan',
@@ -44,6 +45,7 @@ class DataDiriModel extends Model
         'foto_kk',
         'surat_nikah',
         'foto_profil',
+        'status',
     ];
 
     // Relationship with User model

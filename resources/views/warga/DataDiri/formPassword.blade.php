@@ -17,7 +17,7 @@
             <div class="mb-3">
                 <label for="NIK">NIK</label>
                 <div class="mt-2 w-full">
-                    <input id="NIK" name="NIK" type="text" placeholder="{{ Auth::user()->nik }}" readonly class="w-full rounded-md border py-1 px-4 bg-gray-200">
+                    <input id="NIK" name="NIK" type="text" placeholder="{{ Auth::user()->nik }}" readonly class="w-full rounded-md border py-1 px-4 text-gray-900 bg-gray-200">
                     @error('NIK')
                     <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                     @enderror
@@ -82,7 +82,7 @@
       var password1 = document.getElementById("newPassword");
       var password2 = document.getElementById("repeatPassword");
       var checkbox = document.getElementById("show-password");
-  
+
       if (checkbox.checked) {
         password1.type = "text";
         password2.type = "text";
@@ -93,3 +93,47 @@
     }
   </script>
 @endpush
+
+{{-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubah Password</title>
+    <!-- Tambahkan CSS Bootstrap atau CSS lainnya di sini -->
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Ubah Password</div>
+                    <div class="card-body">
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+                        <form method="POST" action="{{ route('update.username.password') }}">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="oldPassword" class="form-label">Password Lama</label>
+                                <input type="password" class="form-control" id="oldPassword" name="old_password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">Password Baru</label>
+                                <input type="password" class="form-control" id="newPassword" name="new_password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="repeatPassword" class="form-label">Konfirmasi Password Baru</label>
+                                <input type="password" class="form-control" id="repeatPassword" name="repeat_password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ubah Password</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tambahkan JS Bootstrap atau JS lainnya di sini -->
+</body>
+</html> --}}
+

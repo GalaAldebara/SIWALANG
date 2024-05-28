@@ -5,17 +5,25 @@ use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
 use Illuminate\Routing\RouteRegistrar;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\DataDiriController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\DataWargaController;
 use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\RWDataTamuController;
+use App\Http\Controllers\RW_DataTamuController;
 use App\Http\Controllers\PelaporanTamuController;
-use App\Http\Controllers\UserController;
 
 Route::get('/coba', function () {
     return view('rt.DataWarga.index');
+});
+
+Route::get('/DataWarga', function () {
+    return view('RW.DataWarga.index');
 });
 
 // pengaduan
@@ -52,22 +60,7 @@ Route::group(['prefix' => 'data_diri'], function () {
     Route::get('/form_dua', [DataDiriController::class, 'formDua'])->name('form.dua');
     Route::post('/form_dua', [DataDiriController::class, 'storeDua'])->name('store.form-dua');
     Route::get('/form_password', [DataDiriController::class, 'formPassword']);
-    Route::post('/', [DataDiriController::class, 'update'])->name('update.username.password');
-});
-
-// Data Warga (RT)
-Route::group(['prefix' => 'data_warga'], function () {
-    Route::get('/', [UserController::class, 'index'])->name('data-warga');
-    Route::post('/list-akun', [UserController::class, 'listAkun'])->name('akun_list');
-    Route::post('/list-warga', [UserController::class, 'listWarga'])->name('warga_list');
-    Route::get('/tambah', [UserController::class, 'add']);
-    Route::post('/', [UserController::class, 'store']);
-    Route::get('/{id}', [UserController::class, 'show'])->name('rincian.warga');
-    Route::get('/akun/{id}', [UserController::class, 'showAkun'])->name('rincian.akun');
-    Route::get('/edit/{id}', [UserController::class, 'edit']);
-    Route::post('/{id}', [UserController::class, 'update']);
-    Route::post('/edit_status/{id}', [UserController::class, 'editStatus'])->name('edit_status');
-    Route::delete('/{id}', [UserController::class, 'destroy']);
+    Route::post('/form_password', [AuthController::class, 'prosesChangePassword'])->name('update.username.password');
 });
 
 // Login
@@ -83,15 +76,55 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('admin', AdminController::class);
     });
     Route::group(['middleware' => ['cek_login:2']], function () {
-        Route::resource('RW', RTController::class);
+        Route::resource('RW', RWController::class);
     });
     Route::group(['middleware' => ['cek_login:3']], function () {
-        Route::resource('RT', RWController::class);
+        Route::resource('RT', RTController::class);
     });
     Route::group(['middleware' => ['cek_login:4']], function () {
         Route::resource('warga', WargaController::class);
     });
 });
+
+// Route::group(['prefix' => 'pelaporan-tamu'], function () {
+//     Route::get('/', [PelaporanTamuController::class, 'riwayat'])->name('riwayat');
+//     Route::post('/list', [PelaporanTamuController::class, 'list'])->name('pelaporan_list');
+//     Route::get('/form', [PelaporanTamuController::class, 'form']);
+//     Route::post('/', [PelaporanTamuController::class, 'store']);
+//     Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
+//     // Route::get('/show', [PelaporanTamuController::class, 'lihat']);
+// });
+
+// Route::group(['prefix' => 'pengaduan'], function () {
+//     Route::get('/', [PengaduanController::class, 'riwayat']);
+//     Route::post('/list', [PengaduanController::class, 'list'])->name('pengaduan_list');
+//     Route::get('/form', [PengaduanController::class, 'form']);
+//     Route::post('/', [PengaduanController::class, 'store']);
+// });
+
+// RW - Data Tamu Warga
+Route::group(['prefix' => 'RW-DataTamu'], function () {
+    Route::get('/', [RWDataTamuController::class, 'index']);
+    Route::post('/tambah', [RWDataTamuController::class, 'list'])->name('keuangan_list');
+    Route::get('/rincian', [RWDataTamuController::class, 'form']);
+    Route::post('/', [RWDataTamuController::class, 'store']);
+});
+
+// RW - Keuangan
+Route::group(['prefix' => 'RW-Keuangan'], function () {
+    Route::get('/', [KeuanganController::class, 'index']);
+    Route::post('/list', [KeuanganController::class, 'keuangan_list'])->name('keuangan_list');
+    Route::get('/form', [KeuanganController::class, 'form']);
+    Route::post('/', [KeuanganController::class, 'store']);
+    Route::get('/{keuangan_id}/edit', [KeuanganController::class, 'edit']);
+});
+
+// RW - Data Warga
+Route::group(['prefix' => 'RW-DataWarga'], function () {
+    Route::get('/index', [DataWargaController::class, 'index'])->name('RW.DataWarga.index');
+    Route::get('/data_warga', [DataWargaController::class, 'index'])->name('data_warga_list');
+});
+
 
 Route::get('/struktur', function () {
     return view('warga.strukturKepemimpinan.strukturKepemimpinan');

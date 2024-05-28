@@ -16,17 +16,17 @@
                 <a class="group font-bold px-7 text-walang transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
                     <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                         BERANDA
-                    </span>   
+                    </span>
                 </a>
                 <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
                     <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                         NOTIFIKASI
-                    </span>   
+                    </span>
                 </a>
                 <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('logout') }}" >
                     <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                         LOGOUT
-                    </span>   
+                    </span>
                 </a>
             </div>
         </nav>

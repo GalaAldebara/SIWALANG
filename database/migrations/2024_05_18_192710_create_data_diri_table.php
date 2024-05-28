@@ -18,12 +18,12 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->enum('status_perkawinan', ['Nikah', 'Belum Nikah']);
-            $table->string('no_telp', 20);
+            $table->integer('no_telp', 20);
             $table->string('no_kk', 20);
             $table->enum('hubungan_kk', ['kepala keluarga', 'isteri', 'anak']);
             $table->enum('status_kependudukan', ['Warga Asli', 'Kontrak', 'Kost', 'Pindahan']);
             $table->string('kewarganegaraan', 50);
-            $table->string('pekerjaan');
+            $table->string('pekerjaan', 50);
             $table->string('alamat_tinggal', 100);
             $table->integer('rt');
             $table->integer('rw');

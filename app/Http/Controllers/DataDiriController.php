@@ -110,7 +110,8 @@ class DataDiriController extends Controller
 
         $dataDiri = new DataDiriModel();
         $dataDiri->nik = $user->nik;
-        $user->status = 'Menunggu verifikasi';
+        $dataDiri->status = 'Menunggu verifikasi';
+        $dataDiri->nama = $user->nama;
         $dataDiri->tanggal_lahir = $data['tanggal_lahir'];
         $dataDiri->tempat_lahir = $data['tempat_lahir'];
         $dataDiri->jenis_kelamin = $data['jenis_kelamin'];

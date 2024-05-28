@@ -66,40 +66,33 @@ class AuthController extends Controller
 
     public function prosesChangePassword(Request $request)
     {
+        $header = (object) [
+            'title' => 'Data Diri',
+            'list' => ['Beranda', 'Data Diri', 'Form Data Diri']
+        ];
 
-        if (!Hash::check($request->old_password, auth()->user()->password)) {
-            return back()->with('error', 'Password Lama Salah');
+        $request->validate([
+            'oldPassword' => 'required',
+            'newPassword' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->oldPassword, $user->password)) {
+            return redirect()->back()->withErrors(['oldPassword' => 'Password lama tidak cocok.']);
         }
 
-        if ($request->newPassword != $request->repeatPassword) {
-            return back()->with('error', 'Password Baru Tidak Sesuai');
-        }
-
-        auth()->user()->update([
+        UserModel::where('user_id', $user->user_id)->update([
             'password' => Hash::make($request->newPassword)
         ]);
+
+        // Perbarui password langsung di dalam database
+        // DB::table('m_user')
+        //     ->where('user_id', $user->user_id)
+        //     ->update(['password' => Hash::make($request->newPassword)]);
+
+        return view('warga.DataDiri.formDataDiri', ['header' => $header]);
     }
-
-    // public function prosesChangePassword(Request $request)
-    // {
-    //     $request->validate([
-    //         'oldPassword' => 'required',
-    //         'newPassword' => 'required|string|min:8|confirmed',
-    //     ]);
-
-    //     $user = Auth::user();
-
-    //     if (!Hash::check($request->oldPassword, $user->password)) {
-    //         return redirect()->back()->withErrors(['oldPassword' => 'Password lama tidak cocok.']);
-    //     }
-
-    //     // Perbarui password langsung di dalam database
-    //     DB::table('m_user')
-    //         ->where('user_id', $user->user_id)
-    //         ->update(['password' => Hash::make($request->newPassword)]);
-
-    //     return redirect()->back()->with('success', 'Password berhasil diubah.');
-    // }
 
     public function logout(Request $request)
     {
