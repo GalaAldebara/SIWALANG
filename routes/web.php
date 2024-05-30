@@ -120,7 +120,7 @@ Route::group(['middleware' => ['auth']], function () {
 // });
 
 // RW - Data Tamu Warga
-Route::group(['prefix' => 'RW-DataTamu'], function () {
+Route::group(['prefix' => 'data_tamu'], function () {
     Route::get('/', [RWDataTamuController::class, 'index']);
     Route::post('/tambah', [RWDataTamuController::class, 'list'])->name('keuangan_list');
     Route::get('/rincian', [RWDataTamuController::class, 'form']);
@@ -129,7 +129,7 @@ Route::group(['prefix' => 'RW-DataTamu'], function () {
 
 // RW - Keuangan
 Route::group(['prefix' => 'RW-Keuangan'], function () {
-    Route::get('/', [KeuanganController::class, 'index']);
+    Route::get('/', [KeuanganController::class, 'index'])->name('index');
     Route::post('/list', [KeuanganController::class, 'keuangan_list'])->name('keuangan_list');
     Route::get('/form', [KeuanganController::class, 'form']);
     Route::post('/', [KeuanganController::class, 'store']);
@@ -138,8 +138,8 @@ Route::group(['prefix' => 'RW-Keuangan'], function () {
 
 // RW - Data Warga
 Route::group(['prefix' => 'RW-DataWarga'], function () {
-    Route::get('/index', [DataWargaController::class, 'index'])->name('RW.DataWarga.index');
-    Route::get('/data_warga', [DataWargaController::class, 'index'])->name('data_warga_list');
+    Route::get('/', [DataWargaController::class, 'index'])->name('RW.DataWarga.index');
+    Route::post('/data_warga', [DataWargaController::class, 'datawarga_list'])->name('datawarga_list');
 });
 
 
@@ -210,3 +210,20 @@ Route::get('/rinciandatadiri', function () {
 Route::get('/formgantipassword', function () {
     return view('warga.data diri.formGantiPassword');
 });
+
+Route::get('/daftarkegiatan', function () {
+    return view('rw.arsip kegiatan - rw.tabelKegiatan');
+});
+
+Route::get('/rinciankegiatan', function () {
+    return view('rw.arsip kegiatan - rw.rincianKegiatan');
+});
+
+Route::get('/formtambahkegiatan', function () {
+    return view('rw.arsip kegiatan - rw.formTambahKegiatan');
+});
+
+Route::get('/formuploadkegiatan', function () {
+    return view('rw.arsip kegiatan - rw.formUploadKegiatan');
+});
+

@@ -35,8 +35,8 @@
                     <div class="mt-2 w-full">
                         <select name="kategori" id="kategori" class="w-full rounded-md border py-1 px-4 text-gray-900">
                             <option value="" disabled selected>Pilih Kategori</option>
-                            <option value="pemasukan">Pemasukan</option>
-                            <option value="pengeluaran">Pengeluaran</option>
+                            <option value="Pemasukan">Pemasukan</option>
+                            <option value="Pengeluaran">Pengeluaran</option>
                         </select>
                     </div>
                 </div>
