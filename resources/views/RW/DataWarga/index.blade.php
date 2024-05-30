@@ -29,7 +29,7 @@
                         Tambah
                     </a>
                 </div>
-                <table class="table-auto border-separate border border-gray-300 w-full" id="table_data_warga">
+                <table class="table-auto border-separate border border-gray-300 w-full" id="table_data_diri">
                     <thead class="bg-primary-form">
                         <tr class="tracking-wide">
                             <th class="p-3 border border-gray-300" style="font-family: Asap">NIK</th>
@@ -63,7 +63,7 @@
             "paging": false,
             "lengthChange": false,
             ajax: {
-                url: "{{ route('data_warga_list') }}",
+                url: "{{ route('datawarga_list') }}",
                 dataType: 'json',
                 type: 'POST',
             },
