@@ -23,20 +23,20 @@
                         <h1 class="text-walang text-3xl font-black" style="font-family: Inter">WALANG</h1>
                     </div>
                     <div class="flex flex-row items-center pr-8">
-                        <a class="group font-bold px-7 text-walang transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
+                        <a class="group font-bold px-7 text-walang transition-all duration-300 ease-in-out" href="{{ url('RT') }}" >
                             <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                                 BERANDA
-                            </span>
+                            </span>   
                         </a>
                         <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
                             <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                                 NOTIFIKASI
-                            </span>
+                            </span>   
                         </a>
                         <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('logout') }}" >
                             <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                                 LOGOUT
-                            </span>
+                            </span>   
                         </a>
                     </div>
                 </nav>
@@ -49,77 +49,58 @@
 
         <div class="relative -top-14 w-full">
             <div class="flex justify-center">
-                <nav class="flex flex-row flex-wrap gap-9 justify-center items-center w-5/6 text-xl">
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('') }}">
+                <nav class="flex flex-row flex-wrap gap-9 justify-center items-center w-4/6 text-xl">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_warga') }}">
                         <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mt-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold mb-2">Pengajuan Surat</p>
-                            <p class="text-xs text-gray-500">Pengajuan surat pengantar</p>
+                            <p class="font-bold pt-3">Data Warga</p>
+                            <p class="text-xs text-gray-500 pt-4">Pengelola data warga</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('') }}">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_tamu') }}">
                         <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mt-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold mb-2">Pengajuan Bansos</p>
-                            <p class="text-xs text-gray-500">Pengajuan penerima bantuan sosial</p>
+                            <p class="font-bold pt-3">Data Tamu</p>
+                            <p class="text-xs text-gray-500 pt-4">History tamu dari luar desa</p> 
                         </div>
                     </a>
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('pelaporan-tamu') }}">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('penerima_bansos') }}">
                         <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mt-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold mb-2">Pelaporan Tamu</p>
-                            <p class="text-xs text-gray-500">Pelaporan adanya tamu dari luar desa yang menginap</p>
+                            <p class="font-bold pt-3">Data Penerima Bansos</p>
+                            <p class="text-xs text-gray-500 pt-2">Pengelola data warga yang berhak menerima bansos</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('pengaduan') }}">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('') }}">
                         <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mt-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold mb-2">Pengaduan</p>
-                            <p class="text-xs text-gray-500">Pengaduan permasalahan yang terjadi di lingkungan warga</p>
+                            <p class="font-bold pt-3">Pengajuan Surat</p>
+                            <p class="text-xs text-gray-500 pt-2">Daftar riwayat pengajuan surat oleh warga</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('kegiatan/agenda') }}">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_pengaduan') }}">
                         <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mt-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                                 <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                             </svg>
-                            <p class="font-bold mb-2">Jadwal Kegiatan</p>
-                            <p class="text-xs text-gray-500">Agenda / Jadwal kegiatan warga mendatang</p>
+                            <p class="font-bold pt-2">Pengaduan</p>
+                            <p class="text-xs text-gray-500 pt-3">Pengaduan permasalahan yang terjadi di lingkungan warga</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('kegiatan/arsip') }}">
-                        <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
-                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                            </svg>
-                            <p class="font-bold mb-2">Arsip Kegiatan</p>
-                            <p class="text-xs text-gray-500">Arsip dokumentasi kegiatan warga bersama</p>
-                        </div>
-                    </a>
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('data_diri') }}">
-                        <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mb-1">
-                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                            </svg>
-                            <p class="font-bold mb-2">Data diri</p>
-                            <p class="text-xs text-gray-500">Informasi personal data kependudukan</p>
-                        </div>
-                    </a>
+                    
                 </nav>
             </div>
         </div>
@@ -169,14 +150,14 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6">
                             <path fill-rule="evenodd" d="M13.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
                             <path fill-rule="evenodd" d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
-                          </svg>
+                          </svg>                          
                     </button>
                 </div>
                 <div class="col-start-1 flex justify-end items-center">
                     <button class="size-14 bg-primary rounded-full flex justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6 mr-1">
                             <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
-                          </svg>
+                          </svg>                          
                     </button>
                 </div>
                 <div class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
@@ -207,7 +188,7 @@
                     <button class="size-14 bg-primary rounded-full flex justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6 ml-1">
                             <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
-                          </svg>
+                          </svg>                          
                     </button>
                 </div>
             </div>
@@ -243,10 +224,10 @@
                 <button class="bg-white rounded-full size-7 flex justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black" class="w-5 h-5">
                         <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
-                      </svg>
+                      </svg>                                       
                 </button>
                 <p style="font-family: Inter" class="px-4">Riwayat pengaduan</p>
-            </div>
+            </div>              
             <div class="w-4/6 flex flex-col items-center rounded-b-xl border-2 min-w-[490px]">
                 <div class="pb-6 mx-6">
                     <div class="w-full flex flex-row justify-between py-3">
@@ -254,7 +235,7 @@
                             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="gray" class="w-5 h-5">
                                     <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
-                                  </svg>
+                                  </svg>                                  
                             </span>
                             <input class="rounded-3xl pl-10 pr-14 py-2 w-full border border-gray-300" placeholder="Search">
                         </div>
