@@ -10,12 +10,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-<<<<<<< HEAD
         "yajra/laravel-datatables": "9.0",
         "yajra/laravel-datatables-oracle": "^10.11"
-=======
-        "yajra/laravel-datatables-oracle": "^10.3.1"
->>>>>>> f75024433b53945e13997abec62d619af4b0169a
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",
