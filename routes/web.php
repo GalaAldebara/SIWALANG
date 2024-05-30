@@ -28,7 +28,7 @@ Route::get('/DataWarga', function () {
     return view('RW.DataWarga.index');
 });
 
-// pengaduan
+// pengaduan (warga)
 Route::group(['prefix' => 'pengaduan'], function () {
     Route::get('/', [PengaduanController::class, 'riwayat']);
     Route::post('/list', [PengaduanController::class, 'list'])->name('pengaduan_list');
@@ -45,7 +45,7 @@ Route::group(['prefix' => 'pelaporan-tamu'], function () {
     Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
 });
 
-//kegiatan
+//kegiatan (warga)
 Route::group(['prefix' => 'kegiatan'], function () {
     Route::get('/agenda', [KegiatanController::class, 'agenda']);
     Route::post('/agenda/list', [KegiatanController::class, 'list']);
@@ -83,8 +83,8 @@ Route::group(['prefix' => 'data_warga'], function () {
 Route::group(['prefix' => 'data_tamu'], function () {
     Route::get('/', [DataTamuController::class, 'index']);
     Route::post('/list', [DataTamuController::class, 'list'])->name('tamu_list');
-    // Route::get('/form', [DataTamuController::class, 'form']);
-    // Route::post('/', [DataTamuController::class, 'store']);
+    Route::get('/form', [DataTamuController::class, 'form']);
+    Route::post('/', [DataTamuController::class, 'store']);
     Route::get('/{id}', [DataTamuController::class, 'show'])->name('rincian.data-tamu');
 });
 
@@ -135,12 +135,12 @@ Route::group(['middleware' => ['auth']], function () {
 // });
 
 // RW - Data Tamu Warga
-Route::group(['prefix' => 'data_tamu'], function () {
-    Route::get('/', [RWDataTamuController::class, 'index']);
-    Route::post('/tambah', [RWDataTamuController::class, 'list'])->name('keuangan_list');
-    Route::get('/rincian', [RWDataTamuController::class, 'form']);
-    Route::post('/', [RWDataTamuController::class, 'store']);
-});
+// Route::group(['prefix' => 'data_tamu'], function () {
+//     Route::get('/', [RWDataTamuController::class, 'index']);
+//     Route::post('/tambah', [RWDataTamuController::class, 'list'])->name('keuangan_list');
+//     Route::get('/rincian', [RWDataTamuController::class, 'form']);
+//     Route::post('/', [RWDataTamuController::class, 'store']);
+// });
 
 // RW - Keuangan
 Route::group(['prefix' => 'RW-Keuangan'], function () {

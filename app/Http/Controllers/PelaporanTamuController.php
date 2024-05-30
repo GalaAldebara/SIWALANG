@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PelaporanTamuModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
@@ -47,10 +48,21 @@ class PelaporanTamuController extends Controller
             'alamat' => 'required|string|max:255',
             'tanggal_bertamu' => 'required|date',
             'keterangan_keperluan' => 'required|string',
+            'foto_ktp_tamu' => 'required|image|max:2000'
         ]);
+
+        $file = $request->file('foto_ktp_tamu');
+        $originalName = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+
+        $timestamp = Carbon::now()->format('Ymd_His');
+        $nama_file = pathinfo($originalName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . $extension;
+
+        $file->move(public_path('img/pelaporan_tamu'), $nama_file);
 
         $data = $request->all();
         $data['nik'] = Auth::user()->nik;
+        $data['foto_ktp_tamu'] = $nama_file;
 
         PelaporanTamuModel::create($data);
 
