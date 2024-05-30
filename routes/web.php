@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
 use Illuminate\Routing\RouteRegistrar;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\DataDiriController;
-use App\Http\Controllers\DataPengaduanController;
 use App\Http\Controllers\DataTamuController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KeuanganController;
@@ -18,6 +18,7 @@ use App\Http\Controllers\DataWargaController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\RWDataTamuController;
 use App\Http\Controllers\RW_DataTamuController;
+use App\Http\Controllers\DataPengaduanController;
 use App\Http\Controllers\PelaporanTamuController;
 
 Route::get('/coba', function () {
@@ -156,6 +157,11 @@ Route::group(['prefix' => 'RW-DataWarga'], function () {
     Route::get('/', [DataWargaController::class, 'index'])->name('RW.DataWarga.index');
     Route::post('/data_warga', [DataWargaController::class, 'datawarga_list'])->name('datawarga_list');
 });
+
+// DomPDF
+Route::get('generate-pdf', [PdfController::class, 'showPreview'])->name('generate-pdf');
+Route::get('show-pdf', [PdfController::class, 'showPDF'])->name('show-pdf');
+Route::get('download-pdf', [PdfController::class, 'downloadPDF'])->name('download-pdf');
 
 
 Route::get('/struktur', function () {
