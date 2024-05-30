@@ -6,7 +6,7 @@ use App\Models\UserModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -19,11 +19,11 @@ class AuthController extends Controller
         if ($user) {
             if ($user->level_id == '1') {
                 return redirect()->intended('admin');
-            } else if ($user->level == '2') {
+            } else if ($user->level_id == '2') {
                 return redirect()->intended('RW');
-            } else if ($user->level == '3') {
+            } else if ($user->level_id == '3') {
                 return redirect()->intended('RT');
-            } else if ($user->level == '4') {
+            } else if ($user->level_id == '4') {
                 return redirect()->intended('warga');
             }
         }
@@ -56,7 +56,7 @@ class AuthController extends Controller
 
         return redirect('login')
             ->withInput()
-            ->withErrors(['login_gagal' => 'Pastikan kembali NIK dan password yang dimasukkan sudah benar']);
+            ->withErrors(['login_gagal' => 'Username dan Password salah']);
     }
 
     public function ubah_password()

@@ -23,11 +23,11 @@
                         <h1 class="text-walang text-3xl font-black" style="font-family: Inter">WALANG</h1>
                     </div>
                     <div class="flex flex-row items-center pr-8">
-                        <a class="group font-bold px-7 text-walang transition-all duration-300 ease-in-out" href="{{ url('RT') }}" >
+                        <button class="group font-bold px-7 text-walang transition-all duration-300 ease-in-out" id="beranda" >
                             <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                                 BERANDA
                             </span>
-                        </a>
+                        </button>
                         <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
                             <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                                 NOTIFIKASI
@@ -59,16 +59,6 @@
                             <p class="text-xs text-gray-500 pt-4">Pengelola data warga</p>
                         </div>
                     </a>
-                    {{-- <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_tamu') }}">
-                        <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mt-1">
-                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                            </svg>
-                            <p class="font-bold pt-3">Data Tamu</p>
-                            <p class="text-xs text-gray-500 pt-4">History tamu dari luar desa</p>
-                        </div>
-                    </a> --}}
                     <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_tamu') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="45" height="53" fill="#2a6c12" class="bi bi-person-vcard" viewBox="0 0 16 12">
@@ -211,75 +201,7 @@
                     </button>
                 </div>
             </div>
-
-            {{-- <div class="w-full flex flex-col items-center bg-black">
-                <div class="flex justify-end w-4/6">
-                    <p class="uppercase font-bold mr-3" style="font-family: Asap">Selengkapnya</p>
-                    <button class="rounded-sm size-6 bg-primary px-3">0</button>
-                </div>
-                <div class="flex flex-row w-full items-center justify-center">
-                    <div>wdwa</div>
-                    <div class="grid grid-cols-3 mt-8 gap-7 w-4/6">
-                        <div class="bg-people bg-center">
-                            <div class="pt-64 min-w-80">Kepala Desa</div>
-                            <div>Yulianto</div>
-                        </div>
-                        <div class="bg-people bg-center">
-                            <div class="pt-64">Kepala Desa</div>
-                            <div>Yulianto</div>
-                        </div>
-                        <div class="bg-people bg-center">
-                            <div class="pt-64">Kepala Desa</div>
-                            <div>Yulianto</div>
-                        </div>
-                    </div>
-                    <div>ewqeqw</div>
-                </div>
-            </div> --}}
         </div>
-
-        {{-- <main class="flex flex-col items-center py-10 min-w-fit">
-            <div class="w-4/6 bg-primary p-3 text-white rounded-t-xl border-2 font-bold flex flex-row min-w-[490px]">
-                <button class="bg-white rounded-full size-7 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black" class="w-5 h-5">
-                        <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
-                      </svg>
-                </button>
-                <p style="font-family: Inter" class="px-4">Riwayat pengaduan</p>
-            </div>
-            <div class="w-4/6 flex flex-col items-center rounded-b-xl border-2 min-w-[490px]">
-                <div class="pb-6 mx-6">
-                    <div class="w-full flex flex-row justify-between py-3">
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="gray" class="w-5 h-5">
-                                    <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
-                                  </svg>
-                            </span>
-                            <input class="rounded-3xl pl-10 pr-14 py-2 w-full border border-gray-300" placeholder="Search">
-                        </div>
-                        <button class="bg-button text-white rounded-md px-2 py-1 my-1">+ Buat Pengaduan</button>
-                    </div>
-                    <table class="table-auto border-separate border border-gray-300">
-                        <thead class="bg-primary-form">
-                            <tr class="tracking-wide">
-                                <th class="p-3 border border-gray-300" style="font-family: Asap">TANGGAL PENGADUAN</th>
-                                <th class="p-3 border border-gray-300" style="font-family: Asap">KELUHAN</th>
-                                <th class="p-3 border border-gray-300" style="font-family: Asap">BUKTI</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                            <tr>
-                                <td class="p-3 border border-gray-100">12/08/2024</td>
-                                <td class="p-3 border border-gray-100">Sudah hampir satu minggu sampah belum diambil oleh petugas wwdawdawdawdwadwadawd awdwadwadwa</td>
-                                <td class="p-3 border border-gray-100 underline underline-offset-3 cursor-pointer">bukti</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main> --}}
-
         <footer>
             <div class="bg-secondary w-full flex flex-col items-center">
                 <div class="w-4/6 text-white my-8">
@@ -294,7 +216,28 @@
                 </div>
             </div>
         </footer>
-
     </div>
+    <script>
+        var level_id = {{ $level_id }};
+        var beranda = document.getElementById('beranda');
+    
+        beranda.addEventListener('click', function (event) {
+            event.preventDefault();
+    
+            var url = '';
+    
+            if (level_id === 1) {
+                url = '/admin';
+            } else if (level_id === 2) {
+                url = '/RW';
+            } else if (level_id === 3) {
+                url = '/RT';
+            } else if (level_id === 4) {
+                url = '/warga';
+            }
+    
+            window.location.href = url;
+        });
+    </script>
 </body>
 </html>

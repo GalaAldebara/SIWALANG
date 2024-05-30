@@ -64,6 +64,21 @@ Route::group(['prefix' => 'data_diri'], function () {
     Route::post('/form_password', [AuthController::class, 'prosesChangePassword'])->name('update.username.password');
 });
 
+// Data Warga (RT)
+Route::group(['prefix' => 'data_warga'], function () {
+    Route::get('/', [UserController::class, 'index'])->name('data-warga');
+    Route::post('/list-akun', [UserController::class, 'listAkun'])->name('akun_list');
+    Route::post('/list-warga', [UserController::class, 'listWarga'])->name('warga_list');
+    Route::get('/tambah', [UserController::class, 'add']);
+    Route::post('/', [UserController::class, 'store']);
+    Route::get('/{id}', [UserController::class, 'show'])->name('rincian.warga');
+    Route::get('/akun/{id}', [UserController::class, 'showAkun'])->name('rincian.akun');
+    Route::get('/edit/{id}', [UserController::class, 'edit']);
+    Route::post('/{id}', [UserController::class, 'update']);
+    Route::post('/edit_status/{id}', [UserController::class, 'editStatus'])->name('edit_status');
+    Route::delete('/{id}', [UserController::class, 'destroy']);
+});
+
 // Data Tamu (RT)
 Route::group(['prefix' => 'data_tamu'], function () {
     Route::get('/', [DataTamuController::class, 'index']);
@@ -226,4 +241,3 @@ Route::get('/formtambahkegiatan', function () {
 Route::get('/formuploadkegiatan', function () {
     return view('rw.arsip kegiatan - rw.formUploadKegiatan');
 });
-
