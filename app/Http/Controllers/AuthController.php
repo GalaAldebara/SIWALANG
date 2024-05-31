@@ -33,11 +33,11 @@ class AuthController extends Controller
     public function proses_login(Request $request)
     {
         $request->validate([
-            'nik' => 'required',
+            'nama' => 'required',
             'password' => 'required'
         ]);
 
-        $credential = $request->only('nik', 'password');
+        $credential = $request->only('nama', 'password');
 
         if (Auth::attempt($credential)) {
             $user = Auth::user();
