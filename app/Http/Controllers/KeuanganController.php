@@ -17,7 +17,6 @@ class KeuanganController extends Controller
         ];
 
         $users = KeuanganModel::all();
-
         return view('RW.keuangan.index', ['users' => $users, 'header' => $header]);
     }
 
