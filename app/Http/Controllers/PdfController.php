@@ -9,6 +9,13 @@ class PdfController extends Controller
 {
     public function showPreview()
     {
+        $header = (object) [
+            'title' => 'Keuangan',
+            'list' => ['Beranda', 'Keuangan']
+        ];
+
+        return view('RW.SuratPengantar.preview', ['header' => $header]);
+
         $data = [
             'title' => 'SURAT PENGANTAR',
             'date' => date('m/d/y')
