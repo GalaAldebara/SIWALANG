@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
-class DataDiri extends Model
+class DataDiriModel extends Model
 {
     use HasFactory;
+    use Notifiable;
 
     protected $table = 'data_diri';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'nik',
@@ -24,6 +27,25 @@ class DataDiri extends Model
         'status_kependudukan',
         'alamat_ktp',
         'alamat_tinggal',
+        'kecamatan_id',
+        'kelurahan_id',
+        'kewarganegaraan',
+        'pekerjaan',
+        'kota',
+        'kecamatan',
+        'kelurahan',
+        'RT',
+        'RW',
+        'rt_tinggal',
+        'rw_tinggal',
+        'kelurahan_tinggal',
+        'kecamatan_tinggal',
+        'kota_tinggal',
+        'foto_ktp',
+        'foto_kk',
+        'surat_nikah',
+        'foto_profil',
+        'status',
     ];
 
     // Relationship with User model

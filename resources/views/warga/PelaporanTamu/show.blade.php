@@ -8,7 +8,7 @@
                     <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
                 </svg>                                       
             </a>
-            <p style="font-family: Inter" class="px-4">Form Pengaduan </p>
+            <p style="font-family: Inter" class="px-4">Rincian tamu </p>
         </div>            
         <section class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl">
           @empty($pelaporan)
@@ -25,6 +25,7 @@
                   <p class="border-b-[1px]">Tanggal Bertamu</p><p class="border-b-[1px]">:</p><p class="border-b-[1px] font-bold">{{ $pelaporan->tanggal_bertamu }}</p>
                   <p class="border-b-[1px]">Alamat</p><p class="border-b-[1px]">:</p><p class="border-b-[1px] font-bold">{{ $pelaporan->alamat }}</p>
                   <p class="border-b-[1px]">Keterangan</p><p class="border-b-[1px]">:</p><p class="border-b-[1px] font-bold">{{ $pelaporan->keterangan_keperluan }}</p>
+                  <p class="border-b-[1px]">Foto KTP</p><p class="border-b-[1px]">:</p><p class="border-b-[1px] font-bold"><img src="{{ asset('img/pelaporan_tamu/' . $pelaporan->foto_ktp_tamu) }}" alt="" class="h-60"></p>
                 </div>
             </div>
           @endempty

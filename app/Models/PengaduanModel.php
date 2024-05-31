@@ -11,7 +11,7 @@ class PengaduanModel extends Model
     use HasFactory;
 
     protected $table = 'pengaduan';
-    protected $primaryKey = 'id_pengaduan';
+    protected $primaryKey = 'pengaduan_id';
     protected $fillable = ['nik', 'nama', 'tanggal_pengaduan', 'keluhan', 'bukti'];
 
     public function user(): BelongsTo

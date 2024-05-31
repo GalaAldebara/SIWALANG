@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('username', 100);
             $table->string('nama', 100);
             $table->unsignedBigInteger('level_id')->index;
+            $table->enum('status', ['Menunggu Perlengkapan', 'Menunggu Verifikasi', 'Ditolak', 'Selesai'])->default('Menunggu Perlengkapan');
+            $table->enum('status_hidup', ['Hidup', 'Meninggal', 'Pindah'])->default('Hidup');
             $table->string('password', 100);
             $table->timestamps();
         });
