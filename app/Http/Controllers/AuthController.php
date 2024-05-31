@@ -17,11 +17,11 @@ class AuthController extends Controller
         if ($user) {
             if ($user->level_id == '1') {
                 return redirect()->intended('admin');
-            } else if ($user->level == '2') {
+            } else if ($user->level_id == '2') {
                 return redirect()->intended('RW');
-            } else if ($user->level == '3') {
+            } else if ($user->level_id == '3') {
                 return redirect()->intended('RT');
-            } else if ($user->level == '4') {
+            } else if ($user->level_id == '4') {
                 return redirect()->intended('warga');
             }
         }
@@ -31,13 +31,17 @@ class AuthController extends Controller
     public function proses_login(Request $request)
     {
         $request->validate([
-            'nik' => 'required',
+            'login' => 'required',
             'password' => 'required'
         ]);
 
-        $credential = $request->only('nik', 'password');
+        $login = $request->input('login');
+        $password = $request->input('password');
 
-        if (Auth::attempt($credential)) {
+        $credentialsNik = ['nik' => $login, 'password' => $password];
+        $credentialsUsername = ['username' => $login, 'password' => $password];
+
+        if (Auth::attempt($credentialsNik) || Auth::attempt($credentialsUsername)) {
             $user = Auth::user();
 
             if ($user->level_id == '1') {
@@ -54,37 +58,8 @@ class AuthController extends Controller
 
         return redirect('login')
             ->withInput()
-            ->withErrors(['login_gagal' => 'Pastikan kembali NIK dan password yang dimasukkan sudah benar']);
+            ->withErrors(['login_gagal' => 'NIK atau password salah.']);
     }
-
-    // public function register()
-    // {
-    //     return view('register');
-    // }
-
-    // public function proses_register(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'nama' => 'required',
-    //         'username' => 'required|unique:m_user',
-    //         'password' => 'required'
-    //     ]);
-
-    //     if ($validator->fails()) {
-    //         return redirect('/register')
-    //             ->withErrors($validator)
-    //             ->withInput();
-    //     }
-
-    //     $request['level_id'] = '2';
-    //     $request['password'] = Hash::make($request->password);
-
-    //     UserModel::create($request->all());
-
-    //     return redirect()->route('login');
-    // }
-
-
 
     public function logout(Request $request)
     {
