@@ -1,7 +1,8 @@
+@section('content')
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ $title }}</title>
+    <title>Preview Surat Pengantar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,6 +42,21 @@
         .signature .right {
             text-align: right;
         }
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -79,5 +95,10 @@
             </tr>
         </table>
     </div>
+
+    <div class="container">
+        <a href="{{ route('download-pdf') }}" class="btn">Download PDF</a>
+    </div>
 </body>
 </html>
+@endsection
