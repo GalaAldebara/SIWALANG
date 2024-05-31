@@ -10,8 +10,8 @@ class PdfController extends Controller
     public function showPreview()
     {
         $header = (object) [
-            'title' => 'Keuangan',
-            'list' => ['Beranda', 'Keuangan']
+            'title' => 'Surat Pengantar',
+            'list' => ['Beranda', 'Surat Pengantar']
         ];
 
         return view('RW.SuratPengantar.preview', ['header' => $header]);
@@ -25,13 +25,6 @@ class PdfController extends Controller
 
     public function showPDF()
     {
-        // $data = [
-        //     'title' => 'SURAT PENGANTAR',
-        //     'date' => date('m/d/y')
-        // ];
-        // $pdf = Pdf::loadView('RW.SuratPengantar.filePDF', $data);
-        // return $pdf->stream('SuratPengantar.pdf');
-
         return $this->showPreview();
     }
 
