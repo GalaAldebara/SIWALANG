@@ -155,7 +155,8 @@ Route::group(['prefix' => 'RW-Keuangan'], function () {
 // RW - Data Warga
 Route::group(['prefix' => 'RW-DataWarga'], function () {
     Route::get('/', [DataWargaController::class, 'index'])->name('RW.DataWarga.index');
-    Route::post('/data_warga', [DataWargaController::class, 'datawarga_list'])->name('datawarga_list');
+    Route::post('/', [DataWargaController::class, 'list'])->name('RW.warga_list');
+    Route::get('/{id}', [DataWargaController::class, 'show'])->name('RW.rincian.warga');
 });
 
 // DomPDF
