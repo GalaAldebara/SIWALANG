@@ -85,8 +85,25 @@ class UserSeeder extends Seeder
                 'status_hidup' => 'Hidup',
                 'password' => Hash::make('12345')
             ],
-
         ];
+
         DB::table('m_user')->insert($data);
+
+        // $data = [];
+        // $level_id = 4;
+        // $password = Hash::make('12345');
+
+        // for ($i = 8; $i <= 20; $i++) {
+        //     $data[] = [
+        //         'user_id' => $i,
+        //         'level_id' => $level_id,
+        //         'nik' => '35730500' . str_pad($i, 3, '0', STR_PAD_LEFT),
+        //         'username' => 'Warga' . $i,
+        //         'nama' => 'Nama' . $i,
+        //         'status' => 'Menunggu Verifikasi',
+        //         'status_hidup' => 'Hidup',
+        //         'password' => $password
+        //     ];
+        // }
     }
 }
