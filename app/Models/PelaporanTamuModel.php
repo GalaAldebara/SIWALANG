@@ -22,5 +22,6 @@ class PelaporanTamuModel extends Model
         'tanggal_bertamu',
         'keterangan_keperluan',
         'nik',
+        'foto_ktp_tamu',
     ];
 }
