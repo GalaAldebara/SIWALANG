@@ -158,30 +158,54 @@
                           </svg>
                     </button>
                 </div>
-                <div class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
+                <a href="{{ route('struktur.kepemimpinan') }}" class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
                     <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
                         <h1>Kepala Desa</h1>
                         <p class="text-xl font-bold">Yulianto</p>
                     </div>
-                </div>
-                <div class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
+                </a>
+                <a href="{{ route('struktur.rt') }}" class="bg-center bg-cover flex flex-col justify-end rounded-xl">
+                    <img src="{{ isset($dataDiri) && $dataDiri->foto_profil ? asset($dataDiri->foto_profil) : asset('images/fotoProfil.jpeg') }}" alt="" class="object-cover w-full h-64 rounded-t-xl">
                     <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
-                        <h1>Kepala Desa</h1>
+                        <h1>RT</h1>
+                        <p class="text-xl font-bold">
+                            @php
+                                $rtUser = DB::table('m_user')
+                                          ->where('level_id', 2) // Sesuaikan dengan level_id RT
+                                          ->first();
+                                if ($rtUser) {
+                                    echo $rtUser->nama;
+                                } else {
+                                    echo 'Nama RT Tidak Tersedia';
+                                }
+                            @endphp
+                        </p>
+                    </div>
+                </a>
+                <a href="{{ route('struktur.rw') }}" class="bg-center bg-cover flex flex-col justify-end rounded-xl">
+                    <img src="{{ isset($dataDiri) && $dataDiri->foto_profil ? asset($dataDiri->foto_profil) : asset('images/fotoProfil.jpeg') }}" alt="" class="object-cover w-full h-64 rounded-t-xl">
+                    <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
+                        <h1>RW</h1>
+                        <p class="text-xl font-bold">
+                            @php
+                                $rtUser = DB::table('m_user')
+                                          ->where('level_id', 3) // Sesuaikan dengan level_id RT
+                                          ->first();
+                                if ($rtUser) {
+                                    echo $rtUser->nama;
+                                } else {
+                                    echo 'Nama RT Tidak Tersedia';
+                                }
+                            @endphp
+                        </p>
+                    </div>
+                </a>
+                <a href="{{ route('struktur.rt') }}" class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
+                    <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
+                        <h1>Sekretaris</h1>
                         <p class="text-xl font-bold">Yulianto</p>
                     </div>
-                </div>
-                <div class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
-                    <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
-                        <h1>Kepala Desa</h1>
-                        <p class="text-xl font-bold">Yulianto</p>
-                    </div>
-                </div>
-                <div class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
-                    <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
-                        <h1>Kepala Desa</h1>
-                        <p class="text-xl font-bold">Yulianto</p>
-                    </div>
-                </div>
+                </a>
                 <div class="flex justify-start items-center">
                     <button class="size-14 bg-primary rounded-full flex justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6 ml-1">
@@ -191,6 +215,7 @@
                 </div>
             </div>
         </div>
+
         <footer>
             <div class="bg-secondary w-full flex flex-col items-center">
                 <div class="w-4/6 text-white my-8">

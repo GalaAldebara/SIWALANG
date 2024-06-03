@@ -20,6 +20,7 @@ use App\Http\Controllers\RWDataTamuController;
 use App\Http\Controllers\RW_DataTamuController;
 use App\Http\Controllers\DataPengaduanController;
 use App\Http\Controllers\PelaporanTamuController;
+use App\Http\Controllers\StrukturKepemimpinanController;
 
 Route::get('/coba', function () {
     return view('rt.DataWarga.index');
@@ -163,6 +164,11 @@ Route::group(['prefix' => 'RW-DataWarga'], function () {
 Route::get('generate-pdf', [PdfController::class, 'showPreview'])->name('generate-pdf');
 Route::get('show-pdf', [PdfController::class, 'showPDF'])->name('show-pdf');
 Route::get('download-pdf', [PdfController::class, 'downloadPDF'])->name('download-pdf');
+
+// StrukturKepemimpinan
+Route::get('/struktur-kepemimpinan', [StrukturKepemimpinanController::class, 'index'])->name('struktur.kepemimpinan');
+Route::get('/struktur-kepemimpinan/rt', [StrukturKepemimpinanController::class, 'rt'])->name('struktur.rt');
+Route::get('/struktur-kepemimpinan/rw', [StrukturKepemimpinanController::class, 'rw'])->name('struktur.rw');
 
 
 Route::get('/struktur', function () {
