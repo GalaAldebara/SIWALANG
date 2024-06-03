@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserModel;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -33,13 +31,17 @@ class AuthController extends Controller
     public function proses_login(Request $request)
     {
         $request->validate([
-            'nik' => 'required',
+            'login' => 'required',
             'password' => 'required'
         ]);
 
-        $credential = $request->only('nik', 'password');
+        $login = $request->input('login');
+        $password = $request->input('password');
 
-        if (Auth::attempt($credential)) {
+        $credentialsNik = ['nik' => $login, 'password' => $password];
+        $credentialsUsername = ['username' => $login, 'password' => $password];
+
+        if (Auth::attempt($credentialsNik) || Auth::attempt($credentialsUsername)) {
             $user = Auth::user();
 
             if ($user->level_id == '1') {
@@ -56,42 +58,7 @@ class AuthController extends Controller
 
         return redirect('login')
             ->withInput()
-            ->withErrors(['login_gagal' => 'Username dan Password salah']);
-    }
-
-    public function ubah_password()
-    {
-        return view('warga.DataDiri.formPassword');
-    }
-
-    public function prosesChangePassword(Request $request)
-    {
-        $header = (object) [
-            'title' => 'Data Diri',
-            'list' => ['Beranda', 'Data Diri', 'Form Data Diri']
-        ];
-
-        $request->validate([
-            'oldPassword' => 'required',
-            'newPassword' => 'required|string|min:8|confirmed',
-        ]);
-
-        $user = Auth::user();
-
-        if (!Hash::check($request->oldPassword, $user->password)) {
-            return redirect()->back()->withErrors(['oldPassword' => 'Password lama tidak cocok.']);
-        }
-
-        UserModel::where('user_id', $user->user_id)->update([
-            'password' => Hash::make($request->newPassword)
-        ]);
-
-        // Perbarui password langsung di dalam database
-        // DB::table('m_user')
-        //     ->where('user_id', $user->user_id)
-        //     ->update(['password' => Hash::make($request->newPassword)]);
-
-        return view('warga.DataDiri.formDataDiri', ['header' => $header]);
+            ->withErrors(['login_gagal' => 'NIK atau password salah.']);
     }
 
     public function logout(Request $request)
