@@ -1,4 +1,3 @@
-@section('content')
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,10 +94,5 @@
             </tr>
         </table>
     </div>
-
-    <div class="container">
-        <a href="{{ route('download-pdf') }}" class="btn">Download PDF</a>
-    </div>
 </body>
 </html>
-@endsection
