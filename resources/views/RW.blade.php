@@ -49,7 +49,7 @@
 
         <div class="relative -top-14 w-full">
             <div class="flex justify-center">
-                <nav class="flex flex-row flex-wrap gap-9 justify-center items-center w-4/6 text-xl">
+                <nav class="flex flex-row flex-wrap gap-9 justify-center items-center w-3/6 text-xl">
                     <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ route('RW.DataWarga.index') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="45" height="53" fill="#2a6c12" class="bi bi-people-fill" viewBox="0 0 16 12">
@@ -71,7 +71,7 @@
                     </a>
                     <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('') }}">
                         <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg"width="40" height="53" fill="#2a6c12" class="bi bi-person-lines-fill" viewBox="0 0 16 10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="53" fill="#2a6c12" class="bi bi-person-lines-fill" viewBox="0 0 16 10">
                                 <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
                               </svg>
                             <p class="font-bold pt-3">Data Penerima Bansos</p>
@@ -114,7 +114,7 @@
             </div>
         </div>
 
-        <div class="w-full flex justify-center">
+        {{-- <div class="w-full flex justify-center">
             <div class="w-4/6 p-5 flex flex-row">
                 <div>
                     <h6 class="text-primary italic font-bold" style="font-family: Asap">Sejarah singkat</h6>
@@ -202,21 +202,22 @@
                 </div>
             </div>
         </div>
-        <footer>
-            <div class="bg-secondary w-full flex flex-col items-center">
-                <div class="w-4/6 text-white my-8">
-                    <p class="underline underline-offset-[13px] decoration-[#2a6c12] font-bold">Tentang</p>
-                    <p class="mt-5 text-xs text-white/60">SIWALANG, Portal kependudukan warga RW 001, Desa Lang-Lang SIngosari Malang</p>
-                </div>
+    </div> --}}
+    <footer>
+        <div class="bg-secondary w-full flex flex-col items-center">
+            <div class="w-4/6 text-white my-8">
+                <p class="underline underline-offset-[13px] decoration-[#2a6c12] font-bold">Tentang</p>
+                <p class="mt-5 text-xs text-white/60">SIWALANG, Portal kependudukan warga RW 001, Desa Lang-Lang SIngosari Malang</p>
             </div>
-            <div class="w-full flex items-center flex-col bg-primary">
-                <div class="w-5/6 flex-row flex justify-between py-2">
-                    <p class="text-white/60 text-xs">SIWALANG 2024</p>
-                    <p class="text-white/60 text-xs cursor-pointer">Kembali ke atas</p>
-                </div>
+        </div>
+        <div class="w-full flex items-center flex-col bg-primary">
+            <div class="w-5/6 flex-row flex justify-between py-2">
+                <p class="text-white/60 text-xs">SIWALANG 2024</p>
+                <p class="text-white/60 text-xs cursor-pointer">Kembali ke atas</p>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+
     <script>
         var level_id = {{ $level_id }};
         var beranda = document.getElementById('beranda');
