@@ -27,7 +27,7 @@
                             </span>
                             <input class="rounded-3xl pl-10 pr-14 py-2 w-full border border-gray-300" placeholder="Search">
                         </div>
-                        <a id="button_tambah" class="bg-button text-white rounded-md px-2 py-1 my-1 flex-row items-center cursor-pointer hidden" href="{{ url('data_warga/tambah') }}">
+                        <a id="button_tambah" class="bg-button text-white rounded-md px-2 py-1 my-1 flex-row items-center cursor-pointer flex" href="{{ url('data_warga/tambah') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-4">
                                 <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
                             </svg>
@@ -77,7 +77,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const table1 = document.getElementById("table_lengkap");
     const table2 = document.getElementById("table_akun");
-    const button = document.getElementById("button_tambah");
     const showTable1 = document.getElementById("showTable1");
     const showTable2 = document.getElementById("showTable2");
     let dataPengaduan;
@@ -85,8 +84,6 @@ document.addEventListener("DOMContentLoaded", function() {
     showTable1.addEventListener("click", function() {
         table1.classList.remove("hidden");
         table2.classList.add("hidden");
-        button.classList.add("hidden");
-        button.classList.remove("flex");
         showTable1.classList.remove("bg-gray-400");
         showTable1.classList.add("bg-button");
         showTable2.classList.add("bg-gray-400");
@@ -133,8 +130,6 @@ document.addEventListener("DOMContentLoaded", function() {
     showTable2.addEventListener("click", function() {
         table1.classList.add("hidden");
         table2.classList.remove("hidden");
-        button.classList.remove("hidden");
-        button.classList.add("flex");
         showTable2.classList.remove("bg-gray-400");
         showTable2.classList.add("bg-button");
         showTable1.classList.add("bg-gray-400");

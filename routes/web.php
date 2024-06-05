@@ -19,7 +19,10 @@ use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\RWDataTamuController;
 use App\Http\Controllers\RW_DataTamuController;
 use App\Http\Controllers\DataPengaduanController;
+use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PelaporanTamuController;
+use App\Http\Controllers\PenerimaBansosController;
+use App\Http\Controllers\PengajuanBansosController;
 
 Route::get('/coba', function () {
     return view('rt.DataWarga.index');
@@ -29,7 +32,7 @@ Route::get('/DataWarga', function () {
     return view('RW.DataWarga.index');
 });
 
-// pengaduan (warga)
+// WARGA - pengaduan
 Route::group(['prefix' => 'pengaduan'], function () {
     Route::get('/', [PengaduanController::class, 'riwayat']);
     Route::post('/list', [PengaduanController::class, 'list'])->name('pengaduan_list');
@@ -37,7 +40,7 @@ Route::group(['prefix' => 'pengaduan'], function () {
     Route::post('/', [PengaduanController::class, 'store']);
 });
 
-// Pelaporan Tamu (Warga)
+// WARGA - Pelaporan Tamu
 Route::group(['prefix' => 'pelaporan-tamu'], function () {
     Route::get('/', [PelaporanTamuController::class, 'riwayat'])->name('riwayat');
     Route::post('/list', [PelaporanTamuController::class, 'list'])->name('pelaporan_list');
@@ -46,7 +49,7 @@ Route::group(['prefix' => 'pelaporan-tamu'], function () {
     Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
 });
 
-//kegiatan (warga)
+// WARGA - kegiatan
 Route::group(['prefix' => 'kegiatan'], function () {
     Route::get('/agenda', [KegiatanController::class, 'agenda']);
     Route::post('/agenda/list', [KegiatanController::class, 'list']);
@@ -54,7 +57,7 @@ Route::group(['prefix' => 'kegiatan'], function () {
     Route::get('/arsip', [KegiatanController::class, 'arsip']);
 });
 
-// profil Warga (data diri)
+// Warga - Data diri
 Route::group(['prefix' => 'data_diri'], function () {
     Route::get('/', [DataDiriController::class, 'index']);
     Route::get('/form_satu', [DataDiriController::class, 'formSatu'])->name('form.satu');
@@ -63,6 +66,32 @@ Route::group(['prefix' => 'data_diri'], function () {
     Route::post('/form_dua', [DataDiriController::class, 'storeDua'])->name('store.form-dua');
     Route::get('/form_password', [DataDiriController::class, 'formPassword']);
     Route::post('/form_password', [AuthController::class, 'prosesChangePassword'])->name('update.username.password');
+});
+
+// Warga - Bansos
+Route::group(['prefix' => 'pengajuan_bansos'], function () {
+    Route::get('/', [PengajuanBansosController::class, 'index']);
+    Route::post('/list', [PengajuanBansosController::class, 'list'])->name('list.pengajuan_bansos');
+    Route::get('/form', [PengajuanBansosController::class, 'form']);
+    Route::post('/', [PengajuanBansosController::class, 'store']);
+});
+
+// RT - Notifikasi
+Route::group(['prefix' => 'rt_notifikasi'], function () {
+    Route::get('/', [NotifController::class, 'index']);
+    Route::post('/update-status/{id_notif}', [NotifController::class, 'updateStatus']);
+    Route::get('/bansos/{id}', [NotifController::class, 'verifBansos']);
+    Route::post('bansos/{id}/update', [NotifController::class, 'updateBansos'])->name('bansos.update');
+});
+
+// RT - Penerima Bansos
+Route::group(['prefix' => 'penerima_bansos'], function () {
+    Route::get('/', [PenerimaBansosController::class, 'index']);
+    Route::post('/pemohon', [PenerimaBansosController::class, 'listPemohon'])->name('pemohon_list');
+    Route::post('/penerima', [PenerimaBansosController::class, 'listPenerima'])->name('penerima_list');
+    Route::post('/hitung-skor', [PenerimaBansosController::class, 'perhitunganSkor'])->name('hitung.skor');
+    Route::post('/perankingan', [PenerimaBansosController::class, 'perankingan'])->name('perankingan');
+    Route::get('/{id}', [PenerimaBansosController::class, 'show']);
 });
 
 // Data Warga (RT)

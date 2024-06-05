@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             PengaduanSeeder::class,
             DataDiriSeeder::class,
             PelaporanTamuSeeder::class,
+            NotifSeeder::class,
+            BansosSeeder::class,
         ]);
     }
 }

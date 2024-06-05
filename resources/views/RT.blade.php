@@ -28,15 +28,26 @@
                                 BERANDA
                             </span>   
                         </button>
-                        <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
+                        <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('rt_notifikasi') }}">
                             <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                                 NOTIFIKASI
-                            </span>   
+                            </span>
+                            
                         </a>
-                        <a class="group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('logout') }}" >
+                        <a class="relative group font-bold px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('logout') }}" >
                             <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                                 LOGOUT
-                            </span>   
+                            </span>
+                            <div class="flex justify-end items-center absolute -top-2 -left-7 bg-yellow-400 px-[5px] py-[2px] rounded-xl" style="font-size: 10px; font-family: Asap">
+                                @if($notificationCount > 99)
+                                    <span>99</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-2">
+                                        <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                                    </svg>
+                                @else
+                                    <span>{{$notificationCount}}</span>
+                                @endif                       
+                            </div>
                         </a>
                     </div>
                 </nav>
@@ -80,7 +91,7 @@
                             <p class="text-xs text-gray-500 pt-2">Pengelola data warga yang berhak menerima bansos</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('') }}">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('rt_notifikasi') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mt-1">
                                 <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
