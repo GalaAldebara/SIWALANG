@@ -88,8 +88,6 @@
                             <p class="text-xs text-gray-500 pt-2">Pengelola data warga yang berhak menerima bansos</p>
                         </div>
                     </a>
-<<<<<<< HEAD
-=======
                     <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('rt_notifikasi') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2a6c12" class="w-full h-12 mt-1">
@@ -100,7 +98,6 @@
                             <p class="text-xs text-gray-500 pt-2">Daftar riwayat pengajuan surat oleh warga</p>
                         </div>
                     </a>
->>>>>>> bansos
                     <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_pengaduan') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="45" height="53" fill="#2a6c12" class="bi bi-person-exclamation" viewBox="0 0 16 16">
