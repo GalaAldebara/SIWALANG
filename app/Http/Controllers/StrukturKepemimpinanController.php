@@ -11,8 +11,8 @@ class StrukturKepemimpinanController extends Controller
     public function rt()
     {
         $header = (object) [
-            'title' => 'Keuangan',
-            'list' => ['Beranda', 'Keuangan']
+            'title' => 'Struktur Kepemimpinan',
+            'list' => ['Beranda', 'Struktur Kepemimpinan']
         ];
 
         $users = UserModel::where('level_id', 3)->get();
@@ -28,8 +28,8 @@ class StrukturKepemimpinanController extends Controller
     public function rw()
     {
         $header = (object) [
-            'title' => 'Keuangan',
-            'list' => ['Beranda', 'Keuangan']
+            'title' => 'Struktur Kepemimpinan',
+            'list' => ['Beranda', 'Struktur Kepemimpinan']
         ];
 
         $users = UserModel::where('level_id', 2)->get();

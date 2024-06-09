@@ -14,7 +14,9 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-4 mr-1">
                         <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
                     </svg>
-                    </p>Kec.Singosari, Kab.Malang, Jawa Timur<p>
+                    <a href="https://maps.app.goo.gl/8FUyPuXjaErjHRZp9" target="_blank" class="hover:underline">
+                        Kec. Singosari, Kab. Malang, Jawa Timur
+                    </a>
                 </div>
                 <nav class="bg-white w-full rounded-lg flex felx-row justify-between min-w-max">
                     <div class="flex flex-row items-center pl-8">
@@ -50,7 +52,7 @@
         <div class="relative -top-14 w-full">
             <div class="flex justify-center">
                 <nav class="flex flex-row flex-wrap gap-9 justify-center items-center w-5/6 text-xl">
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('') }}">
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('show-pdf') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="53" fill="#2a6c12" class="bi bi-envelope-paper" viewBox="0 0 16 16">
                                 <path d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267zm13 .566v5.734l-4.778-2.867zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083zM1 13.116V7.383l4.778 2.867L1 13.117Z"/>

@@ -41,7 +41,6 @@
                         </tr>
                     </thead>
                 </table>
-
             </div>
         </div>
     </div>
@@ -91,7 +90,12 @@
                             `;
                         }
                     }
-                ]
+                ],
+                "drawCallback": function(settings) {
+                    var api = this.api();
+                    var total = api.column(4).data().sum();
+                    $('#total_saldo').text(total);
+                }
             });
         });
   </script>

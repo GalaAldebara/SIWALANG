@@ -15,7 +15,7 @@
           <div class="w-full flex flex-row justify-center items-center gap-10 my-6 px-6">
             @if ($dataDiri)
                 <img src="{{ asset('img/profil/' . $dataDiri->foto_profil) }}" alt="foto_profil" class="object-cover size-64">
-            @else    
+            @else
                 <img src="../images/fotoProfil.jpeg" alt="foto_profil" class="object-cover size-64">
             @endif
             <div class="grid grid-cols-[130px_30px_1fr] divide-y-2">

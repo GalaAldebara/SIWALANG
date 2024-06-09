@@ -180,7 +180,7 @@ Route::group(['prefix' => 'RW-Keuangan'], function () {
     Route::post('/list', [KeuanganController::class, 'keuangan_list'])->name('keuangan_list');
     Route::get('/form', [KeuanganController::class, 'form']);
     Route::post('/', [KeuanganController::class, 'store']);
-    Route::get('/{keuangan_id}/edit', [KeuanganController::class, 'edit']);
+    Route::get('/{keuangan_id}/edit', [KeuanganController::class, 'edit'])->name('keuangan_edit');
 });
 
 // RW - Data Warga
@@ -284,3 +284,17 @@ Route::get('/formtambahkegiatan', function () {
 Route::get('/formuploadkegiatan', function () {
     return view('rw.arsip kegiatan - rw.formUploadKegiatan');
 });
+
+Route::get('/grafik', function () {
+    return view('warga.coba-praktikum');
+});
+
+Route::get('/formganti', function () {
+    return view('admin.formGanti');
+});
+
+Route::get('landingpage', function () {
+    return view('warga.Landing.landing');
+});
+
+

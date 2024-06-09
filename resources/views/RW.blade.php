@@ -14,7 +14,9 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-4 mr-1">
                         <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
                     </svg>
-                    </p>Kec.Singosari, Kab.Malang, Jawa Timur<p>
+                    <a href="https://maps.app.goo.gl/8FUyPuXjaErjHRZp9" target="_blank" class="hover:underline">
+                        Kec. Singosari, Kab. Malang, Jawa Timur
+                    </a>
                 </div>
                 <nav class="bg-white w-full rounded-lg flex felx-row justify-between min-w-max">
                     <div class="flex flex-row items-center pl-8">
@@ -78,7 +80,7 @@
                             <p class="text-xs text-gray-500 pt-2">Pengelola data warga yang berhak menerima bansos</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_tamu') }}">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('kegiatan') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="53" fill="#2a6c12" class="bi bi-calendar3" viewBox="0 0 16 12">
                                 <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>

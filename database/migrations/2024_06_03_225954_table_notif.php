@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('notif', function (Blueprint $table) {
             $table->id('id_notif');
-            $table->string('keterangan');
+            $table->string('keterangan', 150);
             $table->enum('status_lihat', ['belum', 'sudah'])->default('belum');
             $table->date('tanggal_notif');
             $table->unsignedBigInteger('user_id');
