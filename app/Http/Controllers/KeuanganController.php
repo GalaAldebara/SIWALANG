@@ -17,13 +17,13 @@ class KeuanganController extends Controller
         ];
 
         $users = KeuanganModel::all();
-        return view('RW.keuangan.index', ['users' => $users, 'header' => $header]);
+        return view('RW.Keuangan.index', ['users' => $users, 'header' => $header]);
     }
 
     public function keuangan_list(Request $request)
     {
         if ($request->ajax()) {
-            $keuangan = KeuanganModel::select('tanggal_kegiatan', 'kategori', 'keterangan', 'jumlah', 'total')->get();
+            $keuangan = KeuanganModel::select('keuangan_id', 'tanggal_kegiatan', 'kategori', 'keterangan', 'jumlah', 'total')->get();
             return DataTables::of($keuangan)->make(true);
         }
     }
@@ -37,7 +37,7 @@ class KeuanganController extends Controller
 
         $users = KeuanganModel::all();
 
-        return view('RW.keuangan.tambah_keuangan', ['users' => $users, 'header' => $header]);
+        return view('RW.Keuangan.tambah_keuangan', ['users' => $users, 'header' => $header]);
     }
 
     public function store(Request $request)
@@ -48,8 +48,17 @@ class KeuanganController extends Controller
             'kategori' => 'required|in:Pemasukan,Pengeluaran',
             'keterangan' => 'required|string|max:255',
             'jumlah' => 'required|numeric',
-            'total' => 'required|numeric',
         ]);
+
+        $latestEntry = KeuanganModel::latest()->first();
+        $previousTotal = $latestEntry ? $latestEntry->total : 0;
+        $jumlah = $validatedData['jumlah'];
+
+        if ($validatedData['kategori'] == 'Pengeluaran') {
+            $jumlah = -$jumlah;
+        }
+
+        $newTotal = $previousTotal + $jumlah;
 
         KeuanganModel::create([
             'nik' => $validatedData['nik'],
@@ -57,7 +66,7 @@ class KeuanganController extends Controller
             'kategori' => $validatedData['kategori'],
             'keterangan' => $validatedData['keterangan'],
             'jumlah' => $validatedData['jumlah'],
-            'total' => $validatedData['total'],
+            'total' => $newTotal,
         ]);
 
         return redirect()->route('index')->with('success', 'Data keuangan berhasil disimpan.');

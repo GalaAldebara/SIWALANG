@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('bansos', function (Blueprint $table) {
             $table->id('id_bansos');
-            $table->string('nik', 50);
-            $table->string('no_kk', 20);
+            $table->string('nik', 16);
+            $table->string('no_kk', 16);
             $table->integer('jumlah_keluarga');
             $table->enum('jumlah_tanggungan', ['1', '2', '3', '4', '5']);
             $table->enum('status_rumah', ['1', '2']);

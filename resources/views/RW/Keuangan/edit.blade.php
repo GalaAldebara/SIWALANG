@@ -10,7 +10,7 @@
             </a>
             <p style="font-family: Inter" class="px-4">Edit Data Keuangan </p>
         </div>
-        <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl"  action="{{ route('RW-Keuangan.edit', $keuangan->keuangan_id) }}" method="POST" enctype="multipart/form-data">
+        <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl"  action="{{ route('keuangan_edit', ['keuangan_id' => $keuangan->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="w-full my-4 px-6" style="font-family: Asap">
@@ -43,15 +43,6 @@
                     <div class="mt-2 w-full">
                         <input id="jumlah" name="jumlah" type="number" value="{{ $keuangan->jumlah }}" placeholder="Masukkan jumlah" class="w-full rounded-md border py-1 px-4 text-gray-900">
                         @error('jumlah')
-                        <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
-                        @enderror
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="total">Total Terkini<span class="text-red-500 text-lg">*</span></label>
-                    <div class="mt-2 w-full">
-                        <input id="total" name="total" type="number" value="{{ $keuangan->total }}" placeholder="Masukkan Total Jumlah" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                        @error('total')
                         <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                         @enderror
                     </div>

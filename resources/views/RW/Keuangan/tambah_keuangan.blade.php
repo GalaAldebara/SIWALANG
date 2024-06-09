@@ -58,15 +58,6 @@
                         @enderror
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="total">Total Terkini<span class="text-red-500 text-lg">*</span></label>
-                    <div class="mt-2 w-full">
-                        <input id="total" name="total" type="number" placeholder="Masukkan Total Jumlah" class="w-full rounded-md border py-1 px-4 text-gray-900">
-                        @error('total')
-                        <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
-                        @enderror
-                    </div>
-                </div>
             <div class="flex flex-row justify-center border-t w-full" style="font-family: Asap">
                 <a class="border rounded-lg w-full m-3 py-3 text-center" href="{{ url('RW-Keuangan') }}">Batal</a>
                 <button type="submit" class="border rounded-lg w-full m-3 py-3 bg-primary text-white">Kirim</button>

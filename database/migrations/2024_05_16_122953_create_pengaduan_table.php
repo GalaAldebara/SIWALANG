@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('pengaduan', function (Blueprint $table) {
             $table->id('pengaduan_id');
-            $table->string('nik', 50);
-            $table->string('nama', 100);
+            $table->string('nik', 16);
+            $table->string('nama', 50);
             $table->date('tanggal_pengaduan');
-            $table->string('keluhan', 225);
+            $table->string('keluhan', 150);
             $table->string('bukti', 225);
             $table->timestamps();
             $table->foreign('nik')->references('nik')->on('m_user')->onDelete('cascade');

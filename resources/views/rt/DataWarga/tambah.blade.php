@@ -6,15 +6,15 @@
             <a class="bg-white rounded-full size-7 flex justify-center items-center" href="{{ url('data_warga') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black" class="w-5 h-5">
                     <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
-                </svg>                                       
+                </svg>
             </a>
             <p style="font-family: Inter" class="px-4">Form Data Warga </p>
-        </div>            
+        </div>
         <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl" action="{{ url('data_warga') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="w-full my-4 px-6" style="font-family: Asap">
                 <div class="mb-3">
-                    <label for="nama">Nama <span class="text-red-500 text-lg">*</span></label>
+                    <label for="nama">Username<span class="text-red-500 text-lg">*</span></label>
                     <div class="mt-2 w-full">
                         <input id="nama" name="nama" type="text" placeholder="Masukkan nama" class="w-full rounded-md border py-1 px-4 text-gray-900">
                         @error('nama')

@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('keuangan', function (Blueprint $table) {
             $table->id('keuangan_id');
-            $table->string('nik', 50);
+            $table->string('nik', 16);
             $table->date('tanggal_kegiatan');
             $table->enum('kategori', ['Pemasukan', 'Pengeluaran']);
-            $table->string('keterangan');
+            $table->string('keterangan', 150);
             $table->double('jumlah');
             $table->double('total');
             $table->timestamps();
