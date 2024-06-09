@@ -284,3 +284,17 @@ Route::get('/formtambahkegiatan', function () {
 Route::get('/formuploadkegiatan', function () {
     return view('rw.arsip kegiatan - rw.formUploadKegiatan');
 });
+
+Route::get('/grafik', function () {
+    return view('warga.coba-praktikum');
+});
+
+Route::get('/formganti', function () {
+    return view('admin.formGanti');
+});
+
+Route::get('landingpage', function () {
+    return view('warga.Landing.landing');
+});
+
+
