@@ -109,8 +109,8 @@ class UserSeeder extends Seeder
                 'user_id' => 10,
                 'level_id' => 4,
                 'nik' => '1234567890123452', // Sesuaikan dengan nik dari data bansos
-                'username' => 'SitiAminah',
-                'nama' => 'Siti Aminah',
+                'username' => 'PutriAminah',
+                'nama' => 'Putri Aminah',
                 'status' => 'Menunggu Perlengkapan', // Sesuai permintaan
                 'status_hidup' => 'Hidup',
                 'password' => Hash::make('12345')
@@ -229,8 +229,8 @@ class UserSeeder extends Seeder
                 'user_id' => 22,
                 'level_id' => 4,
                 'nik' => '357305012',
-                'username' => 'DewiLestari',
-                'nama' => 'Dewi Lestari',
+                'username' => 'Intan Sari',
+                'nama' => 'Intan Sari',
                 'status' => 'Selesai',
                 'status_hidup' => 'Hidup',
                 'password' => Hash::make('12345')

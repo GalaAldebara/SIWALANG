@@ -17,7 +17,7 @@ class CreatePelaporanTamuTable extends Migration
             $table->string('no_ktp_tamu', 16);
             $table->string('nama_tamu', 50);
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
-            $table->string('alamat', 50);
+            $table->string('alamat', 100);
             $table->date('tanggal_bertamu');
             $table->text('keterangan_keperluan', 150);
             $table->string('nik', 16);
