@@ -17,7 +17,6 @@ class KeuanganController extends Controller
         ];
 
         $users = KeuanganModel::all();
-
         return view('RW.keuangan.index', ['users' => $users, 'header' => $header]);
     }
 
@@ -61,7 +60,7 @@ class KeuanganController extends Controller
             'total' => $validatedData['total'],
         ]);
 
-        return redirect()->route('RW-Keuangan.index')->with('success', 'Data keuangan berhasil disimpan.');
+        return redirect()->route('index')->with('success', 'Data keuangan berhasil disimpan.');
     }
 
     public function edit($keuangan_id)

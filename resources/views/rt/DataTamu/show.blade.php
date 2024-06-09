@@ -26,6 +26,7 @@
                   <p class="border-b-[1px]">Tanggal Bertamu</p><p class="border-b-[1px]">:</p><p class="border-b-[1px] font-bold">{{ $pelaporan->tanggal_bertamu }}</p>
                   <p class="border-b-[1px]">Alamat</p><p class="border-b-[1px]">:</p><p class="border-b-[1px] font-bold">{{ $pelaporan->alamat }}</p>
                   <p class="border-b-[1px]">Keterangan</p><p class="border-b-[1px]">:</p><p class="border-b-[1px] font-bold">{{ $pelaporan->keterangan_keperluan }}</p>
+                  <p class="border-b-[1px]">Foto KTP</p><p class="border-b-[1px]">:</p><p class="border-b-[1px] font-bold"><img src="{{ asset('img/pelaporan_tamu/' . $pelaporan->foto_ktp_tamu) }}" alt="" class="h-60"></p>
                 </div>
             </div>
           @endempty

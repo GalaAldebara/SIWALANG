@@ -22,11 +22,10 @@ class DatabaseSeeder extends Seeder
             LevelSeeder::class,
             UserSeeder::class,
             PengaduanSeeder::class,
-            KotaSeeder::class,
-            KecamatanSeeder::class,
-            LevelKecamatanSeeder::class,
             DataDiriSeeder::class,
             PelaporanTamuSeeder::class,
+            NotifSeeder::class,
+            BansosSeeder::class,
         ]);
     }
 }

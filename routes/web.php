@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\RWController;
 use Illuminate\Routing\RouteRegistrar;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\DataDiriController;
-use App\Http\Controllers\DataPengaduanController;
 use App\Http\Controllers\DataTamuController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KeuanganController;
@@ -18,7 +18,13 @@ use App\Http\Controllers\DataWargaController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\RWDataTamuController;
 use App\Http\Controllers\RW_DataTamuController;
+use App\Http\Controllers\DataPengaduanController;
+use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PelaporanTamuController;
+use App\Http\Controllers\StrukturKepemimpinanController;
+use App\Http\Controllers\PenerimaBansosController;
+use App\Http\Controllers\PengajuanBansosController;
+
 
 Route::get('/coba', function () {
     return view('rt.DataWarga.index');
@@ -28,7 +34,7 @@ Route::get('/DataWarga', function () {
     return view('RW.DataWarga.index');
 });
 
-// pengaduan
+// WARGA - pengaduan
 Route::group(['prefix' => 'pengaduan'], function () {
     Route::get('/', [PengaduanController::class, 'riwayat']);
     Route::post('/list', [PengaduanController::class, 'list'])->name('pengaduan_list');
@@ -36,7 +42,7 @@ Route::group(['prefix' => 'pengaduan'], function () {
     Route::post('/', [PengaduanController::class, 'store']);
 });
 
-// Pelaporan Tamu (Warga)
+// WARGA - Pelaporan Tamu
 Route::group(['prefix' => 'pelaporan-tamu'], function () {
     Route::get('/', [PelaporanTamuController::class, 'riwayat'])->name('riwayat');
     Route::post('/list', [PelaporanTamuController::class, 'list'])->name('pelaporan_list');
@@ -45,7 +51,7 @@ Route::group(['prefix' => 'pelaporan-tamu'], function () {
     Route::get('/{id}', [PelaporanTamuController::class, 'show'])->name('rincian');
 });
 
-//kegiatan
+// WARGA - kegiatan
 Route::group(['prefix' => 'kegiatan'], function () {
     Route::get('/agenda', [KegiatanController::class, 'agenda']);
     Route::post('/agenda/list', [KegiatanController::class, 'list']);
@@ -53,7 +59,7 @@ Route::group(['prefix' => 'kegiatan'], function () {
     Route::get('/arsip', [KegiatanController::class, 'arsip']);
 });
 
-// profil Warga (data diri)
+// Warga - Data diri
 Route::group(['prefix' => 'data_diri'], function () {
     Route::get('/', [DataDiriController::class, 'index']);
     Route::get('/form_satu', [DataDiriController::class, 'formSatu'])->name('form.satu');
@@ -64,12 +70,53 @@ Route::group(['prefix' => 'data_diri'], function () {
     Route::post('/form_password', [AuthController::class, 'prosesChangePassword'])->name('update.username.password');
 });
 
+// Warga - Bansos
+Route::group(['prefix' => 'pengajuan_bansos'], function () {
+    Route::get('/', [PengajuanBansosController::class, 'index']);
+    Route::post('/list', [PengajuanBansosController::class, 'list'])->name('list.pengajuan_bansos');
+    Route::get('/form', [PengajuanBansosController::class, 'form']);
+    Route::post('/', [PengajuanBansosController::class, 'store']);
+});
+
+// RT - Notifikasi
+Route::group(['prefix' => 'rt_notifikasi'], function () {
+    Route::get('/', [NotifController::class, 'index']);
+    Route::post('/update-status/{id_notif}', [NotifController::class, 'updateStatus']);
+    Route::get('/bansos/{id}', [NotifController::class, 'verifBansos']);
+    Route::post('bansos/{id}/update', [NotifController::class, 'updateBansos'])->name('bansos.update');
+});
+
+// RT - Penerima Bansos
+Route::group(['prefix' => 'penerima_bansos'], function () {
+    Route::get('/', [PenerimaBansosController::class, 'index']);
+    Route::post('/pemohon', [PenerimaBansosController::class, 'listPemohon'])->name('pemohon_list');
+    Route::post('/penerima', [PenerimaBansosController::class, 'listPenerima'])->name('penerima_list');
+    Route::post('/hitung-skor', [PenerimaBansosController::class, 'perhitunganSkor'])->name('hitung.skor');
+    Route::post('/perankingan', [PenerimaBansosController::class, 'perankingan'])->name('perankingan');
+    Route::get('/{id}', [PenerimaBansosController::class, 'show']);
+});
+
+// Data Warga (RT)
+Route::group(['prefix' => 'data_warga'], function () {
+    Route::get('/', [UserController::class, 'index'])->name('data-warga');
+    Route::post('/list-akun', [UserController::class, 'listAkun'])->name('akun_list');
+    Route::post('/list-warga', [UserController::class, 'listWarga'])->name('warga_list');
+    Route::get('/tambah', [UserController::class, 'add']);
+    Route::post('/', [UserController::class, 'store']);
+    Route::get('/{id}', [UserController::class, 'show'])->name('rincian.warga');
+    Route::get('/akun/{id}', [UserController::class, 'showAkun'])->name('rincian.akun');
+    Route::get('/edit/{id}', [UserController::class, 'edit']);
+    Route::post('/{id}', [UserController::class, 'update']);
+    Route::post('/edit_status/{id}', [UserController::class, 'editStatus'])->name('edit_status');
+    Route::delete('/{id}', [UserController::class, 'destroy']);
+});
+
 // Data Tamu (RT)
 Route::group(['prefix' => 'data_tamu'], function () {
     Route::get('/', [DataTamuController::class, 'index']);
     Route::post('/list', [DataTamuController::class, 'list'])->name('tamu_list');
-    // Route::get('/form', [DataTamuController::class, 'form']);
-    // Route::post('/', [DataTamuController::class, 'store']);
+    Route::get('/form', [DataTamuController::class, 'form']);
+    Route::post('/', [DataTamuController::class, 'store']);
     Route::get('/{id}', [DataTamuController::class, 'show'])->name('rincian.data-tamu');
 });
 
@@ -120,16 +167,16 @@ Route::group(['middleware' => ['auth']], function () {
 // });
 
 // RW - Data Tamu Warga
-Route::group(['prefix' => 'RW-DataTamu'], function () {
-    Route::get('/', [RWDataTamuController::class, 'index']);
-    Route::post('/tambah', [RWDataTamuController::class, 'list'])->name('keuangan_list');
-    Route::get('/rincian', [RWDataTamuController::class, 'form']);
-    Route::post('/', [RWDataTamuController::class, 'store']);
-});
+// Route::group(['prefix' => 'data_tamu'], function () {
+//     Route::get('/', [RWDataTamuController::class, 'index']);
+//     Route::post('/tambah', [RWDataTamuController::class, 'list'])->name('keuangan_list');
+//     Route::get('/rincian', [RWDataTamuController::class, 'form']);
+//     Route::post('/', [RWDataTamuController::class, 'store']);
+// });
 
 // RW - Keuangan
 Route::group(['prefix' => 'RW-Keuangan'], function () {
-    Route::get('/', [KeuanganController::class, 'index']);
+    Route::get('/', [KeuanganController::class, 'index'])->name('index');
     Route::post('/list', [KeuanganController::class, 'keuangan_list'])->name('keuangan_list');
     Route::get('/form', [KeuanganController::class, 'form']);
     Route::post('/', [KeuanganController::class, 'store']);
@@ -138,9 +185,20 @@ Route::group(['prefix' => 'RW-Keuangan'], function () {
 
 // RW - Data Warga
 Route::group(['prefix' => 'RW-DataWarga'], function () {
-    Route::get('/index', [DataWargaController::class, 'index'])->name('RW.DataWarga.index');
-    Route::get('/data_warga', [DataWargaController::class, 'index'])->name('data_warga_list');
+    Route::get('/', [DataWargaController::class, 'index'])->name('RW.DataWarga.index');
+    Route::post('/', [DataWargaController::class, 'list'])->name('RW.warga_list');
+    Route::get('/{id}', [DataWargaController::class, 'show'])->name('RW.rincian.warga');
 });
+
+// DomPDF
+Route::get('generate-pdf', [PdfController::class, 'showPreview'])->name('generate-pdf');
+Route::get('show-pdf', [PdfController::class, 'showPDF'])->name('show-pdf');
+Route::get('download-pdf', [PdfController::class, 'downloadPDF'])->name('download-pdf');
+
+// StrukturKepemimpinan
+Route::get('/struktur-kepemimpinan', [StrukturKepemimpinanController::class, 'index'])->name('struktur.kepemimpinan');
+Route::get('/struktur-kepemimpinan/rt', [StrukturKepemimpinanController::class, 'rt'])->name('struktur.rt');
+Route::get('/struktur-kepemimpinan/rw', [StrukturKepemimpinanController::class, 'rw'])->name('struktur.rw');
 
 
 Route::get('/struktur', function () {
@@ -238,4 +296,5 @@ Route::get('/formganti', function () {
 Route::get('landingpage', function () {
     return view('warga.Landing.landing');
 });
+
 

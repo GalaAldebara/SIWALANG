@@ -16,7 +16,7 @@
                 <div class="mb-3">
                     <label for="nama_tuan_rumah">Nama Tuan Ramah <span class="text-red-500 text-lg">*</span></label>
                     <div class="mt-2 w-full">
-                        <input id="nama_tuan_rumah" name="nama_tuan_rumah" type="text" placeholder="Masukkan nama tuan rumah" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                        <input id="nama_tuan_rumah" name="nama_tuan_rumah" type="text" value="{{ Auth::user()->nama }}" readonly class="w-full bg-gray-200 rounded-md border py-1 px-4 text-gray-900">
                         @error('nama_tuan_rumah')
                         <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
                         @enderror
@@ -62,7 +62,7 @@
                 <div class="mb-3">
                     <label for="tanggal_bertamu">Tanggal Bertamu </label>
                     <div class="mt-2 w-full">
-                        <input id="tanggal_bertamu" name="tanggal_bertamu" type="date" readonly class="w-full rounded-md border py-1 px-4 text-gray-900">
+                        <input id="tanggal_bertamu" name="tanggal_bertamu" type="date" readonly class="w-full bg-gray-200 rounded-md border py-1 px-4 text-gray-900">
                     </div>
                 </div>
                 <div class="mb-3">
@@ -74,7 +74,7 @@
                         @enderror
                     </div>
                 </div>
-                {{-- <div>
+                <div>
                     <div>Kartu Tanda Penduduk (KTP) tamu <span class="text-red-500 text-lg">*</span></div>
                     <div class="mt-2 w-full border-2 border-dashed rounded-lg flex flex-col items-center" style="font-family: Inter">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 mt-6">
@@ -82,15 +82,15 @@
                         </svg>                              
                         <h1 class="font-medium">Pilih foto atau tarik kesini</h1>
                         <p class="text-gray-400">JPEG atau PNG maximal ukuran 10MB.</p>
-                        <label for="foto_ktp" class="border rounded-lg py-1 px-3 mt-3 mb-6">
+                        <label for="foto_ktp_tamu" class="border rounded-lg py-1 px-3 mt-3 mb-6">
                             Pilih Foto
-                            <input type="file" id="foto_ktp" name="foto_ktp" style="display: none;">
+                            <input type="file" id="foto_ktp_tamu" name="foto_ktp_tamu" style="display: none;">
                         </label>
-                        @error('foto_ktp')
+                        @error('foto_ktp_tamu')
                         <small class="relative -top-4 text-red-500 text-xm">{{ $message }}</small>
                         @enderror
                     </div>
-                </div> --}}
+                </div>
             </div>
             <div class="flex flex-row justify-center border-t w-full" style="font-family: Asap">
                 <a class="border rounded-lg w-full m-3 py-3 text-center" href="{{ url('pelaporan-tamu') }}"">Batal</a>
