@@ -203,102 +203,102 @@ Route::get('/struktur-kepemimpinan/rw', [StrukturKepemimpinanController::class, 
 // Admin
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::get('/formRT', [AdminController::class, 'formRT']);
+    Route::get('/formRT', [AdminController::class, 'show']);
 });
 
 
-Route::get('/struktur', function () {
-    return view('warga.strukturKepemimpinan.strukturKepemimpinan');
-});
+// Route::get('/struktur', function () {
+//     return view('warga.strukturKepemimpinan.strukturKepemimpinan');
+// });
 
-Route::get('/detailstruktur', function () {
-    return view('warga.strukturKepemimpinan.detailStruktur');
-});
+// Route::get('/detailstruktur', function () {
+//     return view('warga.strukturKepemimpinan.detailStruktur');
+// });
 
-Route::get('/arsipkegiatan', function () {
-    return view('warga.arsip kegiatan.arsipKegiatan');
-});
+// Route::get('/arsipkegiatan', function () {
+//     return view('warga.arsip kegiatan.arsipKegiatan');
+// });
 
 // Route::get('/formpelaporan', function () {
 //     return view('warga.pelaporan tamu.formPelaporanTamu');
 // });
 
-Route::get('/riwayatpelaporan', function () {
-    return view('warga.pelaporan tamu.riwayatPelaporanTamu');
-});
+// Route::get('/riwayatpelaporan', function () {
+//     return view('warga.pelaporan tamu.riwayatPelaporanTamu');
+// });
 
-Route::get('/rincianriwayat', function () {
-    return view('warga.pelaporan tamu.rincianRiwayatPelaporanTamu');
-});
+// Route::get('/rincianriwayat', function () {
+//     return view('warga.pelaporan tamu.rincianRiwayatPelaporanTamu');
+// });
 
-Route::get('/formpengajuan', function () {
-    return view('warga.pengajuan surat pengantar.formPengajuan');
-});
+// Route::get('/formpengajuan', function () {
+//     return view('warga.pengajuan surat pengantar.formPengajuan');
+// });
 
-Route::get('/riwayatpengajuansetuju', function () {
-    return view('warga.pengajuan surat pengantar.riwayatPengajuanSetuju');
-});
+// Route::get('/riwayatpengajuansetuju', function () {
+//     return view('warga.pengajuan surat pengantar.riwayatPengajuanSetuju');
+// });
 
-Route::get('/riwayatpengajuanwaiting', function () {
-    return view('warga.pengajuan surat pengantar.riwayatPengajuanWaiting');
-});
+// Route::get('/riwayatpengajuanwaiting', function () {
+//     return view('warga.pengajuan surat pengantar.riwayatPengajuanWaiting');
+// });
 
-Route::get('/rinciansurat', function () {
-    return view('warga.pengajuan surat pengantar.rincianSurat');
-});
+// Route::get('/rinciansurat', function () {
+//     return view('warga.pengajuan surat pengantar.rincianSurat');
+// });
 
-Route::get('/formbansos', function () {
-    return view('warga.pengajuan bansos.formPengajuanBansos');
-});
+// Route::get('/formbansos', function () {
+//     return view('warga.pengajuan bansos.formPengajuanBansos');
+// });
 
-Route::get('/formlanjutan', function () {
-    return view('warga.pengajuan bansos.form2PengajuanBansos');
-});
+// Route::get('/formlanjutan', function () {
+//     return view('warga.pengajuan bansos.form2PengajuanBansos');
+// });
 
-Route::get('/daftarbansos', function () {
-    return view('warga.pengajuan bansos.daftarDataBansos');
-});
+// Route::get('/daftarbansos', function () {
+//     return view('warga.pengajuan bansos.daftarDataBansos');
+// });
 
-Route::get('/formlengkapi', function () {
-    return view('warga.data diri.formLengkapi');
-});
+// Route::get('/formlengkapi', function () {
+//     return view('warga.data diri.formLengkapi');
+// });
 
-Route::get('/uploadberkas', function () {
-    return view('warga.data diri.formUploadBerkas');
-});
+// Route::get('/uploadberkas', function () {
+//     return view('warga.data diri.formUploadBerkas');
+// });
 
-Route::get('/rinciandatadiri', function () {
-    return view('warga.data diri.rincianDataDiri');
-});
+// Route::get('/rinciandatadiri', function () {
+//     return view('warga.data diri.rincianDataDiri');
+// });
 
-Route::get('/formgantipassword', function () {
-    return view('warga.data diri.formGantiPassword');
-});
+// Route::get('/formgantipassword', function () {
+//     return view('warga.data diri.formGantiPassword');
+// });
 
-Route::get('/daftarkegiatan', function () {
-    return view('rw.arsip kegiatan - rw.tabelKegiatan');
-});
+// Route::get('/daftarkegiatan', function () {
+//     return view('rw.arsip kegiatan - rw.tabelKegiatan');
+// });
 
-Route::get('/rinciankegiatan', function () {
-    return view('rw.arsip kegiatan - rw.rincianKegiatan');
-});
+// Route::get('/rinciankegiatan', function () {
+//     return view('rw.arsip kegiatan - rw.rincianKegiatan');
+// });
 
-Route::get('/formtambahkegiatan', function () {
-    return view('rw.arsip kegiatan - rw.formTambahKegiatan');
-});
+// Route::get('/formtambahkegiatan', function () {
+//     return view('rw.arsip kegiatan - rw.formTambahKegiatan');
+// });
 
-Route::get('/formuploadkegiatan', function () {
-    return view('rw.arsip kegiatan - rw.formUploadKegiatan');
-});
+// Route::get('/formuploadkegiatan', function () {
+//     return view('rw.arsip kegiatan - rw.formUploadKegiatan');
+// });
 
-Route::get('/grafik', function () {
-    return view('warga.coba-praktikum');
-});
+// Route::get('/grafik', function () {
+//     return view('warga.coba-praktikum');
+// });
 
-Route::get('/formganti', function () {
-    return view('admin.formGanti');
-});
+// Route::get('/formganti', function () {
+//     return view('admin.formGanti');
+// });
 
-Route::get('landingpage', function () {
-    return view('warga.Landing.landing');
-});
+// Route::get('landingpage', function () {
+//     return view('warga.Landing.landing');
+// });

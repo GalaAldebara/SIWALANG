@@ -13,7 +13,7 @@
             <div class="p-4 text-center text-2xl font-bold">SIWALANG</div>
             <nav class="mt-5">
                 <a href="#" class="block py-2.5 px-4 bg-gray-700 rounded">Beranda</a>
-                <a href="{{ url('admin.formRT') }}" class="block py-2.5 px-4 hover:bg-gray-700 rounded">Data RT</a>
+                <a href="{{ url('admin/formRT') }}" class="block py-2.5 px-4 hover:bg-gray-700 rounded">Data RT</a>
                 <a href="#" class="block py-2.5 px-4 hover:bg-gray-700 rounded">Data RW</a>
 
             </nav>
