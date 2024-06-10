@@ -19,7 +19,7 @@ class KeuanganSeeder extends Seeder
         $data = [
             [
                 'keuangan_id' => 1,
-                'nik' => '357305002',
+                'nik' => '3576014403920001',
                 'tanggal_kegiatan' => now(),
                 'kategori' => 'Pemasukan',
                 'keterangan' => 'Iuran Sampah',
@@ -42,7 +42,7 @@ class KeuanganSeeder extends Seeder
 
             $data[] = [
                 'keuangan_id' => $i,
-                'nik' => '357305002',
+                'nik' => '3576014403920001',
                 'tanggal_kegiatan' => now(),
                 'kategori' => $kategori,
                 'keterangan' => $faker->randomElement(['Iuran Gotong Royong', 'Bayar Sampah', 'Infaq', 'Sadaqah', 'Donasi']),
