@@ -27,12 +27,20 @@
                             </span>
                             <input class="rounded-3xl pl-10 pr-14 py-2 w-full border border-gray-300" placeholder="Search">
                         </div>
-                        <button id="button_skor" class="bg-blue-700 font-semibold text-white rounded-md px-2 py-1 my-1 flex-row items-center cursor-pointer hidden">
-                            HITUNG SKOR
-                        </button>
-                        <button id="button_rank" class="bg-blue-700 font-semibold text-white rounded-md px-2 py-1 my-1 flex-row items-center cursor-pointer hidden">
-                            PERANKINGAN
-                        </button>
+                        <div class="flex gap-3">
+                            <button id="button_urut" class="bg-blue-700 font-semibold text-white rounded-md px-2 py-1 my-1 flex-row items-center cursor-pointer">
+                                URUTKAN
+                            </button>
+                            <button id="button_urut2" class="bg-blue-700 font-semibold text-white rounded-md px-2 py-1 my-1 flex-row items-center cursor-pointer">
+                                URUTKAN
+                            </button>
+                            <button id="button_skor" class="bg-blue-700 font-semibold text-white rounded-md px-2 py-1 my-1 flex-row items-center cursor-pointer hidden">
+                                HITUNG SKOR
+                            </button>
+                            <button id="button_rank" class="bg-blue-700 font-semibold text-white rounded-md px-2 py-1 my-1 flex-row items-center cursor-pointer hidden">
+                                PERANKINGAN
+                            </button>
+                        </div>
                     </div>
                     <table class="table-auto border-separate border border-gray-300 w-full" id="table_pemohon" style="width: 100%">
                         <thead class="bg-primary-form">
@@ -54,6 +62,7 @@
                                 <th class="p-3 border border-gray-300" style="font-family: Asap">NAMA</th>
                                 <th class="p-3 border border-gray-300" style="font-family: Asap">NO. KK</th>
                                 <th class="p-3 border border-gray-300" style="font-family: Asap">NO. TELP</th>
+                                <th class="p-3 border border-gray-300" style="font-family: Asap">SKOR</th>
                                 <th class="p-3 border border-gray-300" style="font-family: Asap">AKSI</th>
                             </tr>
                         </thead>
@@ -62,6 +71,21 @@
         </div>
     </div>
 </main>
+<!-- Modal -->
+<div id="topScoresModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="relative bg-white w-1/3 mx-auto rounded shadow-lg">
+        <!-- Konten Modal -->
+        <div class="p-8">
+          <h2 class="text-xl font-semibold mb-4">Masukkan Jumlah Penerima Bansos</h2>
+          <input id="topScoresInput" type="number" class="w-full border rounded px-3 py-2" placeholder="Enter the number of top scores to consider...">
+          <div class="mt-4 flex justify-end">
+            <button id="confirmTopScores" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @push('css')
@@ -77,25 +101,55 @@
 document.addEventListener("DOMContentLoaded", function() {
     const table1 = document.getElementById("table_pemohon");
     const table2 = document.getElementById("table_penerima");
-    const button = document.getElementById("button_skor");
-    const button2 = document.getElementById("button_rank");
+    const buttonSkor = document.getElementById("button_skor");
+    const buttonUrut = document.getElementById("button_urut");
+    const buttonUrut2 = document.getElementById("button_urut2");
+    const buttonRank = document.getElementById("button_rank");
     const showTable1 = document.getElementById("showTable1");
     const showTable2 = document.getElementById("showTable2");
-    let dataPengaduan;
+    const topScoresModal = document.getElementById("topScoresModal");
+    const topScoresInput = document.getElementById("topScoresInput");
+    const confirmTopScores = document.getElementById("confirmTopScores");
+    let dataPengajuan;
+    let dataPenerima;
+
+    $('#button_urut').on('click', function() {
+        var currentOrder = dataPengajuan.order();
+        var skorColumnIndex = $('#table_pemohon th:contains("SKOR")').index();
+
+        if (currentOrder.length && currentOrder[0][0] === skorColumnIndex) {
+            dataPengajuan.order([skorColumnIndex, currentOrder[0][1] === 'asc' ? 'desc' : 'asc']).draw();
+        } else {
+            dataPengajuan.order([skorColumnIndex, 'asc']).draw();
+        }
+    });
+
+    $('#button_urut2').on('click', function() {
+        var currentOrder = dataPenerima.order();
+        var skorColumnIndex = $('#table_penerima th:contains("SKOR")').index();
+
+        if (currentOrder.length && currentOrder[0][0] === skorColumnIndex) {
+            dataPenerima.order([skorColumnIndex, currentOrder[0][1] === 'asc' ? 'desc' : 'asc']).draw();
+        } else {
+            dataPenerima.order([skorColumnIndex, 'asc']).draw();
+        }
+    });
 
     showTable1.addEventListener("click", function() {
         table1.classList.remove("hidden");
         table2.classList.add("hidden");
-        button.classList.remove("hidden");
-        button.classList.add("flex");
-        button2.classList.add("hidden");
-        button2.classList.remove("flex");
+        buttonSkor.classList.remove("hidden");
+        buttonSkor.classList.add("flex");
+        buttonRank.classList.add("hidden");
+        buttonUrut.classList.remove("hidden");
+        buttonUrut2.classList.add("hidden");
+        buttonRank.classList.remove("flex");
         showTable1.classList.remove("bg-gray-400");
         showTable1.classList.add("bg-button");
         showTable2.classList.add("bg-gray-400");
 
         if (!$.fn.DataTable.isDataTable('#table_pemohon')) {
-            dataPengaduan = $('#table_pemohon').DataTable({
+            dataPengajuan = $('#table_pemohon').DataTable({
                 "lengthMenu": [[-1], ["All"]],
                 "searching": false,
                 "processing": true,
@@ -134,16 +188,18 @@ document.addEventListener("DOMContentLoaded", function() {
     showTable2.addEventListener("click", function() {
         table1.classList.add("hidden");
         table2.classList.remove("hidden");
-        button.classList.add("hidden");
-        button.classList.remove("flex");
-        button2.classList.remove("hidden");
-        button2.classList.add("flex");
+        buttonSkor.classList.add("hidden");
+        buttonSkor.classList.remove("flex");
+        buttonUrut2.classList.remove("hidden");
+        buttonUrut.classList.add("hidden");
+        buttonRank.classList.remove("hidden");
+        buttonRank.classList.add("flex");
         showTable2.classList.remove("bg-gray-400");
         showTable2.classList.add("bg-button");
         showTable1.classList.add("bg-gray-400");
 
         if (!$.fn.DataTable.isDataTable('#table_penerima')) {
-            dataPengaduan = $('#table_penerima').DataTable({
+            dataPenerima = $('#table_penerima').DataTable({
                 "lengthMenu": [[10], [10]],
                 "searching": false,
                 "processing": true,
@@ -170,6 +226,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     { data: 'nama', orderable: false, searchable: false, className: "text-center asap border-t-2" },
                     { data: 'no_kk', orderable: false, searchable: false, className: "text-center py-3 asap border-t-2" },
                     { data: 'no_telp', orderable: true, searchable: true, className: "text-center asap border-t-2" },
+                    { data: 'skor', orderable: true, searchable: true, className: "text-center asap border-t-2" },
                     { data: 'aksi', orderable: true, searchable: false, className: "text-center asap border-t-2" },
                 ],
                 "initComplete": function(settings, json) {
@@ -178,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     });
+
     function pressButton1() {
         showTable1.click();
     }
@@ -185,12 +243,9 @@ document.addEventListener("DOMContentLoaded", function() {
     function pressButton2() {
         showTable2.click();
     }
-    
+
     pressButton1();
     // pressButton2();
-
-    // button
-    const buttonSkor = document.getElementById("button_skor");
 
     buttonSkor.addEventListener("click", function() {
         fetch("{{ route('hitung.skor') }}", {
@@ -236,15 +291,15 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    const buttonRank = document.getElementById("button_rank");
-
     buttonRank.addEventListener("click", function() {
-        // Prompt the user to enter the number of top scores they want to consider
-        const topScores = prompt("Enter the number of top scores to consider:");
+        topScoresModal.classList.remove("hidden");
+    });
 
-        // Check if the user entered a valid number
-        if (topScores !== null && !isNaN(topScores) && topScores !== '') {
-            // Send an AJAX request to the server
+    confirmTopScores.addEventListener("click", function() {
+        const topScores = parseInt(topScoresInput.value);
+        topScoresModal.classList.add("hidden");
+
+        if (!isNaN(topScores) && topScores > 0) {
             fetch("{{ route('perankingan') }}", {
                 method: "POST",
                 headers: {
@@ -261,10 +316,14 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(data => {
                 if (data.success) {
-                    location.reload();
-                    pressButton2();
+                    dataPengaduan.ajax.reload();
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Ranking successful',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
                 } else {
-                    // Show error message if ranking failed
                     Swal.fire({
                         title: 'Error',
                         text: 'Failed to rank applicants: ' + data.message,
@@ -283,7 +342,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             });
         } else {
-            // Show an error message if the user didn't enter a valid number
             Swal.fire({
                 title: 'Error',
                 text: 'Please enter a valid number of top scores.',

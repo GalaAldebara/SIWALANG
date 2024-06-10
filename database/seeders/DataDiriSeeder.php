@@ -17,8 +17,8 @@ class DataDiriSeeder extends Seeder
         $faker = Faker::create('id_ID');
         $initialNik = 3576014403940001;
         $fotoPath = 'pexels_andrea_piacquadio_874158_grid_300_x_300_jpg_1.png';
-        $fotoKtp = 'Gambar KK.jpg';
-        $fotoKk = 'image 4.png';
+        $fotoKtp = 'image 4.png';
+        $fotoKk = 'Gambar KK.jpg';
         $fotoSN = 'surat-nikah.jpeg';
 
         $data = [];
@@ -26,6 +26,10 @@ class DataDiriSeeder extends Seeder
         $nullCounter = 0;
         $kkNumber = 3172010502090900;
         $hubungan_kk_sequence = ['kepala keluarga', 'isteri', 'anak'];
+
+        // Array untuk alur input jenis kelamin: laki-laki, perempuan, laki-laki/perempuan
+        $jenis_kelamin_sequence = ['Laki-laki', 'Perempuan', 'random'];
+        $perkawinan_sequence = ['kawin', 'kawin', 'Belum Kawin'];
 
         foreach (range(0, 299) as $index) {
             // Generate NIK
@@ -57,6 +61,14 @@ class DataDiriSeeder extends Seeder
                 $kkNumber++; // Menambah nomor KK
             }
 
+            // Menentukan jenis kelamin sesuai dengan alur input
+            $jenis_kelamin = $jenis_kelamin_sequence[$index % count($jenis_kelamin_sequence)];
+            $perkawinan = $perkawinan_sequence[$index % count($perkawinan_sequence)];
+            if ($jenis_kelamin === 'random') {
+                // Jika jenis kelamin adalah "Both", maka secara acak memilih antara "Laki-laki" dan "Perempuan"
+                $jenis_kelamin = $faker->randomElement(['Laki-laki', 'Perempuan']);
+            }
+
             // Set foto_surat_nikah menjadi null setelah 2 kali input
             if ($nullCounter < 2) {
                 $foto_surat_nikah = $fotoSN;
@@ -68,11 +80,11 @@ class DataDiriSeeder extends Seeder
                 'nik' => (string)$nik,
                 'tempat_lahir' => $faker->city,
                 'tanggal_lahir' => $faker->date('Y-m-d', '2005-01-01'),
-                'jenis_kelamin' => $faker->randomElement(['Laki-laki', 'Perempuan']),
-                'status_perkawinan' => $faker->randomElement(['Nikah', 'Belum Nikah']),
+                'jenis_kelamin' => $jenis_kelamin,
+                'status_perkawinan' => $perkawinan,
                 'no_telp' => $faker->numerify('08##########'),
                 'no_kk' => (string)$kkNumber,
-                'hubungan_kk' => $faker->randomElement(['kepala keluarga', 'isteri', 'anak']),
+                'hubungan_kk' => $hubungan_kk,
                 'status_kependudukan' => $faker->randomElement(['Warga Asli', 'Kontrak', 'Kost', 'Pindahan']),
                 'kewarganegaraan' => 'Indonesia',
                 'pekerjaan' => $faker->randomElement(['swasta', 'wiraswasta', 'petani', 'buruh', 'tidak_bekerja']),

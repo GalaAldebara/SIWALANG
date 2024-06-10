@@ -31,6 +31,7 @@ class PenerimaBansosController extends Controller
                 ->leftJoin('m_user', 'bansos.nik', '=', 'm_user.nik')
                 ->leftJoin('data_diri', 'bansos.nik', '=', 'data_diri.nik')
                 ->where('bansos.status_pengajuan', "diterima")
+                ->where('data_diri.rt', auth()->user()->user_id - 2)
                 ->select('bansos.nik', 'm_user.nama', 'bansos.no_kk', 'skor_bansos.skor', 'data_diri.no_telp')
                 ->get()
                 ->map(function ($item, $key) {
@@ -51,6 +52,7 @@ class PenerimaBansosController extends Controller
                 ->leftJoin('m_user', 'bansos.nik', '=', 'm_user.nik')
                 ->leftJoin('data_diri', 'bansos.nik', '=', 'data_diri.nik')
                 ->where('bansos.status_bansos', "lolos")
+                ->where('data_diri.rt', auth()->user()->user_id - 2)
                 ->select('bansos.nik', 'm_user.nama', 'bansos.no_kk', 'skor_bansos.skor', 'data_diri.no_telp', 'bansos.id_bansos')
                 ->get()
                 ->map(function ($item, $key) {
@@ -86,6 +88,59 @@ class PenerimaBansosController extends Controller
         return view('rt.bansos.show', ['header' => $header, 'dataDiri' => $dataDiri, 'user' => $user, 'bansos' => $bansos]);
     }
 
+    public function dataPenerima()
+    {
+
+        $header = (object) [
+            'title' => 'Data Penerima Bansos',
+            'list' => ['Beranda', 'Data Penerima Bansos']
+        ];
+
+        return view('RW.bansos.index', ['header' => $header]);
+    }
+
+    public function listSemuaPenerima(Request $request)
+    {
+        if ($request->ajax()) {
+            $bansos = BansosModel::leftJoin('skor_bansos', 'bansos.id_bansos', '=', 'skor_bansos.id_bansos')
+                ->leftJoin('m_user', 'bansos.nik', '=', 'm_user.nik')
+                ->leftJoin('data_diri', 'bansos.nik', '=', 'data_diri.nik')
+                ->where('bansos.status_bansos', "lolos")
+                ->select('bansos.nik', 'm_user.nama', 'bansos.no_kk', 'skor_bansos.skor', 'data_diri.no_telp', 'bansos.id_bansos', 'skor_bansos.skor')
+                ->get()
+                ->map(function ($item, $key) {
+                    $item->DT_RowIndex = $key + 1;
+                    return $item;
+                });
+
+            return DataTables::of($bansos)
+                ->addIndexColumn()
+                ->addColumn('aksi', function ($bansos) {
+                    $btn = '<div class="flex justify-center gap-x-3">';
+                    $btn .= '<a href="' . url('/penerima_bansos/semua/' . $bansos->id_bansos) . '" class="text-white px-3 rounded-xl flex items-center" style="background: #17a2b8;">Rincian</a>';
+                    $btn .= '<form method="POST" action="' . url('/penerima_bansos/' . $bansos->id_bansos) . '">' . csrf_field() . method_field('DELETE') . '<button type="submit" class="text-white py-2 px-3 rounded-xl" style="background: #f04438;" onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
+                    $btn .= '</div>';
+                    return $btn;
+                })
+                ->rawColumns(['aksi'])
+                ->make(true);
+        }
+    }
+
+    public function showData(string $id)
+    {
+        $bansos = BansosModel::find($id);
+        $user = UserModel::where('nik', $bansos->nik)->first();
+        $dataDiri = DataDiriModel::where('nik', $bansos->nik)->first();
+
+        $header = (object) [
+            'title' => 'Data Penerima Bansos',
+            'list' => ['Beranda', 'Data Penerima Bansos', 'Rincian Penerima Bansos']
+        ];
+
+        return view('RW.bansos.show', ['header' => $header, 'dataDiri' => $dataDiri, 'user' => $user, 'bansos' => $bansos]);
+    }
+
     public function perankingan(Request $request)
     {
         // Validasi request
@@ -99,15 +154,20 @@ class PenerimaBansosController extends Controller
         try {
             // Lakukan perangkingan di sini, misalnya dengan mengambil N pemohon teratas berdasarkan skor
             $applicants = SkorBansosModel::leftjoin('bansos', 'skor_bansos.id_bansos', '=', 'bansos.id_bansos')
+                ->leftJoin('data_diri', 'bansos.nik', '=', 'data_diri.nik')
+                ->where('data_diri.rt', auth()->user()->user_id - 2)
                 ->select('bansos.status_bansos', 'skor_bansos.skor', 'skor_bansos.id_bansos')
                 ->orderBy('skor', 'desc')
-                ->take($topScores)
                 ->get();
 
             // Lakukan pembaruan status_bansos untuk pemohon yang terpilih
-            foreach ($applicants as $applicant) {
+            foreach ($applicants as $key => $applicant) {
                 $bansos = BansosModel::find($applicant->id_bansos);
-                $bansos->status_bansos = 'lolos'; // Ubah status_bansos menjadi 'lolos'
+                if ($key < $topScores) {
+                    $bansos->status_bansos = 'lolos'; // Ubah status_bansos menjadi 'lolos' untuk pemohon top scores
+                } else {
+                    $bansos->status_bansos = 'tidak_lolos'; // Ubah status_bansos menjadi 'tidak_lolos' untuk pemohon yang tidak top scores
+                }
                 $bansos->save(); // Simpan perubahan ke dalam database
             }
 
@@ -121,7 +181,11 @@ class PenerimaBansosController extends Controller
 
     public function perhitunganSkor()
     {
-        $bansos = BansosModel::where('status_pengajuan', 'diterima')->get();
+        $bansos = BansosModel::Join('data_diri', 'bansos.nik', '=', 'data_diri.nik')
+            ->where('bansos.status_pengajuan', 'diterima')
+            ->where('data_diri.rt', auth()->user()->user_id - 2)
+            ->select('bansos.status_rumah', 'bansos.alas_rumah', 'bansos.pekerjaan', 'bansos.dinding_rumah', 'bansos.luas_rumah', 'bansos.besaran_listrik', 'bansos.jumlah_tanggungan', 'bansos.fasilitas_wc', 'bansos.pendapatan', 'bansos.jumlah_kendaraan', 'bansos.id_bansos')
+            ->get();
 
         // Simpan id_bansos terpisah dari matrik keputusan
         $idBansosList = $bansos->pluck('id_bansos')->toArray();

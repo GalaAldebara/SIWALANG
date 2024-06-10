@@ -16,7 +16,7 @@ class BansosSeeder extends Seeder
     {
         // $faker = Faker::create('id_ID');
         $initialNik = 3576014403940001;
-        $kkNumber = 3172010502090901;
+        $kkNumber = 3172010502090900;
 
         $dataMatriks = [
             [1, 4, 4, 3, 4, 3, 5, 2, 4, 1],
@@ -63,20 +63,21 @@ class BansosSeeder extends Seeder
             [2, 3, 5, 3, 4, 2, 2, 2, 1, 3],
             [1, 3, 4, 1, 3, 3, 1, 1, 3, 2],
 
+            [1, 2, 2, 1, 4, 2, 1, 2, 2, 1],
+            [1, 3, 1, 1, 4, 2, 4, 1, 2, 3],
+            [2, 2, 3, 3, 2, 3, 2, 2, 3, 1],
+            [1, 4, 1, 1, 2, 2, 5, 1, 1, 3],
+            [2, 4, 1, 1, 3, 2, 5, 1, 4, 3],
+            [1, 4, 4, 3, 4, 3, 4, 1, 1, 3],
+            [1, 2, 2, 2, 1, 1, 4, 1, 1, 1],
+            [1, 3, 3, 1, 3, 2, 1, 1, 4, 2],
+            [1, 3, 4, 2, 4, 2, 5, 2, 2, 3],
+            [2, 2, 1, 2, 1, 2, 4, 2, 2, 5],
         ];
 
         foreach ($dataMatriks as $index => $data) {
-            // Menentukan angka belakang untuk $nik
-            $indexFormatted = sprintf('%03d', ($index % 10) * 3 + 1);
-            // Menentukan angka belakang untuk $no_kk
-            $kkFormatted = sprintf('%03d', ($index % 10) * 3 + 1);
+            $no_kk = $kkNumber + 1 + $index;
 
-            // Menggabungkan dengan $initialNik
-            $nik = $initialNik + $indexFormatted;
-            // Menggabungkan dengan $kkNumber
-            $no_kk = $kkNumber + $kkFormatted;
-
-            // Sisipkan data ke dalam database
             DB::table('bansos')->insert([
                 'status_rumah' => $data[0],
                 'alas_rumah' => $data[1],
@@ -88,11 +89,11 @@ class BansosSeeder extends Seeder
                 'fasilitas_wc' => $data[7],
                 'pendapatan' => $data[8],
                 'jumlah_kendaraan' => $data[9],
-                'nik' => $nik,
+                'nik' => $initialNik,
                 'no_kk' => $no_kk,
                 'jumlah_keluarga' => 3,
-                'foto_gaji' => 'image_4_20240603_183247.png',
-                'foto_sktm' => 'image_4_20240603_183247.png',
+                'foto_gaji' => 'slip-gaji.png',
+                'foto_sktm' => 'foto-sktm.png',
                 'status_pengajuan' => 'diterima',
                 'id_notif' => null,
                 'tanggal_pengajuan' => now(),
@@ -100,9 +101,10 @@ class BansosSeeder extends Seeder
                 'updated_at' => now(),
             ]);
 
-            // Increment NIK by 33 and KK number by 20 after every 10 inputs
+            $initialNik += 3;
+
             if (($index + 1) % 10 == 0) {
-                $initialNik += 33;
+                $initialNik += 30;
                 $kkNumber += 20;
             }
         }

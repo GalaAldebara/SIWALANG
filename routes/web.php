@@ -86,14 +86,19 @@ Route::group(['prefix' => 'rt_notifikasi'], function () {
     Route::post('bansos/{id}/update', [NotifController::class, 'updateBansos'])->name('bansos.update');
 });
 
-// RT - Penerima Bansos
+// RT dan RW - Penerima Bansos
 Route::group(['prefix' => 'penerima_bansos'], function () {
+    // RT
     Route::get('/', [PenerimaBansosController::class, 'index']);
     Route::post('/pemohon', [PenerimaBansosController::class, 'listPemohon'])->name('pemohon_list');
     Route::post('/penerima', [PenerimaBansosController::class, 'listPenerima'])->name('penerima_list');
     Route::post('/hitung-skor', [PenerimaBansosController::class, 'perhitunganSkor'])->name('hitung.skor');
     Route::post('/perankingan', [PenerimaBansosController::class, 'perankingan'])->name('perankingan');
+    // RW
+    Route::get('/semua', [PenerimaBansosController::class, 'dataPenerima']);
+    Route::post('/semua/list', [PenerimaBansosController::class, 'listsemuaPenerima'])->name('data_penerima_list');
     Route::get('/{id}', [PenerimaBansosController::class, 'show']);
+    Route::get('/semua/{id}', [PenerimaBansosController::class, 'showData']);
 });
 
 // Data Warga (RT)
