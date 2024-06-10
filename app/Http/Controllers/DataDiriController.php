@@ -26,7 +26,7 @@ class DataDiriController extends Controller
         $user = Auth::user();
         $dataDiri = $user->dataDiri;
 
-        return view('warga.DataDiri.index', compact('header', 'user', 'dataDiri'));
+        return view('warga.DataDiri.index', compact('header', 'user', 'dataDiri',));
     }
 
     public function formSatu()

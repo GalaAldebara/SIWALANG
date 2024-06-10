@@ -30,7 +30,7 @@ class DataDiriSeeder extends Seeder
                 $rt = 3;
             } elseif ($nik >= 357305029 && $nik <= 357305038) {
                 $rt = 4;
-            } elseif ($nik >= 357305039 && $nik <= 357305044) {
+            } elseif ($nik >= 357305039 && $nik <= 357305048) {
                 $rt = 5;
             }
 

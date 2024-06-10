@@ -200,6 +200,12 @@ Route::get('/struktur-kepemimpinan', [StrukturKepemimpinanController::class, 'in
 Route::get('/struktur-kepemimpinan/rt', [StrukturKepemimpinanController::class, 'rt'])->name('struktur.rt');
 Route::get('/struktur-kepemimpinan/rw', [StrukturKepemimpinanController::class, 'rw'])->name('struktur.rw');
 
+// Admin
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/formRT', [AdminController::class, 'formRT']);
+});
+
 
 Route::get('/struktur', function () {
     return view('warga.strukturKepemimpinan.strukturKepemimpinan');
@@ -296,5 +302,3 @@ Route::get('/formganti', function () {
 Route::get('landingpage', function () {
     return view('warga.Landing.landing');
 });
-
-
