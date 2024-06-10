@@ -261,8 +261,8 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(data => {
                 if (data.success) {
-                    // location.reload();
-                    // pressButton2();
+                    location.reload();
+                    pressButton2();
                 } else {
                     // Show error message if ranking failed
                     Swal.fire({

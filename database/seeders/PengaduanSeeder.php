@@ -15,11 +15,11 @@ class PengaduanSeeder extends Seeder
     {
         $data = [
             [
-                'nik' => '357305004',
-                'nama' => 'silfi',
+                'nik' => '3576014403940004',
+                'nama' => 'yoan',
                 'tanggal_pengaduan' => now(),
                 'keluhan' => 'sudah hampir satu minggu sampah belum diambil oleh petugas',
-                'bukti' => 'logo-lang2 1.png'
+                'bukti' => 'sampah.jpeg'
             ]
         ];
         DB::table('pengaduan')->insert($data);

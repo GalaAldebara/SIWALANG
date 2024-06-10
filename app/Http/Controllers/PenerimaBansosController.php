@@ -121,7 +121,7 @@ class PenerimaBansosController extends Controller
 
     public function perhitunganSkor()
     {
-        $bansos = BansosModel::all();
+        $bansos = BansosModel::where('status_pengajuan', 'diterima')->get();
 
         // Simpan id_bansos terpisah dari matrik keputusan
         $idBansosList = $bansos->pluck('id_bansos')->toArray();
