@@ -52,6 +52,7 @@ class PenerimaBansosController extends Controller
                 ->leftJoin('m_user', 'bansos.nik', '=', 'm_user.nik')
                 ->leftJoin('data_diri', 'bansos.nik', '=', 'data_diri.nik')
                 ->where('bansos.status_bansos', "lolos")
+                ->where('data_diri.rt', auth()->user()->user_id - 2)
                 ->select('bansos.nik', 'm_user.nama', 'bansos.no_kk', 'skor_bansos.skor', 'data_diri.no_telp', 'bansos.id_bansos')
                 ->get()
                 ->map(function ($item, $key) {
@@ -100,15 +101,20 @@ class PenerimaBansosController extends Controller
         try {
             // Lakukan perangkingan di sini, misalnya dengan mengambil N pemohon teratas berdasarkan skor
             $applicants = SkorBansosModel::leftjoin('bansos', 'skor_bansos.id_bansos', '=', 'bansos.id_bansos')
+                ->leftJoin('data_diri', 'bansos.nik', '=', 'data_diri.nik')
+                ->where('data_diri.rt', auth()->user()->user_id - 2)
                 ->select('bansos.status_bansos', 'skor_bansos.skor', 'skor_bansos.id_bansos')
                 ->orderBy('skor', 'desc')
-                ->take($topScores)
                 ->get();
 
             // Lakukan pembaruan status_bansos untuk pemohon yang terpilih
-            foreach ($applicants as $applicant) {
+            foreach ($applicants as $key => $applicant) {
                 $bansos = BansosModel::find($applicant->id_bansos);
-                $bansos->status_bansos = 'lolos'; // Ubah status_bansos menjadi 'lolos'
+                if ($key < $topScores) {
+                    $bansos->status_bansos = 'lolos'; // Ubah status_bansos menjadi 'lolos' untuk pemohon top scores
+                } else {
+                    $bansos->status_bansos = 'tidak_lolos'; // Ubah status_bansos menjadi 'tidak_lolos' untuk pemohon yang tidak top scores
+                }
                 $bansos->save(); // Simpan perubahan ke dalam database
             }
 

@@ -62,6 +62,21 @@
         </div>
     </div>
 </main>
+<!-- Modal -->
+<div id="topScoresModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="relative bg-white w-1/3 mx-auto rounded shadow-lg">
+        <!-- Konten Modal -->
+        <div class="p-8">
+          <h2 class="text-xl font-semibold mb-4">Masukkan Jumlah Penerima Bansos</h2>
+          <input id="topScoresInput" type="number" class="w-full border rounded px-3 py-2" placeholder="Enter the number of top scores to consider...">
+          <div class="mt-4 flex justify-end">
+            <button id="confirmTopScores" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @push('css')
@@ -237,14 +252,25 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const buttonRank = document.getElementById("button_rank");
+    const topScoresModal = document.getElementById("topScoresModal");
+    const topScoresInput = document.getElementById("topScoresInput");
+    const confirmTopScores = document.getElementById("confirmTopScores");
 
     buttonRank.addEventListener("click", function() {
-        // Prompt the user to enter the number of top scores they want to consider
-        const topScores = prompt("Enter the number of top scores to consider:");
+    // Tampilkan modal
+    topScoresModal.classList.remove("hidden");
+    });
+
+    confirmTopScores.addEventListener("click", function() {
+        // Ambil nilai top scores dari input
+        const topScores = parseInt(topScoresInput.value);
+
+        // Tutup modal
+        topScoresModal.classList.add("hidden");
 
         // Check if the user entered a valid number
-        if (topScores !== null && !isNaN(topScores) && topScores !== '') {
-            // Send an AJAX request to the server
+        if (!isNaN(topScores) && topScores > 0) {
+            // Kirim permintaan AJAX ke server
             fetch("{{ route('perankingan') }}", {
                 method: "POST",
                 headers: {
@@ -261,10 +287,16 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(data => {
                 if (data.success) {
-                    location.reload();
-                    pressButton2();
+                    // Reload data tabel setelah berhasil memperbarui peringkat
+                    dataPengaduan.ajax.reload();
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Ranking successful',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
                 } else {
-                    // Show error message if ranking failed
+                    // Tampilkan pesan error jika gagal meranking pemohon
                     Swal.fire({
                         title: 'Error',
                         text: 'Failed to rank applicants: ' + data.message,
@@ -283,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             });
         } else {
-            // Show an error message if the user didn't enter a valid number
+            // Tampilkan pesan error jika pengguna tidak memasukkan angka yang valid
             Swal.fire({
                 title: 'Error',
                 text: 'Please enter a valid number of top scores.',

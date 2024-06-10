@@ -51,12 +51,12 @@
                     </span>
                 </div>
                 <div class="grid grid-cols-[30px_1fr] gap-y-2" style="font-family: Asap">
-                    <span class="col-start-2 font-extrabold text-lg">b. SKTM</span>
-                    <img src="{{ asset('img/pengajuan-bansos/' . $bansos->foto_sktm) }}" alt="foto_profil" class="object-cover col-start-2 w-11/12">
-                </div>
-                <div class="grid grid-cols-[30px_1fr] gap-y-2 col-start-2" style="font-family: Asap">
                     <span class="col-start-2 font-extrabold text-lg">c. Kartu Keluarga</span>
                     <img src="{{ asset('img/kk/' . $dataDiri->foto_kk) }}" alt="foto_profil" class="object-cover col-start-2 w-11/12">
+                </div>
+                <div class="grid grid-cols-[30px_1fr] gap-y-2 col-start-2" style="font-family: Asap">
+                    <span class="col-start-2 font-extrabold text-lg">b. SKTM</span>
+                    <img src="{{ asset('img/pengajuan-bansos/' . $bansos->foto_sktm) }}" alt="foto_profil" class="object-cover col-start-2 w-11/12">
                 </div>
                 @else    
                     <div class="fixed font-black text-3xl w-full" style="font-family: Asap">
