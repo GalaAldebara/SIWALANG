@@ -31,6 +31,7 @@ class PenerimaBansosController extends Controller
                 ->leftJoin('m_user', 'bansos.nik', '=', 'm_user.nik')
                 ->leftJoin('data_diri', 'bansos.nik', '=', 'data_diri.nik')
                 ->where('bansos.status_pengajuan', "diterima")
+                ->where('data_diri.rt', auth()->user()->user_id - 2)
                 ->select('bansos.nik', 'm_user.nama', 'bansos.no_kk', 'skor_bansos.skor', 'data_diri.no_telp')
                 ->get()
                 ->map(function ($item, $key) {

@@ -52,6 +52,16 @@
         <div class="relative -top-14 w-full">
             <div class="flex justify-center">
                 <nav class="flex flex-row flex-wrap gap-9 justify-center items-center w-5/6 text-xl">
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('data_diri') }}">
+                        <div class="p-5 flex flex-col items-center text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="53" fill="#2a6c12" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+                                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5z"/>
+                              </svg>
+                            <p class="font-bold mb-2">Data diri</p>
+                            <p class="text-xs text-gray-500">Informasi personal data kependudukan</p>
+                        </div>
+                    </a>
                     <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('show-pdf') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="53" fill="#2a6c12" class="bi bi-envelope-paper" viewBox="0 0 16 16">
@@ -68,6 +78,15 @@
                               </svg>
                             <p class="font-bold mb-2">Pengajuan Bansos</p>
                             <p class="text-xs text-gray-500">Pengajuan penerima bantuan sosial</p>
+                        </div>
+                    </a>
+                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('kegiatan/agenda') }}">
+                        <div class="p-5 flex flex-col items-center text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="53" fill="#2a6c12" class="bi bi-activity" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
+                              </svg>
+                            <p class="font-bold mb-2">Jadwal Kegiatan</p>
+                            <p class="text-xs text-gray-500">Agenda / Jadwal kegiatan warga mendatang</p>
                         </div>
                     </a>
                     <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('pelaporan-tamu') }}">
@@ -90,15 +109,6 @@
                             <p class="text-xs text-gray-500">Pengaduan permasalahan yang terjadi di lingkungan warga</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('kegiatan/agenda') }}">
-                        <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="53" fill="#2a6c12" class="bi bi-activity" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
-                              </svg>
-                            <p class="font-bold mb-2">Jadwal Kegiatan</p>
-                            <p class="text-xs text-gray-500">Agenda / Jadwal kegiatan warga mendatang</p>
-                        </div>
-                    </a>
                     <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('kegiatan/arsip') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="53" fill="#2a6c12" class="bi bi-file-earmark-zip" viewBox="0 0 16 16">
@@ -107,16 +117,6 @@
                               </svg>
                             <p class="font-bold mb-2">Arsip Kegiatan</p>
                             <p class="text-xs text-gray-500">Arsip dokumentasi kegiatan warga bersama</p>
-                        </div>
-                    </a>
-                    <a class="rounded-md w-60 h-40" style="background-color:#f5f5f5" href="{{ url('data_diri') }}">
-                        <div class="p-5 flex flex-col items-center text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="53" fill="#2a6c12" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
-                                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5z"/>
-                              </svg>
-                            <p class="font-bold mb-2">Data diri</p>
-                            <p class="text-xs text-gray-500">Informasi personal data kependudukan</p>
                         </div>
                     </a>
                 </nav>
