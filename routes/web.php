@@ -54,8 +54,8 @@ Route::group(['prefix' => 'pelaporan-tamu'], function () {
 // WARGA - kegiatan
 Route::group(['prefix' => 'kegiatan'], function () {
     Route::get('/agenda', [KegiatanController::class, 'agenda']);
-    Route::post('/agenda/list', [KegiatanController::class, 'list']);
-    Route::get('/agenda/rincian', [KegiatanController::class, 'rincian']);
+    // Route::post('/agenda/list', [KegiatanController::class, 'list']);
+    Route::get('/agenda/{id}', [KegiatanController::class, 'rincian']);
     Route::get('/arsip', [KegiatanController::class, 'arsip']);
 });
 
