@@ -193,4 +193,38 @@ class DataDiriController extends Controller
 
         return view('diagrambatang', compact('male', 'female', 'headOfFamily', 'jumlahWarga'));
     }
+
+    public function getRtData(Request $request)
+    {
+        $gender = $request->input('gender');
+        $relationship = $request->input('relationship');
+
+        $query = DB::table('data_diri')
+            ->select('rt', DB::raw('COUNT(*) as count'))
+            ->groupBy('rt');
+
+        if ($gender) {
+            $query->where('jenis_kelamin', $gender);
+        }
+
+        if ($relationship) {
+            $query->where('hubungan_kk', $relationship);
+        }
+
+        $data = $query->get();
+
+        $rt1 = $data->where('rt', 1)->sum('count');
+        $rt2 = $data->where('rt', 2)->sum('count');
+        $rt3 = $data->where('rt', 3)->sum('count');
+        $rt4 = $data->where('rt', 4)->sum('count');
+        $rt5 = $data->where('rt', 5)->sum('count');
+
+        return response()->json([
+            'rt1' => $rt1,
+            'rt2' => $rt2,
+            'rt3' => $rt3,
+            'rt4' => $rt4,
+            'rt5' => $rt5
+        ]);
+    }
 }

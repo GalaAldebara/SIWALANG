@@ -11,10 +11,10 @@
         <div class="relative flex flex-col md:flex-row justify-center bg-cover bg-center bg-desa-langlang bg-black/50 bg-blend-multiply" style="height: 26rem">
             <div class="absolute w-full px-4 md:w-5/6">
                 <div class="flex flex-row justify-end text-white text-sm py-2 mt-1 font-thin" style="font-family: Asap">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-4 h-4 mr-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-4 mr-1">
                         <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
                     </svg>
-                    <a href="https://maps.app.goo.gl/8FUyPuXjaErjHRZp9" target="_blank" class="hover:underline text-xs md:text-sm lg:text-base">
+                    <a href="https://maps.app.goo.gl/8FUyPuXjaErjHRZp9" target="_blank" class="hover:underline">
                         Kec. Singosari, Kab. Malang, Jawa Timur
                     </a>
                 </div>
@@ -30,11 +30,6 @@
                                 BERANDA
                             </span>
                         </button>
-                        <a class="group font-bold px-3 md:px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('warga') }}">
-                            <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
-                                NOTIFIKASI
-                            </span>
-                        </a>
                         <a class="group font-bold px-3 md:px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('logout') }}">
                             <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                                 LOGOUT
@@ -114,20 +109,21 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="bg-secondary w-full flex flex-col items-center">
-            <div class="w-full md:w-4/6 text-white my-8 px-4 md:px-0">
-                <p class="underline underline-offset-[13px] decoration-[#2a6c12] font-bold">Tentang</p>
-                <p class="mt-5 text-xs text-white/60">SIWALANG, Portal kependudukan warga RW 001, Desa Lang-Lang Singosari Malang</p>
-            </div>
+<footer>
+    <div class="bg-secondary w-full flex flex-col items-center">
+        <div class="w-full md:w-4/6 text-white my-8 px-4 md:px-0 md:pl-4 lg:pl-8">
+            <p class="underline underline-offset-[13px] decoration-[#2a6c12] font-bold">Tentang</p>
+            <p class="mt-5 text-xs text-white/60">SIWALANG, Portal kependudukan warga RW 001, Desa Lang-Lang Singosari Malang</p>
         </div>
-        <div class="w-full flex items-center flex-col bg-primary">
-            <div class="w-full md:w-5/6 flex-row flex justify-between py-2 px-4 md:px-0">
-                <p class="text-white/60 text-xs">SIWALANG 2024</p>
-                <p class="text-white/60 text-xs cursor-pointer">Kembali ke atas</p>
-            </div>
+    </div>
+    <div class="w-full flex items-center flex-col bg-primary">
+        <div class="w-full md:w-5/6 flex-row flex justify-between py-2 px-4 md:px-0">
+            <p class="text-white/60 text-xs">SIWALANG 2024</p>
+            <p class="text-white/60 text-xs cursor-pointer">Kembali ke atas</p>
         </div>
-    </footer>
+    </div>
+</footer>
+
 
     <script>
         var level_id = {{ $level_id }};

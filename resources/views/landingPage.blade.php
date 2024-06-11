@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #rtData {
+            display: none;
+            width: 50%;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
     <div class="min-h-screen">
@@ -65,22 +77,31 @@
         <div class="w-full flex justify-center py-3">
             <div class="w-5/6 grid grid-cols-4 bg-primary text-center text-white rounded-xl">
                 <div class="my-6 px-6 border-r-[1px]">
-                    <h1 class="text-2xl font-black tracking-wide">999</h1>
+                    <h1 class="text-2xl font-black tracking-wide">{{ $maleCount }}</h1>
                     <p class="text-gray-300 text-sm" style="font-family: Asap">Laki-laki</p>
                 </div>
                 <div class="my-6 px-6 border-r-[1px]">
-                    <h1 class="text-2xl font-black tracking-wide">999</h1>
+                    <h1 class="text-2xl font-black tracking-wide">{{ $femaleCount }}</h1>
                     <p class="text-gray-300 text-sm" style="font-family: Asap">Perempuan</p>
                 </div>
                 <div class="my-6 px-6 border-r-[1px]">
-                    <h1 class="text-2xl font-black tracking-wide">999</h1>
-                    <p class="text-gray-300 text-sm" style="font-family: Asap">keluarga</p>
+                    <h1 class="text-2xl font-black tracking-wide">{{ $familyCount }}</h1>
+                    <p class="text-gray-300 text-sm" style="font-family: Asap">Keluarga</p>
                 </div>
                 <div class="my-6 px-6 border-r-[1px]">
-                    <h1 class="text-2xl font-black tracking-wide">999</h1>
+                    <h1 class="text-2xl font-black tracking-wide">{{ $totalCount }}</h1>
                     <p class="text-gray-300 text-sm" style="font-family: Asap">Penduduk</p>
                 </div>
             </div>
+        </div>
+
+        <div style="width: 50%; margin: auto;">
+            <canvas id="dataChart"></canvas>
+        </div>
+
+        <div id="rtData">
+            <h3>Data Warga Berdasarkan RT</h3>
+            <canvas id="rtChart"></canvas>
         </div>
 
         <div class="w-full mt-3 flex flex-col justify-center items-center pb-14" style="background-color:#f5f5f5">
@@ -281,3 +302,111 @@
                 </div>
             </div>
         </footer>
+    </div>
+
+    <script>
+        var ctx = document.getElementById('dataChart').getContext('2d');
+        var rtChart = null; // Variable to store the RT chart instance
+        var lastClickedLabel = null; // Variable to store the last clicked label
+
+        var dataChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Male', 'Female', 'Kepala Keluarga', 'Jumlah Warga'],
+                datasets: [{
+                    label: 'Count',
+                    data: [{{ $maleCount }}, {{ $femaleCount }}, {{ $familyCount }}, {{ $totalCount }}],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 500 // Set maximum y-axis value to 300 for the main chart
+                    }
+                },
+                onClick: function(evt, elements) {
+                    if (elements.length > 0) {
+                        var dataIndex = elements[0].index;
+                        var label = dataChart.data.labels[dataIndex];
+
+                        var gender = null;
+                        var relationship = null;
+
+                        if (label === 'Male') {
+                            gender = 'Laki-laki';
+                        } else if (label === 'Female') {
+                            gender = 'Perempuan';
+                        } else if (label === 'Kepala Keluarga') {
+                            relationship = 'kepala keluarga';
+                        }
+
+                        if (label === 'Jumlah Warga' || gender || relationship) {
+                            if ($('#rtData').is(':visible') && lastClickedLabel === label) {
+                                $('#rtData').hide();
+                                lastClickedLabel = null;
+                            } else {
+                                $.ajax({
+                                    url: '/data_diri/chart/rt',
+                                    method: 'GET',
+                                    data: {
+                                        gender: gender,
+                                        relationship: relationship
+                                    },
+                                    success: function(response) {
+                                        showRtData(response, label);
+                                    }
+                                });
+                                lastClickedLabel = label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        function showRtData(data, label) {
+            var rtCtx = document.getElementById('rtChart').getContext('2d');
+            if (rtChart) {
+                rtChart.destroy();
+            }
+            rtChart = new Chart(rtCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['RT 1', 'RT 2', 'RT 3', 'RT 4', 'RT 5'],
+                    datasets: [{
+                        label: label + ' per RT',
+                        data: [data.rt1, data.rt2, data.rt3, data.rt4, data.rt5],
+                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100 // Set maximum y-axis value to 50 for the RT chart
+                        }
+                    }
+                }
+            });
+
+            $('#rtData').show();
+        }
+    </script>
+</body>
+</html>
