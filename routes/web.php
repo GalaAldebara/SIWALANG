@@ -9,7 +9,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NotifController;
 use App\Http\Controllers\WargaController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DataDiriController;
 use App\Http\Controllers\DataTamuController;
 use App\Http\Controllers\KegiatanController;
@@ -19,15 +21,18 @@ use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\RWDataTamuController;
 use App\Http\Controllers\RW_DataTamuController;
 use App\Http\Controllers\DataPengaduanController;
-use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PelaporanTamuController;
-use App\Http\Controllers\StrukturKepemimpinanController;
 use App\Http\Controllers\PenerimaBansosController;
 use App\Http\Controllers\PengajuanBansosController;
-
+use App\Http\Controllers\StrukturKepemimpinanController;
 
 Route::get('/landing', function () {
-    return view('landingPage');
+    $maleCount = DB::table('data_diri')->where('jenis_kelamin', 'Laki-laki')->count();
+    $femaleCount = DB::table('data_diri')->where('jenis_kelamin', 'Perempuan')->count();
+    $familyCount = DB::table('data_diri')->where('hubungan_kk', 'kepala keluarga')->count();
+    $totalCount = DB::table('data_diri')->count();
+
+    return view('landingPage', compact('maleCount', 'femaleCount', 'familyCount', 'totalCount'));
 });
 
 Route::get('/DataWarga', function () {
@@ -229,6 +234,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/formRT', [AdminController::class, 'show']);
 });
 
+Route::group(['prefix' => 'landing'], function () {
+    Route::get('/landing', [LandingController::class, 'index'])->name('landing');
+});
 
 // Route::get('/struktur', function () {
 //     return view('warga.strukturKepemimpinan.strukturKepemimpinan');
