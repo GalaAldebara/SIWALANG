@@ -32,14 +32,28 @@ class KegiatanController extends Controller
         return view('warga.AgendaKegiatan.rincian', ['header' => $header, 'kegiatan' => $kegiatan]);
     }
 
+    public function showArsip(string $id)
+    {
+        $kegiatan = KegiatanModel::find($id);
+
+        $header = (object) [
+            'title' => 'Agenda Kegiatan',
+            'list' => ['Beranda', 'Agenda Kegiatan', 'Rincian Agenda Kegiatan']
+        ];
+
+        return view('warga.AgendaKegiatan.rincian', ['header' => $header, 'kegiatan' => $kegiatan]);
+    }
+
     public function arsip()
     {
+        $kegiatan = KegiatanModel::where('status_kegiatan', 'selesai')->get();
+
         $header = (object) [
             'title' => 'Agenda Kegiatan',
             'list' => ['Beranda', 'Arsip Kegiatan']
         ];
 
-        return view('warga.ArsipKegiatan.index', ['header' => $header]);
+        return view('warga.ArsipKegiatan.index', ['header' => $header, 'kegiatan' => $kegiatan]);
     }
 
     // RW

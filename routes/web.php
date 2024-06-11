@@ -56,6 +56,7 @@ Route::group(['prefix' => 'kegiatan'], function () {
     Route::get('/agenda', [KegiatanController::class, 'agenda']);
     // Route::post('/agenda/list', [KegiatanController::class, 'list']);
     Route::get('/agenda/{id}', [KegiatanController::class, 'rincian']);
+    Route::get('/arsip/{id}', [KegiatanController::class, 'showArsip']);
     Route::get('/arsip', [KegiatanController::class, 'arsip']);
 });
 
