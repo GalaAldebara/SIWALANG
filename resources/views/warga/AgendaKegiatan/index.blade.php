@@ -8,132 +8,25 @@
     </div>
 
     <div class="grid grid-cols-3 grid-rows-3 w-5/6 gap-y-4 gap-x-10 my-6">
-      <a class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3" href="{{ url('kegiatan/agenda/rincian') }}">
-        <div class="flex flex-row text-white font-light" style="font-family: Asap">
-          <p class="bg-black px-3 rounded-l-md">10</p>
-          <p class="bg-primary px-3 rounded-r-md">Maret 2024</p>
-        </div>
-        <h1 class="font-bold text-lg" style="font-family: Poppins">Kerja Bakti Bersama</h1>
-        <div class="flex flex-row items-center gap-3 text-gray-400" style="font-family: Asap">
-          <p>07:00 - 08:30</p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-          </svg>          
-          <p>Jalan raya poros Lang-Lang</p>
-        </div>
-      </a>
-      <section class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3">
-        <div class="flex flex-row text-white font-light" style="font-family: Asap">
-          <p class="bg-black px-3 rounded-l-md">10</p>
-          <p class="bg-primary px-3 rounded-r-md">Maret 2024</p>
-        </div>
-        <h1 class="font-bold text-lg" style="font-family: Poppins">Kerja Bakti Bersama</h1>
-        <div class="flex flex-row items-center gap-3 text-gray-400" style="font-family: Asap">
-          <p>07:00 - 08:30</p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-          </svg>          
-          <p>Jalan raya poros Lang-Lang</p>
-        </div>
-      </section>
-      <section class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3">
-        <div class="flex flex-row text-white font-light" style="font-family: Asap">
-          <p class="bg-black px-3 rounded-l-md">10</p>
-          <p class="bg-primary px-3 rounded-r-md">Maret 2024</p>
-        </div>
-        <h1 class="font-bold text-lg" style="font-family: Poppins">Kerja Bakti Bersama</h1>
-        <div class="flex flex-row items-center gap-3 text-gray-400" style="font-family: Asap">
-          <p>07:00 - 08:30</p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-          </svg>          
-          <p>Jalan raya poros Lang-Lang</p>
-        </div>
-      </section>
-      <section class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3">
-        <div class="flex flex-row text-white font-light" style="font-family: Asap">
-          <p class="bg-black px-3 rounded-l-md">10</p>
-          <p class="bg-primary px-3 rounded-r-md">Maret 2024</p>
-        </div>
-        <h1 class="font-bold text-lg" style="font-family: Poppins">Kerja Bakti Bersama</h1>
-        <div class="flex flex-row items-center gap-3 text-gray-400" style="font-family: Asap">
-          <p>07:00 - 08:30</p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-          </svg>          
-          <p>Jalan raya poros Lang-Lang</p>
-        </div>
-      </section>
-      <section class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3">
-        <div class="flex flex-row text-white font-light" style="font-family: Asap">
-          <p class="bg-black px-3 rounded-l-md">10</p>
-          <p class="bg-primary px-3 rounded-r-md">Maret 2024</p>
-        </div>
-        <h1 class="font-bold text-lg" style="font-family: Poppins">Kerja Bakti Bersama</h1>
-        <div class="flex flex-row items-center gap-3 text-gray-400" style="font-family: Asap">
-          <p>07:00 - 08:30</p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-          </svg>          
-          <p>Jalan raya poros Lang-Lang</p>
-        </div>
-      </section>
-      <section class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3">
-        <div class="flex flex-row text-white font-light" style="font-family: Asap">
-          <p class="bg-black px-3 rounded-l-md">10</p>
-          <p class="bg-primary px-3 rounded-r-md">Maret 2024</p>
-        </div>
-        <h1 class="font-bold text-lg" style="font-family: Poppins">Kerja Bakti Bersama</h1>
-        <div class="flex flex-row items-center gap-3 text-gray-400" style="font-family: Asap">
-          <p>07:00 - 08:30</p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-          </svg>          
-          <p>Jalan raya poros Lang-Lang</p>
-        </div>
-      </section>
-      <section class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3">
-        <div class="flex flex-row text-white font-light" style="font-family: Asap">
-          <p class="bg-black px-3 rounded-l-md">10</p>
-          <p class="bg-primary px-3 rounded-r-md">Maret 2024</p>
-        </div>
-        <h1 class="font-bold text-lg" style="font-family: Poppins">Kerja Bakti Bersama</h1>
-        <div class="flex flex-row items-center gap-3 text-gray-400" style="font-family: Asap">
-          <p>07:00 - 08:30</p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-          </svg>          
-          <p>Jalan raya poros Lang-Lang</p>
-        </div>
-      </section>
-      <section class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3">
-        <div class="flex flex-row text-white font-light" style="font-family: Asap">
-          <p class="bg-black px-3 rounded-l-md">10</p>
-          <p class="bg-primary px-3 rounded-r-md">Maret 2024</p>
-        </div>
-        <h1 class="font-bold text-lg" style="font-family: Poppins">Kerja Bakti Bersama</h1>
-        <div class="flex flex-row items-center gap-3 text-gray-400" style="font-family: Asap">
-          <p>07:00 - 08:30</p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-          </svg>          
-          <p>Jalan raya poros Lang-Lang</p>
-        </div>
-      </section>
-      <section class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3">
-        <div class="flex flex-row text-white font-light" style="font-family: Asap">
-          <p class="bg-black px-3 rounded-l-md">10</p>
-          <p class="bg-primary px-3 rounded-r-md">Maret 2024</p>
-        </div>
-        <h1 class="font-bold text-lg" style="font-family: Poppins">Kerja Bakti Bersama</h1>
-        <div class="flex flex-row items-center gap-3 text-gray-400" style="font-family: Asap">
-          <p>07:00 - 08:30</p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-          </svg>          
-          <p>Jalan raya poros Lang-Lang</p>
-        </div>
-      </section>
+      @foreach ($kegiatan as $item) 
+        @php
+          $date = \Carbon\Carbon::parse($item->tanggal_kegiatan);
+        @endphp
+        <a class="flex flex-col gap-3 cursor-pointer border-2 rounded-lg p-3" href="{{ url('kegiatan/agenda/rincian/' . $item->id_kegiatan) }}">
+          <div class="flex flex-row text-white font-light" style="font-family: Asap">
+            <p class="bg-black px-3 rounded-l-md">{{ $date->format('d') }}</p>
+            <p class="bg-primary px-2 rounded-r-md">{{ $date->format('F Y') }}</p>
+          </div>
+          <h1 class="font-bold text-lg" style="font-family: Poppins">{{ $item->nama_kegiatan }}</h1>
+          <div class="flex flex-row items-center gap-3 text-gray-400" style="font-family: Asap">
+            <p>{{$item->jam_mulai}} - {{$item->jam_selesai}}</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
+              <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
+            </svg>          
+            <p>{{$item->lokasi}}</p>
+          </div>
+        </a>
+      @endforeach
     </div>
 
     <div class="w-5/6 flex flex-row items-center justify-center gap-3 my-3" style="font-family: Asap">

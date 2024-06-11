@@ -10,12 +10,14 @@ class KegiatanController extends Controller
 {
     public function agenda()
     {
+        $kegiatan = KegiatanModel::where('status_kegiatan', 'belum selesai')->get();
+
         $header = (object) [
             'title' => 'Agenda Kegiatan',
             'list' => ['Beranda', 'Agenda Kegiatan']
         ];
 
-        return view('warga.AgendaKegiatan.index', ['header' => $header]);
+        return view('warga.AgendaKegiatan.index', ['header' => $header, 'kegiatan' => $kegiatan]);
     }
 
     public function rincian()
