@@ -47,16 +47,11 @@
                                 NOTIFIKASI
                             </span>
                         </a>
-                        <a class="group font-bold px-3 md:px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('logout') }}">
-                            <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
-                                LOGOUT
-                            </span>
-                        </a>
                     </div>
                 </nav>
                 <header class="text-white/80 flex flex-col items-center mt-7 text-center px-4">
                     <h1 class="text-white font-bold text-3xl md:text-5xl leading-tight" style="max-width: 550px">Selamat Datang di Desa Lang-Lang RW. 01 </h1>
-                    <a class="tracking-wide text-white font-bold py-3 px-8 mt-12 bg-primary rounded-3xl" style="font-family: Asap" href="/login">LOGIN</a>
+                    <a class="tracking-wide text-white font-bold py-3 px-8 mt-12 bg-primary rounded-3xl" style="font-family: Asap" href="{{ route('login') }}">LOGIN</a>
                 </header>
             </div>
         </div>
@@ -188,13 +183,13 @@
                   <h1 class="font-bold text-4xl" style="font-family: poppins">Agenda Kegiatan Warga RW.01 Mendatang</h1>
                   <p class="text-gray-400 text-lg" style="font-family: Asap">Jangan lewatkan kegiatan mendatang</p>
                 </div>
-            
+
                 <div class="grid grid-cols-3 w-5/6 gap-y-4 gap-x-10 my-6">
                     @php
                         use App\Models\KegiatanModel;
                         $kegiatan = KegiatanModel::where('status_kegiatan', 'belum selesai')->get();
                     @endphp
-                    @foreach ($kegiatan as $item) 
+                    @foreach ($kegiatan as $item)
                         @php
                         $date = \Carbon\Carbon::parse($item->tanggal_kegiatan);
                         @endphp
@@ -208,7 +203,7 @@
                             <p>{{$item->jam_mulai}} - {{$item->jam_selesai}}</p>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
                             <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-                            </svg>          
+                            </svg>
                             <p>{{$item->lokasi}}</p>
                         </div>
                         </a>
@@ -222,12 +217,12 @@
                   <p class="text-primary font-bold text-lg" style="font-family: Poppins">Dokumentasi</p>
                   <h1 class="font-bold text-4xl" style="font-family: Poppins">Arsip Kegiatan Warga RW.01</h1>
                 </div>
-            
+
                 <div class="grid grid-cols-3 w-5/6 gap-y-10 gap-x-4 my-6">
                     @php
                         $kegiatan2 = KegiatanModel::where('status_kegiatan', 'selesai')->get();
                     @endphp
-                    @foreach ($kegiatan2 as $item) 
+                    @foreach ($kegiatan2 as $item)
                         @php
                         $date = \Carbon\Carbon::parse($item->tanggal_kegiatan);
                         @endphp
@@ -266,7 +261,7 @@
                   position: relative;
                   display: inline-block;
                 }
-              
+
                 .popup-image {
                   display: none;
                   position: absolute;
@@ -276,11 +271,11 @@
                   border: 1px solid #ccc;
                   z-index: 10;
                 }
-              
+
                 .popup-container:hover .popup-image {
                   display: block;
                 }
-              
+
                 .popup-image img {
                   max-width: 600px; /* Sesuaikan ukuran popup */
                   max-height: 600px;

@@ -26,13 +26,24 @@ use App\Http\Controllers\PenerimaBansosController;
 use App\Http\Controllers\PengajuanBansosController;
 use App\Http\Controllers\StrukturKepemimpinanController;
 
-Route::get('/landing', function () {
+
+Route::get('/', function () {
     $maleCount = DB::table('data_diri')->where('jenis_kelamin', 'Laki-laki')->count();
     $femaleCount = DB::table('data_diri')->where('jenis_kelamin', 'Perempuan')->count();
     $familyCount = DB::table('data_diri')->where('hubungan_kk', 'kepala keluarga')->count();
     $totalCount = DB::table('data_diri')->count();
 
     return view('landingPage', compact('maleCount', 'femaleCount', 'familyCount', 'totalCount'));
+});
+
+
+Route::prefix('auth')->group(function () {
+    Route::get('/', [AuthController::class, 'index'])->name('login');
+    Route::get('login', [AuthController::class, 'index'])->name('login');
+    Route::get('register', [AuthController::class, 'register'])->name('register');
+    Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('proses_register', [AuthController::class, 'proses_register'])->name('proses_register');
 });
 
 Route::get('/DataWarga', function () {
@@ -139,14 +150,6 @@ Route::group(['prefix' => 'data_pengaduan'], function () {
     Route::post('/', [DataPengaduanController::class, 'list'])->name('data.pengaduan_list');
     Route::get('/{id}', [DataPengaduanController::class, 'show'])->name('rincian.data-pengaduan');
 });
-
-// Login
-Route::get('/', [AuthController::class, 'index'])->name('login');
-Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::get('register', [AuthController::class, 'register'])->name('register');
-Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('proses_register', [AuthController::class, 'proses_register'])->name('proses_register');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:1']], function () {

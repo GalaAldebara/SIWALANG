@@ -6,36 +6,34 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap">
 </head>
-<body>
-    <div class="min-h-screen">
-        <div class="relative flex flex-col md:flex-row justify-center bg-cover bg-center bg-desa-langlang bg-black/50 bg-blend-multiply" style="height: 26rem">
-            <div class="absolute w-full px-4 md:w-5/6">
-                <div class="flex flex-row justify-end text-white text-sm py-2 mt-1 font-thin" style="font-family: Asap">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-4 mr-1">
-                        <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
-                    </svg>
-                    <a href="https://maps.app.goo.gl/8FUyPuXjaErjHRZp9" target="_blank" class="hover:underline">
-                        Kec. Singosari, Kab. Malang, Jawa Timur
-                    </a>
+<div class="h-screen">
+    <div class="flex flex-row justify-center bg-cover bg-center min-h-60 md:h-[26rem] bg-desa-langlang bg-black/50 bg-blend-multiply">
+        <div class="absolute w-5/6">
+            <a href="https://maps.app.goo.gl/DPopJXQ6Hp1bLQDG9" target="_blank" rel="noopener noreferrer" class="flex flex-row justify-end text-white text-sm py-2 mt-1 font-thin" style="font-family: Asap">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-4 mr-1">
+                    <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
+                </svg>
+                <p class="hidden md:block">Kec.Singosari, Kab.Malang, Jawa Timur</p>
+                <p class="md:hidden">Lang-Lang</p>
+            </a>
+            <nav class="bg-white w-full rounded-lg flex felx-row justify-between min-w-max">
+                <div class="md:flex flex-row items-center pl-8 hidden">
+                    <img src="{{ asset('img/logo-lang2.png') }}" alt="lang-lang" class="max-h-20 pr-3 py-2">
+                    <h1 class="text-si text-3xl font-black" style="font-family: Inter">SI</h1>
+                    <h1 class="text-walang text-3xl font-black" style="font-family: Inter">WALANG</h1>
                 </div>
-                <nav class="bg-white w-full rounded-lg flex flex-col md:flex-row justify-between items-center min-w-max px-4">
-                    <div class="flex flex-row items-center pl-2 md:pl-8">
-                        <img src="{{ asset('img/logo-lang2.png') }}" alt="lang-lang" class="max-h-20 pr-3 py-2">
-                        <h1 class="text-si text-3xl font-black" style="font-family: Inter">SI</h1>
-                        <h1 class="text-walang text-3xl font-black" style="font-family: Inter">WALANG</h1>
-                    </div>
-                    <div class="flex flex-row items-center py-2 md:py-0 space-x-2 md:space-x-5">
-                        <button class="group font-bold px-2 md:px-3 text-walang transition-all duration-300 ease-in-out" id="beranda">
-                            <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
-                                BERANDA
-                            </span>
-                        </button>
-                        <a class="group font-bold px-2 md:px-3 text-black transition-all duration-300 ease-in-out" href="{{ url('rt_notifikasi') }}">
-                            <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
-                                NOTIFIKASI
-                            </span>
-                        </a>
-                        <a class="relative group font-bold px-2 md:px-3 text-black transition-all duration-300 ease-in-out" href="{{ url('logout') }}">
+                <div class="flex flex-row items-center px-7 py-6">
+                    <button class="group font-bold px-4 md:px-7 text-xs md:text-base text-walang transition-all duration-300 ease-in-out" id="beranda">
+                        <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
+                            BERANDA
+                        </span>
+                    </button>
+                    <a class="group font-bold px-4 md:px-7 text-xs md:text-base text-black transition-all duration-300 ease-in-out" href="{{ url('warga') }}" >
+                        <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
+                            NOTIFIKASI
+                        </span>
+                    </a>
+                        <a class="relative group font-bold px-2 md:px-3 text-black transition-all duration-300 ease-in-out" href="{{ route('logout') }}">
                             <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                                 LOGOUT
                             </span>
@@ -53,8 +51,9 @@
                     </div>
                 </nav>
 
-                <header class="text-white/80 flex flex-col items-center mt-7 text-center px-4">
-                    <h1 class="text-white font-bold text-3xl md:text-5xl leading-tight" style="max-width: 550px">Selamat Datang di Desa Lang-Lang RW. 01 </h1>
+                <header class="text-white/80 flex flex-col items-center mt-7 text-center">
+                    <h1 class="text-white font-bold text-5xl leading-tight hidden md:block" style="max-width: 550px">Selamat Datang di Desa Lang-Lang RW. 01 </h1>
+                    <p class="font-light pb-5 md:py-5 text-xs md:text-base" style="font-family: Asap">Portal pengelola kependudukan RW.01 Desa Lang-Lang</p>
                 </header>
             </div>
         </div>
