@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KeuanganModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use DB;
 
 class KeuanganController extends Controller
 {
@@ -109,24 +110,25 @@ class KeuanganController extends Controller
     public function showGrafik()
     {
         $header = (object) [
-            'title' => 'Grafik Keuangan',
-            'list' => ['Beranda', 'Grafik']
+            'title' => 'Diagram Grafik',
+            'list' => ['Beranda', 'Diagram']
         ];
 
-        $keuanganData = KeuanganModel::select('tanggal_kegiatan', 'kategori', 'jumlah')->get();
+        $pemasukan = KeuanganModel::where('kategori', 'Pemasukan')->sum('jumlah');
+        $pengeluaran = KeuanganModel::where('kategori', 'Pengeluaran')->sum('jumlah');
 
-        $dataPoints = [];
-        foreach ($keuanganData as $data) {
-            $dataPoints[] = [
-                'tanggal' => $data->tanggal_kegiatan,
-                'kategori' => $data->kategori,
-                'jumlah' => $data->jumlah,
-            ];
-        }
+        // For the sake of example, let's assume we have multiple entries for pemasukan and pengeluaran for different labels
+        $labels = ['Pemasukan 1', 'Pemasukan 2', 'Pengeluaran 1', 'Pengeluaran 2'];
+        $pemasukanData = [200000, 300000]; // example data
+        $pengeluaranData = [150000, 250000]; // example data
 
-        return view('RW.Keuangan.grafik', [
+        return view('RW.Keuangan.diagram', [
             'header' => $header,
-            'dataPoints' => $dataPoints
+            'labels' => $labels,
+            'pemasukanData' => $pemasukanData,
+            'pengeluaranData' => $pengeluaranData,
+            'pemasukan' => $pemasukan,
+            'pengeluaran' => $pengeluaran
         ]);
     }
 }
