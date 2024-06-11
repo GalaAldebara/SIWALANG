@@ -3,14 +3,14 @@
 @section('content')
     <main class="w-full h-full">
         <div class="flex flex-col items-center py-5 min-w-fit">
-            <div class="w-full md:w-4/6 flex flex-col items-center rounded-b-xl border-2 min-w-[290px] px-4 md:px-6">
-                <div class="pb-2 mx-4 md:mx-6 w-full flex flex-col md:flex-row justify-center items-center">
+            <div class="w-4/6 flex flex-col items-center rounded-b-xl border-2 min-w-[490px] px-6">
+                <div class="pb-2 mx-6 w-full flex flex-row justify-center items-center">
                     <!-- Tambahkan Div untuk Canvas Chart -->
-                    <div class="w-full md:w-1/2 mt-2 flex justify-center">
-                        <canvas id="keuanganChart" class="max-w-full max-h-full"></canvas>
+                    <div class="w-1/2 mt-2">
+                        <canvas id="keuanganChart" style="max-width: 600px; max-height: 400px;"></canvas>
                     </div>
                     <!-- Tambahkan Teks di Samping Chart -->
-                    <div class="w-full md:w-1/2 mt-4 md:mt-2 text-left md:text-left flex flex-col justify-center items-start">
+                    <div class="w-1/2 mt-2 text-left">
                         <h3 class="text-lg font-bold">Total Pemasukan: Rp {{ number_format($pemasukan, 2, ',', '.') }}</h3>
                         <h3 class="text-lg font-bold">Total Pengeluaran: Rp {{ number_format($pengeluaran, 2, ',', '.') }}</h3>
                     </div>
@@ -18,6 +18,7 @@
             </div>
         </div>
     </main>
+
 @endsection
 
 @push('css')

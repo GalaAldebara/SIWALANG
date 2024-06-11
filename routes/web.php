@@ -188,7 +188,8 @@ Route::group(['prefix' => 'RW-Keuangan'], function () {
     Route::post('/', [KeuanganController::class, 'store']);
     Route::get('/{keuangan_id}/edit', [KeuanganController::class, 'edit'])->name('keuangan_edit');
     Route::get('/diagram', [KeuanganController::class, 'showDiagram'])->name('keuangan.diagram');
-    Route::get('/grafik', [KeuanganController::class, 'showGrafik'])->name('keuangan.grafik');
+    // Route::get('/grafik', [KeuanganController::class, 'showGrafik'])->name('keuangan.grafik');
+    Route::get('/grafik', [KeuanganController::class, 'showGrafik']);
 });
 
 // RW - Data Warga
