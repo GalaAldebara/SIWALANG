@@ -29,7 +29,7 @@
                         LOGOUT
                     </span>
                     @if($notificationCount > 99)
-                        <div class="flex justify-end items-center absolute -top-2 -left-7 bg-yellow-400 px-[5px] py-[2px] rounded-xl" style="font-size: 10px; font-family: Asap">
+                        <div class="flex justify-end items-center absolute -top-2 -left-7 bg-yellow-400 px-[5px] rounded-xl h-4" style="font-size: 10px; font-family: Asap">
                             <span>99</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-2">
                                 <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
@@ -38,7 +38,7 @@
                     @elseif ($notificationCount == 0)
                         <div></div>
                     @else
-                        <div class="flex justify-end items-center absolute -top-2 -left-7 bg-yellow-400 px-[5px] py-[2px] rounded-xl" style="font-size: 10px; font-family: Asap">
+                        <div class="flex justify-end items-center absolute -top-2 -left-7 bg-yellow-400 px-[5px] rounded-xl h-4" style="font-size: 10px; font-family: Asap;">
                             <span>{{$notificationCount}}</span>
                         </div>
                     @endif

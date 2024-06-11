@@ -74,17 +74,19 @@
                         @enderror
                     </div>
                 </div>
-                <div>
-                    <div>Kartu Tanda Penduduk (KTP) tamu <span class="text-red-500 text-lg">*</span></div>
-                    <div class="mt-2 w-full border-2 border-dashed rounded-lg flex flex-col items-center" style="font-family: Inter">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 mt-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
-                        </svg>                              
-                        <h1 class="font-medium">Pilih foto atau tarik kesini</h1>
-                        <p class="text-gray-400">JPEG atau PNG maximal ukuran 10MB.</p>
+                <div class="mb-6">
+                    <div class="font-semibold">Kartu Tanda Penduduk (KTP) tamu <span class="text-red-500 text-lg">*</span></div>
+                    <div class="mt-2 w-full border-2 border-dashed rounded-lg flex flex-col items-center" style="font-family: Inter" id="drop-area">
+                        <div class="flex flex-col items-center py-5" id="image-view" style="background-position: center ; background-size: cover;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="size-12">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
+                            </svg>                              
+                            <h1 class="font-medium">Pilih foto atau tarik kesini</h1>
+                            <p class="text-gray-400">JPEG atau PNG maximal ukuran 10MB.</p>
+                        </div>
                         <label for="foto_ktp_tamu" class="border rounded-lg py-1 px-3 mt-3 mb-6">
                             Pilih Foto
-                            <input type="file" id="foto_ktp_tamu" name="foto_ktp_tamu" style="display: none;">
+                            <input type="file" accept="image/*" id="foto_ktp_tamu" style="display: none;" name="foto_ktp_tamu">
                         </label>
                         @error('foto_ktp_tamu')
                         <small class="relative -top-4 text-red-500 text-xm">{{ $message }}</small>
@@ -116,5 +118,29 @@
             }
             
             updateDateNow();
+    </script>
+    <script>
+        function setupDragAndDrop(dropAreaId, inputFileId, imageViewId) {
+        const dropArea = document.getElementById(dropAreaId);
+        const inputFile = document.getElementById(inputFileId);
+        const imageView = document.getElementById(imageViewId);
+        
+        inputFile.addEventListener("change", () => uploadImage(inputFile, imageView));
+        dropArea.addEventListener("dragover", (e) => e.preventDefault());
+        dropArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            inputFile.files = e.dataTransfer.files;
+            uploadImage(inputFile, imageView);
+        });
+    }
+    
+    function uploadImage(inputFile, imageView) {
+        let imgLink = URL.createObjectURL(inputFile.files[0]);
+        imageView.style.backgroundImage = `url(${imgLink})`;
+        imageView.classList.add('w-2/6', 'h-48');
+        imageView.textContent = "";
+    }
+    
+    setupDragAndDrop("drop-area", "foto_ktp_tamu", "image-view");
     </script>
 @endpush

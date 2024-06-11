@@ -12,7 +12,7 @@ class PengaduanModel extends Model
 
     protected $table = 'pengaduan';
     protected $primaryKey = 'pengaduan_id';
-    protected $fillable = ['nik', 'nama', 'tanggal_pengaduan', 'keluhan', 'bukti'];
+    protected $fillable = ['nik', 'tanggal_pengaduan', 'keluhan', 'bukti'];
 
     public function user(): BelongsTo
     {

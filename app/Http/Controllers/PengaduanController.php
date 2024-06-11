@@ -17,18 +17,19 @@ class PengaduanController extends Controller
             'list' => ['Beranda', 'Pengaduan']
         ];
 
-        $users = UserModel::all();
-
-        return view('warga.pengaduan.index', ['users' => $users, 'header' => $header]);
+        return view('warga.pengaduan.index', ['header' => $header]);
     }
 
     public function list(Request $request)
     {
         if ($request->ajax()) {
-            $pengaduans = PengaduanModel::select('tanggal_pengaduan', 'keluhan', 'bukti')->get();
-            return DataTables::of($pengaduans)->make(true);
+            $pengaduans = PengaduanModel::select('tanggal_pengaduan', 'keluhan', 'bukti')
+                ->where('nik', auth()->user()->nik)
+                ->get();
+            return DataTables::of($pengaduans)->toJson();
         }
     }
+
 
     public function form()
     {
@@ -47,10 +48,9 @@ class PengaduanController extends Controller
         $nik = Auth::user()->nik;
 
         $request->validate([
-            'nama' => 'required|string',
             'tanggal_pengaduan' => 'required|date',
             'keluhan' => 'required|string|max:225',
-            'bukti' => 'required|image|max:2048',
+            'bukti' => 'required|max:2048',
         ], [
             'bukti.required' => 'File bukti harus diunggah.',
             'bukti.image' => 'File bukti harus berupa gambar.',
@@ -63,7 +63,6 @@ class PengaduanController extends Controller
 
         PengaduanModel::create([
             'nik' => $nik,
-            'nama' => $request->nama,
             'tanggal_pengaduan' => $request->tanggal_pengaduan,
             'keluhan' => $request->keluhan,
             'bukti' => $nama_file,

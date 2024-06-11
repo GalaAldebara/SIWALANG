@@ -16,7 +16,6 @@ class PengaduanSeeder extends Seeder
         $data = [
             [
                 'nik' => '3576014403940004',
-                'nama' => 'yoan',
                 'tanggal_pengaduan' => now(),
                 'keluhan' => 'sudah hampir satu minggu sampah belum diambil oleh petugas',
                 'bukti' => 'sampah.jpeg'

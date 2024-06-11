@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('m_user', function (Blueprint $table) {
             $table->id('user_id');
             $table->string('nik', 16)->unique();
-            $table->string('username', 20);
+            $table->string('username', 20)->nullable()->unique();
             $table->string('nama', 50);
             $table->unsignedBigInteger('level_id')->index;
             $table->enum('status', ['Menunggu Perlengkapan', 'Menunggu Verifikasi', 'Ditolak', 'Selesai'])->default('Menunggu Perlengkapan');

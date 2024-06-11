@@ -408,10 +408,20 @@ class UserSeeder extends Seeder
                 'nik' => (string)($initialNik + $index),
                 'username' => $username,
                 'nama' => $name,
-                'status' => 'Ditolak',
+                'status' => 'selesai',
                 'status_hidup' => 'Hidup',
                 'password' => Hash::make('12345')
             ]);
         }
+
+        DB::table('m_user')->insert([
+            'level_id' => 4,
+            'nik' => 3576014403940301,
+            'username' => 'budiono',
+            'nama' => 'budi',
+            'status' => 'Menunggu Verifikasi',
+            'status_hidup' => 'Hidup',
+            'password' => Hash::make('12345')
+        ]);
     }
 }

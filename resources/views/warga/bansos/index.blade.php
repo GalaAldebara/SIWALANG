@@ -3,7 +3,7 @@
 @section('content')
 <main class="w-full h-full">
     <div class="flex flex-col items-center py-10 min-w-fit">
-        <div id="info" class="bg-[#d1ecf1] w-4/6 text-[#0c5460] p-5 rounded-lg mb-8" style="font-family: Asap">
+        <div id="info" class="bg-[#d1ecf1] w-4/6 text-[#0c5460] p-5 pl-8 rounded-lg mb-8" style="font-family: Asap">
             <h1 class="font-bold">Data Kosong.</h1>
             <p>Anda bukan bagian dari daftar penerima bansos. lakukan pengajuan agar nama anda diajukan ke daftar calon penerima bansos.</p>
         </div>
