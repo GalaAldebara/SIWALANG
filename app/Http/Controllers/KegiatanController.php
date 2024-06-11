@@ -20,14 +20,16 @@ class KegiatanController extends Controller
         return view('warga.AgendaKegiatan.index', ['header' => $header, 'kegiatan' => $kegiatan]);
     }
 
-    public function rincian()
+    public function rincian(string $id)
     {
+        $kegiatan = KegiatanModel::find($id);
+
         $header = (object) [
             'title' => 'Agenda Kegiatan',
             'list' => ['Beranda', 'Agenda Kegiatan', 'Rincian Agenda Kegiatan']
         ];
 
-        return view('warga.AgendaKegiatan.rincian', ['header' => $header]);
+        return view('warga.AgendaKegiatan.rincian', ['header' => $header, 'kegiatan' => $kegiatan]);
     }
 
     public function arsip()
