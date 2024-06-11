@@ -64,7 +64,7 @@ class KegiatanController extends Controller
             'list' => ['Beranda', 'Kegiatan']
         ];
 
-        return view('RW.kegiatan.index', ['header' => $header]);
+        return view('RW.Kegiatan.index', ['header' => $header]);
     }
 
     public function listData(Request $request)
