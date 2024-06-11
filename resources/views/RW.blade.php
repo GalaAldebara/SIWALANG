@@ -70,7 +70,7 @@
                             <p class="text-xs text-gray-500 pt-4 hidden md:block">History tamu dari luar desa</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-[150px] md:w-[250px] h-32 md:h-44 bg-gray-100" href="{{ url('data_penerima_bansos') }}">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_penerima_bansos') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="43" fill="#2a6c12" class="bi bi-person-lines-fill" viewBox="0 0 16 10">
                                 <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
@@ -79,7 +79,7 @@
                             <p class="text-xs text-gray-500 pt-2 hidden md:block">Pengelola data warga yang berhak menerima bansos</p>
                         </div>
                     </a>
-                    <a class="rounded-md w-[150px] md:w-[250px] h-32 md:h-44 bg-gray-100" href="{{ url('kegiatan') }}">
+                    <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('kegiatan') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="43" fill="#2a6c12" class="bi bi-calendar3" viewBox="0 0 16 12">
                                 <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>

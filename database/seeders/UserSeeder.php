@@ -94,9 +94,9 @@ class UserSeeder extends Seeder
 
         // Daftar nama yang ingin Anda gunakan
         $names = [
-            'silfi',
-            'nana',
-            'makmur',
+            'Makmur',
+            'Silfi',
+            'Nana',
             'yoan',
             'Ahmad Fadil',
             'Siti Aisyah',
@@ -400,11 +400,13 @@ class UserSeeder extends Seeder
         $initialNik = 3576014403940001;
 
         foreach ($names as $index => $name) {
+            $username = strtolower(str_replace(' ', '', $name));
+
             DB::table('m_user')->insert([
                 'user_id' => $initialUserId + $index,
                 'level_id' => 4,
                 'nik' => (string)($initialNik + $index),
-                'username' => strtolower($name),
+                'username' => $username,
                 'nama' => $name,
                 'status' => 'Ditolak',
                 'status_hidup' => 'Hidup',

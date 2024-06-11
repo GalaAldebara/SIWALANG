@@ -27,7 +27,7 @@ class AdminController extends Controller
         return view('admin', compact('header', 'user', 'dataDiri', 'lakiLakiCount', 'perempuanCount', 'keluargaCount', 'pendudukCount'));
     }
 
-    public function formRT()
+    public function show()
     {
         return view('admin.formGanti');
     }
