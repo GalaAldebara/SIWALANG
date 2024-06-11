@@ -178,4 +178,19 @@ class DataDiriController extends Controller
 
         return redirect('/data_diri')->with('success', 'Username dan/atau password berhasil diperbarui.');
     }
+
+    public function showChart()
+    {
+        $data = DB::table('data_diri')
+            ->select(DB::raw('jenis_kelamin, hubungan_kk, COUNT(*) as count'))
+            ->groupBy('jenis_kelamin', 'hubungan_kk')
+            ->get();
+
+        $male = $data->where('jenis_kelamin', 'Laki-laki')->sum('count');
+        $female = $data->where('jenis_kelamin', 'Perempuan')->sum('count');
+        $headOfFamily = $data->where('hubungan_kk', 'kepala keluarga')->sum('count');
+        $jumlahWarga = DB::table('data_diri')->count('no_kk');
+
+        return view('diagrambatang', compact('male', 'female', 'headOfFamily', 'jumlahWarga'));
+    }
 }

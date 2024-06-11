@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Faker\Factory as Faker;
+use Carbon\Carbon;
 
 class KeuanganSeeder extends Seeder
 {
@@ -20,7 +19,7 @@ class KeuanganSeeder extends Seeder
             [
                 'keuangan_id' => 1,
                 'nik' => '357305002',
-                'tanggal_kegiatan' => now(),
+                'tanggal_kegiatan' => Carbon::now()->subDays(rand(0, 90)),
                 'kategori' => 'Pemasukan',
                 'keterangan' => 'Iuran Sampah',
                 'jumlah' => '1000000',
@@ -43,7 +42,7 @@ class KeuanganSeeder extends Seeder
             $data[] = [
                 'keuangan_id' => $i,
                 'nik' => '357305002',
-                'tanggal_kegiatan' => now(),
+                'tanggal_kegiatan' => Carbon::now()->subDays(rand(0, 90)),
                 'kategori' => $kategori,
                 'keterangan' => $faker->randomElement(['Iuran Gotong Royong', 'Bayar Sampah', 'Infaq', 'Sadaqah', 'Donasi']),
                 'jumlah' => $jumlah,

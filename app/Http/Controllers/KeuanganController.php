@@ -16,8 +16,11 @@ class KeuanganController extends Controller
             'list' => ['Beranda', 'Keuangan']
         ];
 
+        $pemasukan = KeuanganModel::where('kategori', 'Pemasukan')->sum('jumlah');
+        $pengeluaran = KeuanganModel::where('kategori', 'Pengeluaran')->sum('jumlah');
+
         $users = KeuanganModel::all();
-        return view('RW.Keuangan.index', ['users' => $users, 'header' => $header]);
+        return view('RW.Keuangan.index', ['users' => $users, 'header' => $header, 'pemasukan' => $pemasukan, 'pengeluaran' => $pengeluaran]);
     }
 
     public function keuangan_list(Request $request)
@@ -76,5 +79,54 @@ class KeuanganController extends Controller
     {
         $keuangan = KeuanganModel::findOrFail($keuangan_id);
         return view('RW.Keuangan.edit', compact('keuangan'));
+    }
+
+    public function showDiagram()
+    {
+        $header = (object) [
+            'title' => 'Diagram Grafik',
+            'list' => ['Beranda', 'Diagram']
+        ];
+
+        $pemasukan = KeuanganModel::where('kategori', 'Pemasukan')->sum('jumlah');
+        $pengeluaran = KeuanganModel::where('kategori', 'Pengeluaran')->sum('jumlah');
+
+        // For the sake of example, let's assume we have multiple entries for pemasukan and pengeluaran for different labels
+        $labels = ['Pemasukan 1', 'Pemasukan 2', 'Pengeluaran 1', 'Pengeluaran 2'];
+        $pemasukanData = [200000, 300000]; // example data
+        $pengeluaranData = [150000, 250000]; // example data
+
+        return view('RW.Keuangan.diagram', [
+            'header' => $header,
+            'labels' => $labels,
+            'pemasukanData' => $pemasukanData,
+            'pengeluaranData' => $pengeluaranData,
+            'pemasukan' => $pemasukan,
+            'pengeluaran' => $pengeluaran
+        ]);
+    }
+
+    public function showGrafik()
+    {
+        $header = (object) [
+            'title' => 'Grafik Keuangan',
+            'list' => ['Beranda', 'Grafik']
+        ];
+
+        $keuanganData = KeuanganModel::select('tanggal_kegiatan', 'kategori', 'jumlah')->get();
+
+        $dataPoints = [];
+        foreach ($keuanganData as $data) {
+            $dataPoints[] = [
+                'tanggal' => $data->tanggal_kegiatan,
+                'kategori' => $data->kategori,
+                'jumlah' => $data->jumlah,
+            ];
+        }
+
+        return view('RW.Keuangan.grafik', [
+            'header' => $header,
+            'dataPoints' => $dataPoints
+        ]);
     }
 }

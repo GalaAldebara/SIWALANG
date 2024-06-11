@@ -35,7 +35,7 @@
                             </svg>
                         @else
                             <span>{{$notificationCount}}</span>
-                        @endif                       
+                        @endif
                     </div>
                 </a>
             </div>
@@ -62,15 +62,15 @@
             var notif = document.getElementById('notif');
             notif.addEventListener('click', function (event) {
                 event.preventDefault();
-                
+
                 var url = '';
-                
+
                 if (level_id === 4) {
                     url = '/warga_notifikasi';
                 } else if (level_id === 3) {
                     url = '/rt_notifikasi';
                 }
-                
+
                 window.location.href = url;
             });
         });

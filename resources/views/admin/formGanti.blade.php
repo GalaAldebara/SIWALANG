@@ -1,172 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Form | Pergantian RT/RW</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div class="bg-[#FFFFFF] flex flex-col items-center w-[1300px] box-sizing-border">
-        <div class="bg-[url('../img/DesaLangLang.png')] bg-[50%_50%] bg-cover bg-no-repeat relative m-[0_0_50px_0] w-[1300px] h-[427px]">
-          <div class="bg-[rgba(0,0,0,0.5)] absolute left-[0px] top-[0px] right-[0px] bottom-[0px] h-[100%]">
-          </div>
-          <div class="absolute left-[110px] top-[32.3px] right-[110px] flex flex-col items-end box-sizing-border">
-            <div class="m-[0_9.5px_23.3px_9.5px] flex flex-row w-[fit-content] box-sizing-border">
-              <img class="m-[0_10px_0_0] w-[12px] h-[14.5px]" src="../icon/location.svg" />
-              <div class="m-[7.2px_0_7.2px_0] inline-block break-words font-Asap font-normal text-[15px] text-[#FFFFFF]">
-                Kec. Singosari, Kab. Malang, Jawa Timur
-              </div>
-            </div>
-            <div class="flex flex-col w-[fit-content] box-sizing-border">
-              <div class="rounded-[15px] bg-[#FFFFFF] m-[0_0_85px_0] flex flex-row justify-between p-[10px_49.2px_10px_29.1px] w-[1080px] box-sizing-border">
-                <div class="flex flex-row box-sizing-border">
-                  <div class="bg-[url('../img/logoLang2.png')] bg-[50%_50%] bg-cover bg-no-repeat m-[0_10.1px_0_0] w-[64.8px] h-[70px]">
-                  </div>
-                  <p class="m-[11px_0_11px_0] break-words font-'SF_Pro_Display','Roboto_Condensed' font-extrabold text-[32px] text-[#1D4001]">
-                    <span class="siwalang-sub-28"></span><span></span>
-                  </p>
-                </div>
-                <div class="m-[25px_0_25px_0] flex flex-row justify-between w-[389.9px] h-[fit-content] box-sizing-border">
-                  <span class="m-[0_10px_0_0] w-[113px] break-words font-Asap font-bold text-[15px] leading-[1.333] uppercase text-[#2A6C12]">
-                    Beranda
-                  </span>
-                  <span class="break-words font-Asap font-bold text-[15px] leading-[1.333] uppercase text-[#232428]">
-                    DATA KEPENGURUSAN
-                  </span>
-                  <span class="break-words font-Asap font-bold text-[15px] leading-[1.333] uppercase text-[#232428]">
-                    LogOut
-                  </span>
-                </div>
-              </div>
-              <div class="flex flex-col self-start w-[fit-content] box-sizing-border">
-                <div class="m-[0_0_15px_0] flex flex-row self-start w-[fit-content] box-sizing-border">
-                  <span class="m-[0_6px_0_0] break-words font-Asap font-normal text-[15px] leading-[1.3] text-[#FFFFFF]">
-                    Beranda 
-                  </span>
-                  <span class="m-[0_6.7px_0_0] break-words font-Asap font-normal text-[15px] leading-[1.3] text-[rgba(255,255,255,0.4)]">
-                    /
-                  </span>
-                  <span class="m-[0_6.2px_0_0] break-words font-Asap font-normal text-[15px] leading-[1.3] text-[#FFFFFF]">
-                    Struktur Kepemimpinan
-                  </span>
-                  <span class="m-[0_6.7px_0_0] break-words font-Asap font-normal text-[15px] leading-[1.3] text-[rgba(255,255,255,0.4)]">
-                    /
-                  </span>
-                  <span class="break-words font-Asap font-normal text-[15px] leading-[1.3] text-[#FFFFFF]">
-                    Form Ubah Data RT-RW
-                  </span>
-                </div>
-                <span class="break-words font-Poppins font-bold text-[37px] leading-[1.297] text-[#FFFFFF]">
-                  Struktur Kepemimpinan
-                </span>
-              </div>
-            </div>
-          </div>
+@extends('layouts.template')
+
+@section('content')
+    <main class="flex flex-col items-center py-10 min-w-fit">
+        <div class="w-4/6 bg-primary p-3 text-white rounded-t-xl border font-bold flex flex-row min-w-[490px]">
+            <a class="bg-white rounded-full size-7 flex justify-center items-center" href="{{ url('pelaporan-tamu') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black" class="w-5 h-5">
+                    <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <p style="font-family: Inter" class="px-4">Form pelaporan tamu </p>
         </div>
-        <div class="m-[0_105.5px_50px_107.5px] flex box-sizing-border">
-          <div class="rounded-[12px] border-[1px_solid_#EBEBEB] flex flex-col items-center box-sizing-border">
-            <div class="rounded-t-[12px] border-b-[1px_solid_#2A6C12] bg-[#2A6C12] flex flex-row p-[16px_0_15px_20px] w-[1087px] box-sizing-border">
-              <div class="rounded-[64px] border-[1px_solid_#EBEBEB] bg-[#F4F4F4] m-[0_14px_0_0] flex p-[9px_9px_9px_9px] w-[32px] h-[32px] box-sizing-border">
-                <img class="w-[12px] h-[12px]" src="../img/panah-kiri.png" />
-              </div>
-              <div class="m-[4px_0_5px_0] flex box-sizing-border">
-                <span class="break-words font-'SF_Pro_Display','Roboto_Condensed' font-semibold text-[20px] text-[#FFFFFF]">
-                  Form Ubah Data RW
-                </span>
-              </div>
-            </div>
-            <div class="bg-[#FFFFFF] flex flex-col items-center p-[30px_27px_30px_27px] w-[fit-content] box-sizing-border">
-              <div class="m-[0_0_30px_0] flex flex-col w-[fit-content] box-sizing-border">
-                <div class="m-[0_0_8px_0] inline-block self-start break-words font-Asap font-medium text-[20px] text-[#1B1B1B]">
-                  NIK 
+        <form class="w-4/6 flex flex-col items-start border-r border-l border-b min-w-[490px] rounded-b-xl"  action="{{ url('pelaporan-tamu') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="w-full my-4 px-6" style="font-family: Asap">
+                <div class="mb-3">
+                    <label for="nama_tuan_rumah">Nama Tuan Ramah <span class="text-red-500 text-lg">*</span></label>
+                    <div class="mt-2 w-full">
+                        <input id="nama_tuan_rumah" name="nama_tuan_rumah" type="text" value="{{ Auth::user()->nama }}" readonly class="w-full bg-gray-200 rounded-md border py-1 px-4 text-gray-900">
+                        @error('nama_tuan_rumah')
+                        <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                        @enderror
+                    </div>
                 </div>
-                <div class="rounded-[8px] border-[1px_solid_#EBEBEB] bg-[#FFFFFF] flex flex-row justify-between p-[12.5px_22px_12.5px_15px] w-[1033px] box-sizing-border">
-                  <span class="m-[0_12px_0_0] w-[972px] break-words font-Asap font-normal text-[20px] leading-[1.2] text-[rgba(27,27,27,0.5)]">
-                    NIK
-                  </span>
-                  <div class="m-[10.1px_0_9.1px_0] flex w-[10px] h-[4.8px] box-sizing-border">
-                    <img class="w-[10px] h-[4.8px]" src="../icon/panah-bawah.svg" />
-                  </div>
+                <div class="mb-3">
+                    <label for="no_ktp_tamu">No. KTP Tamu <span class="text-red-500 text-lg">*</span></label>
+                    <div class="mt-2 w-full">
+                        <input id="no_ktp_tamu" name="no_ktp_tamu" type="text" placeholder="Masukkan no.ktp tamu" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                        @error('no_ktp_tamu')
+                        <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                        @enderror
+                    </div>
                 </div>
-              </div>
-              <div class="m-[0_0_30px_0] flex flex-col w-[fit-content] box-sizing-border">
-                <p class="m-[0_0_8px_0] self-start break-words font-'SF_Pro_Display','Roboto_Condensed' font-medium text-[20px] text-[#1B1B1B]">
-                  <span class="level-user-sub-23"></span>
-                  <span>Level User</span>
-                </p>
-                <div class="rounded-[8px] border-[1px_solid_#EBEBEB] bg-[#FFFFFF] flex flex-row justify-between p-[13px_22px_13px_15px] w-[1033px] box-sizing-border">
-                  <span class="m-[0_11.5px_0_0] w-[972.5px] break-words font-Asap font-normal text-[20px] text-[#1B1B1B]">
-                    Pilih level user
-                  </span>
-                  <div class="m-[9.6px_0_8.6px_0] flex w-[10px] h-[4.8px] box-sizing-border">
-                    <img class="w-[10px] h-[4.8px]" src="../icon/panah-bawah.svg" />
-                  </div>
+                <div class="mb-3">
+                    <label for="nama_tamu">Nama Tamu <span class="text-red-500 text-lg">*</span></label>
+                    <div class="mt-2 w-full">
+                        <input id="nama_tamu" name="nama_tamu" type="text" placeholder="Masukkan nama tamu" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                        @error('nama_tamu')
+                        <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                        @enderror
+                    </div>
                 </div>
-              </div>
-              <div class="m-[0_0_30px_0] flex flex-col w-[fit-content] box-sizing-border">
-                <p class="m-[0_0_8px_0] self-start break-words font-'SF_Pro_Display','Roboto_Condensed' font-medium text-[20px] text-[#1B1B1B]">
-                  <span class="nomor-rt-sub-23"></span>
-                  <span>Nomor RT</span>
-                </p>
-                <div class="rounded-[8px] border-[1px_solid_#EBEBEB] bg-[#FFFFFF] flex flex-row justify-between p-[13px_22px_13px_15px] w-[1033px] box-sizing-border">
-                  <span class="m-[0_11.5px_0_0] w-[972.5px] break-words font-Asap font-normal text-[20px] text-[#1B1B1B]">
-                    Pilih nomor RT
-                  </span>
-                  <div class="m-[9.6px_0_8.6px_0] flex w-[10px] h-[4.8px] box-sizing-border">
-                    <img class="w-[10px] h-[4.8px]" src="../icon/panah-bawah.svg" />
-                  </div>
+                <div class="mb-3">
+                    <label for="jenis_kelamin">Jenis Kelamin <span class="text-red-500 text-lg">*</span></label>
+                    <div class="mt-2 w-full">
+                        <select name="jenis_kelamin" id="jenis_kelamin" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                            <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
                 </div>
-              </div>
-              <div class="flex flex-col w-[fit-content] box-sizing-border">
-                <p class="m-[0_0_8px_0] self-start break-words font-'SF_Pro_Display','Roboto_Condensed' font-medium text-[20px] text-[#1B1B1B]">
-                  <span class="ganti-password-sub-23"></span>
-                  <span>Ganti Password</span>
-                </p>
-                <div class="rounded-[8px] border-[1px_solid_#EBEBEB] bg-[#FFFFFF] flex flex-row justify-between p-[13px_22px_13px_15px] w-[1033px] box-sizing-border">
-                  <span class="m-[0_11.5px_0_0] w-[972.5px] break-words font-Asap font-normal text-[20px] text-[#1B1B1B]">
-                    Masukkan password baru
-                  </span>
+                <div class="mb-3">
+                    <label for="alamat">Alamat <span class="text-red-500 text-lg">*</span></label>
+                    <div class="mt-2 w-full">
+                        <input id="alamat" name="alamat" type="text" placeholder="Masukkan alamat" class="w-full rounded-md border py-1 px-4 text-gray-900">
+                        @error('alamat')
+                        <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                        @enderror
+                    </div>
                 </div>
-              </div>
+                <div class="mb-3">
+                    <label for="tanggal_bertamu">Tanggal Bertamu </label>
+                    <div class="mt-2 w-full">
+                        <input id="tanggal_bertamu" name="tanggal_bertamu" type="date" readonly class="w-full bg-gray-200 rounded-md border py-1 px-4 text-gray-900">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="keterangan_keperluan">Keterangan Keperluan Izin <span class="text-red-500 text-lg">*</span></label>
+                    <div class="mt-2 w-full">
+                        <textarea id="keterangan_keperluan" name="keterangan_keperluan" type="text" rows="3" placeholder="Contoh: 'Menginap selama 2 hari'." required class="w-full rounded-md border py-1 px-4 text-gray-900"></textarea>
+                        @error('keterangan_keperluan')
+                        <small class="text-red-500 text-xm ml-4">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+                <div>
+                    <div>Kartu Tanda Penduduk (KTP) tamu <span class="text-red-500 text-lg">*</span></div>
+                    <div class="mt-2 w-full border-2 border-dashed rounded-lg flex flex-col items-center" style="font-family: Inter">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 mt-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
+                        </svg>
+                        <h1 class="font-medium">Pilih foto atau tarik kesini</h1>
+                        <p class="text-gray-400">JPEG atau PNG maximal ukuran 10MB.</p>
+                        <label for="foto_ktp_tamu" class="border rounded-lg py-1 px-3 mt-3 mb-6">
+                            Pilih Foto
+                            <input type="file" id="foto_ktp_tamu" name="foto_ktp_tamu" style="display: none;">
+                        </label>
+                        @error('foto_ktp_tamu')
+                        <small class="relative -top-4 text-red-500 text-xm">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
             </div>
-            <div class="border-t-[1px_solid_#EBEBEB] bg-[#FFFFFF] flex flex-row p-[15px_30px_16px_30px] w-[1087px] box-sizing-border">
-              <div class="rounded-[8px] border-[1px_solid_#EBEBEB] bg-[#FFFFFF] m-[0_8px_0_0] flex p-[15px_0_15px_0] w-[509.5px] h-[fit-content] box-sizing-border justify-center">
-                <span class="break-words font-Asap font-medium text-[20px] text-[#1B1B1B]">
-                  Batal
-                </span>
-              </div>
-              <div class="rounded-[8px] bg-[#2A6C12] flex p-[16px_0_16px_0] w-[509.5px] h-[fit-content] box-sizing-border justify-center">
-                <span class="break-words font-Asap font-medium text-[20px] text-[#FFFFFF]">
-                  Ubah
-                </span>
-              </div>
+            <div class="flex flex-row justify-center border-t w-full" style="font-family: Asap">
+                <a class="border rounded-lg w-full m-3 py-3 text-center" href="{{ url('pelaporan-tamu') }}"">Batal</a>
+                <button type="submit" class="border rounded-lg w-full m-3 py-3 bg-primary text-white">Kirim</button>
             </div>
-          </div>
-        </div>
-        <div class="bg-[#2A6C12] flex flex-col items-center p-[0_0_17.4px_0] w-[1300px] box-sizing-border">
-          <div class="bg-[rgba(0,0,0,0.65)] relative m-[0_0_17px_0] w-[1300px] h-[223.6px]">
-            <div class="absolute left-[155px] top-[60px] flex flex-col box-sizing-border">
-              <div class="m-[0_0_11px_0] inline-block self-start break-words font-Poppins font-bold text-[20px] leading-[1.3] text-[#FFFFFF]">
-                Tentang
-              </div>
-              <div class="bg-[#2A6C12] m-[0_0_18px_0] self-start w-[40px] h-[3px]">
-              </div>
-              <span class="break-words font-Asap font-normal text-[15px] leading-[1.65] text-[rgba(255,255,255,0.6)]">
-                SIWALANG, Portal kependudukan warga RW 001, Desa Lang-Lang SIngosari Malang
-              </span>
-            </div>
-          </div>
-          <div class="m-[0_122.4px_0_122px] flex flex-row justify-between w-[1055.6px] box-sizing-border">
-            <p class="m-[0_10.5px_0_0] w-[940.5px] break-words font-Asap font-normal text-[15px] leading-[1.4] text-[rgba(255,255,255,0.6)]">
-              <span class="siwalang-2023-dorpie-sub-0"></span><span class="siwalang-2023-dorpie-sub-1"></span><span></span>
-            </p>
-            <div class="m-[3px_0_3px_0] inline-block break-words font-Asap font-normal text-[15px] leading-[1] text-[rgba(255,255,255,0.6)]">
-              Kembali ke atas
-            </div>
-          </div>
-        </div>
-      </div>
-</body>
-</html>
+        </form>
+    </main>
+@endsection
+
+@push('css')
+@endpush
+
+@push('js')
+    <script>
+            function updateDateNow() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0')
+
+            const formattedDate = `${year}-${month}-${day}`;
+            document.getElementById('tanggal_bertamu').value = formattedDate;
+            }
+
+            updateDateNow();
+    </script>
+@endpush

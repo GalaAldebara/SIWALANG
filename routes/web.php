@@ -26,8 +26,8 @@ use App\Http\Controllers\PenerimaBansosController;
 use App\Http\Controllers\PengajuanBansosController;
 
 
-Route::get('/coba', function () {
-    return view('rt.DataWarga.index');
+Route::get('/landing', function () {
+    return view('landingPage');
 });
 
 Route::get('/DataWarga', function () {
@@ -68,6 +68,7 @@ Route::group(['prefix' => 'data_diri'], function () {
     Route::post('/form_dua', [DataDiriController::class, 'storeDua'])->name('store.form-dua');
     Route::get('/form_password', [DataDiriController::class, 'formPassword']);
     Route::post('/form_password', [AuthController::class, 'prosesChangePassword'])->name('update.username.password');
+    Route::get('/chart', [DataDiriController::class, 'showChart']);
 });
 
 // Warga - Bansos
@@ -181,6 +182,8 @@ Route::group(['prefix' => 'RW-Keuangan'], function () {
     Route::get('/form', [KeuanganController::class, 'form']);
     Route::post('/', [KeuanganController::class, 'store']);
     Route::get('/{keuangan_id}/edit', [KeuanganController::class, 'edit'])->name('keuangan_edit');
+    Route::get('/diagram', [KeuanganController::class, 'showDiagram'])->name('keuangan.diagram');
+    Route::get('/grafik', [KeuanganController::class, 'showGrafik'])->name('keuangan.grafik');
 });
 
 // RW - Data Warga
