@@ -108,27 +108,18 @@ class KeuanganController extends Controller
     }
 
     public function showGrafik()
-    {
-        $header = (object) [
-            'title' => 'Diagram Grafik',
-            'list' => ['Beranda', 'Diagram']
-        ];
+    { {
+            $keuangan = DB::table('keuangan')->get();
 
-        $pemasukan = KeuanganModel::where('kategori', 'Pemasukan')->sum('jumlah');
-        $pengeluaran = KeuanganModel::where('kategori', 'Pengeluaran')->sum('jumlah');
+            $data = $keuangan->groupBy('tanggal_kegiatan')->map(function ($item, $key) {
+                return [
+                    'tanggal' => $key,
+                    'pemasukan' => $item->where('kategori', 'Pemasukan')->sum('jumlah'),
+                    'pengeluaran' => $item->where('kategori', 'Pengeluaran')->sum('jumlah'),
+                ];
+            })->values();
 
-        // For the sake of example, let's assume we have multiple entries for pemasukan and pengeluaran for different labels
-        $labels = ['Pemasukan 1', 'Pemasukan 2', 'Pengeluaran 1', 'Pengeluaran 2'];
-        $pemasukanData = [200000, 300000]; // example data
-        $pengeluaranData = [150000, 250000]; // example data
-
-        return view('RW.Keuangan.diagram', [
-            'header' => $header,
-            'labels' => $labels,
-            'pemasukanData' => $pemasukanData,
-            'pengeluaranData' => $pengeluaranData,
-            'pemasukan' => $pemasukan,
-            'pengeluaran' => $pengeluaran
-        ]);
+            return view('RW.Keuangan.grafik', compact('data'));
+        }
     }
 }
