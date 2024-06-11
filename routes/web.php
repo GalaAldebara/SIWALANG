@@ -68,7 +68,7 @@ Route::group(['prefix' => 'data_diri'], function () {
     Route::get('/form_dua', [DataDiriController::class, 'formDua'])->name('form.dua');
     Route::post('/form_dua', [DataDiriController::class, 'storeDua'])->name('store.form-dua');
     Route::get('/form_password', [DataDiriController::class, 'formPassword']);
-    Route::post('/form_password', [AuthController::class, 'prosesChangePassword'])->name('update.username.password');
+    Route::post('/form_password', [DataDiriController::class, 'update'])->name('update.username.password');
     Route::get('/chart', [DataDiriController::class, 'showChart']);
 });
 

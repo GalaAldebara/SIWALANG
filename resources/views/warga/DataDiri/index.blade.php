@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="w-full flex flex-row justify-end items-center gap-3 text-white py-3 border-t-2">
-            <a class="bg-primary p-3 rounded-lg" href="{{ url('data_diri/form_satu') }}">Lengkapi Data Diri</a>
+            <a class="bg-primary p-3 rounded-lg {{ $status == 'Menunggu Perlengkapan' ? '' : 'hidden' }}" href="{{ url('data_diri/form_satu') }}">Lengkapi Data Diri</a>
             <a class="bg-primary p-3 rounded-lg mr-6" href="{{ url('data_diri/form_password') }}">Ubah Password / Username</a>
           </div>
       </div>

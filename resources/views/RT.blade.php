@@ -61,7 +61,7 @@
 
         <div class="relative -top-14 w-full">
             <div class="flex justify-center">
-                <nav class="flex flex-row flex-wrap gap-9 justify-center items-center w-2/6 text-xl">
+                <nav class="flex flex-row flex-wrap gap-9 justify-center items-center w-3/6 text-xl">
                     <a class="rounded-md w-[250px] h-44" style="background-color:#f5f5f5" href="{{ url('data_warga') }}">
                         <div class="p-5 flex flex-col items-center text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="45" height="53" fill="#2a6c12" class="bi bi-people-fill" viewBox="0 0 16 12">

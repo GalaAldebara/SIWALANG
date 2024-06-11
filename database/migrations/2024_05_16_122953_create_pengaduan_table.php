@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('pengaduan', function (Blueprint $table) {
             $table->id('pengaduan_id');
             $table->string('nik', 16);
-            $table->string('nama', 50);
             $table->date('tanggal_pengaduan');
             $table->string('keluhan', 150);
             $table->string('bukti', 225);

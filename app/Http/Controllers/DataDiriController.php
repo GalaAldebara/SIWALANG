@@ -24,9 +24,10 @@ class DataDiriController extends Controller
         ];
 
         $user = Auth::user();
+        $status = $user->status;
         $dataDiri = $user->dataDiri;
 
-        return view('warga.DataDiri.index', compact('header', 'user', 'dataDiri',));
+        return view('warga.DataDiri.index', compact('header', 'user', 'dataDiri', 'status'));
     }
 
     public function formSatu()
@@ -48,8 +49,8 @@ class DataDiriController extends Controller
             'tempat_lahir' => 'required|string',
             'jenis_kelamin' => 'required',
             'status_perkawinan' => 'required',
-            'no_telp' => 'required|integer',
-            'no_kk' => 'required|integer',
+            'no_telp' => 'required|string|size:12',
+            'no_kk' => 'required|string|size:16',
             'hubungan_kk' => 'required',
             'status_kependudukan' => 'required',
             'kewarganegaraan' => 'required|string',
@@ -110,8 +111,7 @@ class DataDiriController extends Controller
 
         $dataDiri = new DataDiriModel();
         $dataDiri->nik = $user->nik;
-        $dataDiri->status = 'Menunggu verifikasi';
-        $dataDiri->nama = $user->nama;
+        $user->status = 'Menunggu verifikasi';
         $dataDiri->tanggal_lahir = $data['tanggal_lahir'];
         $dataDiri->tempat_lahir = $data['tempat_lahir'];
         $dataDiri->jenis_kelamin = $data['jenis_kelamin'];

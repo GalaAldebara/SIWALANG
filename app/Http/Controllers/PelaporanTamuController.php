@@ -23,7 +23,9 @@ class PelaporanTamuController extends Controller
     public function list(Request $request)
     {
         if ($request->ajax()) {
-            $pelaporan = PelaporanTamuModel::select('noTamu', 'tanggal_bertamu', 'nama_tamu')->get();
+            $pelaporan = PelaporanTamuModel::select('noTamu', 'tanggal_bertamu', 'nama_tamu')
+                ->where('nik', auth()->user()->nik)
+                ->get();
             return DataTables::of($pelaporan)->make(true);
         }
     }
@@ -41,9 +43,9 @@ class PelaporanTamuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_tuan_rumah' => 'required|string|max:100',
-            'no_ktp_tamu' => 'required|string|max:50',
-            'nama_tamu' => 'required|string|max:100',
+            'nama_tuan_rumah' => 'required|string|max:50',
+            'no_ktp_tamu' => 'required|string|size:16',
+            'nama_tamu' => 'required|string|max:50',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'alamat' => 'required|string|max:255',
             'tanggal_bertamu' => 'required|date',

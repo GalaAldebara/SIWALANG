@@ -3,6 +3,10 @@
 @section('content')
 <main class="w-full h-full">
     <div class="flex flex-col items-center py-10 min-w-fit">
+      <div id="info" class="bg-[#d1ecf1] w-4/6 text-[#0c5460] p-5 pl-8 rounded-lg mb-8" style="font-family: Asap">
+        <h1 class="font-bold">Data Kosong.</h1>
+        <p>Belum ada pengajuan izin tamu yang dilakukan.</p>
+      </div>
         <div class="w-4/6 bg-primary p-3 text-white rounded-t-xl border-2 font-bold flex flex-row min-w-[490px]">
             <a class="bg-white rounded-full size-7 flex justify-center items-center" href="{{ url('warga') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black" class="w-5 h-5">
@@ -20,7 +24,7 @@
                                 <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
                               </svg>
                         </span>
-                        <input class="rounded-3xl pl-10 pr-14 py-2 w-full border border-gray-300" placeholder="Search">
+                        <input id="search" class="rounded-3xl pl-10 pr-14 py-2 w-full border border-gray-300" placeholder="Search">
                     </div>
                     <a class="bg-button text-white rounded-md px-2 py-1 my-1 flex flex-row items-center cursor-pointer" href="{{ url('pelaporan-tamu/form') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-5">
@@ -46,6 +50,11 @@
 @endsection
 
 @push('css')
+<style>
+  #table_pelaporan_filter {
+    display: none;
+  }
+</style>
 @endpush
 
 @push('js')
@@ -53,7 +62,7 @@
     $(document).ready(function() {
       var dataPengaduan = $('#table_pelaporan').DataTable({
         "lengthMenu": [[10], [10]],
-        "searching": false,
+        "searching": true,
         "processing": true,
         "serverSide": true,
         "info" : false,
@@ -70,7 +79,7 @@
         },
         columns: [
           { data: 'tanggal_bertamu', orderable: true, searchable: true, className: "text-center py-3" },
-          { data: 'nama_tamu', orderable: false, searchable: false, className: "text-center py-3" },
+          { data: 'nama_tamu', orderable: false, searchable: true, className: "text-center py-3" },
           {
             data: null,
             orderable: false,
@@ -80,14 +89,26 @@
               var url = "{{ route('rincian', 'id') }}";
               url = url.replace('id', row.noTamu);
               return `
-        <button onclick="window.location.href='${url}'"
-                style="background-color: #2a6c12; color: white; border: 1px solid #1d4b0a; padding: 0.5rem; border-radius: 0.375rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);"
-                class="hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-          Rincian
-        </button>`;
+                <button onclick="window.location.href='${url}'"
+                        style="background-color: #2a6c12; color: white; border: 1px solid #1d4b0a; padding: 0.5rem; border-radius: 0.375rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);"
+                        class="hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                  Rincian
+                </button>`;
             }
           }
-        ]
+        ],
+        "drawCallback": function(settings) {
+          var api = this.api();
+          var rows = api.rows({ page: 'current' }).data().length;
+          if (rows === 0) {
+              $('#info').show();
+          } else {
+              $('#info').hide();;
+          }
+        }
+      });
+      $('#search').on('keyup', function() {
+        dataPengaduan.search(this.value).draw();
       });
     });
   </script>

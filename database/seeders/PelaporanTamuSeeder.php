@@ -23,6 +23,7 @@ class PelaporanTamuSeeder extends Seeder
                 'tanggal_bertamu' => now(),
                 'keterangan_keperluan' => 'Menginap selama 6 bulan karena sepeda motor mogok',
                 'nik' => '3576014403940004',
+                'foto_ktp_tamu' => 'image 4_20240530_232305.png',
             ]
         ];
         DB::table('pelaporan_tamu')->insert($data);

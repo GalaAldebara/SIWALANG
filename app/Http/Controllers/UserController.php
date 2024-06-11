@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DataDiri;
 use App\Models\DataDiriModel;
 use App\Models\UserModel;
+use Auth;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -60,6 +61,7 @@ class UserController extends Controller
             $dataDiri = DataDiriModel::join('m_user', 'data_diri.nik', '=', 'm_user.nik')
                 ->select('data_diri.nik', 'data_diri.no_kk', 'data_diri.jenis_kelamin', 'data_diri.no_telp', 'data_diri.status_kependudukan', 'm_user.nama', 'data_diri.id')
                 ->where('m_user.status', 'Selesai')
+                ->where('data_diri.rt', Auth::user()->user_id - 2)
                 ->get();
 
             $formattedData = [];
@@ -96,12 +98,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string|max:100',
-            'nik' => 'required|string|max:50',
+            'nama' => 'required|string|max:50',
+            'nik' => 'required|string|size:16',
         ]);
 
         UserModel::create([
-            'username' => $request->username,
             'nama' => $request->nama,
             'password' => bcrypt($request->password),
             'level_id' => $request->level_id,

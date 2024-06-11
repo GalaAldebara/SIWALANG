@@ -14,7 +14,7 @@
             @csrf
             <div class="w-full my-4 px-6" style="font-family: Asap">
                 <div class="mb-3">
-                    <label for="nama">Username<span class="text-red-500 text-lg">*</span></label>
+                    <label for="nama">Nama<span class="text-red-500 text-lg">*</span></label>
                     <div class="mt-2 w-full">
                         <input id="nama" name="nama" type="text" placeholder="Masukkan nama" class="w-full rounded-md border py-1 px-4 text-gray-900">
                         @error('nama')
@@ -32,8 +32,7 @@
                     </div>
                 </div>
                 <!-- Input hidden -->
-                <input id="password" name="password" type="hidden">
-                <input id="username" name="username" type="hidden" value="">
+                <input id="password" name="password" type="hidden" value="">
                 <input id="level_id" name="level_id" type="hidden">
             </div>
             <div class="flex flex-row justify-center border-t w-full" style="font-family: Asap">
@@ -57,11 +56,9 @@
 
             // Ambil nilai NIK dari input
             var nik = document.getElementById('nik').value;
-            var nama = document.getElementById('nama').value;
             var level = '4';
 
             // Setel nilai username dan password
-            document.getElementById('username').value = nama;
             document.getElementById('password').value = nik;
             document.getElementById('level_id').value = level;
 
