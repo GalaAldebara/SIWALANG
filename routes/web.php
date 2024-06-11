@@ -195,6 +195,19 @@ Route::group(['prefix' => 'RW-DataWarga'], function () {
     Route::get('/{id}', [DataWargaController::class, 'show'])->name('RW.rincian.warga');
 });
 
+// RW - kegiatan
+Route::group(['prefix' => 'data'], function () {
+    Route::get('/kegiatan', [KegiatanController::class, 'index']);
+    Route::post('/kegiatan/list', [KegiatanController::class, 'listData'])->name('kegiatan_list');
+    Route::get('/kegiatan/form', [KegiatanController::class, 'form']);
+    Route::get('/kegiatan/rincian', [KegiatanController::class, 'rincian']);
+    Route::get('/kegiatan/show/{id}', [KegiatanController::class, 'show']);
+    Route::post('/kegiatan', [KegiatanController::class, 'store']);
+    Route::get('/kegiatan/form/{id}', [KegiatanController::class, 'formDokumen']);
+    Route::post('/kegiatan/{id}', [KegiatanController::class, 'storeDokumen']);
+    Route::delete('/kegiatan/delete/{id}', [KegiatanController::class, 'destroy']);
+});
+
 // DomPDF
 Route::get('generate-pdf', [PdfController::class, 'showPreview'])->name('generate-pdf');
 Route::get('show-pdf', [PdfController::class, 'showPDF'])->name('show-pdf');
