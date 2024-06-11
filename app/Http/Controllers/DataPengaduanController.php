@@ -21,7 +21,9 @@ class DataPengaduanController extends Controller
     public function list(Request $request)
     {
         if ($request->ajax()) {
-            $pengaduan = PengaduanModel::select('tanggal_pengaduan', 'nama', 'pengaduan_id')->get();
+            $pengaduan = PengaduanModel::leftjoin('m_user', 'pengaduan.nik', '=', 'm_user.nik')
+                ->select('pengaduan.tanggal_pengaduan', 'm_user.nama', 'pengaduan_id')
+                ->get();
             return DataTables::of($pengaduan)->addIndexColumn()
                 ->addColumn('aksi', function ($pengaduan) {
                     $aksi = '';

@@ -37,7 +37,7 @@ class PelaporanTamuController extends Controller
             'list' => ['Beranda', 'Pelaporan Tamu', 'Formulir Pelaporan Tamu']
         ];
 
-        return view('warga.pelaporanTamu.form', ['header' => $header]);
+        return view('warga.PelaporanTamu.form', ['header' => $header]);
     }
 
     public function store(Request $request)
