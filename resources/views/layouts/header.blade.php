@@ -40,8 +40,8 @@
                     @else
                         <div class="flex justify-end items-center absolute -top-2 -left-7 bg-yellow-400 px-[5px] py-[2px] rounded-xl" style="font-size: 10px; font-family: Asap">
                             <span>{{$notificationCount}}</span>
-                        @endif
-                    </div>
+                        </div>
+                    @endif
                 </a>
             </div>
         </nav>
@@ -81,4 +81,3 @@
         });
     @endauth
 </script>
-
