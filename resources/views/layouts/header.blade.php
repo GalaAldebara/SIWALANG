@@ -14,11 +14,14 @@
                 <h1 class="text-walang text-3xl font-black" style="font-family: Inter">WALANG</h1>
             </div>
             <div class="flex flex-row items-center px-7 py-6">
-                <a class="group font-bold px-3 md:px-7 text-walang transition-all duration-300 ease-in-out" href="{{ url('warga') }}">
+                {{-- @php
+                    $level_id = Auth::user()->level_id;
+                @endphp --}}
+                <button class="group font-bold px-3 md:px-7 text-walang transition-all duration-300 ease-in-out" id="beranda">
                     <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                         BERANDA
                     </span>
-                </a>
+                </button>
                 @if(auth()->user()->level_id != 2)
                 </button>
                 <button class="group font-bold px-4 md:px-7 text-black transition-all duration-300 ease-in-out text-xs md:text-base" id="notif" >
@@ -27,9 +30,9 @@
                     </span>
                 </button>
                 @endif
-                <a class="relative group font-bold px-4 md:px-7 text-black transition-all duration-300 ease-in-out text-xs md:text-base" href="{{ url('logout') }}" >
+                <a class="relative group font-bold px-4 md:px-7 text-black transition-all duration-300 ease-in-out text-xs md:text-base" href="{{ url('auth/logout') }}" >
                     <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
-                        LOGOUT\
+                        LOGOUT
                     </span>
                     @if($notificationCount > 99)
                         <div class="flex justify-end items-center absolute -top-2 -left-7 bg-yellow-400 px-[5px] rounded-xl h-4" style="font-size: 10px; font-family: Asap">
@@ -81,6 +84,26 @@
 
                 window.location.href = url;
             });
+            var beranda = document.getElementById('beranda');
+
+            beranda.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                var url = '';
+
+                if (level_id === 1) {
+                    url = '/admin';
+                } else if (level_id === 2) {
+                    url = '/RW';
+                } else if (level_id === 3) {
+                    url = '/RT';
+                } else if (level_id === 4) {
+                    url = '/warga';
+                }
+
+                window.location.href = url;
+                });
+
         });
     @endauth
 </script>
