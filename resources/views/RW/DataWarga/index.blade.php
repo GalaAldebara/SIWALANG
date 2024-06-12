@@ -22,6 +22,14 @@
                             </span>
                             <input class="rounded-3xl pl-10 pr-14 py-2 w-full border border-gray-300" placeholder="Search">
                         </div>
+                        <select id="filter_rt" class="rounded-3xl pl-3 pr-10 py-2 border border-gray-300">
+                            <option value="all">Semua Data</option>
+                            <option value="1">RT 1</option>
+                            <option value="2">RT 2</option>
+                            <option value="3">RT 3</option>
+                            <option value="4">RT 4</option>
+                            <option value="5">RT 5</option>
+                        </select>
                         <a id="button_tambah" class="bg-button text-white rounded-md px-2 py-1 my-1 flex-row items-center cursor-pointer hidden" href="{{ url('data_warga/tambah') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-4">
                                 <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
@@ -29,7 +37,7 @@
                             Tambah Data
                         </a>
                     </div>
-                    <table class="table-auto border-separate border border-gray-300 w-full" id="table_lengkap">
+                    <table class="table-auto border-separate border border-gray-300" id="table_lengkap" style="width: 100%">
                         <thead class="bg-primary-form">
                             <tr class="tracking-wide">
                                 <th class="p-3 border border-gray-300" style="font-family: Asap">ID</th>
@@ -60,40 +68,53 @@
 @push('js')
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        if (!$.fn.DataTable.isDataTable('#table_lengkap')) {
-            dataPengaduan = $('#table_lengkap').DataTable({
-                "lengthMenu": [[10], [10]],
-                "searching": false,
-                "processing": true,
-                "serverSide": true,
-                "info": false,
-                "paging": false,
-                "lengthChange": false,
-                "autoWidth": true,
-                "language": {
-                    "emptyTable": "",
-                    "zeroRecords": ""
-                },
-                ajax: {
-                    url: "{{ route('RW.warga_list') }}",
-                    dataType: 'json',
-                    type: 'POST',
-                    data: {
-                        _token: "{{ csrf_token() }}"
-                    },
-                },
-                columns: [
-                    { data: 'DT_RowIndex', orderable: true, searchable: true, className: "text-center py-3 asap border-t-2" },
-                    { data: 'nik', orderable: true, searchable: true, className: "text-center py-3 asap border-t-2" },
-                    { data: 'nama', orderable: false, searchable: false, className: "text-center asap border-t-2" },
-                    { data: 'no_kk', orderable: false, searchable: false, className: "text-center py-3 asap border-t-2" },
-                    { data: 'jenis_kelamin', orderable: true, searchable: true, className: "text-center asap border-t-2" },
-                    { data: 'no_telp', orderable: false, searchable: false, className: "text-center asap border-t-2" },
-                    { data: 'status_kependudukan', orderable: false, searchable: false, className: "text-center asap border-t-2" },
-                    { data: 'aksi', orderable: false, searchable: false, className: "text-center asap border-t-2" },
-                ],
-            });
+    var dataPengaduan;
+    
+    function loadTable() {
+        if ($.fn.DataTable.isDataTable('#table_lengkap')) {
+            dataPengaduan.destroy();
         }
+
+        dataPengaduan = $('#table_lengkap').DataTable({
+            "lengthMenu": [[10], [10]],
+            "searching": false,
+            "processing": true,
+            "serverSide": true,
+            "info": false,
+            "paging": false,
+            "lengthChange": false,
+            "autoWidth": true,
+            "language": {
+                "emptyTable": "",
+                "zeroRecords": ""
+            },
+            ajax: {
+                url: "{{ route('RW.warga_list') }}",
+                dataType: 'json',
+                type: 'POST',
+                data: function(d) {
+                    d._token = "{{ csrf_token() }}";
+                    d.filter_rt = $('#filter_rt').val(); // Menambahkan filter RT
+                },
+            },
+            columns: [
+                { data: 'DT_RowIndex', orderable: true, searchable: true, className: "text-center py-3 asap border-t-2" },
+                { data: 'nik', orderable: true, searchable: true, className: "text-center py-3 asap border-t-2" },
+                { data: 'nama', orderable: false, searchable: false, className: "text-center asap border-t-2" },
+                { data: 'no_kk', orderable: false, searchable: false, className: "text-center py-3 asap border-t-2" },
+                { data: 'jenis_kelamin', orderable: true, searchable: true, className: "text-center asap border-t-2" },
+                { data: 'no_telp', orderable: false, searchable: false, className: "text-center asap border-t-2" },
+                { data: 'status_kependudukan', orderable: false, searchable: false, className: "text-center asap border-t-2" },
+                { data: 'aksi', orderable: false, searchable: false, className: "text-center asap border-t-2" },
+            ],
+        });
+    }
+
+    $('#filter_rt').change(function() {
+        loadTable();
     });
+
+    loadTable();
+});
 </script>
 @endpush

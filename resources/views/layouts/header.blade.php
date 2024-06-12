@@ -19,12 +19,15 @@
                         BERANDA
                     </span>
                 </a>
+                @if(auth()->user()->level_id != 2)
+                </button>
                 <button class="group font-bold px-4 md:px-7 text-black transition-all duration-300 ease-in-out text-xs md:text-base" id="notif" >
                     <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                         NOTIFIKASI
                     </span>
                 </button>
-                <a class="relative group font-bold px-4 md:px-7 text-black transition-all duration-300 ease-in-out text-xs md:text-base" href="{{ route('logout') }}" >
+                @endif
+                <a class="relative group font-bold px-4 md:px-7 text-black transition-all duration-300 ease-in-out text-xs md:text-base" href="{{ url('logout') }}" >
                     <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                         LOGOUT\
                     </span>

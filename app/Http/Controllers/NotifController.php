@@ -67,4 +67,19 @@ class NotifController extends Controller
         $status = $request->status == 'diterima' ? 'Pengajuan bansos berhasil diterima!' : 'Pengajuan bansos ditolak!';
         return redirect('rt_notifikasi')->with('status', $status);
     }
+
+    public function indexWarga()
+    {
+        $header = (object) [
+            'title' => 'Notifikasi',
+            'list' => ['Beranda', 'Notifikasi']
+        ];
+
+        $currentUser = Auth::user();
+        $userId = $currentUser->user_id;
+
+        $notif = NotifModel::where('user_id', $userId)->get();
+
+        return view('warga.notif.index', ['header' => $header, 'notif' => $notif]);
+    }
 }

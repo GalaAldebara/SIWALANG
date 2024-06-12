@@ -25,10 +25,16 @@ class DataWargaController extends Controller
     public function list(Request $request)
     {
         if ($request->ajax()) {
-            $dataDiri = DataDiriModel::join('m_user', 'data_diri.nik', '=', 'm_user.nik')
+            $query = DataDiriModel::join('m_user', 'data_diri.nik', '=', 'm_user.nik')
                 ->select('data_diri.nik', 'data_diri.no_kk', 'data_diri.jenis_kelamin', 'data_diri.no_telp', 'data_diri.status_kependudukan', 'm_user.nama', 'data_diri.id')
-                ->where('m_user.status', 'Selesai')
-                ->get();
+                ->where('m_user.status', 'Selesai');
+
+            // Tambahkan filter RT jika filter_rt tidak sama dengan 'all'
+            if ($request->filter_rt && $request->filter_rt != 'all') {
+                $query->where('data_diri.rt', $request->filter_rt);
+            }
+
+            $dataDiri = $query->get();
 
             $formattedData = [];
             $index = 1;
@@ -47,7 +53,6 @@ class DataWargaController extends Controller
             }
 
             return response()->json(['data' => $formattedData]);
-            return DataTables::of($dataDiri)->make(true);
         }
     }
 

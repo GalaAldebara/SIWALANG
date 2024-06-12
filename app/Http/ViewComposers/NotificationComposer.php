@@ -11,7 +11,7 @@ class NotificationComposer
     public function compose(View $view)
     {
         $userId = Auth::id();
-        $notificationCount = $userId ? NotifModel::where('user_id', $userId)->count() : 0;
+        $notificationCount = $userId ? NotifModel::where('user_id', $userId)->where('status_lihat', 'belum')->count() : 0;
 
         $view->with('notificationCount', $notificationCount);
     }
