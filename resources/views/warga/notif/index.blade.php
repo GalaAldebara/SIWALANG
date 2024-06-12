@@ -5,7 +5,7 @@
     use Carbon\Carbon;    
 @endphp
 <main class="w-full flex justify-center">
-    <div class="w-5/6 grid grid-cols-[1fr_100px] py-12" style="font-family: Asap">
+    <div class="w-5/6 grid grid-cols-[1fr_200px] py-12" style="font-family: Asap">
         @foreach ($notif as $n)
             <div class="flex flex-col py-3 border-b-2">
                 <span class="font-bold text-xl flex">
@@ -20,7 +20,7 @@
                 <span class="text-gray-400">{{ Carbon::parse($n->tanggal_notif)->translatedFormat('l, d F Y') }}</span>
             </div>
             <div class="flex justify-center border-b-2">
-                <button class="bg-gray-400 my-4 px-4 rounded-2xl font-medium" onclick="updateStatusAndRedirect({{ $n->id_notif }}, {{ $n->id_bansos }})">Lihat</button>
+                <button class="bg-gray-400 my-4 px-4 rounded-2xl font-medium" onclick="updateStatusAndRedirect({{ $n->id_notif }}, {{ $n->id_bansos }})">Tandai telah dibaca</button>
             </div> 
         @endforeach
     </div>
@@ -46,7 +46,7 @@
 <script>
     function updateStatusAndRedirect(id_notif, id_bansos) {
         // Lakukan permintaan AJAX untuk memperbarui status
-        fetch(`rt_notifikasi/update-status/${id_notif}`, {
+        fetch(`warga_notifikasi/update-status/${id_notif}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,15 +54,15 @@
             },
             body: JSON.stringify({ status_lihat: 'sudah' })
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Arahkan ke URL yang ditentukan
-                window.location.href = `rt_notifikasi/bansos/${id_bansos}`;
-            } else {
-                console.error('Gagal memperbarui status');
-            }
-        })
+        // .then(response => response.json())
+        // .then(data => {
+        //     if (data.success) {
+        //         // Arahkan ke URL yang ditentukan
+        //         window.location.href = `rt_notifikasi/bansos/${id_bansos}`;
+        //     } else {
+        //         console.error('Gagal memperbarui status');
+        //     }
+        // })
     }
 </script>
 @endpush
