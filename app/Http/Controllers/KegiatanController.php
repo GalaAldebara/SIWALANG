@@ -136,7 +136,7 @@ class KegiatanController extends Controller
             'list' => ['Beranda', 'Kegiatan', 'Rincian Kegiatan']
         ];
 
-        return view('RW.kegiatan.show', ['header' => $header, 'kegiatan' => $kegiatan]);
+        return view('RW.Kegiatan.show', ['header' => $header, 'kegiatan' => $kegiatan]);
     }
 
     public function formDokumen(string $id)
@@ -148,7 +148,7 @@ class KegiatanController extends Controller
             'list' => ['Beranda', 'Kegiatan', 'Form Tambah Kegiatan']
         ];
 
-        return view('RW.kegiatan.formDokumen', ['header' => $header, 'kegiatan' => $kegiatan]);
+        return view('RW.Kegiatan.formDokumen', ['header' => $header, 'kegiatan' => $kegiatan]);
     }
 
     public function storeDokumen(Request $request, string $id)
