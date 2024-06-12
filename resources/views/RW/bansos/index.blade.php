@@ -4,7 +4,7 @@
 <main class="w-full h-full mb-3">
     <div class="flex flex-col items-center py-3 min-w-fit">
         <div class="w-5/6 bg-primary p-3 text-white rounded-t-xl border-2 font-bold flex flex-row min-w-[490px]">
-            <a class="bg-white rounded-full size-7 flex justify-center items-center" href="{{ url('warga') }}">
+            <a class="bg-white rounded-full size-7 flex justify-center items-center" href="{{ url('RW') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black" class="w-5 h-5">
                     <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
                 </svg>
