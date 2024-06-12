@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(data => {
                 if (data.success) {
-                    dataPengaduan.ajax.reload();
+                    dataPenerima.ajax.reload();
                     Swal.fire({
                         title: 'Success',
                         text: 'Ranking successful',
@@ -353,4 +353,3 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 @endpush
-

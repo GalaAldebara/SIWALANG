@@ -94,6 +94,14 @@ Route::group(['prefix' => 'rt_notifikasi'], function () {
     Route::post('bansos/{id}/update', [NotifController::class, 'updateBansos'])->name('bansos.update');
 });
 
+// Warga - Notifikasi
+Route::group(['prefix' => 'warga_notifikasi'], function () {
+    Route::get('/', [NotifController::class, 'indexWarga']);
+    Route::post('/update-status/{id_notif}', [NotifController::class, 'updateStatus']);
+    Route::get('/bansos/{id}', [NotifController::class, 'verifBansos']);
+    Route::post('bansos/{id}/update', [NotifController::class, 'updateBansos'])->name('bansos.update');
+});
+
 // RT dan RW - Penerima Bansos
 Route::group(['prefix' => 'penerima_bansos'], function () {
     // RT

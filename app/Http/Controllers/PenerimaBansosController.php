@@ -7,6 +7,7 @@ use App\Models\DataDiriModel;
 use App\Models\NotifModel;
 use App\Models\SkorBansosModel;
 use App\Models\UserModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Log;
 use Yajra\DataTables\Facades\DataTables;
@@ -153,22 +154,39 @@ class PenerimaBansosController extends Controller
         // Lakukan perangkingan dan pembaruan ke dalam database
         try {
             // Lakukan perangkingan di sini, misalnya dengan mengambil N pemohon teratas berdasarkan skor
-            $applicants = SkorBansosModel::leftjoin('bansos', 'skor_bansos.id_bansos', '=', 'bansos.id_bansos')
-                ->leftJoin('data_diri', 'bansos.nik', '=', 'data_diri.nik')
-                ->where('data_diri.rt', auth()->user()->user_id - 2)
-                ->select('bansos.status_bansos', 'skor_bansos.skor', 'skor_bansos.id_bansos')
+            $applicants = SkorBansosModel::leftJoin('bansos', 'skor_bansos.id_bansos', '=', 'bansos.id_bansos')
+                ->leftJoin('m_user', 'bansos.nik', '=', 'm_user.nik')
+                ->select('bansos.status_bansos', 'skor_bansos.skor', 'skor_bansos.id_bansos', 'm_user.user_id') // Tambahkan user_id dari data_diri
                 ->orderBy('skor', 'desc')
                 ->get();
 
             // Lakukan pembaruan status_bansos untuk pemohon yang terpilih
             foreach ($applicants as $key => $applicant) {
                 $bansos = BansosModel::find($applicant->id_bansos);
-                if ($key < $topScores) {
-                    $bansos->status_bansos = 'lolos'; // Ubah status_bansos menjadi 'lolos' untuk pemohon top scores
+                $user_id = $applicant->user_id; // Ambil user_id dari hasil join
+
+                // Validasi user_id tidak null
+                if ($user_id) {
+                    if ($key < $topScores) {
+                        $bansos->status_bansos = 'lolos'; // Ubah status_bansos menjadi 'lolos' untuk pemohon top scores
+                        NotifModel::create([
+                            'user_id' => $user_id,
+                            'tanggal_notif' => Carbon::now(),
+                            'keterangan' => 'Anda telah lolos seleksi bansos',
+                        ]);
+                    } else {
+                        $bansos->status_bansos = 'tidak_lolos'; // Ubah status_bansos menjadi 'tidak_lolos' untuk pemohon yang tidak top scores
+                        NotifModel::create([
+                            'user_id' => $user_id,
+                            'tanggal_notif' => Carbon::now(),
+                            'keterangan' => 'Anda tidak lolos seleksi bansos',
+                        ]);
+                    }
+                    $bansos->save(); // Simpan perubahan ke dalam database
                 } else {
-                    $bansos->status_bansos = 'tidak_lolos'; // Ubah status_bansos menjadi 'tidak_lolos' untuk pemohon yang tidak top scores
+                    // Tangani kasus di mana user_id tidak ditemukan
+                    return response()->json(['success' => false, 'message' => 'User ID tidak ditemukan untuk beberapa pemohon.'], 400);
                 }
-                $bansos->save(); // Simpan perubahan ke dalam database
             }
 
             // Kirim respons JSON berhasil
