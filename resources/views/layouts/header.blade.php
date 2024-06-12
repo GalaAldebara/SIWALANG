@@ -14,12 +14,13 @@
                 <h1 class="text-walang text-3xl font-black" style="font-family: Inter">WALANG</h1>
             </div>
             <div class="flex flex-row items-center px-7 py-6">
-                <a class="group font-bold px-4 md:px-7 text-walang transition-all duration-300 ease-in-out text-xs md:text-base" href="{{ url('warga') }}" >
+                <button class="group font-bold px-3 md:px-7 text-walang transition-all duration-300 ease-in-out" id="beranda">
                     <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                         BERANDA
                     </span>
                 </a>
                 @if(auth()->user()->level_id != 2)
+                </button>
                 <button class="group font-bold px-4 md:px-7 text-black transition-all duration-300 ease-in-out text-xs md:text-base" id="notif" >
                     <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
                         NOTIFIKASI

@@ -37,26 +37,16 @@
                         <h1 class="text-walang text-3xl font-black" style="font-family: Inter">WALANG</h1>
                     </div>
                     <div class="flex flex-row items-center py-2 md:py-0">
-                        <button class="group font-bold px-3 md:px-7 text-walang transition-all duration-300 ease-in-out" id="beranda">
-                            <span class="bg-gradient-to-r from-walang to-walang bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
-                                BERANDA
-                            </span>
-                        </button>
-                        <a class="group font-bold px-3 md:px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('warga') }}">
+                        <a class="group font-bold px-3 md:px-7 text-walang transition-all duration-300 ease-in-out" href="{{ route('login') }}">
                             <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
-                                NOTIFIKASI
-                            </span>
-                        </a>
-                        <a class="group font-bold px-3 md:px-7 text-black transition-all duration-300 ease-in-out" href="{{ url('logout') }}">
-                            <span class="bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]" style="font-family: Asap">
-                                LOGOUT
+                                LOGIN
                             </span>
                         </a>
                     </div>
                 </nav>
                 <header class="text-white/80 flex flex-col items-center mt-7 text-center px-4">
                     <h1 class="text-white font-bold text-3xl md:text-5xl leading-tight" style="max-width: 550px">Selamat Datang di Desa Lang-Lang RW. 01 </h1>
-                    <a class="tracking-wide text-white font-bold py-3 px-8 mt-12 bg-primary rounded-3xl" style="font-family: Asap" href="/login">LOGIN</a>
+                    <a class="tracking-wide text-white font-bold py-3 px-8 mt-12 bg-primary rounded-3xl" style="font-family: Asap" href="{{ route('login') }}">LOGIN</a>
                 </header>
             </div>
         </div>
@@ -104,34 +94,11 @@
             <canvas id="rtChart"></canvas>
         </div>
 
-        <div class="w-full mt-3 flex flex-col justify-center items-center pb-14" style="background-color:#f5f5f5">
+        <div class="w-full mt-3 flex flex-col justify-center items-center pb-14 bg-gray-100">
             <h6 class="text-center pt-8 text-primary font-bold text-lg">Pemimpin</h6>
             <h1 class="text-center font-bold text-3xl">Struktur Kepemimpinan RW 01 beserta RT</h1>
-
-            <div class="grid grid-cols-[200px_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_200px] grid-rows-[minmax(0,1fr)_400px] justify-center gap-5 w-full pt-3">
-                <div class="col-span-5 flex flex-row justify-end">
-                    <p class="uppercase font-bold mr-3" style="font-family: Asap">Selengkapnya</p>
-                    <button class="rounded-md h-6 w-8 bg-primary flex justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6">
-                            <path fill-rule="evenodd" d="M13.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
-                            <path fill-rule="evenodd" d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
-                          </svg>
-                    </button>
-                </div>
-                <div class="col-start-1 flex justify-end items-center">
-                    <button class="size-14 bg-primary rounded-full flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6 mr-1">
-                            <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
-                          </svg>
-                    </button>
-                </div>
-                <a href="{{ route('struktur.kepemimpinan') }}" class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
-                    <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
-                        <h1>Kepala Desa</h1>
-                        <p class="text-xl font-bold">Yulianto</p>
-                    </div>
-                </a>
-                <a href="{{ route('struktur.rt') }}" class="bg-center bg-cover flex flex-col justify-end rounded-xl">
+            <div class="grid grid-cols-2 md:grid-cols-2 justify-items-center gap-1 w-full pt-5">
+                <a href="{{ route('struktur.rt') }}" class="bg-center bg-cover flex flex-col justify-end rounded-xl w-64">
                     <img src="{{ isset($dataDiri) && $dataDiri->foto_profil ? asset($dataDiri->foto_profil) : asset('images/fotoProfil.jpeg') }}" alt="" class="object-cover w-full h-64 rounded-t-xl">
                     <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
                         <h1>RT</h1>
@@ -149,14 +116,14 @@
                         </p>
                     </div>
                 </a>
-                <a href="{{ route('struktur.rw') }}" class="bg-center bg-cover flex flex-col justify-end rounded-xl">
+                <a href="{{ route('struktur.rw') }}" class="bg-center bg-cover flex flex-col justify-end rounded-xl w-64">
                     <img src="{{ isset($dataDiri) && $dataDiri->foto_profil ? asset($dataDiri->foto_profil) : asset('images/fotoProfil.jpeg') }}" alt="" class="object-cover w-full h-64 rounded-t-xl">
                     <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
                         <h1>RW</h1>
                         <p class="text-xl font-bold">
                             @php
                                 $rtUser = DB::table('m_user')
-                                          ->where('level_id', 3) // Sesuaikan dengan level_id RT
+                                          ->where('level_id', 3)
                                           ->first();
                                 if ($rtUser) {
                                     echo $rtUser->nama;
@@ -167,34 +134,25 @@
                         </p>
                     </div>
                 </a>
-                <a href="{{ route('struktur.rt') }}" class="bg-people bg-center bg-cover flex flex-col justify-end rounded-xl">
-                    <div class="py-4 pl-6 bg-primary text-white rounded-b-xl">
-                        <h1>Sekretaris</h1>
-                        <p class="text-xl font-bold">Yulianto</p>
-                    </div>
-                </a>
-                <div class="flex justify-start items-center">
-                    <button class="size-14 bg-primary rounded-full flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6 ml-1">
-                            <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
-                          </svg>
-                    </button>
-                </div>
             </div>
         </div>
+s
+
+
+
         <div class="bg-white py-3">
             <main class="w-full flex flex-col justify-center items-center my-8">
                 <div class="w-5/6 py-4 border-b-[3px] border-walang">
                   <h1 class="font-bold text-4xl" style="font-family: poppins">Agenda Kegiatan Warga RW.01 Mendatang</h1>
                   <p class="text-gray-400 text-lg" style="font-family: Asap">Jangan lewatkan kegiatan mendatang</p>
                 </div>
-            
+
                 <div class="grid grid-cols-3 w-5/6 gap-y-4 gap-x-10 my-6">
                     @php
                         use App\Models\KegiatanModel;
                         $kegiatan = KegiatanModel::where('status_kegiatan', 'belum selesai')->get();
                     @endphp
-                    @foreach ($kegiatan as $item) 
+                    @foreach ($kegiatan as $item)
                         @php
                         $date = \Carbon\Carbon::parse($item->tanggal_kegiatan);
                         @endphp
@@ -208,7 +166,7 @@
                             <p>{{$item->jam_mulai}} - {{$item->jam_selesai}}</p>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00562f" class="size-2">
                             <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.375 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
-                            </svg>          
+                            </svg>
                             <p>{{$item->lokasi}}</p>
                         </div>
                         </a>
@@ -222,12 +180,12 @@
                   <p class="text-primary font-bold text-lg" style="font-family: Poppins">Dokumentasi</p>
                   <h1 class="font-bold text-4xl" style="font-family: Poppins">Arsip Kegiatan Warga RW.01</h1>
                 </div>
-            
+
                 <div class="grid grid-cols-3 w-5/6 gap-y-10 gap-x-4 my-6">
                     @php
                         $kegiatan2 = KegiatanModel::where('status_kegiatan', 'selesai')->get();
                     @endphp
-                    @foreach ($kegiatan2 as $item) 
+                    @foreach ($kegiatan2 as $item)
                         @php
                         $date = \Carbon\Carbon::parse($item->tanggal_kegiatan);
                         @endphp
@@ -266,7 +224,7 @@
                   position: relative;
                   display: inline-block;
                 }
-              
+
                 .popup-image {
                   display: none;
                   position: absolute;
@@ -276,11 +234,11 @@
                   border: 1px solid #ccc;
                   z-index: 10;
                 }
-              
+
                 .popup-container:hover .popup-image {
                   display: block;
                 }
-              
+
                 .popup-image img {
                   max-width: 600px; /* Sesuaikan ukuran popup */
                   max-height: 600px;
