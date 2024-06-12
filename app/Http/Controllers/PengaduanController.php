@@ -17,7 +17,7 @@ class PengaduanController extends Controller
             'list' => ['Beranda', 'Pengaduan']
         ];
 
-        return view('warga.pengaduan.index', ['header' => $header]);
+        return view('warga.Pengaduan.index', ['header' => $header]);
     }
 
     public function list(Request $request)
@@ -40,7 +40,7 @@ class PengaduanController extends Controller
 
         $users = UserModel::all();
 
-        return view('warga.pengaduan.form', ['users' => $users, 'header' => $header]);
+        return view('warga.Pengaduan.form', ['users' => $users, 'header' => $header]);
     }
 
     public function store(Request $request)
